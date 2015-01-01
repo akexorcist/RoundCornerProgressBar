@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="RoundCornerProgress">
+      <attr name="progress" format="integer" />
+      <attr name="backgroundPadding" format="dimension" />
+      <attr name="backgroundRadius" format="dimension" />
+      <attr name="max" format="integer" />
+      <attr name="iconSrc" format="integer" />
+      <attr name="iconSize" format="dimension" />
+      <attr name="iconPadding" format="dimension" />
+      <attr name="headerColor" format="color" />
+      <attr name="progressColor" format="color" />
+      <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+    
+</resources>

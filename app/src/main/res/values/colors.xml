@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="text">#ffffff</color>
+    <color name="background_dark">#363636</color>
+    <color name="background_content">#454344</color>
+
+    <color name="custom_progress_background">#3c3a3b</color>
+
+    <color name="custom_progress_green_header">#99cc00</color>
+    <color name="custom_progress_green_progress">#669900</color>
+
+    <color name="custom_progress_orange_header">#ffbb33</color>
+    <color name="custom_progress_orange_progress">#ff8800</color>
+
+    <color name="custom_progress_blue_header">#33b5e5</color>
+    <color name="custom_progress_blue_progress">#0099cc</color>
+
+    <color name="custom_progress_purple_header">#aa66cc</color>
+    <color name="custom_progress_purple_progress">#9933cc</color>
+
+    <color name="custom_progress_red_header">#cc0000</color>
+    <color name="custom_progress_red_progress">#ff4444</color>
+</resources>

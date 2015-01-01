@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RoundCornerProgressBar</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="round_corner_progress_bar">Round Corner Progress Bar</string>
+    <string name="icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
+    <string name="programmatically">Programmatically</string>
+    <string name="corner_rounder_1">Max : 100\nProgress : 50\nWidth : 250dp\nHeight : 30dp\nRadius : 0dp\nPadding : 2dp</string>
+    <string name="corner_rounder_2">Max : 100\nProgress : 100\nWidth : 250dp\nHeight : 20dp\nRadius : 20dp\nPadding : 2dp</string>
+    <string name="corner_rounder_3">Max : 100\nProgress : 45\nWidth : 250dp\nHeight : 50dp\nRadius : 5dp\nPadding : 2dp</string>
+    <string name="corner_rounder_4">Max : 100\nProgress : 70\nWidth : 250dp\nHeight : 50dp\nRadius : 10dp\nPadding : 5dp</string>
+    <string name="corner_rounder_5">Max : 100\nProgress : 10\nWidth : 250dp\nHeight : 80dp\nRadius : 30dp\nPadding : 10dp</string>
+    <string name="icon_corner_rounder_1">Max : 150\nProgress : 90\nWidth : 250dp\nIcon Size : 40dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 2dp</string>
+    <string name="icon_corner_rounder_2">Max : 150\nProgress : 40\nWidth : 250dp\nIcon Size : 70dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 10dp</string>
+    <string name="icon_corner_rounder_3">Max : 150\nProgress : 150\nWidth : 250dp\nIcon Size : 30dp\nIcon Padding : 3dp\nBackground Radius : 5dp\nBackground Padding : 5dp</string>
+    <string name="icon_corner_rounder_4">Max : 150\nProgress : 5\nWidth : 250dp\nIcon Size : 50dp\nIcon Padding : 3dp\nBackground Radius : 0dp\nBackground Padding : 10dp</string>
+    <string name="icon_corner_rounder_5">Max : 150\nProgress : 100\nWidth : 250dp\nIcon Size : 20dp\nIcon Padding : 10dp\nBackground Radius : 30dp\nBackground Padding : 5dp</string>
+    <string name="decrease"><![CDATA[<]]></string>
+    <string name="increase"><![CDATA[>]]></string>
+    <string name="zero">0</string>
+
+</resources>

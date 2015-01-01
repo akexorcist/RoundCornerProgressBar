@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/round_corner_progress_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AAAAAA"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/round_corner_progress_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#555555"
+        android:orientation="horizontal" />
+
+</LinearLayout><!-- From: file:/D:/Android%20Developer/Workspace/Workspace-AndroidStudio/RoundCornerProgressBar/library/src/main/res/layout/round_corner_layout.xml --><!-- From: file:/D:/Android%20Developer/Workspace/Workspace-AndroidStudio/RoundCornerProgressBar/library/build/intermediates/bundles/debug/res/layout/round_corner_layout.xml -->

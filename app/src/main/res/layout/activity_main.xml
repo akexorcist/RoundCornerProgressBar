@@ -1,0 +1,498 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/round_corner_progress_bar"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="2dp"
+                app:backgroundRadius="0dp"
+                app:max="100"
+                app:progress="50"
+                app:progressColor="@color/custom_progress_orange_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="2dp"
+                app:backgroundRadius="20dp"
+                app:max="100"
+                app:progress="100"
+                app:progressColor="@color/custom_progress_blue_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_2"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="2dp"
+                app:backgroundRadius="5dp"
+                app:max="100"
+                app:progress="45"
+                app:progressColor="@color/custom_progress_green_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_3"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="5dp"
+                app:backgroundRadius="10dp"
+                app:max="100"
+                app:progress="70"
+                app:progressColor="@color/custom_progress_red_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_4"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="10dp"
+                app:backgroundRadius="30dp"
+                app:max="100"
+                app:progress="10"
+                app:progressColor="@color/custom_progress_purple_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_5"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/icon_round_corner_progress_bar"
+            android:textColor="@color/text"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="2dp"
+                app:backgroundRadius="5dp"
+                app:headerColor="@color/custom_progress_red_header"
+                app:iconPadding="5dp"
+                app:iconSize="40dp"
+                app:iconSrc="@drawable/ic_android"
+                app:max="150"
+                app:progress="90"
+                app:progressColor="@color/custom_progress_red_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="10dp"
+                app:backgroundRadius="5dp"
+                app:headerColor="@color/custom_progress_blue_header"
+                app:iconPadding="5dp"
+                app:iconSize="70dp"
+                app:iconSrc="@drawable/ic_clock"
+                app:max="150"
+                app:progress="40"
+                app:progressColor="@color/custom_progress_blue_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_2"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="5dp"
+                app:backgroundRadius="5dp"
+                app:headerColor="@color/custom_progress_green_header"
+                app:iconPadding="3dp"
+                app:iconSize="30dp"
+                app:iconSrc="@drawable/ic_download"
+                app:max="150"
+                app:progress="150"
+                app:progressColor="@color/custom_progress_green_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_3"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="10dp"
+                app:backgroundRadius="0dp"
+                app:headerColor="@color/custom_progress_purple_header"
+                app:iconPadding="3dp"
+                app:iconSize="50dp"
+                app:iconSrc="@drawable/ic_television"
+                app:max="150"
+                app:progress="5"
+                app:progressColor="@color/custom_progress_purple_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_4"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="5dp"
+                app:backgroundRadius="30dp"
+                app:headerColor="@color/custom_progress_orange_header"
+                app:iconPadding="10dp"
+                app:iconSize="20dp"
+                app:iconSrc="@drawable/ic_television"
+                app:max="150"
+                app:progress="100"
+                app:progressColor="@color/custom_progress_orange_progress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_5"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/programmatically"
+            android:textColor="@color/text"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:id="@+id/progress_one"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:progress="5"
+                app:max="10" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/decrease"
+                    android:id="@+id/button_progress_one_decrease"
+                    android:textSize="18sp"
+                    android:textColor="@color/text" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero"
+                    android:id="@+id/text_progress_one"
+                    android:textColor="@color/text"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/increase"
+                    android:id="@+id/button_progress_one_increase"
+                    android:textSize="18sp"
+                    android:textColor="@color/text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_two"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:progress="5"
+                app:max="10" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/decrease"
+                    android:id="@+id/button_progress_two_decrease"
+                    android:textSize="18sp"
+                    android:textColor="@color/text" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero"
+                    android:id="@+id/text_progress_two"
+                    android:textColor="@color/text"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/increase"
+                    android:id="@+id/button_progress_two_increase"
+                    android:textSize="18sp"
+                    android:textColor="@color/text" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
