@@ -33,4 +33,4 @@ Coming Soon~
 
 Simple Usage
 ===========================
-Coming Soon~
+Usage article (Th) http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
