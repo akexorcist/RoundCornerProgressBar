@@ -24,6 +24,13 @@ A round corner progress bar with a changable icon on the left of progress bar
 ![Icon Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_01.png)
 
 
+Maven Central
+===============================
+[code]dependencies {
+    compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
+}[/code]
+
+
 Feature
 ===========================
 Coming Soon~
