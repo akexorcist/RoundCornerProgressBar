@@ -8,4 +8,4 @@ android:
 notifications:
   email: false
 
-script: gradlew clean
+script: ./gradlew clean
