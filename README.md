@@ -38,7 +38,7 @@ Feature
 * Round value configurable (recommend dp) for a corner of progress bar 
 * Color changable for a progress
 * Adjust padding range between progress bar and progress or between image icon and progress
-* Easy easy and easy to use
+* Easy easy and easy
 
 
 Simple Usage
@@ -48,7 +48,7 @@ Thai language usage article http://www.akexorcist.com/2015/01/round-corner-progr
 Include 'com.akexorcist.roundcornerprogressbar' in your layout
 We recommend to define a progress bar height ('android:layout_height' for RoundCornerProgressBar and 'android:iconSize' for IconRoundCornerProgressBar
 
-'''xml
+```xml
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
@@ -72,5 +72,6 @@ We recommend to define a progress bar height ('android:layout_height' for RoundC
         app:progressColor="color"
         app:progress="integer"
         app:max="integer" />
-'''
+```
+
 
