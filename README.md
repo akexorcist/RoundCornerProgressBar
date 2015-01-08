@@ -57,7 +57,12 @@ Include 'com.akexorcist.roundcornerprogressbar' in your layout
         app:progressColor="color"
         app:progress="integer"
         app:max="integer" />
+```
 
+![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_002.jpg)
+
+
+```xml
 <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
@@ -72,9 +77,6 @@ Include 'com.akexorcist.roundcornerprogressbar' in your layout
         app:progress="integer"
         app:max="integer" />
 ```
-
-![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_002.jpg)
-
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_001.jpg)
 
 We recommend to define a progress bar height 
