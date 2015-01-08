@@ -26,9 +26,9 @@ A round corner progress bar with a changable icon on the left of progress bar
 
 Maven Central
 ===============================
-[code]dependencies {
-    compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
-}[/code]
+    dependencies {
+        compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
+    }
 
 
 Feature
