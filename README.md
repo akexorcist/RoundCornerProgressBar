@@ -26,6 +26,8 @@ A round corner progress bar with a changable icon on the left of progress bar
 
 Maven Central
 ===============================
+Maven Central package for your dependencies
+
     dependencies {
         compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
     }
@@ -33,9 +35,17 @@ Maven Central
 
 Feature
 ===========================
-Coming Soon~
+* Round value configurable (recommend dp) for a corner of progress bar 
+* Color changable for a progress
+* Adjust padding range between progress bar and progress or between image icon and progress
+* Easy easy and easy
 
 
 Simple Usage
 ===========================
-Usage article (Th) http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+Thai language usage article http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+
+Include 'com.akexorcist.roundcornerprogressbar' in your layout
+We recommend to define a progress bar height ('android:layout_height' for RoundCornerProgressBar and 'android:iconSize' for IconRoundCornerProgressBar
+
+
