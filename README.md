@@ -74,8 +74,6 @@ Include 'com.akexorcist.roundcornerprogressbar' in your layout
 ```
 
 We recommend to define a progress bar height 
-
 * 'android:layout_height' for RoundCornerProgressBar 
-* 
 * 'android:iconSize' for IconRoundCornerProgressBar
 
