@@ -1,5 +1,5 @@
 language: android
-jdk: oraclejdk8
+jdk: oraclejdk7
 
 android:
   components:
@@ -8,4 +8,4 @@ android:
 notifications:
   email: false
 
-script: gradlew clean
+script: ./gradlew clean
