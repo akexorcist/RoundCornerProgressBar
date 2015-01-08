@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.akexorcist</groupId>
+  <artifactId>RoundCornerProgressBar</artifactId>
+  <version>1.0.0</version>
+  <packaging>aar</packaging>
+  <name>RoundCornerProgressBar</name>
+  <description>Round is cool. Let's make your progress bar to round corner</description>
+  <url>https://github.com/akexorcist/Android-RoundCornerProgressBar</url>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>Akexorcist</id>
+      <name>Somkiat Khitwongwattana</name>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git@github.com:akexorcist/Android-RoundCornerProgressBar.git</connection>
+    <developerConnection>scm:git@github.com:akexorcist/Android-RoundCornerProgressBar.git</developerConnection>
+    <url>https://github.com/akexorcist/Android-RoundCornerProgressBar</url>
+  </scm>
+</project>

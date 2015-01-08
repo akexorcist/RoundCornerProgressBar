@@ -1,10 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
     defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
     }
 
     buildTypes {
@@ -15,6 +19,4 @@ android {
     }
 }
 
-dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
-}
+apply from: '../maven_push.gradle'
