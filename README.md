@@ -1,7 +1,7 @@
 Android-RoundCornerProgressBar
 ==============================
 
-![Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/header.png)
+![Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/header.jpg)
 Round Corner Progress Bar Library for Android
 
 Colorful progress bar with round corner on progress which you can customized a color and corner radius. A library has two type of progress bar.
