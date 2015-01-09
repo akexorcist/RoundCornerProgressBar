@@ -90,6 +90,7 @@ We recommend to define a progress bar height
 * ```android:iconSize``` for IconRoundCornerProgressBar height
 
 
+
 **Public method on RoundCornerProgressBar**
 ```java
 void setProgressColor(int color)
@@ -102,6 +103,7 @@ int getMax()
 void setProgress(float progress)
 int getProgress()
 ```
+
 
 **Public method on IconRoundCornerProgressBar**
 ```java
@@ -122,6 +124,7 @@ void setIconImageBitmap(Bitmap bitmap)
 void setIconImageDrawable(Drawable drawable)
 ```
 
+
 Example
 ===========================
 ```xml
@@ -134,10 +137,7 @@ Example
         android:id="@+id/progress_1"
         android:layout_height="320dp" 
         android:layout_width="40dp" 
-        app:backgroundPadding="5dp"
-        .
-        .
-        />
+        app:backgroundPadding="5dp" />
 
     <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
         android:id="@+id/progress_2"
@@ -145,14 +145,13 @@ Example
         android:layout_width="wrap_content"
         app:backgroundPadding="10dp"
         app:iconSize="50dp" 
-        app:iconPadding="5dp"
-        .
-        .
-        />
+        app:iconPadding="5dp" />
 
 </RelativeLayout>
 ```
+![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_01.jpg)
 
+![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_02.jpg)
 
 Documentation
 ===========================
