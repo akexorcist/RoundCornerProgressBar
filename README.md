@@ -153,6 +153,47 @@ Example
 
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_02.jpg)
 
+```java
+RoundCornerProgressBar progress1 = (RoundCornerProgressBar) findViewById(R.id.progress_1);
+progress1.setProgressColor(Color.parseColor("#ed3b27"));
+progress1.setBackgroundColor(Color.parseColor("#808080"));
+progress1.setMax(float max);
+progress1.setProgress(float progress);
+
+int progressColor1 = progress1.getProgressColor();
+int backgroundColor1 = progress1.getBackgroundColor();
+int max1 = progress1.etMax();
+int progress1 = progress1.getProgress();
+
+
+RoundCornerProgressBar progress2 = (RoundCornerProgressBar) findViewById(R.id.progress_1);
+progress2.setProgressColor(Color.parseColor("#56d2c2"));
+progress2.setBackgroundColor(Color.parseColor("#757575"));
+progress2.setHeaderColor(Color.parseColor("#38c0ae"));
+progress2.setMax(float max);
+progress2.setProgress(float progress);
+progress2.setIconImageResource(anyResource);
+progress2.setIconImageBitmap(anyBitmap);
+progress2.setIconImageDrawable(anyDrawable);
+
+int progressColor2 = progress2.getProgressColor();
+int backgroundColor2 = progress2.getBackgroundColor();
+int headerColor2 = progress2.getHeaderColor();
+int max2 = progress2.getMax();
+int progress2 = progress2.getProgress();
+```
+
 Documentation
 ===========================
 Thai Langauge : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+
+
+Licence
+===========================
+Copyright 2015 Akexorcist
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
