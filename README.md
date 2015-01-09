@@ -194,7 +194,7 @@ What's next?
 
 Documentation
 ===========================
-Thai Langauge : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+Thai Language : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
 
 
 Licence
