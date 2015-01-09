@@ -91,6 +91,7 @@ We recommend to define a progress bar height
 
 
 
+
 **Public method on RoundCornerProgressBar**
 ```java
 void setProgressColor(int color)
@@ -103,6 +104,7 @@ int getMax()
 void setProgress(float progress)
 int getProgress()
 ```
+
 
 
 **Public method on IconRoundCornerProgressBar**
