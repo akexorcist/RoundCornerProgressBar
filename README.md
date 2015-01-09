@@ -41,11 +41,16 @@ Feature
 * Easy easy and easy to use
 
 
-Simple Usage
+Usage
 ===========================
-Thai language usage article http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+Define 'app' namespace on root view in your layout
 
-Include 'com.akexorcist.roundcornerprogressbar' in your layout
+```xml
+xmlns:app="http://schemas.android.com/apk/res-auto"
+```
+
+
+Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcornerprogressbar' in your layout
 
 ```xml
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
@@ -79,9 +84,76 @@ Include 'com.akexorcist.roundcornerprogressbar' in your layout
 ```
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_001.jpg)
 
+
 We recommend to define a progress bar height 
 * 'android:layout_height' for RoundCornerProgressBar height 
 * 'android:iconSize' for IconRoundCornerProgressBar height
 
 
+Public method on RoundCornerProgressBar
+```java
+void setProgressColor(int color)
+int getProgressColor()
+void setBackgroundColor(int color)
+int getBackgroundColor()
 
+void setMax(float max)
+int getMax()
+void setProgress(float progress)
+int getProgress()
+```
+
+Public method on IconRoundCornerProgressBar
+```java
+void setProgressColor(int color)
+int getProgressColor()
+void setBackgroundColor(int color)
+int getBackgroundColor()
+void setHeaderColor(int color)
+int getHeaderColor()
+
+void setMax(float max)
+int getMax()
+void setProgress(float progress)
+int getProgress()
+
+void setIconImageResource(int resource)
+void setIconImageBitmap(Bitmap bitmap)
+void setIconImageDrawable(Drawable drawable)
+```
+
+Example
+===========================
+```xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent" 
+    android:layout_width="match_parent" >
+
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:id="@+id/progress_1"
+        android:layout_height="320dp" 
+        android:layout_width="40dp" 
+        app:backgroundPadding="5dp"
+        .
+        .
+        />
+
+    <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+        android:id="@+id/progress_2"
+        android:layout_height="320dp" 
+        android:layout_width="wrap_content"
+        app:backgroundPadding="10dp"
+        app:iconSize="50dp" 
+        app:iconPadding="5dp"
+        .
+        .
+        />
+
+</RelativeLayout>
+```
+
+
+Documentation
+===========================
+Thai Langauge : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
