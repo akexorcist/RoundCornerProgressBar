@@ -86,8 +86,8 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
 
 
 We recommend to define a progress bar height 
-* 'android:layout_height' for RoundCornerProgressBar height 
-* 'android:iconSize' for IconRoundCornerProgressBar height
+* ```xml'android:layout_height'``` for RoundCornerProgressBar height 
+* ```xml'android:iconSize'``` for IconRoundCornerProgressBar height
 
 
 Public method on RoundCornerProgressBar
