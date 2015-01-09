@@ -186,6 +186,12 @@ int max2 = progress2.getMax();
 int progress2 = progress2.getProgress();
 ```
 
+
+What's next?
+===========================
+* Progress Animation
+
+
 Documentation
 ===========================
 Thai Langauge : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
