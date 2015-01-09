@@ -90,7 +90,7 @@ We recommend to define a progress bar height
 * ```android:iconSize``` for IconRoundCornerProgressBar height
 
 
-Public method on RoundCornerProgressBar
+**Public method on RoundCornerProgressBar**
 ```java
 void setProgressColor(int color)
 int getProgressColor()
@@ -103,7 +103,7 @@ void setProgress(float progress)
 int getProgress()
 ```
 
-Public method on IconRoundCornerProgressBar
+**Public method on IconRoundCornerProgressBar**
 ```java
 void setProgressColor(int color)
 int getProgressColor()
