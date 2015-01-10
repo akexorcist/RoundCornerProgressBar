@@ -20,7 +20,7 @@ A simple round corner progress bar that can change a color of progress and backg
 Icon Round Corner Progress Bar
 ===============================
 
-A round corner progress bar with a changable icon on the left of progress bar
+A round corner progress bar with a changeable icon on the left of progress bar
 
 ![Icon Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_01.png)
 
