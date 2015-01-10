@@ -160,8 +160,8 @@ Example
 RoundCornerProgressBar progress1 = (RoundCornerProgressBar) findViewById(R.id.progress_1);
 progress1.setProgressColor(Color.parseColor("#ed3b27"));
 progress1.setBackgroundColor(Color.parseColor("#808080"));
-progress1.setMax(float max);
-progress1.setProgress(float progress);
+progress1.setMax(70);
+progress1.setProgress(15);
 
 int progressColor1 = progress1.getProgressColor();
 int backgroundColor1 = progress1.getBackgroundColor();
@@ -173,8 +173,8 @@ RoundCornerProgressBar progress2 = (RoundCornerProgressBar) findViewById(R.id.pr
 progress2.setProgressColor(Color.parseColor("#56d2c2"));
 progress2.setBackgroundColor(Color.parseColor("#757575"));
 progress2.setHeaderColor(Color.parseColor("#38c0ae"));
-progress2.setMax(float max);
-progress2.setProgress(float progress);
+progress2.setMax(550);
+progress2.setProgress(147);
 progress2.setIconImageResource(anyResource);
 progress2.setIconImageBitmap(anyBitmap);
 progress2.setIconImageDrawable(anyDrawable);
