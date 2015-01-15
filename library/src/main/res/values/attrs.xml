@@ -17,18 +17,25 @@ limitations under the License.
 -->
 
 <resources>
-    
+
     <declare-styleable name="RoundCornerProgress">
-      <attr name="progress" format="integer" />
-      <attr name="backgroundPadding" format="dimension" />
-      <attr name="backgroundRadius" format="dimension" />
-      <attr name="max" format="integer" />
-      <attr name="iconSrc" format="integer" />
-      <attr name="iconSize" format="dimension" />
-      <attr name="iconPadding" format="dimension" />
-      <attr name="headerColor" format="color" />
-      <attr name="progressColor" format="color" />
-      <attr name="backgroundColor" format="color" />
+        <attr name="progress" format="integer" />
+        <attr name="backgroundPadding" format="dimension" />
+        <attr name="backgroundRadius" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="iconSrc" format="integer" />
+        <attr name="iconSize" format="dimension" />
+        <attr name="iconPadding" format="dimension" />
+        <attr name="headerColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="textProgressColor" format="color" />
+        <attr name="textProgress" format="string" />
+        <attr name="textProgressUnit" format="string" />
+        <attr name="textProgressSize" format="dimension" />
+        <attr name="textProgressWidth" format="dimension" />
+        <attr name="textProgressPadding" format="dimension" />
+        <attr name="autoTextChange" format="boolean" />
     </declare-styleable>
-    
+
 </resources>

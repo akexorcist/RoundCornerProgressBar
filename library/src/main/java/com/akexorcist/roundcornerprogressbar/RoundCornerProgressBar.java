@@ -185,8 +185,9 @@ public class RoundCornerProgressBar extends LinearLayout {
 	}
 
 	public void setProgress(float progress) {
-		this.progress = progress;
 		progress = (progress > max) ? max : progress;
+        progress = (progress < 0) ? 0 : progress;
+        this.progress = progress;
 		float ratio = max / progress;
 		
 		LayoutParams params = (LayoutParams)layoutProgress.getLayoutParams();

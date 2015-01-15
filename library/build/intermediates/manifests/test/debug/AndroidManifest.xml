@@ -3,8 +3,8 @@
     package="com.akexorcist.roundcornerprogressbar.test" >
 
     <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="1"
+        android:targetSdkVersion="1" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"

@@ -17,10 +17,4 @@ limitations under the License.
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.akexorcist.roundcornerprogressbar"
     android:versionCode="100"
-    android:versionName="1.0.0" >
-
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="21" />
-
-</manifest>
+    android:versionName="1.0.0" />

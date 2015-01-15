@@ -88,7 +88,7 @@ limitations under the License.
                 app:backgroundPadding="2dp"
                 app:backgroundRadius="20dp"
                 app:max="100"
-                app:progress="100"
+                app:progress="90"
                 app:progressColor="@color/custom_progress_blue_progress" />
 
             <TextView
@@ -474,6 +474,21 @@ limitations under the License.
                 android:layout_marginTop="10dp"
                 app:progress="5"
                 app:max="10" />
+
+            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                android:id="@+id/progress_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundColor="#00000000"
+                app:backgroundPadding="0dp"
+                app:backgroundRadius="10dp"
+                app:autoTextChange="true"
+                app:textProgressWidth="40dp"
+                app:textProgressColor="#ffffff"
+                app:textProgressSize="14sp"
+                app:max="10"
+                app:progress="5"
+                app:progressColor="@color/custom_progress_orange_progress" />
 
             <LinearLayout
                 android:orientation="horizontal"

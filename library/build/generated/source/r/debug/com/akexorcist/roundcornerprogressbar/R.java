@@ -9,6 +9,14 @@ package com.akexorcist.roundcornerprogressbar;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int autoTextChange=0x7f010010;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -100,6 +108,61 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int progressColor=0x7f010008;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgress=0x7f01000b;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgressColor=0x7f01000a;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgressPadding=0x7f01000f;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgressSize=0x7f01000d;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgressUnit=0x7f01000c;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int textProgressWidth=0x7f01000e;
     }
     public static final class drawable {
         public static int round_corner_progress_icon=0x7f020000;
@@ -109,10 +172,12 @@ containing a value of this type.
         public static int round_corner_progress_header=0x7f040002;
         public static int round_corner_progress_icon=0x7f040003;
         public static int round_corner_progress_progress=0x7f040001;
+        public static int round_corner_progress_text=0x7f040004;
     }
     public static final class layout {
         public static int round_corner_layout=0x7f030000;
         public static int round_corner_with_icon_layout=0x7f030001;
+        public static int round_corner_with_text_layout=0x7f030002;
     }
     public static final class styleable {
         /** Attributes that can be used with a RoundCornerProgress.
@@ -121,6 +186,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #RoundCornerProgress_autoTextChange com.akexorcist.roundcornerprogressbar:autoTextChange}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_backgroundColor com.akexorcist.roundcornerprogressbar:backgroundColor}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_backgroundPadding com.akexorcist.roundcornerprogressbar:backgroundPadding}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_backgroundRadius com.akexorcist.roundcornerprogressbar:backgroundRadius}</code></td><td></td></tr>
@@ -131,7 +197,14 @@ containing a value of this type.
            <tr><td><code>{@link #RoundCornerProgress_max com.akexorcist.roundcornerprogressbar:max}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_progress com.akexorcist.roundcornerprogressbar:progress}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_progressColor com.akexorcist.roundcornerprogressbar:progressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgress com.akexorcist.roundcornerprogressbar:textProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgressColor com.akexorcist.roundcornerprogressbar:textProgressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgressPadding com.akexorcist.roundcornerprogressbar:textProgressPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgressSize com.akexorcist.roundcornerprogressbar:textProgressSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgressUnit com.akexorcist.roundcornerprogressbar:textProgressUnit}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_textProgressWidth com.akexorcist.roundcornerprogressbar:textProgressWidth}</code></td><td></td></tr>
            </table>
+           @see #RoundCornerProgress_autoTextChange
            @see #RoundCornerProgress_backgroundColor
            @see #RoundCornerProgress_backgroundPadding
            @see #RoundCornerProgress_backgroundRadius
@@ -142,12 +215,34 @@ containing a value of this type.
            @see #RoundCornerProgress_max
            @see #RoundCornerProgress_progress
            @see #RoundCornerProgress_progressColor
+           @see #RoundCornerProgress_textProgress
+           @see #RoundCornerProgress_textProgressColor
+           @see #RoundCornerProgress_textProgressPadding
+           @see #RoundCornerProgress_textProgressSize
+           @see #RoundCornerProgress_textProgressUnit
+           @see #RoundCornerProgress_textProgressWidth
          */
         public static final int[] RoundCornerProgress = {
             0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
             0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f,
+            0x7f010010
         };
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#autoTextChange}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:autoTextChange
+        */
+        public static int RoundCornerProgress_autoTextChange = 16;
         /**
           <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#backgroundColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
@@ -299,5 +394,96 @@ containing a value of this type.
           @attr name com.akexorcist.roundcornerprogressbar:progressColor
         */
         public static int RoundCornerProgress_progressColor = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgress}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgress
+        */
+        public static int RoundCornerProgress_textProgress = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressColor}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgressColor
+        */
+        public static int RoundCornerProgress_textProgressColor = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressPadding}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgressPadding
+        */
+        public static int RoundCornerProgress_textProgressPadding = 15;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressSize}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgressSize
+        */
+        public static int RoundCornerProgress_textProgressSize = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressUnit}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgressUnit
+        */
+        public static int RoundCornerProgress_textProgressUnit = 12;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressWidth}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:textProgressWidth
+        */
+        public static int RoundCornerProgress_textProgressWidth = 14;
     };
 }

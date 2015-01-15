@@ -21,12 +21,14 @@ import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private IconRoundCornerProgressBar progressOne;
     private RoundCornerProgressBar progressTwo;
+    private TextRoundCornerProgressBar progressThree;
     private TextView textProgressOne;
     private TextView textProgressTwo;
     private Button btnProgressOneDecrease;
@@ -53,6 +55,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnProgressOneIncrease.setOnClickListener(this);
         updateProgressOne();
 
+        progressThree = (TextRoundCornerProgressBar) findViewById(R.id.progress_three);
         progressTwo = (RoundCornerProgressBar) findViewById(R.id.progress_two);
         progressTwo.setBackgroundColor(getResources().getColor(R.color.custom_progress_background));
         textProgressTwo = (TextView) findViewById(R.id.text_progress_two);
@@ -61,6 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnProgressTwoIncrease = (Button) findViewById(R.id.button_progress_two_increase);
         btnProgressTwoIncrease.setOnClickListener(this);
         updateProgressTwo();
+
     }
 
     @Override
@@ -93,6 +97,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void updateProgressTwo() {
         progressTwo.setProgress(progress2);
+        progressThree.setProgress(progress2);
         textProgressTwo.setText("" + progress2);
         updateProgressTwoColor();
     }
