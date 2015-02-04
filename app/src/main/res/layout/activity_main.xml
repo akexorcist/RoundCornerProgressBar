@@ -240,7 +240,7 @@ limitations under the License.
             android:layout_marginTop="30dp"
             android:text="@string/icon_round_corner_progress_bar"
             android:textColor="@color/text"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -278,6 +278,46 @@ limitations under the License.
                 android:textSize="15sp" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="5dp"
+                app:backgroundRadius="5dp"
+                app:headerColor="@color/custom_progress_orange_header"
+                app:iconPadding="5dp"
+                app:iconSize="25dp"
+                app:iconSrc="@drawable/ic_android"
+                app:max="150"
+                app:progress="50"
+                app:progressColor="@color/custom_progress_orange_progress"
+                app:secondaryProgress="80"
+                app:secondaryProgressColor="@color/custom_progress_orange_progress_half" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/icon_corner_rounder_1_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -434,7 +474,7 @@ limitations under the License.
             android:layout_marginTop="30dp"
             android:text="@string/programmatically"
             android:textColor="@color/text"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

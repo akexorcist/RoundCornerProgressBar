@@ -28,6 +28,7 @@ limitations under the License.
     <string name="corner_rounder_4">Max : 100\nProgress : 70\nWidth : 250dp\nHeight : 50dp\nRadius : 10dp\nPadding : 5dp</string>
     <string name="corner_rounder_5">Max : 100\nProgress : 10\nWidth : 250dp\nHeight : 80dp\nRadius : 30dp\nPadding : 10dp</string>
     <string name="icon_corner_rounder_1">Max : 150\nProgress : 90\nWidth : 250dp\nIcon Size : 40dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 2dp</string>
+    <string name="icon_corner_rounder_1_1">Max : 150\nProgress : 50\nSecondaryProgress : 80\nWidth : 250dp\nIcon Size : 25dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 5dp</string>
     <string name="icon_corner_rounder_2">Max : 150\nProgress : 40\nWidth : 250dp\nIcon Size : 70dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 10dp</string>
     <string name="icon_corner_rounder_3">Max : 150\nProgress : 150\nWidth : 250dp\nIcon Size : 30dp\nIcon Padding : 3dp\nBackground Radius : 5dp\nBackground Padding : 5dp</string>
     <string name="icon_corner_rounder_4">Max : 150\nProgress : 5\nWidth : 250dp\nIcon Size : 50dp\nIcon Padding : 3dp\nBackground Radius : 0dp\nBackground Padding : 10dp</string>

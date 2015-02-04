@@ -45,7 +45,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         progressOne = (IconRoundCornerProgressBar) findViewById(R.id.progress_one);
-        progressOne.setProgressColor(getResources().getColor(R.color.custom_progress_blue_progress));
+        progressOne.setProgressColor(
+                getResources().getColor(R.color.custom_progress_blue_progress),
+                getResources().getColor(R.color.custom_progress_blue_progress_half)
+        );
         progressOne.setHeaderColor(getResources().getColor(R.color.custom_progress_blue_header));
         progressOne.setBackgroundColor(getResources().getColor(R.color.custom_progress_background));
         textProgressOne = (TextView) findViewById(R.id.text_progress_one);
@@ -92,6 +95,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void updateProgressOne() {
         progressOne.setProgress(progress1);
+        progressOne.setSecondaryProgress(progress1 + 1);
         textProgressOne.setText("" + progress1);
     }
 

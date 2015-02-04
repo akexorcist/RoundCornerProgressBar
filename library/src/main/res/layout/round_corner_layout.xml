@@ -16,33 +16,39 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/round_corner_progress_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff5f5f5f"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/round_corner_progress_secondary_progress"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#7f7f7f7f"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/round_corner_progress_progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ff7f7f7f"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp" />
+        <LinearLayout
+            android:id="@+id/round_corner_progress_secondary_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="#7f7f7f7f"
+            android:orientation="horizontal" />
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/round_corner_progress_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="#ff7f7f7f"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
+</LinearLayout>

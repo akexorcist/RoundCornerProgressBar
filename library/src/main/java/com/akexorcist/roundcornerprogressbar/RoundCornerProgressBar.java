@@ -22,7 +22,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -40,9 +39,10 @@ import android.widget.TextView;
 public class RoundCornerProgressBar extends LinearLayout {
     private final static int DEFAULT_PROGRESS_BAR_HEIGHT = 30;
 
-    private RelativeLayout layoutBackground;
+    private LinearLayout layoutBackground;
     private LinearLayout layoutProgress;
     private LinearLayout layoutSecondaryProgress;
+
     private int backgroundWidth = 0;
     private int backgroundHeight = 0;
 
@@ -57,6 +57,7 @@ public class RoundCornerProgressBar extends LinearLayout {
     private float secondaryProgress = 0;
     private int radius = 10;
     private int padding = 5;
+
     private int progressColor = Color.parseColor("#ff7f7f7f");
     private int secondaryProgressColor = Color.parseColor("#7f7f7f7f");
     private int backgroundColor = Color.parseColor("#ff5f5f5f");
@@ -78,11 +79,7 @@ public class RoundCornerProgressBar extends LinearLayout {
             return;
         }
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(new ColorDrawable(backgroundColor));
-        } else {
-            setBackgroundColor(backgroundColor);
-        }
+        setBackgroundColor(backgroundColor);
 
         setGravity(Gravity.CENTER);
 
@@ -99,7 +96,7 @@ public class RoundCornerProgressBar extends LinearLayout {
         radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, radius, metrics);
         radius = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_backgroundRadius, radius);
 
-        layoutBackground = (RelativeLayout) findViewById(R.id.round_corner_progress_background);
+        layoutBackground = (LinearLayout) findViewById(R.id.round_corner_progress_background);
         padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, padding, metrics);
         padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_backgroundPadding, padding);
         layoutBackground.setPadding(padding, padding, padding, padding);
@@ -139,12 +136,12 @@ public class RoundCornerProgressBar extends LinearLayout {
         }
 
         if(!isMaxProgressSetBeforeDraw) {
-            max = (float) typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
+            max = typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
         }
 
         if(!isProgressSetBeforeDraw) {
-            progress = (float) typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
-            secondaryProgress = (float) typedArray.getFloat(R.styleable.RoundCornerProgress_secondaryProgress, 0);
+            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
+            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_secondaryProgress, 0);
         }
 
         typedArray.recycle();
@@ -195,9 +192,9 @@ public class RoundCornerProgressBar extends LinearLayout {
         gradient.setColor(backgroundColor);
         gradient.setCornerRadius(radius);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutBackground.setBackgroundDrawable(gradient);
-        } else {
             layoutBackground.setBackground(gradient);
+        } else {
+            layoutBackground.setBackgroundDrawable(gradient);
         }
 
         if(!isProgressBarCreated) {
@@ -223,7 +220,7 @@ public class RoundCornerProgressBar extends LinearLayout {
         this.progress = progress;
         float ratio = max / progress;
 
-        ViewGroup.LayoutParams params = layoutProgress.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
         layoutProgress.setLayoutParams(params);
 
@@ -242,7 +239,7 @@ public class RoundCornerProgressBar extends LinearLayout {
         this.secondaryProgress = secondaryProgress;
         float ratio = max / secondaryProgress;
 
-        ViewGroup.LayoutParams params = layoutSecondaryProgress.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutSecondaryProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
         layoutSecondaryProgress.setLayoutParams(params);
 
