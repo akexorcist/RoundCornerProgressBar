@@ -97,6 +97,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void updateProgressTwo() {
         progressTwo.setProgress(progress2);
+        progressTwo.setSecondaryProgress(progress2 + 2);
         progressThree.setProgress(progress2);
         textProgressTwo.setText("" + progress2);
         updateProgressTwoColor();

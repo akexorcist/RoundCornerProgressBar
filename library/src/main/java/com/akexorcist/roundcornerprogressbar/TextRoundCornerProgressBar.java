@@ -154,10 +154,10 @@ public class TextRoundCornerProgressBar extends LinearLayout {
 		}
 
 		if(!isMaxProgressSetBeforeDraw) {
-			max = (int) typedArray.getInt(R.styleable.RoundCornerProgress_max, 0);
+			max = (float) typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
 		}
 		if(!isProgressSetBeforeDraw) {
-			progress = (int) typedArray.getInt(R.styleable.RoundCornerProgress_progress, 0);
+			progress = (float) typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
 		}
 
 		typedArray.recycle();

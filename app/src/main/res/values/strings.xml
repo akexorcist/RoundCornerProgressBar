@@ -22,6 +22,7 @@ limitations under the License.
     <string name="icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
     <string name="programmatically">Programmatically</string>
     <string name="corner_rounder_1">Max : 100\nProgress : 50\nWidth : 250dp\nHeight : 30dp\nRadius : 0dp\nPadding : 2dp</string>
+    <string name="corner_rounder_1_1">Max : 100\nProgress : 40\nSecondaryProgress : 60\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nPadding : 2dp</string>
     <string name="corner_rounder_2">Max : 100\nProgress : 100\nWidth : 250dp\nHeight : 20dp\nRadius : 20dp\nPadding : 2dp</string>
     <string name="corner_rounder_3">Max : 100\nProgress : 45\nWidth : 250dp\nHeight : 50dp\nRadius : 5dp\nPadding : 2dp</string>
     <string name="corner_rounder_4">Max : 100\nProgress : 70\nWidth : 250dp\nHeight : 50dp\nRadius : 10dp\nPadding : 5dp</string>

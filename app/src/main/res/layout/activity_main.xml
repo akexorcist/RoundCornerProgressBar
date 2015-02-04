@@ -28,8 +28,8 @@ limitations under the License.
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp" >
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,6 +67,38 @@ limitations under the License.
                 android:textColor="@color/text"
                 android:textSize="15sp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                app:backgroundColor="@color/custom_progress_background"
+                app:backgroundPadding="2dp"
+                app:backgroundRadius="10dp"
+                app:max="100"
+                app:progress="40"
+                app:progressColor="@color/custom_progress_green_progress"
+                app:secondaryProgress="60"
+                app:secondaryProgressColor="@color/custom_progress_green_progress_half" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_1_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -419,41 +451,41 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:progress="5"
-                app:max="10" />
+                app:max="10"
+                app:progress="5" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/button_progress_one_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/decrease"
-                    android:id="@+id/button_progress_one_decrease"
-                    android:textSize="18sp"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/text_progress_one"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:id="@+id/text_progress_one"
-                    android:textColor="@color/text"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/zero"
+                    android:textColor="@color/text"
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/button_progress_one_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/increase"
-                    android:id="@+id/button_progress_one_increase"
-                    android:textSize="18sp"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -472,56 +504,57 @@ limitations under the License.
                 android:layout_height="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                app:max="10"
                 app:progress="5"
-                app:max="10" />
+                app:secondaryProgress="7.5" />
 
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:id="@+id/progress_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:autoTextChange="true"
                 app:backgroundColor="#00000000"
                 app:backgroundPadding="0dp"
                 app:backgroundRadius="10dp"
-                app:autoTextChange="true"
-                app:textProgressWidth="40dp"
-                app:textProgressColor="#ffffff"
-                app:textProgressSize="14sp"
                 app:max="10"
                 app:progress="5"
-                app:progressColor="@color/custom_progress_orange_progress" />
+                app:progressColor="@color/custom_progress_orange_progress"
+                app:textProgressColor="#ffffff"
+                app:textProgressSize="14sp"
+                app:textProgressWidth="40dp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/button_progress_two_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/decrease"
-                    android:id="@+id/button_progress_two_decrease"
-                    android:textSize="18sp"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/text_progress_two"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:id="@+id/text_progress_two"
-                    android:textColor="@color/text"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/zero"
+                    android:textColor="@color/text"
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/button_progress_two_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/increase"
-                    android:id="@+id/button_progress_two_increase"
-                    android:textSize="18sp"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

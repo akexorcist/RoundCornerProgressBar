@@ -170,10 +170,10 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 		}
 
 		if(!isMaxProgressSetBeforeDraw) {
-			max = typedArray.getInt(R.styleable.RoundCornerProgress_max, 0);
+			max = typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
 		}
 		if(!isProgressSetBeforeDraw) {
-			progress = typedArray.getInt(R.styleable.RoundCornerProgress_progress, 0);
+			progress = typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
 		}
 
 		typedArray.recycle();
