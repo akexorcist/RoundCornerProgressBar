@@ -542,7 +542,6 @@ limitations under the License.
                 android:id="@+id/progress_two"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 app:max="10"
                 app:progress="5"
@@ -552,6 +551,7 @@ limitations under the License.
                 android:id="@+id/progress_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:autoTextChange="true"
                 app:backgroundColor="#00000000"
                 app:backgroundPadding="0dp"
@@ -560,6 +560,42 @@ limitations under the License.
                 app:progress="5"
                 app:progressColor="@color/custom_progress_orange_progress"
                 app:textProgressColor="#ffffff"
+                app:textProgressSize="14sp"
+                app:textProgressWidth="40dp" />
+
+
+            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:autoTextChange="true"
+                app:backgroundColor="#00000000"
+                app:backgroundPadding="0dp"
+                app:backgroundRadius="10dp"
+                app:max="10000"
+                app:progress="2345.678"
+                app:progressColor="@color/custom_progress_green_progress"
+                app:secondaryProgress="6000"
+                app:secondaryProgressColor="@color/custom_progress_green_progress_half"
+                app:textProgressColor="#ffffffff"
+                app:textProgressSize="14sp"
+                app:textProgressWidth="40dp" />
+
+            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                android:id="@+id/progress_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:autoTextChange="true"
+                app:backgroundColor="#00000000"
+                app:backgroundPadding="0dp"
+                app:backgroundRadius="10dp"
+                app:max="10"
+                app:progress="5"
+                app:progressColor="@color/custom_progress_blue_progress"
+                app:secondaryProgress="6"
+                app:textProgressColor="#ffffffff"
                 app:textProgressSize="14sp"
                 app:textProgressWidth="40dp" />
 

@@ -23,12 +23,12 @@ import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar;
 
-
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private IconRoundCornerProgressBar progressOne;
     private RoundCornerProgressBar progressTwo;
     private TextRoundCornerProgressBar progressThree;
+    private TextRoundCornerProgressBar progressFour;
     private TextView textProgressOne;
     private TextView textProgressTwo;
     private Button btnProgressOneDecrease;
@@ -59,6 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         updateProgressOne();
 
         progressThree = (TextRoundCornerProgressBar) findViewById(R.id.progress_three);
+        progressFour = (TextRoundCornerProgressBar) findViewById(R.id.progress_four);
         progressTwo = (RoundCornerProgressBar) findViewById(R.id.progress_two);
         progressTwo.setBackgroundColor(getResources().getColor(R.color.custom_progress_background));
         textProgressTwo = (TextView) findViewById(R.id.text_progress_two);
@@ -103,6 +104,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         progressTwo.setProgress(progress2);
         progressTwo.setSecondaryProgress(progress2 + 2);
         progressThree.setProgress(progress2);
+        progressFour.setProgress(progress2);
+        progressFour.setSecondaryProgress(progress2 + 1);
         textProgressTwo.setText("" + progress2);
         updateProgressTwoColor();
     }

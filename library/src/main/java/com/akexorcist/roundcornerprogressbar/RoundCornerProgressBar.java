@@ -33,7 +33,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class RoundCornerProgressBar extends LinearLayout {
@@ -100,7 +99,7 @@ public class RoundCornerProgressBar extends LinearLayout {
         padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, padding, metrics);
         padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_backgroundPadding, padding);
         layoutBackground.setPadding(padding, padding, padding, padding);
-        if(!isBackgroundColorSetBeforeDraw) {
+        if (!isBackgroundColorSetBeforeDraw) {
             setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_backgroundColor, backgroundColor));
         }
         ViewTreeObserver observer = layoutBackground.getViewTreeObserver();
@@ -109,7 +108,7 @@ public class RoundCornerProgressBar extends LinearLayout {
             public void onGlobalLayout() {
                 layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 int height;
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     backgroundWidth = layoutBackground.getMeasuredWidth();
                     height = layoutBackground.getMeasuredHeight();
                 } else {
@@ -128,18 +127,18 @@ public class RoundCornerProgressBar extends LinearLayout {
 
         layoutProgress = (LinearLayout) findViewById(R.id.round_corner_progress_progress);
         layoutSecondaryProgress = (LinearLayout) findViewById(R.id.round_corner_progress_secondary_progress);
-        if(!isProgressColorSetBeforeDraw) {
+        if (!isProgressColorSetBeforeDraw) {
             setProgressColor(
                     typedArray.getColor(R.styleable.RoundCornerProgress_progressColor, progressColor),
                     typedArray.getColor(R.styleable.RoundCornerProgress_secondaryProgressColor, secondaryProgressColor)
             );
         }
 
-        if(!isMaxProgressSetBeforeDraw) {
+        if (!isMaxProgressSetBeforeDraw) {
             max = typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
         }
 
-        if(!isProgressSetBeforeDraw) {
+        if (!isProgressSetBeforeDraw) {
             progress = typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
             secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_secondaryProgress, 0);
         }
@@ -149,11 +148,11 @@ public class RoundCornerProgressBar extends LinearLayout {
 
     @SuppressWarnings("deprecation")
     private void setProgressColor(ViewGroup layout, int color) {
-        int radius = this.radius - padding / 2;
+        int radius = this.radius - (padding / 2);
         GradientDrawable gradient = new GradientDrawable();
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(color);
-        gradient.setCornerRadii(new float [] { radius, radius, radius, radius, radius, radius, radius, radius});
+        gradient.setCornerRadii(new float [] {radius, radius, radius, radius, radius, radius, radius, radius});
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layout.setBackground(gradient);
         } else {
@@ -166,7 +165,7 @@ public class RoundCornerProgressBar extends LinearLayout {
 
         setProgressColor(layoutProgress, color);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressColorSetBeforeDraw = true;
         }
     }
@@ -178,7 +177,7 @@ public class RoundCornerProgressBar extends LinearLayout {
         setProgressColor(layoutProgress, color);
         setProgressColor(layoutSecondaryProgress, secondaryColor);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressColorSetBeforeDraw = true;
         }
     }
@@ -191,13 +190,13 @@ public class RoundCornerProgressBar extends LinearLayout {
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(backgroundColor);
         gradient.setCornerRadius(radius);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutBackground.setBackground(gradient);
         } else {
             layoutBackground.setBackgroundDrawable(gradient);
         }
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isBackgroundColorSetBeforeDraw = true;
         }
     }
@@ -220,11 +219,11 @@ public class RoundCornerProgressBar extends LinearLayout {
         this.progress = progress;
         float ratio = max / progress;
 
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutProgress.getLayoutParams();
+        ViewGroup.LayoutParams params = layoutProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
         layoutProgress.setLayoutParams(params);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressSetBeforeDraw = true;
         }
     }
@@ -239,11 +238,11 @@ public class RoundCornerProgressBar extends LinearLayout {
         this.secondaryProgress = secondaryProgress;
         float ratio = max / secondaryProgress;
 
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutSecondaryProgress.getLayoutParams();
+        ViewGroup.LayoutParams params = layoutSecondaryProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
         layoutSecondaryProgress.setLayoutParams(params);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressSetBeforeDraw = true;
         }
     }
@@ -257,7 +256,7 @@ public class RoundCornerProgressBar extends LinearLayout {
     }
 
     public void setMax(float max) {
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isMaxProgressSetBeforeDraw = true;
         }
         this.max = max;

@@ -37,7 +37,6 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class IconRoundCornerProgressBar extends LinearLayout {
@@ -115,7 +114,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 
         imageIcon = (ImageView) findViewById(R.id.round_corner_progress_icon);
         imageIcon.setScaleType(ScaleType.CENTER_CROP);
-        if(!isIconSetBeforeDraw) {
+        if (!isIconSetBeforeDraw) {
             int iconResource = (int) typedArray.getResourceId(R.styleable.RoundCornerProgress_iconSrc, R.drawable.round_corner_progress_icon);
             imageIcon.setImageResource(iconResource);
         }
@@ -127,7 +126,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         iconPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPadding, metrics);
         iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_iconPadding, iconPadding);
         layoutHeader.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
-        if(!isHeaderColorSetBeforeDraw) {
+        if (!isHeaderColorSetBeforeDraw) {
             setHeaderColor(typedArray.getColor(R.styleable.RoundCornerProgress_headerColor, headerColor));
         }
         ViewTreeObserver observer = layoutHeader.getViewTreeObserver();
@@ -135,13 +134,13 @@ public class IconRoundCornerProgressBar extends LinearLayout {
             @Override
             public void onGlobalLayout() {
                 layoutHeader.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     headerWidth = layoutHeader.getMeasuredWidth();
                 } else {
                     headerWidth = layoutHeader.getWidth();
                 }
 
-                if(backgroundWidth > 0) {
+                if (backgroundWidth > 0) {
                     setProgress();
                     setSecondaryProgress();
                 }
@@ -150,7 +149,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 
         layoutBackground = (LinearLayout) findViewById(R.id.round_corner_progress_background);
         layoutBackground.setPadding(padding, padding, padding, padding);
-        if(!isBackgroundColorSetBeforeDraw) {
+        if (!isBackgroundColorSetBeforeDraw) {
             setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_backgroundColor, backgroundColor));
         }
         observer = layoutBackground.getViewTreeObserver();
@@ -158,13 +157,13 @@ public class IconRoundCornerProgressBar extends LinearLayout {
             @Override
             public void onGlobalLayout() {
                 layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     backgroundWidth = layoutBackground.getMeasuredWidth();
                 } else {
                     backgroundWidth = layoutBackground.getWidth();
                 }
 
-                if(headerWidth > 0) {
+                if (headerWidth > 0) {
                     setProgress();
                     setSecondaryProgress();
                 }
@@ -173,18 +172,18 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 
         layoutProgress = (LinearLayout) findViewById(R.id.round_corner_progress_progress);
         layoutSecondaryProgress = (LinearLayout) findViewById(R.id.round_corner_progress_secondary_progress);
-        if(!isProgressColorSetBeforeDraw) {
+        if (!isProgressColorSetBeforeDraw) {
             setProgressColor(
                     typedArray.getColor(R.styleable.RoundCornerProgress_progressColor, progressColor),
                     typedArray.getColor(R.styleable.RoundCornerProgress_secondaryProgressColor, secondaryProgressColor)
             );
         }
 
-        if(!isMaxProgressSetBeforeDraw) {
+        if (!isMaxProgressSetBeforeDraw) {
             max = typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
         }
 
-        if(!isProgressSetBeforeDraw) {
+        if (!isProgressSetBeforeDraw) {
             progress = typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
             secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_secondaryProgress, 0);
         }
@@ -198,7 +197,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         GradientDrawable gradient = new GradientDrawable();
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(color);
-        gradient.setCornerRadii(new float [] { 0, 0, radius, radius, radius, radius, 0, 0});
+        gradient.setCornerRadii(new float [] {0, 0, radius, radius, radius, radius, 0, 0});
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layout.setBackground(gradient);
         } else {
@@ -211,7 +210,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 
         setProgressColor(layoutProgress, color);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressColorSetBeforeDraw = true;
         }
     }
@@ -223,7 +222,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         setProgressColor(layoutProgress, color);
         setProgressColor(layoutSecondaryProgress, secondaryColor);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressColorSetBeforeDraw = true;
         }
     }
@@ -237,13 +236,13 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(headerColor);
         gradient.setCornerRadii(new float [] { radius, radius, 0, 0, 0, 0, radius, radius});
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutHeader.setBackground(gradient);
         } else {
             layoutHeader.setBackgroundDrawable(gradient);
         }
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isHeaderColorSetBeforeDraw = true;
         }
     }
@@ -256,13 +255,13 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(backgroundColor);
         gradient.setCornerRadius(radius);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutBackground.setBackground(gradient);
         } else {
             layoutBackground.setBackgroundDrawable(gradient);
         }
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isBackgroundColorSetBeforeDraw = true;
         }
     }
@@ -289,11 +288,11 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         this.progress = progress;
         float ratio = max / progress;
 
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutProgress.getLayoutParams();
+        ViewGroup.LayoutParams params = layoutProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (headerWidth + (padding * 2))) / ratio);
         layoutProgress.setLayoutParams(params);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressSetBeforeDraw = true;
         }
     }
@@ -308,11 +307,11 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         this.secondaryProgress = secondaryProgress;
         float ratio = max / secondaryProgress;
 
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutSecondaryProgress.getLayoutParams();
+        ViewGroup.LayoutParams params = layoutSecondaryProgress.getLayoutParams();
         params.width = (int)((backgroundWidth - (headerWidth + (padding * 2))) / ratio);
         layoutSecondaryProgress.setLayoutParams(params);
 
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isProgressSetBeforeDraw = true;
         }
     }
@@ -338,7 +337,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setMax(float max) {
-        if(!isProgressBarCreated) {
+        if (!isProgressBarCreated) {
             isMaxProgressSetBeforeDraw = true;
         }
         this.max = max;
