@@ -15,24 +15,29 @@ limitations under the License.
 
 <resources>
 
-    <color name="text">#ffffff</color>
-    <color name="background_dark">#363636</color>
-    <color name="background_content">#454344</color>
+    <color name="text">#ffffffff</color>
+    <color name="background_dark">#ff363636</color>
+    <color name="background_content">#ff454344</color>
 
-    <color name="custom_progress_background">#3c3a3b</color>
+    <color name="custom_progress_background">#ff3c3a3b</color>
 
-    <color name="custom_progress_green_header">#99cc00</color>
-    <color name="custom_progress_green_progress">#669900</color>
+    <color name="custom_progress_green_header">#ff99cc00</color>
+    <color name="custom_progress_green_progress">#ff669900</color>
+    <color name="custom_progress_green_progress_half">#7f669900</color>
 
-    <color name="custom_progress_orange_header">#ffbb33</color>
-    <color name="custom_progress_orange_progress">#ff8800</color>
+    <color name="custom_progress_orange_header">#ffffbb33</color>
+    <color name="custom_progress_orange_progress">#ffff8800</color>
+    <color name="custom_progress_orange_progress_half">#7fff8800</color>
 
-    <color name="custom_progress_blue_header">#33b5e5</color>
-    <color name="custom_progress_blue_progress">#0099cc</color>
+    <color name="custom_progress_blue_header">#ff33b5e5</color>
+    <color name="custom_progress_blue_progress">#ff0099cc</color>
+    <color name="custom_progress_blue_progress_half">#7f0099cc</color>
 
-    <color name="custom_progress_purple_header">#aa66cc</color>
-    <color name="custom_progress_purple_progress">#9933cc</color>
+    <color name="custom_progress_purple_header">#ffaa66cc</color>
+    <color name="custom_progress_purple_progress">#ff9933cc</color>
+    <color name="custom_progress_purple_progress_half">#7f9933cc</color>
 
-    <color name="custom_progress_red_header">#cc0000</color>
-    <color name="custom_progress_red_progress">#ff4444</color>
+    <color name="custom_progress_red_header">#ffcc0000</color>
+    <color name="custom_progress_red_progress">#ffff4444</color>
+    <color name="custom_progress_red_progress_half">#7fff4444</color>
 </resources>

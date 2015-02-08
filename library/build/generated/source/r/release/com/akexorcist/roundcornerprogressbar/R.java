@@ -83,7 +83,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int iconSrc=0x7f010004;
-        /** <p>Must be an integer value, such as "<code>100</code>".
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -91,7 +91,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int max=0x7f010003;
-        /** <p>Must be an integer value, such as "<code>100</code>".
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -108,6 +108,23 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int progressColor=0x7f010008;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int secondaryProgress=0x7f010011;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int secondaryProgressColor=0x7f010012;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -169,10 +186,11 @@ containing a value of this type.
     }
     public static final class id {
         public static int round_corner_progress_background=0x7f040000;
-        public static int round_corner_progress_header=0x7f040002;
-        public static int round_corner_progress_icon=0x7f040003;
-        public static int round_corner_progress_progress=0x7f040001;
-        public static int round_corner_progress_text=0x7f040004;
+        public static int round_corner_progress_header=0x7f040003;
+        public static int round_corner_progress_icon=0x7f040004;
+        public static int round_corner_progress_progress=0x7f040002;
+        public static int round_corner_progress_secondary_progress=0x7f040001;
+        public static int round_corner_progress_text=0x7f040005;
     }
     public static final class layout {
         public static int round_corner_layout=0x7f030000;
@@ -197,6 +215,8 @@ containing a value of this type.
            <tr><td><code>{@link #RoundCornerProgress_max com.akexorcist.roundcornerprogressbar:max}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_progress com.akexorcist.roundcornerprogressbar:progress}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_progressColor com.akexorcist.roundcornerprogressbar:progressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_secondaryProgress com.akexorcist.roundcornerprogressbar:secondaryProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_secondaryProgressColor com.akexorcist.roundcornerprogressbar:secondaryProgressColor}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_textProgress com.akexorcist.roundcornerprogressbar:textProgress}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_textProgressColor com.akexorcist.roundcornerprogressbar:textProgressColor}</code></td><td></td></tr>
            <tr><td><code>{@link #RoundCornerProgress_textProgressPadding com.akexorcist.roundcornerprogressbar:textProgressPadding}</code></td><td></td></tr>
@@ -215,6 +235,8 @@ containing a value of this type.
            @see #RoundCornerProgress_max
            @see #RoundCornerProgress_progress
            @see #RoundCornerProgress_progressColor
+           @see #RoundCornerProgress_secondaryProgress
+           @see #RoundCornerProgress_secondaryProgressColor
            @see #RoundCornerProgress_textProgress
            @see #RoundCornerProgress_textProgressColor
            @see #RoundCornerProgress_textProgressPadding
@@ -227,7 +249,7 @@ containing a value of this type.
             0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
             0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
             0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f,
-            0x7f010010
+            0x7f010010, 0x7f010011, 0x7f010012
         };
         /**
           <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#autoTextChange}
@@ -356,7 +378,7 @@ containing a value of this type.
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
-          <p>Must be an integer value, such as "<code>100</code>".
+          <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -370,7 +392,7 @@ containing a value of this type.
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
-          <p>Must be an integer value, such as "<code>100</code>".
+          <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -394,6 +416,35 @@ containing a value of this type.
           @attr name com.akexorcist.roundcornerprogressbar:progressColor
         */
         public static int RoundCornerProgress_progressColor = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#secondaryProgress}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:secondaryProgress
+        */
+        public static int RoundCornerProgress_secondaryProgress = 17;
+        /**
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#secondaryProgressColor}
+          attribute's value can be found in the {@link #RoundCornerProgress} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.akexorcist.roundcornerprogressbar:secondaryProgressColor
+        */
+        public static int RoundCornerProgress_secondaryProgressColor = 18;
         /**
           <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgress}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
