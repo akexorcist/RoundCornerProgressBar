@@ -50,12 +50,12 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="2dp"
-                app:backgroundRadius="0dp"
-                app:max="100"
-                app:progress="50"
-                app:progressColor="@color/custom_progress_orange_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundRadius="0dp"
+                app:rcMax="100"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/custom_progress_orange_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,14 +81,14 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="2dp"
-                app:backgroundRadius="10dp"
-                app:max="100"
-                app:progress="40"
-                app:progressColor="@color/custom_progress_green_progress"
-                app:secondaryProgress="60"
-                app:secondaryProgressColor="@color/custom_progress_green_progress_half" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundRadius="10dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/custom_progress_green_progress"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/custom_progress_green_progress_half" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,12 +116,12 @@ limitations under the License.
                 android:layout_height="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="2dp"
-                app:backgroundRadius="20dp"
-                app:max="100"
-                app:progress="90"
-                app:progressColor="@color/custom_progress_blue_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundRadius="20dp"
+                app:rcMax="100"
+                app:rcProgress="90"
+                app:rcProgressColor="@color/custom_progress_blue_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,12 +149,12 @@ limitations under the License.
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="2dp"
-                app:backgroundRadius="5dp"
-                app:max="100"
-                app:progress="45"
-                app:progressColor="@color/custom_progress_green_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundRadius="5dp"
+                app:rcMax="100"
+                app:rcProgress="45"
+                app:rcProgressColor="@color/custom_progress_green_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -182,12 +182,12 @@ limitations under the License.
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="5dp"
-                app:backgroundRadius="10dp"
-                app:max="100"
-                app:progress="70"
-                app:progressColor="@color/custom_progress_red_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="5dp"
+                app:rcBackgroundRadius="10dp"
+                app:rcMax="100"
+                app:rcProgress="70"
+                app:rcProgressColor="@color/custom_progress_red_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -215,12 +215,12 @@ limitations under the License.
                 android:layout_height="80dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="10dp"
-                app:backgroundRadius="30dp"
-                app:max="100"
-                app:progress="10"
-                app:progressColor="@color/custom_progress_purple_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcBackgroundRadius="30dp"
+                app:rcMax="100"
+                app:rcProgress="10"
+                app:rcProgressColor="@color/custom_progress_purple_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -256,16 +256,16 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="2dp"
-                app:backgroundRadius="5dp"
-                app:headerColor="@color/custom_progress_red_header"
-                app:iconPadding="5dp"
-                app:iconSize="40dp"
-                app:iconSrc="@drawable/ic_android"
-                app:max="150"
-                app:progress="90"
-                app:progressColor="@color/custom_progress_red_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundRadius="5dp"
+                app:rcHeaderColor="@color/custom_progress_red_header"
+                app:rcIconPadding="5dp"
+                app:rcIconSize="40dp"
+                app:rcIconSrc="@drawable/ic_android"
+                app:rcMax="150"
+                app:rcProgress="90"
+                app:rcProgressColor="@color/custom_progress_red_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -293,18 +293,18 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="5dp"
-                app:backgroundRadius="5dp"
-                app:headerColor="@color/custom_progress_orange_header"
-                app:iconPadding="5dp"
-                app:iconSize="25dp"
-                app:iconSrc="@drawable/ic_android"
-                app:max="150"
-                app:progress="50"
-                app:progressColor="@color/custom_progress_orange_progress"
-                app:secondaryProgress="80"
-                app:secondaryProgressColor="@color/custom_progress_orange_progress_half" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="5dp"
+                app:rcBackgroundRadius="5dp"
+                app:rcHeaderColor="@color/custom_progress_orange_header"
+                app:rcIconPadding="5dp"
+                app:rcIconSize="25dp"
+                app:rcIconSrc="@drawable/ic_android"
+                app:rcMax="150"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/custom_progress_orange_progress"
+                app:rcSecondaryProgress="80"
+                app:rcSecondaryProgressColor="@color/custom_progress_orange_progress_half" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -333,16 +333,16 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="10dp"
-                app:backgroundRadius="5dp"
-                app:headerColor="@color/custom_progress_blue_header"
-                app:iconPadding="5dp"
-                app:iconSize="70dp"
-                app:iconSrc="@drawable/ic_clock"
-                app:max="150"
-                app:progress="40"
-                app:progressColor="@color/custom_progress_blue_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcBackgroundRadius="5dp"
+                app:rcHeaderColor="@color/custom_progress_blue_header"
+                app:rcIconPadding="5dp"
+                app:rcIconSize="70dp"
+                app:rcIconSrc="@drawable/ic_clock"
+                app:rcMax="150"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/custom_progress_blue_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -370,16 +370,16 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="5dp"
-                app:backgroundRadius="5dp"
-                app:headerColor="@color/custom_progress_green_header"
-                app:iconPadding="3dp"
-                app:iconSize="30dp"
-                app:iconSrc="@drawable/ic_download"
-                app:max="150"
-                app:progress="150"
-                app:progressColor="@color/custom_progress_green_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="5dp"
+                app:rcBackgroundRadius="5dp"
+                app:rcHeaderColor="@color/custom_progress_green_header"
+                app:rcIconPadding="3dp"
+                app:rcIconSize="30dp"
+                app:rcIconSrc="@drawable/ic_download"
+                app:rcMax="150"
+                app:rcProgress="150"
+                app:rcProgressColor="@color/custom_progress_green_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -407,16 +407,16 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="10dp"
-                app:backgroundRadius="0dp"
-                app:headerColor="@color/custom_progress_purple_header"
-                app:iconPadding="3dp"
-                app:iconSize="50dp"
-                app:iconSrc="@drawable/ic_television"
-                app:max="150"
-                app:progress="5"
-                app:progressColor="@color/custom_progress_purple_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcBackgroundRadius="0dp"
+                app:rcHeaderColor="@color/custom_progress_purple_header"
+                app:rcIconPadding="3dp"
+                app:rcIconSize="50dp"
+                app:rcIconSrc="@drawable/ic_television"
+                app:rcMax="150"
+                app:rcProgress="5"
+                app:rcProgressColor="@color/custom_progress_purple_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -445,16 +445,16 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:backgroundColor="@color/custom_progress_background"
-                app:backgroundPadding="5dp"
-                app:backgroundRadius="30dp"
-                app:headerColor="@color/custom_progress_orange_header"
-                app:iconPadding="10dp"
-                app:iconSize="20dp"
-                app:iconSrc="@drawable/ic_television"
-                app:max="150"
-                app:progress="100"
-                app:progressColor="@color/custom_progress_orange_progress" />
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="5dp"
+                app:rcBackgroundRadius="30dp"
+                app:rcHeaderColor="@color/custom_progress_orange_header"
+                app:rcIconPadding="10dp"
+                app:rcIconSize="20dp"
+                app:rcIconSrc="@drawable/ic_television"
+                app:rcMax="150"
+                app:rcProgress="100"
+                app:rcProgressColor="@color/custom_progress_orange_progress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -491,8 +491,8 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:max="10"
-                app:progress="5" />
+                app:rcMax="10"
+                app:rcProgress="5" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -543,43 +543,43 @@ limitations under the License.
                 android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                app:max="10"
-                app:progress="5"
-                app:secondaryProgress="7.5" />
+                app:rcMax="10"
+                app:rcProgress="5"
+                app:rcSecondaryProgress="7.5" />
 
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:id="@+id/progress_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:autoTextChange="true"
-                app:backgroundColor="#00000000"
-                app:backgroundPadding="0dp"
-                app:backgroundRadius="10dp"
-                app:max="10"
-                app:progress="5"
-                app:progressColor="@color/custom_progress_orange_progress"
-                app:textProgressColor="#ffffff"
-                app:textProgressSize="14sp"
-                app:textProgressWidth="40dp" />
+                app:rcAutoTextChange="true"
+                app:rcBackgroundColor="#00000000"
+                app:rcBackgroundPadding="0dp"
+                app:rcBackgroundRadius="10dp"
+                app:rcMax="10"
+                app:rcProgress="5"
+                app:rcProgressColor="@color/custom_progress_orange_progress"
+                app:rcTextProgressColor="#ffffff"
+                app:rcTextProgressSize="14sp"
+                app:rcTextProgressWidth="40dp" />
 
 
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:autoTextChange="true"
-                app:backgroundColor="#00000000"
-                app:backgroundPadding="0dp"
-                app:backgroundRadius="10dp"
-                app:max="10000"
-                app:progress="2345.678"
-                app:progressColor="@color/custom_progress_green_progress"
-                app:secondaryProgress="6000"
-                app:secondaryProgressColor="@color/custom_progress_green_progress_half"
-                app:textProgressColor="#ffffffff"
-                app:textProgressSize="14sp"
-                app:textProgressWidth="40dp" />
+                app:rcAutoTextChange="true"
+                app:rcBackgroundColor="#00000000"
+                app:rcBackgroundPadding="0dp"
+                app:rcBackgroundRadius="10dp"
+                app:rcMax="10000"
+                app:rcProgress="2345.678"
+                app:rcProgressColor="@color/custom_progress_green_progress"
+                app:rcSecondaryProgress="6000"
+                app:rcSecondaryProgressColor="@color/custom_progress_green_progress_half"
+                app:rcTextProgressColor="#ffffffff"
+                app:rcTextProgressSize="14sp"
+                app:rcTextProgressWidth="40dp" />
 
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:id="@+id/progress_four"
@@ -587,17 +587,17 @@ limitations under the License.
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:autoTextChange="true"
-                app:backgroundColor="#00000000"
-                app:backgroundPadding="0dp"
-                app:backgroundRadius="10dp"
-                app:max="10"
-                app:progress="5"
-                app:progressColor="@color/custom_progress_blue_progress"
-                app:secondaryProgress="6"
-                app:textProgressColor="#ffffffff"
-                app:textProgressSize="14sp"
-                app:textProgressWidth="40dp" />
+                app:rcAutoTextChange="true"
+                app:rcBackgroundColor="#00000000"
+                app:rcBackgroundPadding="0dp"
+                app:rcBackgroundRadius="10dp"
+                app:rcMax="10"
+                app:rcProgress="5"
+                app:rcProgressColor="@color/custom_progress_blue_progress"
+                app:rcSecondaryProgress="6"
+                app:rcTextProgressColor="#ffffffff"
+                app:rcTextProgressSize="14sp"
+                app:rcTextProgressWidth="40dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

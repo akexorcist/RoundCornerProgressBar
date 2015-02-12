@@ -19,25 +19,25 @@ limitations under the License.
 <resources>
 
     <declare-styleable name="RoundCornerProgress">
-        <attr name="progress" format="float" />
-        <attr name="backgroundPadding" format="dimension" />
-        <attr name="backgroundRadius" format="dimension" />
-        <attr name="max" format="float" />
-        <attr name="iconSrc" format="integer" />
-        <attr name="iconSize" format="dimension" />
-        <attr name="iconPadding" format="dimension" />
-        <attr name="headerColor" format="color" />
-        <attr name="progressColor" format="color" />
-        <attr name="backgroundColor" format="color" />
-        <attr name="textProgressColor" format="color" />
-        <attr name="textProgress" format="string" />
-        <attr name="textProgressUnit" format="string" />
-        <attr name="textProgressSize" format="dimension" />
-        <attr name="textProgressWidth" format="dimension" />
-        <attr name="textProgressPadding" format="dimension" />
-        <attr name="autoTextChange" format="boolean" />
-        <attr name="secondaryProgress" format="float" />
-        <attr name="secondaryProgressColor" format="color" />
+        <attr name="rcProgress" format="float" />
+        <attr name="rcBackgroundPadding" format="dimension" />
+        <attr name="rcBackgroundRadius" format="dimension" />
+        <attr name="rcMax" format="float" />
+        <attr name="rcIconSrc" format="integer" />
+        <attr name="rcIconSize" format="dimension" />
+        <attr name="rcIconPadding" format="dimension" />
+        <attr name="rcHeaderColor" format="color" />
+        <attr name="rcProgressColor" format="color" />
+        <attr name="rcBackgroundColor" format="color" />
+        <attr name="rcTextProgressColor" format="color" />
+        <attr name="rcTextProgress" format="string" />
+        <attr name="rcTextProgressUnit" format="string" />
+        <attr name="rcTextProgressSize" format="dimension" />
+        <attr name="rcTextProgressWidth" format="dimension" />
+        <attr name="rcTextProgressPadding" format="dimension" />
+        <attr name="rcAutoTextChange" format="boolean" />
+        <attr name="rcSecondaryProgress" format="float" />
+        <attr name="rcSecondaryProgressColor" format="color" />
     </declare-styleable>
 
 </resources>
