@@ -107,27 +107,27 @@ public class IconRoundCornerProgressBar extends LinearLayout {
 
         DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
         radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, radius, metrics);
-        radius = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_backgroundRadius, radius);
+        radius = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundRadius, radius);
 
         padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, padding, metrics);
-        padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_backgroundPadding, padding);
+        padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundPadding, padding);
 
         imageIcon = (ImageView) findViewById(R.id.round_corner_progress_icon);
         imageIcon.setScaleType(ScaleType.CENTER_CROP);
         if (!isIconSetBeforeDraw) {
-            int iconResource = (int) typedArray.getResourceId(R.styleable.RoundCornerProgress_iconSrc, R.drawable.round_corner_progress_icon);
+            int iconResource = (int) typedArray.getResourceId(R.styleable.RoundCornerProgress_rcIconSrc, R.drawable.round_corner_progress_icon);
             imageIcon.setImageResource(iconResource);
         }
         iconSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconSize, metrics);
-        iconSize = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_iconSize, iconSize);
+        iconSize = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconSize, iconSize);
         imageIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
 
         layoutHeader = (LinearLayout) findViewById(R.id.round_corner_progress_header);
         iconPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPadding, metrics);
-        iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_iconPadding, iconPadding);
+        iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPadding, iconPadding);
         layoutHeader.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
         if (!isHeaderColorSetBeforeDraw) {
-            setHeaderColor(typedArray.getColor(R.styleable.RoundCornerProgress_headerColor, headerColor));
+            setHeaderColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcHeaderColor, headerColor));
         }
         ViewTreeObserver observer = layoutHeader.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -150,7 +150,7 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         layoutBackground = (LinearLayout) findViewById(R.id.round_corner_progress_background);
         layoutBackground.setPadding(padding, padding, padding, padding);
         if (!isBackgroundColorSetBeforeDraw) {
-            setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_backgroundColor, backgroundColor));
+            setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, backgroundColor));
         }
         observer = layoutBackground.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -174,18 +174,18 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         layoutSecondaryProgress = (LinearLayout) findViewById(R.id.round_corner_progress_secondary_progress);
         if (!isProgressColorSetBeforeDraw) {
             setProgressColor(
-                    typedArray.getColor(R.styleable.RoundCornerProgress_progressColor, progressColor),
-                    typedArray.getColor(R.styleable.RoundCornerProgress_secondaryProgressColor, secondaryProgressColor)
+                    typedArray.getColor(R.styleable.RoundCornerProgress_rcProgressColor, progressColor),
+                    typedArray.getColor(R.styleable.RoundCornerProgress_rcSecondaryProgressColor, secondaryProgressColor)
             );
         }
 
         if (!isMaxProgressSetBeforeDraw) {
-            max = typedArray.getFloat(R.styleable.RoundCornerProgress_max, 0);
+            max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, 0);
         }
 
         if (!isProgressSetBeforeDraw) {
-            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_progress, 0);
-            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_secondaryProgress, 0);
+            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, 0);
+            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, 0);
         }
 
         typedArray.recycle();

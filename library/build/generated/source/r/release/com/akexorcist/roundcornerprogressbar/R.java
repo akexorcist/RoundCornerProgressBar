@@ -16,7 +16,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int autoTextChange=0x7f010010;
+        public static int rcAutoTextChange=0x7f010010;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -25,7 +25,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int backgroundColor=0x7f010009;
+        public static int rcBackgroundColor=0x7f010009;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -35,7 +35,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int backgroundPadding=0x7f010001;
+        public static int rcBackgroundPadding=0x7f010001;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -45,7 +45,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int backgroundRadius=0x7f010002;
+        public static int rcBackgroundRadius=0x7f010002;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -54,7 +54,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int headerColor=0x7f010007;
+        public static int rcHeaderColor=0x7f010007;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -64,7 +64,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int iconPadding=0x7f010006;
+        public static int rcIconPadding=0x7f010006;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -74,7 +74,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int iconSize=0x7f010005;
+        public static int rcIconSize=0x7f010005;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -82,7 +82,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int iconSrc=0x7f010004;
+        public static int rcIconSrc=0x7f010004;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -90,7 +90,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int max=0x7f010003;
+        public static int rcMax=0x7f010003;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -98,7 +98,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int progress=0x7f010000;
+        public static int rcProgress=0x7f010000;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -107,7 +107,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int progressColor=0x7f010008;
+        public static int rcProgressColor=0x7f010008;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -115,7 +115,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int secondaryProgress=0x7f010011;
+        public static int rcSecondaryProgress=0x7f010011;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -124,7 +124,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int secondaryProgressColor=0x7f010012;
+        public static int rcSecondaryProgressColor=0x7f010012;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -132,7 +132,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgress=0x7f01000b;
+        public static int rcTextProgress=0x7f01000b;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -141,7 +141,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgressColor=0x7f01000a;
+        public static int rcTextProgressColor=0x7f01000a;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -151,7 +151,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgressPadding=0x7f01000f;
+        public static int rcTextProgressPadding=0x7f01000f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -161,7 +161,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgressSize=0x7f01000d;
+        public static int rcTextProgressSize=0x7f01000d;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -169,7 +169,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgressUnit=0x7f01000c;
+        public static int rcTextProgressUnit=0x7f01000c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -179,7 +179,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int textProgressWidth=0x7f01000e;
+        public static int rcTextProgressWidth=0x7f01000e;
     }
     public static final class drawable {
         public static int round_corner_progress_icon=0x7f020000;
@@ -204,45 +204,45 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #RoundCornerProgress_autoTextChange com.akexorcist.roundcornerprogressbar:autoTextChange}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_backgroundColor com.akexorcist.roundcornerprogressbar:backgroundColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_backgroundPadding com.akexorcist.roundcornerprogressbar:backgroundPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_backgroundRadius com.akexorcist.roundcornerprogressbar:backgroundRadius}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_headerColor com.akexorcist.roundcornerprogressbar:headerColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_iconPadding com.akexorcist.roundcornerprogressbar:iconPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_iconSize com.akexorcist.roundcornerprogressbar:iconSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_iconSrc com.akexorcist.roundcornerprogressbar:iconSrc}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_max com.akexorcist.roundcornerprogressbar:max}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_progress com.akexorcist.roundcornerprogressbar:progress}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_progressColor com.akexorcist.roundcornerprogressbar:progressColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_secondaryProgress com.akexorcist.roundcornerprogressbar:secondaryProgress}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_secondaryProgressColor com.akexorcist.roundcornerprogressbar:secondaryProgressColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgress com.akexorcist.roundcornerprogressbar:textProgress}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgressColor com.akexorcist.roundcornerprogressbar:textProgressColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgressPadding com.akexorcist.roundcornerprogressbar:textProgressPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgressSize com.akexorcist.roundcornerprogressbar:textProgressSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgressUnit com.akexorcist.roundcornerprogressbar:textProgressUnit}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundCornerProgress_textProgressWidth com.akexorcist.roundcornerprogressbar:textProgressWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcAutoTextChange com.akexorcist.roundcornerprogressbar:rcAutoTextChange}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcBackgroundColor com.akexorcist.roundcornerprogressbar:rcBackgroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcBackgroundPadding com.akexorcist.roundcornerprogressbar:rcBackgroundPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcBackgroundRadius com.akexorcist.roundcornerprogressbar:rcBackgroundRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcHeaderColor com.akexorcist.roundcornerprogressbar:rcHeaderColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcIconPadding com.akexorcist.roundcornerprogressbar:rcIconPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcIconSize com.akexorcist.roundcornerprogressbar:rcIconSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcIconSrc com.akexorcist.roundcornerprogressbar:rcIconSrc}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcMax com.akexorcist.roundcornerprogressbar:rcMax}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcProgress com.akexorcist.roundcornerprogressbar:rcProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcProgressColor com.akexorcist.roundcornerprogressbar:rcProgressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcSecondaryProgress com.akexorcist.roundcornerprogressbar:rcSecondaryProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcSecondaryProgressColor com.akexorcist.roundcornerprogressbar:rcSecondaryProgressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgress com.akexorcist.roundcornerprogressbar:rcTextProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgressColor com.akexorcist.roundcornerprogressbar:rcTextProgressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgressPadding com.akexorcist.roundcornerprogressbar:rcTextProgressPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgressSize com.akexorcist.roundcornerprogressbar:rcTextProgressSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgressUnit com.akexorcist.roundcornerprogressbar:rcTextProgressUnit}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundCornerProgress_rcTextProgressWidth com.akexorcist.roundcornerprogressbar:rcTextProgressWidth}</code></td><td></td></tr>
            </table>
-           @see #RoundCornerProgress_autoTextChange
-           @see #RoundCornerProgress_backgroundColor
-           @see #RoundCornerProgress_backgroundPadding
-           @see #RoundCornerProgress_backgroundRadius
-           @see #RoundCornerProgress_headerColor
-           @see #RoundCornerProgress_iconPadding
-           @see #RoundCornerProgress_iconSize
-           @see #RoundCornerProgress_iconSrc
-           @see #RoundCornerProgress_max
-           @see #RoundCornerProgress_progress
-           @see #RoundCornerProgress_progressColor
-           @see #RoundCornerProgress_secondaryProgress
-           @see #RoundCornerProgress_secondaryProgressColor
-           @see #RoundCornerProgress_textProgress
-           @see #RoundCornerProgress_textProgressColor
-           @see #RoundCornerProgress_textProgressPadding
-           @see #RoundCornerProgress_textProgressSize
-           @see #RoundCornerProgress_textProgressUnit
-           @see #RoundCornerProgress_textProgressWidth
+           @see #RoundCornerProgress_rcAutoTextChange
+           @see #RoundCornerProgress_rcBackgroundColor
+           @see #RoundCornerProgress_rcBackgroundPadding
+           @see #RoundCornerProgress_rcBackgroundRadius
+           @see #RoundCornerProgress_rcHeaderColor
+           @see #RoundCornerProgress_rcIconPadding
+           @see #RoundCornerProgress_rcIconSize
+           @see #RoundCornerProgress_rcIconSrc
+           @see #RoundCornerProgress_rcMax
+           @see #RoundCornerProgress_rcProgress
+           @see #RoundCornerProgress_rcProgressColor
+           @see #RoundCornerProgress_rcSecondaryProgress
+           @see #RoundCornerProgress_rcSecondaryProgressColor
+           @see #RoundCornerProgress_rcTextProgress
+           @see #RoundCornerProgress_rcTextProgressColor
+           @see #RoundCornerProgress_rcTextProgressPadding
+           @see #RoundCornerProgress_rcTextProgressSize
+           @see #RoundCornerProgress_rcTextProgressUnit
+           @see #RoundCornerProgress_rcTextProgressWidth
          */
         public static final int[] RoundCornerProgress = {
             0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
@@ -252,7 +252,7 @@ containing a value of this type.
             0x7f010010, 0x7f010011, 0x7f010012
         };
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#autoTextChange}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcAutoTextChange}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -262,11 +262,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:autoTextChange
+          @attr name com.akexorcist.roundcornerprogressbar:rcAutoTextChange
         */
-        public static int RoundCornerProgress_autoTextChange = 16;
+        public static int RoundCornerProgress_rcAutoTextChange = 16;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#backgroundColor}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcBackgroundColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -277,11 +277,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:backgroundColor
+          @attr name com.akexorcist.roundcornerprogressbar:rcBackgroundColor
         */
-        public static int RoundCornerProgress_backgroundColor = 9;
+        public static int RoundCornerProgress_rcBackgroundColor = 9;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#backgroundPadding}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcBackgroundPadding}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -293,11 +293,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:backgroundPadding
+          @attr name com.akexorcist.roundcornerprogressbar:rcBackgroundPadding
         */
-        public static int RoundCornerProgress_backgroundPadding = 1;
+        public static int RoundCornerProgress_rcBackgroundPadding = 1;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#backgroundRadius}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcBackgroundRadius}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -309,11 +309,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:backgroundRadius
+          @attr name com.akexorcist.roundcornerprogressbar:rcBackgroundRadius
         */
-        public static int RoundCornerProgress_backgroundRadius = 2;
+        public static int RoundCornerProgress_rcBackgroundRadius = 2;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#headerColor}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcHeaderColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -324,11 +324,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:headerColor
+          @attr name com.akexorcist.roundcornerprogressbar:rcHeaderColor
         */
-        public static int RoundCornerProgress_headerColor = 7;
+        public static int RoundCornerProgress_rcHeaderColor = 7;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#iconPadding}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcIconPadding}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -340,11 +340,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:iconPadding
+          @attr name com.akexorcist.roundcornerprogressbar:rcIconPadding
         */
-        public static int RoundCornerProgress_iconPadding = 6;
+        public static int RoundCornerProgress_rcIconPadding = 6;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#iconSize}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcIconSize}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -356,11 +356,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:iconSize
+          @attr name com.akexorcist.roundcornerprogressbar:rcIconSize
         */
-        public static int RoundCornerProgress_iconSize = 5;
+        public static int RoundCornerProgress_rcIconSize = 5;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#iconSrc}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcIconSrc}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -370,11 +370,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:iconSrc
+          @attr name com.akexorcist.roundcornerprogressbar:rcIconSrc
         */
-        public static int RoundCornerProgress_iconSrc = 4;
+        public static int RoundCornerProgress_rcIconSrc = 4;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#max}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcMax}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -384,11 +384,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:max
+          @attr name com.akexorcist.roundcornerprogressbar:rcMax
         */
-        public static int RoundCornerProgress_max = 3;
+        public static int RoundCornerProgress_rcMax = 3;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#progress}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcProgress}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -398,11 +398,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:progress
+          @attr name com.akexorcist.roundcornerprogressbar:rcProgress
         */
-        public static int RoundCornerProgress_progress = 0;
+        public static int RoundCornerProgress_rcProgress = 0;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#progressColor}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcProgressColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -413,11 +413,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:progressColor
+          @attr name com.akexorcist.roundcornerprogressbar:rcProgressColor
         */
-        public static int RoundCornerProgress_progressColor = 8;
+        public static int RoundCornerProgress_rcProgressColor = 8;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#secondaryProgress}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcSecondaryProgress}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -427,11 +427,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:secondaryProgress
+          @attr name com.akexorcist.roundcornerprogressbar:rcSecondaryProgress
         */
-        public static int RoundCornerProgress_secondaryProgress = 17;
+        public static int RoundCornerProgress_rcSecondaryProgress = 17;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#secondaryProgressColor}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcSecondaryProgressColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -442,11 +442,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:secondaryProgressColor
+          @attr name com.akexorcist.roundcornerprogressbar:rcSecondaryProgressColor
         */
-        public static int RoundCornerProgress_secondaryProgressColor = 18;
+        public static int RoundCornerProgress_rcSecondaryProgressColor = 18;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgress}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgress}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -456,11 +456,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgress
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgress
         */
-        public static int RoundCornerProgress_textProgress = 11;
+        public static int RoundCornerProgress_rcTextProgress = 11;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressColor}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgressColor}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -471,11 +471,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgressColor
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgressColor
         */
-        public static int RoundCornerProgress_textProgressColor = 10;
+        public static int RoundCornerProgress_rcTextProgressColor = 10;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressPadding}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgressPadding}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -487,11 +487,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgressPadding
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgressPadding
         */
-        public static int RoundCornerProgress_textProgressPadding = 15;
+        public static int RoundCornerProgress_rcTextProgressPadding = 15;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressSize}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgressSize}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -503,11 +503,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgressSize
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgressSize
         */
-        public static int RoundCornerProgress_textProgressSize = 13;
+        public static int RoundCornerProgress_rcTextProgressSize = 13;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressUnit}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgressUnit}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -517,11 +517,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgressUnit
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgressUnit
         */
-        public static int RoundCornerProgress_textProgressUnit = 12;
+        public static int RoundCornerProgress_rcTextProgressUnit = 12;
         /**
-          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#textProgressWidth}
+          <p>This symbol is the offset where the {@link com.akexorcist.roundcornerprogressbar.R.attr#rcTextProgressWidth}
           attribute's value can be found in the {@link #RoundCornerProgress} array.
 
 
@@ -533,8 +533,8 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.akexorcist.roundcornerprogressbar:textProgressWidth
+          @attr name com.akexorcist.roundcornerprogressbar:rcTextProgressWidth
         */
-        public static int RoundCornerProgress_textProgressWidth = 14;
+        public static int RoundCornerProgress_rcTextProgressWidth = 14;
     };
 }
