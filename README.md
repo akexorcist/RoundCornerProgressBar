@@ -9,6 +9,13 @@ Round Corner Progress Bar Library for Android
 Colorful progress bar with round corner on progress which you can customized a color and corner radius. A library has two type of progress bar.
 
 
+What's next?
+===========================
+* Fix bug on older android version
+* Add secondary progress (Thanks! first087)
+* Refactor code (Thank! first087)
+
+
 Round Corner Progress Bar
 ===============================
 
@@ -199,11 +206,17 @@ int progress2 = progress2.getProgress();
 What's next?
 ===========================
 * Progress Animation
+* Explain new feature from first087
 
 
 Documentation
 ===========================
 Thai Language : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+
+
+Special Thanks
+===========================
+Artit Kuiwilai @first087
 
 
 Licence
