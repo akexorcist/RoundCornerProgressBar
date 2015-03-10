@@ -9,6 +9,14 @@ Round Corner Progress Bar Library for Android
 Colorful progress bar with round corner on progress which you can customized a color and corner radius. A library has two type of progress bar.
 
 
+What's new?
+===========================
+* Fix bug on older android version
+* Add secondary progress (Thanks! first087)
+* Refactor code (Thank! first087)
+* Rename attribute
+
+
 Round Corner Progress Bar
 ===============================
 
@@ -34,13 +42,13 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>RoundCornerProgressBar</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
 Gradle
 ```
-compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
+compile 'com.akexorcist:RoundCornerProgressBar:1.1.0'
 ```
 
 Feature
@@ -66,12 +74,12 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
-        app:backgroundPadding="dimension"
-        app:backgroundRadius="dimension"
-        app:backgroundColor="color"
-        app:progressColor="color"
-        app:progress="integer"
-        app:max="integer" />
+        app:rcBackgroundPadding="dimension"
+        app:rcBackgroundRadius="dimension"
+        app:rcBackgroundColor="color"
+        app:rcProgressColor="color"
+        app:rcProgress="integer"
+        app:rcMax="integer" />
 ```
 
 ![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_002.jpg)
@@ -81,16 +89,16 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
 <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
-        app:iconPadding="dimension"
-        app:iconSize="dimension"
-        app:iconSrc="drawable"
-        app:backgroundPadding="dimension"
-        app:backgroundRadius="dimension"
-        app:backgroundColor="color"
-        app:headerColor="color"
-        app:progressColor="color"
-        app:progress="integer"
-        app:max="integer" />
+        app:rcIconPadding="dimension"
+        app:rcIconSize="dimension"
+        app:rcIconSrc="drawable"
+        app:rcBackgroundPadding="dimension"
+        app:rcBackgroundRadius="dimension"
+        app:rcBackgroundColor="color"
+        app:rcHeaderColor="color"
+        app:rcProgressColor="color"
+        app:rcProgress="integer"
+        app:rcMax="integer" />
 ```
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_001.jpg)
 
@@ -199,11 +207,17 @@ int progress2 = progress2.getProgress();
 What's next?
 ===========================
 * Progress Animation
+* Explain new feature from first087
 
 
 Documentation
 ===========================
 Thai Language : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+
+
+Special Thanks
+===========================
+Artit Kuiwilai @first087
 
 
 Licence
