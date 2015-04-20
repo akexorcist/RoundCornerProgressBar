@@ -35,8 +35,6 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.lang.NoSuchMethodError;
-
 public class RoundCornerProgressBar extends LinearLayout {
     private final static int DEFAULT_PROGRESS_BAR_HEIGHT = 30;
 
@@ -108,10 +106,10 @@ public class RoundCornerProgressBar extends LinearLayout {
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT < 16) {
-                    layoutBackground.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    layoutBackground.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 }
 
                 int height;
@@ -123,7 +121,7 @@ public class RoundCornerProgressBar extends LinearLayout {
                     height = layoutBackground.getHeight();
                 }
                 backgroundHeight = (height == 0) ? (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT) : height;
-                LayoutParams params = (LayoutParams) layoutBackground.getLayoutParams();
+                LayoutParams params = (LayoutParams)layoutBackground.getLayoutParams();
                 params.height = backgroundHeight;
                 layoutBackground.setLayoutParams(params);
 
