@@ -106,7 +106,12 @@ public class RoundCornerProgressBar extends LinearLayout {
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    layoutBackground.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+
                 int height;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     backgroundWidth = layoutBackground.getMeasuredWidth();

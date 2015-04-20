@@ -133,7 +133,12 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                layoutHeader.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    layoutHeader.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    layoutHeader.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     headerWidth = layoutHeader.getMeasuredWidth();
                 } else {
@@ -156,7 +161,12 @@ public class IconRoundCornerProgressBar extends LinearLayout {
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    layoutBackground.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     backgroundWidth = layoutBackground.getMeasuredWidth();
                 } else {
