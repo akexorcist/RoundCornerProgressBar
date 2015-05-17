@@ -24,195 +24,106 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
 
-public class TextRoundCornerProgressBar extends LinearLayout {
-    private final static int DEFAULT_PROGRESS_BAR_HEIGHT = 30;
+public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar {
+    protected final static int DEFAULT_PROGRESS_BAR_HEIGHT = 30;
+    protected final static int DEFAULT_TEXT_PADDING = 10;
+    protected final static int DEFAULT_TEXT_SIZE = 18;
+    protected final static int DEFAULT_TEXT_WIDTH = 100;
+    protected final static int DEFAULT_TEXT_COLOR = Color.parseColor("#ff333333");
 
-    private LinearLayout layoutBackground;
-    private LinearLayout layoutProgress;
-    private LinearLayout layoutSecondaryProgress;
-    private TextView textViewValue;
+    protected TextView textViewValue;
 
-    private int backgroundWidth = 0;
-    private int backgroundHeight = 0;
+    protected String text;
+    protected String textUnit;
 
-    private boolean isProgressBarCreated = false;
-    private boolean isProgressSetBeforeDraw = false;
-    private boolean isMaxProgressSetBeforeDraw = false;
-    private boolean isBackgroundColorSetBeforeDraw = false;
-    private boolean isProgressColorSetBeforeDraw = false;
+    protected boolean autoTextChange;
 
-    private boolean autoTextChange = false;
-
-    private String text = "";
-    private String textUnit = "";
-    private float max = 100;
-    private float progress = 0;
-    private float secondaryProgress = 0;
-    private int radius = 10;
-    private int padding = 5;
-    private int textSize = 18;
-    private int textPadding = 10;
-    private int textWidth = 100;
-
-    private int textColor = Color.parseColor("#ff333333");
-    private int progressColor = Color.parseColor("#ff7f7f7f");
-    private int secondaryProgressColor = Color.parseColor("#7f7f7f7f");
-    private int backgroundColor = Color.parseColor("#ff5f5f5f");
+    protected int textSize;
+    protected int textPadding;
+    protected int textWidth;
+    protected int textColor;
 
     @SuppressLint("NewApi")
     public TextRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        if (!isInEditMode()) {
-            isProgressBarCreated = false;
-            isProgressSetBeforeDraw = false;
-            isMaxProgressSetBeforeDraw = false;
-            isBackgroundColorSetBeforeDraw = false;
-            isProgressColorSetBeforeDraw = false;
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            inflater.inflate(R.layout.round_corner_with_text_layout, this);
-            setup(context, attrs);
-            isProgressBarCreated = true;
-            return;
-        }
-
-        setBackgroundColor(backgroundColor);
-
-        setGravity(Gravity.CENTER);
-
-        setPadding(0, (int)dp2px(5), 0, (int)dp2px(5));
-
-        TextView tv = new TextView(context);
-        tv.setText("TextRoundCornerProgressBar");
-        addView(tv);
     }
 
-    @SuppressLint("NewApi")
-    private void setup(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerProgress);
+    @Override
+    protected int initProgressBarLayout() {
+        return R.layout.round_corner_with_text_layout;
+    }
 
+    @Override
+    protected void setup(TypedArray typedArray, DisplayMetrics metrics) {
         autoTextChange = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcAutoTextChange, false);
-
-        DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, radius, metrics);
-
-        radius = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundRadius, radius);
-        textViewValue = (TextView) findViewById(R.id.round_corner_progress_text);
-        textSize = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressSize, textSize);
-        textViewValue.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-        textViewValue.setTextColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcTextProgressColor, textColor));
+        textSize = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressSize, DEFAULT_TEXT_SIZE);
+        textPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressPadding, DEFAULT_TEXT_PADDING);
         text = typedArray.getString(R.styleable.RoundCornerProgress_rcTextProgress);
         text = (text == null) ? "" : text;
-        textViewValue.setText(text);
-        textPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressPadding, textPadding);
-        textViewValue.setPadding(textPadding, 0, textPadding, 0);
         textUnit = typedArray.getString(R.styleable.RoundCornerProgress_rcTextProgressUnit);
         textUnit = (textUnit == null) ? "" : textUnit;
-        textWidth = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressWidth, textWidth);
-
-        layoutBackground = (LinearLayout) findViewById(R.id.round_corner_progress_background);
-        padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundPadding, padding);
-        layoutBackground.setPadding(padding, padding, padding, padding);
-        if (!isBackgroundColorSetBeforeDraw) {
-            setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, backgroundColor));
-        }
-        ViewTreeObserver observer = layoutBackground.getViewTreeObserver();
-        observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    layoutBackground.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                } else {
-                    layoutBackground.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                }
-
-                int height;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    backgroundWidth = layoutBackground.getMeasuredWidth() - textWidth;
-                    height = layoutBackground.getMeasuredHeight();
-                } else {
-                    backgroundWidth = layoutBackground.getWidth() - textWidth;
-                    height = layoutBackground.getHeight();
-                }
-                backgroundHeight = (height == 0) ? (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT) : height ;
-                ViewGroup.LayoutParams params = (ViewGroup.LayoutParams)layoutBackground.getLayoutParams();
-                params.width = backgroundWidth;
-                params.height = backgroundHeight;
-                layoutBackground.setLayoutParams(params);
-
-                setProgress();
-                setSecondaryProgress();
-            }
-        });
-
-        layoutProgress = (LinearLayout) findViewById(R.id.round_corner_progress_progress);
-        layoutSecondaryProgress = (LinearLayout) findViewById(R.id.round_corner_progress_secondary_progress);
-        if (!isProgressColorSetBeforeDraw) {
-            setProgressColor(
-                    typedArray.getColor(R.styleable.RoundCornerProgress_rcProgressColor, progressColor),
-                    typedArray.getColor(R.styleable.RoundCornerProgress_rcSecondaryProgressColor, secondaryProgressColor)
-            );
-        }
-
-        if (!isMaxProgressSetBeforeDraw) {
-            max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, 0);
-        }
-
-        if (!isProgressSetBeforeDraw) {
-            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, 0);
-            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, 0);
-        }
-
-        typedArray.recycle();
+        textWidth = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcTextProgressWidth, DEFAULT_TEXT_WIDTH);
+        textViewValue = (TextView) findViewById(R.id.round_corner_progress_text);
+        textViewValue.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        textViewValue.setTextColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcTextProgressColor, DEFAULT_TEXT_COLOR));
+        textViewValue.setText(text);
+        textViewValue.setPadding(textPadding, 0, textPadding, 0);
     }
 
-    @SuppressWarnings("deprecation")
-    private void setProgressColor(ViewGroup layout, int color) {
-        int radius = this.radius - (padding / 2);
-        GradientDrawable gradient = new GradientDrawable();
-        gradient.setShape(GradientDrawable.RECTANGLE);
-        gradient.setColor(color);
-        gradient.setCornerRadii(new float [] {radius, radius, radius, radius, radius, radius, radius, radius});
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layout.setBackground(gradient);
+    @Override
+    public void setBackgroundLayoutSize(LinearLayout layoutBackground) {
+        int height, width;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            width = getMeasuredWidth() - textWidth;
+            height = getMeasuredHeight();
         } else {
-            layout.setBackgroundDrawable(gradient);
+            width = getWidth() - textWidth;
+            height = getHeight();
+        }
+        if(height == 0) {
+            height = (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT);
+        }
+        setBackgroundWidth(width);
+        setBackgroundHeight(height);
+    }
+
+    @Override
+    protected void setGradientRadius(GradientDrawable gradient) {
+        int radius = getRadius() - (getPadding() / 2);
+        gradient.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius, radius});
+    }
+
+    @Override
+    protected void onLayoutMeasured() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            setBackgroundWidth(getMeasuredWidth() - textWidth);
+        } else {
+            setBackgroundWidth(getWidth() - textWidth);
         }
     }
 
-    public void setProgressColor(int color) {
-        progressColor = color;
-
-        setProgressColor(layoutProgress, color);
-
-        if (!isProgressBarCreated) {
-            isProgressColorSetBeforeDraw = true;
+    @Override
+    protected float setLayoutProgressWidth(float ratio) {
+        if (isAutoTextChange()) {
+            String strProgress = NumberFormat.getInstance().format((progress % 1 == 0) ? (int) progress : progress);
+            textViewValue.setText(strProgress + " " + textUnit);
         }
+        return (ratio > 0) ? (getBackgroundWidth() - (getPadding() * 2)) / ratio : 0;
     }
 
-    public void setProgressColor(int color, int secondaryColor) {
-        progressColor = color;
-        secondaryProgressColor = secondaryColor;
-
-        setProgressColor(layoutProgress, color);
-        setProgressColor(layoutSecondaryProgress, secondaryColor);
-
-        if (!isProgressBarCreated) {
-            isProgressColorSetBeforeDraw = true;
-        }
+    @Override
+    protected float setSecondaryLayoutProgressWidth(float ratio) {
+        return (ratio > 0) ? (getBackgroundWidth() - (getPadding() * 2)) / ratio : 0;
     }
 
     public void setTextUnit(String unit) {
@@ -249,106 +160,96 @@ public class TextRoundCornerProgressBar extends LinearLayout {
         return autoTextChange;
     }
 
-    @SuppressWarnings("deprecation")
-    @SuppressLint("NewApi")
-    public void setBackgroundColor(int color) {
-        backgroundColor = color;
-        GradientDrawable gradient = new GradientDrawable();
-        gradient.setShape(GradientDrawable.RECTANGLE);
-        gradient.setColor(backgroundColor);
-        gradient.setCornerRadius(radius);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutBackground.setBackground(gradient);
-        } else {
-            layoutBackground.setBackgroundDrawable(gradient);
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SavedState ss = new SavedState(superState);
+
+        ss.autoTextChange = this.autoTextChange;
+
+        ss.textSize = this.textSize;
+        ss.textPadding = this.textPadding;
+        ss.textWidth = this.textWidth;
+        ss.textColor = this.textColor;
+
+        ss.text = this.text;
+        ss.textUnit = this.textUnit;
+        return ss;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if(!(state instanceof SavedState)) {
+            super.onRestoreInstanceState(state);
+            return;
         }
 
-        if (!isProgressBarCreated) {
-            isBackgroundColorSetBeforeDraw = true;
+        SavedState ss = (SavedState)state;
+        super.onRestoreInstanceState(ss.getSuperState());
+
+        this.autoTextChange = ss.autoTextChange;
+
+        this.textSize = ss.textSize;
+        this.textPadding = ss.textPadding;
+        this.textWidth = ss.textWidth;
+        this.textColor = ss.textColor;
+        this.text = ss.text;
+        this.textUnit = ss.textUnit;
+        setTextProgress(text + textUnit);
+        setTextColor(textColor);
+
+    }
+
+    private static class SavedState extends BaseSavedState {
+        String text;
+        String textUnit;
+
+        int textSize;
+        int textPadding;
+        int textWidth;
+        int textColor;
+
+        boolean autoTextChange;
+
+        SavedState(Parcelable superState) {
+            super(superState);
         }
-    }
 
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
+        private SavedState(Parcel in) {
+            super(in);
+            this.textSize = in.readInt();
+            this.textPadding = in.readInt();
+            this.textWidth = in.readInt();
+            this.textColor = in.readInt();
 
-    public int getProgressColor() {
-        return progressColor;
-    }
+            this.autoTextChange = in.readByte() != 0;
 
-    public int getSecondaryProgressColor( ) {
-        return secondaryProgressColor;
-    }
-
-    public void setProgress(float progress) {
-        progress = (progress > max) ? max : progress;
-        progress = (progress < 0) ? 0 : progress;
-        this.progress = progress;
-        float ratio = max / progress;
-
-        ViewGroup.LayoutParams params = layoutProgress.getLayoutParams();
-        params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
-        layoutProgress.setLayoutParams(params);
-
-        if (!isProgressBarCreated) {
-            isProgressSetBeforeDraw = true;
+            this.text = in.readString();
+            this.textUnit = in.readString();
         }
 
-        if (autoTextChange) {
-            String strProgress = NumberFormat.getInstance().format(
-                    (progress % 1 == 0) ? (int) progress : progress
-            );
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeInt(this.textSize);
+            out.writeInt(this.textPadding);
+            out.writeInt(this.textWidth);
+            out.writeInt(this.textColor);
 
-            textViewValue.setText(strProgress + " " + textUnit);
+            out.writeByte((byte) (this.autoTextChange ? 1 : 0));
+
+            out.writeString(this.text);
+            out.writeString(this.textUnit);
         }
-    }
 
-    private void setProgress() {
-        setProgress(progress);
-    }
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
 
-    public void setSecondaryProgress(float secondaryProgress) {
-        secondaryProgress = (secondaryProgress > max) ? max : secondaryProgress;
-        secondaryProgress = (secondaryProgress < 0) ? 0 : secondaryProgress;
-        this.secondaryProgress = secondaryProgress;
-        float ratio = max / secondaryProgress;
-
-        ViewGroup.LayoutParams params = layoutSecondaryProgress.getLayoutParams();
-        params.width = (int)((backgroundWidth - (padding * 2)) / ratio);
-        layoutSecondaryProgress.setLayoutParams(params);
-
-        if (!isProgressBarCreated) {
-            isProgressSetBeforeDraw = true;
-        }
-    }
-
-    private void setSecondaryProgress() {
-        setSecondaryProgress(secondaryProgress);
-    }
-
-    public float getMax() {
-        return max;
-    }
-
-    public void setMax(float max) {
-        if (!isProgressBarCreated) {
-            isMaxProgressSetBeforeDraw = true;
-        }
-        this.max = max;
-        setProgress(progress);
-    }
-
-    public float getProgress() {
-        return progress;
-    }
-
-    public float getSecondaryProgress() {
-        return secondaryProgress;
-    }
-
-    @SuppressLint("NewApi")
-    private float dp2px(float dp) {
-        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-        return Math.round(dp * (displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 }

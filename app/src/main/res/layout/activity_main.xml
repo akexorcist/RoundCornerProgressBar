@@ -492,7 +492,8 @@ limitations under the License.
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 app:rcMax="10"
-                app:rcProgress="5" />
+                app:rcProgress="5"
+                app:rcIconSize="30dp"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
