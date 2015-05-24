@@ -206,7 +206,6 @@ int progress2 = progress2.getProgress();
 
 What's next?
 ===========================
-* Progress Animation
 * Explain new feature from first087
 
 
