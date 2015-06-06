@@ -1,4 +1,4 @@
-package com.akexorcist.roundcornerprogressbar;
+package com.akexorcist.roundcornerprogressbar.common;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.akexorcist.roundcornerprogressbar.R;
 
 /**
  * Created by Akexorcist on 5/16/15 AD.
