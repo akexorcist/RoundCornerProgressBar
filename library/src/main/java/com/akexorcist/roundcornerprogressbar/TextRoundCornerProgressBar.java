@@ -32,6 +32,8 @@ import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+
 import java.text.NumberFormat;
 
 public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar {

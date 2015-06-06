@@ -35,6 +35,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
+import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+
 public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected final static int DEFAULT_HEADER_COLOR = Color.parseColor("#ff9f9f9f");
     protected final static int DEFAULT_ICON_SIZE = 40;

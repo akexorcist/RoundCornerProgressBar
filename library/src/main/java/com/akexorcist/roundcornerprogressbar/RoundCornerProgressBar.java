@@ -27,6 +27,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 
+import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+
 public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     @SuppressLint("NewApi")
