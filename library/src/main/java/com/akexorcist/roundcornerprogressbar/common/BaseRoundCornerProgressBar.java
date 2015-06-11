@@ -512,6 +512,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.secondaryProgressColor);
             out.writeInt(this.backgroundColor);
 
+            out.writeInt(this.layoutBackgroundColor);
+            out.writeInt(this.layoutProgress);
+            out.writeInt(this.layoutSecondaryProgress);
+
             out.writeByte((byte) (this.isProgressBarCreated ? 1 : 0));
             out.writeByte((byte) (this.isProgressSetBeforeDraw ? 1 : 0));
             out.writeByte((byte) (this.isMaxProgressSetBeforeDraw ? 1 : 0));
