@@ -426,6 +426,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         ss.isProgressColorSetBeforeDraw = this.isProgressColorSetBeforeDraw;
         ss.isScreenMeasure = this.isScreenMeasure;
         ss.isBackgroundLayourSet = this.isBackgroundLayourSet;
+        ss.isReverse = this.isReverse;
         return ss;
     }
 
@@ -460,6 +461,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.isProgressColorSetBeforeDraw = ss.isProgressColorSetBeforeDraw;
         this.isScreenMeasure = ss.isScreenMeasure;
         this.isBackgroundLayourSet = ss.isBackgroundLayourSet;
+        this.isReverse = ss.isReverse;
     }
 
     private static class SavedState extends BaseSavedState {
@@ -475,10 +477,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         int secondaryProgressColor;
         int backgroundColor;
 
-        int layoutBackgroundColor;
-        int layoutProgress;
-        int layoutSecondaryProgress;
-
         boolean isProgressBarCreated;
         boolean isProgressSetBeforeDraw;
         boolean isMaxProgressSetBeforeDraw;
@@ -487,6 +485,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
         boolean isScreenMeasure;
         boolean isBackgroundLayourSet;
+        boolean isReverse;
 
         SavedState(Parcelable superState) {
             super(superState);
@@ -506,10 +505,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.secondaryProgressColor = in.readInt();
             this.backgroundColor = in.readInt();
 
-            this.layoutBackgroundColor = in.readInt();
-            this.layoutProgress = in.readInt();
-            this.layoutSecondaryProgress = in.readInt();
-
             this.isProgressBarCreated = in.readByte() != 0;
             this.isProgressSetBeforeDraw = in.readByte() != 0;
             this.isMaxProgressSetBeforeDraw = in.readByte() != 0;
@@ -517,6 +512,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.isProgressColorSetBeforeDraw = in.readByte() != 0;
             this.isScreenMeasure = in.readByte() != 0;
             this.isBackgroundLayourSet = in.readByte() != 0;
+            this.isReverse = in.readByte() != 0;
         }
 
         @Override
@@ -534,10 +530,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.secondaryProgressColor);
             out.writeInt(this.backgroundColor);
 
-            out.writeInt(this.layoutBackgroundColor);
-            out.writeInt(this.layoutProgress);
-            out.writeInt(this.layoutSecondaryProgress);
-
             out.writeByte((byte) (this.isProgressBarCreated ? 1 : 0));
             out.writeByte((byte) (this.isProgressSetBeforeDraw ? 1 : 0));
             out.writeByte((byte) (this.isMaxProgressSetBeforeDraw ? 1 : 0));
@@ -545,6 +537,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeByte((byte) (this.isProgressColorSetBeforeDraw ? 1 : 0));
             out.writeByte((byte) (this.isScreenMeasure ? 1 : 0));
             out.writeByte((byte) (this.isBackgroundLayourSet ? 1 : 0));
+            out.writeByte((byte) (this.isReverse ? 1 : 0));
         }
 
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
