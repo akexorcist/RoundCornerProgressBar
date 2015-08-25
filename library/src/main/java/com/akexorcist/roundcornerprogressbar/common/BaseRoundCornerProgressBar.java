@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.R;
@@ -59,6 +60,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     private boolean isScreenMeasure;
     private boolean isBackgroundLayourSet;
+    private boolean isReverse;
 
     @SuppressLint("NewApi")
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs) {
@@ -72,6 +74,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             isProgressColorSetBeforeDraw = false;
             isScreenMeasure = false;
             isBackgroundLayourSet = false;
+            isReverse = false;
 
             backgroundColor = DEFAULT_BACKGROUND_COLOR;
             backgroundWidth = DEFAULT_BACKGROUND_WIDTH;
@@ -90,12 +93,14 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             inflater.inflate(initProgressBarLayout(), this);
             setup(context, attrs);
         } else {
-            setBackgroundColor(DEFAULT_BACKGROUND_COLOR);
             setGravity(Gravity.CENTER);
-            int padding = (int) dp2px(10);
-            setPadding(padding, padding, padding, padding);
             TextView tv = new TextView(context);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            tv.setLayoutParams(params);
+            tv.setGravity(Gravity.CENTER);
             tv.setText(getClass().getSimpleName());
+            tv.setTextColor(Color.WHITE);
+            tv.setBackgroundColor(Color.GRAY);
             addView(tv);
         }
     }
@@ -110,10 +115,21 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, padding, metrics);
         padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundPadding, DEFAULT_PROGRESS_PADDING);
 
+        isReverse = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcReverse, false);
+
+        if (!isMaxProgressSetBeforeDraw) {
+            max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, DEFAULT_MAX_PROGRESS);
+        }
+
+        if (!isProgressSetBeforeDraw) {
+            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_CURRENT_PROGRESS);
+            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
+        }
+
         layoutBackground = (LinearLayout) findViewById(R.id.round_corner_progress_background);
         layoutBackground.setPadding(padding, padding, padding, padding);
         if (!isBackgroundColorSetBeforeDraw) {
-            setBackgroundLayoutColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, DEFAULT_BACKGROUND_COLOR));
+            setBackgroundColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, DEFAULT_BACKGROUND_COLOR));
         }
 
         layoutProgress = (LinearLayout) findViewById(R.id.round_corner_progress_progress);
@@ -125,21 +141,14 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             );
         }
 
-        if (!isMaxProgressSetBeforeDraw) {
-            max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, DEFAULT_MAX_PROGRESS);
-        }
-
-        if (!isProgressSetBeforeDraw) {
-            progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_CURRENT_PROGRESS);
-            secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
-        }
-
         setup(typedArray, metrics);
         typedArray.recycle();
     }
 
     protected abstract void setBackgroundLayoutSize(LinearLayout layoutBackground);
+
     protected abstract void setup(TypedArray typedArray, DisplayMetrics metrics);
+
     protected abstract int initProgressBarLayout();
 
     @SuppressWarnings("deprecation")
@@ -181,16 +190,19 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
-    public void setBackgroundLayoutColor(int color) {
+    @Override
+    public void setBackgroundColor(int color) {
         backgroundColor = color;
         GradientDrawable gradient = new GradientDrawable();
         gradient.setShape(GradientDrawable.RECTANGLE);
         gradient.setColor(backgroundColor);
         gradient.setCornerRadius(radius);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutBackground.setBackground(gradient);
-        } else {
-            layoutBackground.setBackgroundDrawable(gradient);
+        if (layoutBackground != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                layoutBackground.setBackground(gradient);
+            } else {
+                layoutBackground.setBackgroundDrawable(gradient);
+            }
         }
 
         if (!isProgressBarCreated) {
@@ -206,7 +218,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return progressColor;
     }
 
-    public int getSecondaryProgressColor( ) {
+    public int getSecondaryProgressColor() {
         return secondaryProgressColor;
     }
 
@@ -232,8 +244,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         progress = (progress < 0) ? 0 : progress;
         this.progress = progress;
 
-        if(isScreenMeasure) {
-            if(!isBackgroundLayourSet) {
+        if (isScreenMeasure && layoutBackground != null & layoutProgress != null) {
+            if (!isBackgroundLayourSet) {
                 ViewGroup.LayoutParams backgroundParams = layoutBackground.getLayoutParams();
                 backgroundParams.width = backgroundWidth;
                 backgroundParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -242,9 +254,14 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             }
             float ratio = (progress > 0) ? max / progress : 0;
             int progressWidth = (int) setLayoutProgressWidth(ratio);
-            ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+            RelativeLayout.LayoutParams progressParams = (RelativeLayout.LayoutParams) layoutProgress.getLayoutParams();
             progressParams.width = progressWidth;
             progressParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            if(isReverse) {
+                progressParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            } else {
+                progressParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            }
             layoutProgress.setLayoutParams(progressParams);
         }
 
@@ -259,8 +276,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         secondaryProgress = (secondaryProgress > max) ? max : secondaryProgress;
         secondaryProgress = (secondaryProgress < 0) ? 0 : secondaryProgress;
         this.secondaryProgress = secondaryProgress;
-        if(isScreenMeasure) {
-            if(!isBackgroundLayourSet) {
+        if (isScreenMeasure && layoutBackground != null && layoutSecondaryProgress != null) {
+            if (!isBackgroundLayourSet) {
                 ViewGroup.LayoutParams backgroundParams = layoutBackground.getLayoutParams();
                 backgroundParams.width = backgroundWidth;
                 backgroundParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -270,9 +287,14 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
             float ratio = (secondaryProgress > 0) ? max / secondaryProgress : 0;
             int progressWidth = (int) setSecondaryLayoutProgressWidth(ratio);
-            ViewGroup.LayoutParams progressParams = layoutSecondaryProgress.getLayoutParams();
+            RelativeLayout.LayoutParams progressParams = (RelativeLayout.LayoutParams) layoutSecondaryProgress.getLayoutParams();
             progressParams.width = progressWidth;
             progressParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            if(isReverse) {
+                progressParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            } else {
+                progressParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            }
             layoutSecondaryProgress.setLayoutParams(progressParams);
         }
 
@@ -360,7 +382,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     private void invalidateProgressLayout() {
-        if(this.getLayoutParams().width == ViewGroup.LayoutParams.MATCH_PARENT
+        if (this.getLayoutParams().width == ViewGroup.LayoutParams.MATCH_PARENT
                 || this.getLayoutParams().width == ViewGroup.LayoutParams.WRAP_CONTENT) {
             ViewTreeObserver vto = layoutBackground.getViewTreeObserver();
             vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -409,12 +431,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        if(!(state instanceof SavedState)) {
+        if (!(state instanceof SavedState)) {
             super.onRestoreInstanceState(state);
             return;
         }
 
-        SavedState ss = (SavedState)state;
+        SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
 
         this.backgroundWidth = ss.backgroundWidth;

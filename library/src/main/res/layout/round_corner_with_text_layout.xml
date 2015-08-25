@@ -48,6 +48,7 @@ limitations under the License.
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/round_corner_progress_progress"
+            android:layout_toEndOf="@+id/round_corner_progress_progress"
             android:text="Value"
             android:textColor="#ff333333" />
 

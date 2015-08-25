@@ -31,9 +31,9 @@ limitations under the License.
             android:id="@+id/round_corner_progress_secondary_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:background="#7f7f7f7f"
             android:orientation="horizontal" />
@@ -42,9 +42,9 @@ limitations under the License.
             android:id="@+id/round_corner_progress_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:background="#ff7f7f7f"
             android:orientation="horizontal" />

@@ -45,19 +45,21 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     @Override
     public void setBackgroundLayoutSize(LinearLayout layoutBackground) {
-        int height, width;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            width = layoutBackground.getMeasuredWidth();
-            height = layoutBackground.getMeasuredHeight();
-        } else {
-            width = layoutBackground.getWidth();
-            height = layoutBackground.getHeight();
+        if(layoutBackground != null) {
+            int height, width;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                width = layoutBackground.getMeasuredWidth();
+                height = layoutBackground.getMeasuredHeight();
+            } else {
+                width = layoutBackground.getWidth();
+                height = layoutBackground.getHeight();
+            }
+            if (height - (getPadding() * 2) == 0) {
+                height = (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT);
+            }
+            setBackgroundWidth(width);
+            setBackgroundHeight(height);
         }
-        if(height - (getPadding() * 2) == 0) {
-            height = (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT);
-        }
-        setBackgroundWidth(width);
-        setBackgroundHeight(height);
     }
 
     @Override
