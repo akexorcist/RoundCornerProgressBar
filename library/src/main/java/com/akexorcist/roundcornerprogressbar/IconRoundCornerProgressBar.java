@@ -115,8 +115,10 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     @Override
     protected void setGradientRadius(GradientDrawable gradient) {
         int radius = getRadius() - (getPadding() / 2);
-        if(isReverse) {
+        if(isReverse && progress >= max) {
             gradient.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius, radius});
+        } else {
+            gradient.setCornerRadii(new float[]{0, 0, radius, radius, radius, radius, 0, 0});
         }
     }
 
