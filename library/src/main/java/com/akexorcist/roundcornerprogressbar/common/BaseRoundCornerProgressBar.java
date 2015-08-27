@@ -60,7 +60,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     private boolean isScreenMeasure;
     private boolean isBackgroundLayourSet;
-    private boolean isReverse;
+    protected boolean isReverse;
 
     @SuppressLint("NewApi")
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs) {
