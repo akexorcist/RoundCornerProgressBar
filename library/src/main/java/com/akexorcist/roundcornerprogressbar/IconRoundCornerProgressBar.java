@@ -51,6 +51,10 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected int headerWidth;
     protected int iconSize;
     protected int iconPadding;
+    protected int iconPaddingLeft;
+    protected int iconPaddingRight;
+    protected int iconPaddingTop;
+    protected int iconPaddingBottom;
     protected int headerColor;
 
     @SuppressLint("NewApi")
@@ -82,8 +86,23 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         layoutHeader = (LinearLayout) findViewById(R.id.round_corner_progress_header);
 
         iconPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPadding, metrics);
-        iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPadding, DEFAULT_ICON_PADDING);
-        layoutHeader.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
+        iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPadding, -1);
+
+        if(iconPadding == -1) {
+            iconPaddingBottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingBottom, metrics);
+            iconPaddingBottom = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingBottom, DEFAULT_ICON_PADDING);
+            iconPaddingLeft = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingLeft, metrics);
+            iconPaddingLeft = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingLeft, DEFAULT_ICON_PADDING);
+            iconPaddingRight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingRight, metrics);
+            iconPaddingRight = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingRight, DEFAULT_ICON_PADDING);
+            iconPaddingTop = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingTop, metrics);
+            iconPaddingTop = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingTop, DEFAULT_ICON_PADDING);
+            layoutHeader.setPadding(iconPaddingLeft, iconPaddingTop, iconPaddingRight, iconPaddingBottom);
+        } else {
+            iconPadding = DEFAULT_ICON_PADDING;
+            layoutHeader.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
+        }
+
         if (!isHeaderColorSetBeforeDraw) {
             setHeaderColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcHeaderColor, DEFAULT_HEADER_COLOR));
         }

@@ -34,7 +34,9 @@ limitations under the License.
             android:id="@+id/round_corner_progress_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/round_corner_progress_icon" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/round_corner_progress_icon"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
     <RelativeLayout

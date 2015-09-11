@@ -27,6 +27,10 @@ limitations under the License.
         <attr name="rcIconSrc" format="integer" />
         <attr name="rcIconSize" format="dimension" />
         <attr name="rcIconPadding" format="dimension" />
+        <attr name="rcIconPaddingRight" format="dimension" />
+        <attr name="rcIconPaddingLeft" format="dimension" />
+        <attr name="rcIconPaddingTop" format="dimension" />
+        <attr name="rcIconPaddingBottom" format="dimension" />
         <attr name="rcHeaderColor" format="color" />
         <attr name="rcProgressColor" format="color" />
         <attr name="rcBackgroundColor" format="color" />
