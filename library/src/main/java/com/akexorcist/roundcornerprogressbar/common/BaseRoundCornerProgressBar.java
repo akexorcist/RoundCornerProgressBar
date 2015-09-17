@@ -22,6 +22,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -30,9 +31,12 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.R;
 
@@ -69,7 +73,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         if (isInEditMode()) {
-
+            previewLayout(context);
         } else {
             setup(context, attrs);
         }
@@ -79,10 +83,22 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         if (isInEditMode()) {
-
+            previewLayout(context);
         } else {
             setup(context, attrs);
         }
+    }
+
+    private void previewLayout(Context context) {
+        setGravity(Gravity.CENTER);
+        TextView tv = new TextView(context);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        tv.setLayoutParams(params);
+        tv.setGravity(Gravity.CENTER);
+        tv.setText(getClass().getSimpleName());
+        tv.setTextColor(Color.WHITE);
+        tv.setBackgroundColor(Color.GRAY);
+        addView(tv);
     }
 
     // Setup a progress bar layout by sub class
@@ -143,15 +159,17 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     @Override
     protected void onSizeChanged(int newWidth, int newHeight, int oldWidth, int oldHeight) {
         super.onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
-        totalWidth = newWidth;
-        drawAll();
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                drawPrimaryProgress();
-                drawSecondaryProgress();
-            }
-        }, 5);
+        if(!isInEditMode()) {
+            totalWidth = newWidth;
+            drawAll();
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    drawPrimaryProgress();
+                    drawSecondaryProgress();
+                }
+            }, 5);
+        }
     }
 
     // Redraw all view
