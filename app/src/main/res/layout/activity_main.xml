@@ -16,6 +16,7 @@ limitations under the License.
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_dark"
@@ -573,7 +574,7 @@ limitations under the License.
                 app:rcTextProgress="@string/text_corner_rounder_text_1"
                 app:rcTextProgressColor="@color/text"
                 app:rcTextProgressMargin="10dp"
-                app:rcTextProgressSize="12sp" />
+                app:rcTextProgressSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -603,14 +604,14 @@ limitations under the License.
                 android:layout_marginTop="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
-                app:rcMax="10"
-                app:rcProgress="2"
+                app:rcMax="65535"
+                app:rcProgress="12890.70"
                 app:rcProgressColor="@color/custom_progress_purple_progress"
                 app:rcRadius="10dp"
                 app:rcTextProgress="@string/text_corner_rounder_text_2"
                 app:rcTextProgressColor="@color/text"
-                app:rcTextProgressMargin="5dp"
-                app:rcTextProgressSize="6sp" />
+                app:rcTextProgressMargin="10dp"
+                app:rcTextProgressSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -648,7 +649,7 @@ limitations under the License.
                 app:rcTextProgress="@string/text_corner_rounder_text_3"
                 app:rcTextProgressColor="@color/text"
                 app:rcTextProgressMargin="5dp"
-                app:rcTextProgressSize="30sp" />
+                app:rcTextProgressSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -777,7 +778,6 @@ limitations under the License.
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

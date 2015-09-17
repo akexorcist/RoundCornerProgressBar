@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo);
+        setContentView(R.layout.activity_main);
 
         progressOne = (IconRoundCornerProgressBar) findViewById(R.id.progress_one);
         progressOne.setProgressColor(getResources().getColor(R.color.custom_progress_blue_progress));
