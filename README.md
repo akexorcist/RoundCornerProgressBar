@@ -1,7 +1,40 @@
  [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
  
  
-Instruction for version 2.0.0 or later isn't yet updated now. 
+Instruction for version 2.0.0 or later isn't yet updated now. And I change attribute name, follow this
+
+RoundCornerProgressBar Attribute
+```rcProgress
+rcSecondaryProgress
+rcMax
+rcRadius
+rcBackgroundPadding
+rcReverse
+rcProgressColor
+rcSecondaryProgressColor
+rcBackgroundColor
+```
+
+Additional attribute for IconRoundCornerProgressBar
+```rcIconSrc
+rcIconSize
+rcIconWidth
+rcIconHeight
+rcIconPadding
+rcIconPaddingLeft
+rcIconPaddingRight
+rcIconPaddingTop
+rcIconPaddingBottom
+rcIconBackgroundColor
+```
+
+Additional attribute for TextRoundCornerProgressBar
+```rcTextProgressColor
+rcTextProgressSize
+rcTextProgressMargin
+rcTextProgress
+```
+ 
  
  
 Android-RoundCornerProgressBar
