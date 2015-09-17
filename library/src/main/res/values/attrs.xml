@@ -33,6 +33,8 @@ limitations under the License.
     <declare-styleable name="IconRoundCornerProgress">
         <attr name="rcIconSrc" format="integer" />
         <attr name="rcIconSize" format="dimension" />
+        <attr name="rcIconWidth" format="dimension" />
+        <attr name="rcIconHeight" format="dimension" />
         <attr name="rcIconPadding" format="dimension" />
         <attr name="rcIconPaddingLeft" format="dimension" />
         <attr name="rcIconPaddingRight" format="dimension" />

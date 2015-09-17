@@ -47,6 +47,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     private ImageView ivProgressIcon;
     private int iconResource;
     private int iconSize;
+    private int iconWidth;
+    private int iconHeight;
     private int iconPadding;
     private int iconPaddingLeft;
     private int iconPaddingRight;
@@ -75,7 +77,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
         iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgress_rcIconSrc, R.mipmap.round_corner_progress_icon);
 
-        iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconSize, dp2px(DEFAULT_ICON_SIZE));
+        iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconSize, -1);
+        iconWidth = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconWidth, dp2px(DEFAULT_ICON_SIZE));
+        iconHeight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconHeight, dp2px(DEFAULT_ICON_SIZE));
         iconPadding = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPadding, -1);
         iconPaddingLeft = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingLeft, dp2px(DEFAULT_ICON_PADDING_LEFT));
         iconPaddingRight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingRight, dp2px(DEFAULT_ICON_PADDING_RIGHT));
@@ -143,7 +147,10 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     private void drawImageIconSize() {
-        ivProgressIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
+        if (iconSize == -1)
+            ivProgressIcon.setLayoutParams(new LayoutParams(iconWidth, iconHeight));
+        else
+            ivProgressIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
     }
 
     private void drawImageIconPadding() {
@@ -252,6 +259,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
         ss.iconResource = this.iconResource;
         ss.iconSize = this.iconSize;
+        ss.iconWidth = this.iconWidth;
+        ss.iconHeight = this.iconHeight;
 
         ss.iconPadding = this.iconPadding;
         ss.iconPaddingLeft = this.iconPaddingLeft;
@@ -275,6 +284,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
         this.iconResource = ss.iconResource;
         this.iconSize = ss.iconSize;
+        this.iconWidth = ss.iconWidth;
+        this.iconHeight = ss.iconHeight;
         this.iconPadding = ss.iconPadding;
         this.iconPaddingLeft = ss.iconPaddingLeft;
         this.iconPaddingRight = ss.iconPaddingRight;
@@ -286,6 +297,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     private static class SavedState extends BaseSavedState {
         int iconResource;
         int iconSize;
+        int iconWidth;
+        int iconHeight;
         int iconPadding;
         int iconPaddingLeft;
         int iconPaddingRight;
@@ -302,6 +315,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
             this.iconResource = in.readInt();
             this.iconSize = in.readInt();
+            this.iconWidth = in.readInt();
+            this.iconHeight = in.readInt();
             this.iconPadding = in.readInt();
             this.iconPaddingLeft = in.readInt();
             this.iconPaddingRight = in.readInt();
@@ -316,6 +331,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
             out.writeInt(this.iconResource);
             out.writeInt(this.iconSize);
+            out.writeInt(this.iconWidth);
+            out.writeInt(this.iconHeight);
             out.writeInt(this.iconPadding);
             out.writeInt(this.iconPaddingLeft);
             out.writeInt(this.iconPaddingRight);
