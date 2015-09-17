@@ -1,38 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!--
-Copyright 2015 Akexorcist
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
 <resources>
-
     <string name="app_name">RoundCornerProgressBar</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_fragment">FragmentActivity</string>
+    <string name="title_activity_simple">SimpleActivity</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_recycler_view">RecyclerViewActivity</string>
+    <string name="title_activity_list_view_fragment">ListViewFragment</string>
+    <string name="title_activity_manual_create">ManualCreateActivity</string>
+
+
     <string name="round_corner_progress_bar">Round Corner Progress Bar</string>
     <string name="icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
+    <string name="text_round_corner_progress_bar">Text Round Corner Progress Bar</string>
     <string name="programmatically">Programmatically</string>
     <string name="corner_rounder_1">Max : 100\nProgress : 50\nWidth : 250dp\nHeight : 30dp\nRadius : 0dp\nPadding : 2dp</string>
     <string name="corner_rounder_1_1">Max : 100\nProgress : 40\nSecondaryProgress : 60\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nPadding : 2dp</string>
+    <string name="corner_rounder_1_2">Max : 100\nProgress : 40\nSecondaryProgress : 60\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nPadding : 2dp\nReverse : True</string>
     <string name="corner_rounder_2">Max : 100\nProgress : 100\nWidth : 250dp\nHeight : 20dp\nRadius : 20dp\nPadding : 2dp</string>
     <string name="corner_rounder_3">Max : 100\nProgress : 45\nWidth : 250dp\nHeight : 50dp\nRadius : 5dp\nPadding : 2dp</string>
     <string name="corner_rounder_4">Max : 100\nProgress : 70\nWidth : 250dp\nHeight : 50dp\nRadius : 10dp\nPadding : 5dp</string>
     <string name="corner_rounder_5">Max : 100\nProgress : 10\nWidth : 250dp\nHeight : 80dp\nRadius : 30dp\nPadding : 10dp</string>
-    <string name="icon_corner_rounder_1">Max : 150\nProgress : 90\nWidth : 250dp\nIcon Size : 40dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 2dp</string>
-    <string name="icon_corner_rounder_1_1">Max : 150\nProgress : 50\nSecondaryProgress : 80\nWidth : 250dp\nIcon Size : 25dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 5dp</string>
-    <string name="icon_corner_rounder_2">Max : 150\nProgress : 40\nWidth : 250dp\nIcon Size : 70dp\nIcon Padding : 5dp\nBackground Radius : 5dp\nBackground Padding : 10dp</string>
-    <string name="icon_corner_rounder_3">Max : 150\nProgress : 150\nWidth : 250dp\nIcon Size : 30dp\nIcon Padding : 3dp\nBackground Radius : 5dp\nBackground Padding : 5dp</string>
-    <string name="icon_corner_rounder_4">Max : 150\nProgress : 5\nWidth : 250dp\nIcon Size : 50dp\nIcon Padding : 3dp\nBackground Radius : 0dp\nBackground Padding : 10dp</string>
-    <string name="icon_corner_rounder_5">Max : 150\nProgress : 100\nWidth : 250dp\nIcon Size : 20dp\nIcon Padding : 10dp\nBackground Radius : 30dp\nBackground Padding : 5dp</string>
+    <string name="icon_corner_rounder_1">Max : 150\nProgress : 90\nWidth : 250dp\nIcon Size : 40dp\nIcon Padding : 5dp\nRadius : 5dp\nBackground Padding : 2dp</string>
+    <string name="icon_corner_rounder_1_1">Max : 150\nProgress : 90\nWidth : 250dp\nIcon Size : 40dp\nIcon Padding : 5dp\nRadius : 5dp\nBackground Padding : 2dp\nReverse : True</string>
+    <string name="icon_corner_rounder_1_2">Max : 150\nProgress : 50\nSecondaryProgress : 80\nWidth : 250dp\nIcon Size : 25dp\nIcon Padding : 5dp\nRadius : 5dp\nBackground Padding : 5dp</string>
+    <string name="icon_corner_rounder_2">Max : 150\nProgress : 40\nWidth : 250dp\nIcon Size : 70dp\nIcon Padding : 5dp\nRadius : 5dp\nBackground Padding : 10dp</string>
+    <string name="icon_corner_rounder_3">Max : 150\nProgress : 150\nWidth : 250dp\nIcon Size : 30dp\nIcon Padding : 3dp\nRadius : 5dp\nBackground Padding : 5dp</string>
+    <string name="icon_corner_rounder_4">Max : 150\nProgress : 5\nWidth : 250dp\nIcon Size : 50dp\nIcon Padding : 3dp\nRadius : 0dp\nBackground Padding : 10dp</string>
+    <string name="icon_corner_rounder_5">Max : 150\nProgress : 100\nWidth : 250dp\nIcon Size : 20dp\nIcon Padding : 10dp\nRadius : 30dp\nBackground Padding : 5dp</string>
+    <string name="text_corner_rounder_text_1">Wow</string>
+    <string name="text_corner_rounder_text_2">12890.70</string>
+    <string name="text_corner_rounder_text_3">Reversing</string>
+    <string name="text_corner_rounder_1">Max : 80\nProgress : 50\nSecondary Progress : 60\nWidth : 250dp\nHeight : 50dp\nRadius : 30dp\nBackground Padding : 10dp\nText Progress Margin : 10dp\nText Progress Size : 14sp</string>
+    <string name="text_corner_rounder_2">Max : 65535\nProgress : 12890.70\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nBackground Padding : 10dp\nText Progress Margin : 5dp\nText Progress Size : 12sp</string>
+    <string name="text_corner_rounder_3">Max : 17\nProgress : 8\nWidth : 250dp\nHeight : 40dp\nRadius : 2dp\nBackground Padding : 0dp\nText Progress Margin : 5dp\nText Progress Size : 20sp\nReverse : True</string>
     <string name="decrease"><![CDATA[<]]></string>
     <string name="increase"><![CDATA[>]]></string>
     <string name="zero">0</string>
