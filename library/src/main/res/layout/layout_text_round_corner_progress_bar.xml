@@ -39,7 +39,7 @@ limitations under the License.
             android:layout_height="match_parent"
             android:orientation="horizontal" />
 
-        <com.akexorcist.roundcornerprogressbar.RoundCornerTextView
+        <TextView
             android:id="@+id/tv_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
