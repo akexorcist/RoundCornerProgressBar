@@ -1,4 +1,9 @@
  [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
+ 
+ 
+Instruction for version 2.0.0 or later isn't yet updated now. 
+ 
+ 
 Android-RoundCornerProgressBar
 ==============================
 
