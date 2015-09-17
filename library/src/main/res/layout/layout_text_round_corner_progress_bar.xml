@@ -17,44 +17,34 @@ limitations under the License.
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/round_corner_progress_background"
+    android:id="@+id/layout_background"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ff5f5f5f"
+    android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/round_corner_progress_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#ff9f9f9f"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/round_corner_progress_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/round_corner_progress_icon"
-            android:scaleType="fitCenter"/>
-    </LinearLayout>
-
     <RelativeLayout
+        android:id="@+id/layout_progress_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/round_corner_progress_secondary_progress"
+            android:id="@+id/layout_secondary_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#7f7f7f7f"
             android:orientation="horizontal" />
 
         <LinearLayout
-            android:id="@+id/round_corner_progress_progress"
+            android:id="@+id/layout_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ff7f7f7f"
             android:orientation="horizontal" />
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerTextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
     </RelativeLayout>
+
 </LinearLayout>

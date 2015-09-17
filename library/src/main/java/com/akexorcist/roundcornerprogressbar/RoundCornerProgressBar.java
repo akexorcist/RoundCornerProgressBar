@@ -18,66 +18,67 @@ limitations under the License.
 
 package com.akexorcist.roundcornerprogressbar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
+
+/**
+ * Created by Akexorcist on 9/14/15 AD.
+ */
 public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
-    @SuppressLint("NewApi")
     public RoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    protected int initProgressBarLayout() {
-        return R.layout.round_corner_layout;
+    public RoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     @Override
-    protected void setup(TypedArray typedArray, DisplayMetrics metrics) { }
+    public int initLayout() {
+        return R.layout.layout_round_corner_progress_bar;
+    }
 
     @Override
-    public void setBackgroundLayoutSize(LinearLayout layoutBackground) {
-        if(layoutBackground != null) {
-            int height, width;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                width = layoutBackground.getMeasuredWidth();
-                height = layoutBackground.getMeasuredHeight();
-            } else {
-                width = layoutBackground.getWidth();
-                height = layoutBackground.getHeight();
-            }
-            if (height - (getPadding() * 2) == 0) {
-                height = (int) dp2px(DEFAULT_PROGRESS_BAR_HEIGHT);
-            }
-            setBackgroundWidth(width);
-            setBackgroundHeight(height);
+    protected void initStyleable(Context context, AttributeSet attrs) {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
+                                int radius, int padding, int colorProgress, boolean isReverse) {
+        GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
+        int newRadius = radius - (padding / 2);
+        backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            layoutProgress.setBackground(backgroundDrawable);
+        } else {
+            layoutProgress.setBackgroundDrawable(backgroundDrawable);
         }
+
+        float ratio = max / progress;
+        int progressWidth = (int) ((totalWidth - (padding * 2)) / ratio);
+        ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+        progressParams.width = progressWidth;
+        layoutProgress.setLayoutParams(progressParams);
     }
 
     @Override
-    protected void setGradientRadius(GradientDrawable gradient) {
-        int radius = getRadius() - (getPadding() / 2);
-        gradient.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius, radius});
+    protected void onViewDraw() {
+
     }
 
-    @Override
-    protected void onLayoutMeasured() { }
-
-    @Override
-    protected float setLayoutProgressWidth(float ratio) {
-        return (ratio > 0) ? (int) ((getBackgroundWidth() - (getPadding() * 2)) / ratio) : 0;
-    }
-
-    @Override
-    protected float setSecondaryLayoutProgressWidth(float ratio) {
-        return (ratio > 0) ? (int) ((getBackgroundWidth() - (getPadding() * 2)) / ratio) : 0;
-    }
 }

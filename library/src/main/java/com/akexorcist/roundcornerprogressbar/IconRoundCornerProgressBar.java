@@ -18,218 +18,280 @@ limitations under the License.
 
 package com.akexorcist.roundcornerprogressbar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
-public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
-    protected final static int DEFAULT_HEADER_COLOR = Color.parseColor("#ff9f9f9f");
-    protected final static int DEFAULT_ICON_SIZE = 40;
-    protected final static int DEFAULT_ICON_PADDING = 5;
 
-    protected ImageView imageIcon;
-    protected LinearLayout layoutHeader;
+/**
+ * Created by Akexorcist on 9/14/15 AD.
+ */
+public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar implements View.OnClickListener {
 
-    protected boolean isIconSetBeforeDraw;
-    protected boolean isHeaderColorSetBeforeDraw;
+    protected final static int DEFAULT_ICON_SIZE = 20;
+    protected final static int DEFAULT_ICON_PADDING_LEFT = 0;
+    protected final static int DEFAULT_ICON_PADDING_RIGHT = 0;
+    protected final static int DEFAULT_ICON_PADDING_TOP = 0;
+    protected final static int DEFAULT_ICON_PADDING_BOTTOM = 0;
 
-    protected int headerWidth;
-    protected int iconSize;
-    protected int iconPadding;
-    protected int iconPaddingLeft;
-    protected int iconPaddingRight;
-    protected int iconPaddingTop;
-    protected int iconPaddingBottom;
-    protected int headerColor;
+    private ImageView ivProgressIcon;
+    private int iconResource;
+    private int iconSize;
+    private int iconPadding;
+    private int iconPaddingLeft;
+    private int iconPaddingRight;
+    private int iconPaddingTop;
+    private int iconPaddingBottom;
+    private int colorIconBackground;
 
-    @SuppressLint("NewApi")
+    private OnIconClickListener iconClickListener;
+
     public IconRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
 
-        if (!isInEditMode()) {
-            iconSize = DEFAULT_ICON_SIZE;
-            iconPadding = DEFAULT_ICON_PADDING;
-            headerColor = DEFAULT_HEADER_COLOR;
-
-            isIconSetBeforeDraw = false;
-            isHeaderColorSetBeforeDraw = false;
-        }
+    public IconRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     @Override
-    protected void setup(TypedArray typedArray, DisplayMetrics metrics) {
-        imageIcon = (ImageView) findViewById(R.id.round_corner_progress_icon);
-        imageIcon.setScaleType(ScaleType.CENTER_CROP);
-        if (!isIconSetBeforeDraw) {
-            int iconResource = typedArray.getResourceId(R.styleable.RoundCornerProgress_rcIconSrc, R.drawable.round_corner_progress_icon);
-            imageIcon.setImageResource(iconResource);
-        }
-        iconSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconSize, metrics);
-        iconSize = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconSize, DEFAULT_ICON_SIZE);
-        imageIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
-
-        layoutHeader = (LinearLayout) findViewById(R.id.round_corner_progress_header);
-
-        iconPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPadding, metrics);
-        iconPadding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPadding, -1);
-
-        if(iconPadding == -1) {
-            iconPaddingBottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingBottom, metrics);
-            iconPaddingBottom = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingBottom, DEFAULT_ICON_PADDING);
-            iconPaddingLeft = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingLeft, metrics);
-            iconPaddingLeft = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingLeft, DEFAULT_ICON_PADDING);
-            iconPaddingRight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingRight, metrics);
-            iconPaddingRight = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingRight, DEFAULT_ICON_PADDING);
-            iconPaddingTop = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconPaddingTop, metrics);
-            iconPaddingTop = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcIconPaddingTop, DEFAULT_ICON_PADDING);
-            layoutHeader.setPadding(iconPaddingLeft, iconPaddingTop, iconPaddingRight, iconPaddingBottom);
-        } else {
-            iconPadding = DEFAULT_ICON_PADDING;
-            layoutHeader.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
-        }
-
-        if (!isHeaderColorSetBeforeDraw) {
-            setHeaderColor(typedArray.getColor(R.styleable.RoundCornerProgress_rcHeaderColor, DEFAULT_HEADER_COLOR));
-        }
+    public int initLayout() {
+        return R.layout.layout_icon_round_corner_progress_bar;
     }
 
     @Override
-    protected void onLayoutMeasured() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            headerWidth = layoutHeader.getMeasuredWidth();
-        } else {
-            headerWidth = layoutHeader.getWidth();
+    protected void initStyleable(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgress);
+
+        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgress_rcIconSrc, R.mipmap.round_corner_progress_icon);
+
+        iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconSize, dp2px(DEFAULT_ICON_SIZE));
+        iconPadding = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPadding, -1);
+        iconPaddingLeft = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingLeft, dp2px(DEFAULT_ICON_PADDING_LEFT));
+        iconPaddingRight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingRight, dp2px(DEFAULT_ICON_PADDING_RIGHT));
+        iconPaddingTop = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP));
+        iconPaddingBottom = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM));
+
+        int colorIconBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
+        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgress_rcIconBackgroundColor, colorIconBackgroundDefault);
+
+        typedArray.recycle();
+    }
+
+    @Override
+    protected void initView() {
+        ivProgressIcon = (ImageView) findViewById(R.id.iv_progress_icon);
+        ivProgressIcon.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.iv_progress_icon && iconClickListener != null) {
+            iconClickListener.onIconClick();
         }
     }
 
-    @Override
-    public void setBackgroundLayoutSize(LinearLayout layoutBackground) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setBackgroundWidth(layoutBackground.getMeasuredWidth());
-        } else {
-            setBackgroundWidth(layoutBackground.getWidth());
-        }
-    }
-
-    @Override
-    protected int initProgressBarLayout() {
-        return R.layout.round_corner_with_icon_layout;
-    }
-
-    @Override
-    protected void setGradientRadius(GradientDrawable gradient) {
-        int radius = getRadius() - (getPadding() / 2);
-        if(isReverse && progress < max) {
-            gradient.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius, radius});
-        } else {
-            gradient.setCornerRadii(new float[]{0, 0, radius, radius, radius, radius, 0, 0});
-        }
-    }
-
-    @Override
-    protected float setLayoutProgressWidth(float ratio) {
-        return (ratio > 0) ? (getBackgroundWidth() - (headerWidth + (getPadding() * 2))) / ratio : 0;
-    }
-
-    @Override
-    protected float setSecondaryLayoutProgressWidth(float ratio) {
-        return (ratio > 0) ? (getBackgroundWidth() - (headerWidth + (getPadding() * 2))) / ratio : 0;
+    public void setOnIconClickListener(OnIconClickListener listener) {
+        iconClickListener = listener;
     }
 
     @SuppressWarnings("deprecation")
-    @SuppressLint("NewApi")
-    public void setHeaderColor(int color) {
-        headerColor = color;
-        int radius = getRadius() - (getPadding() / 2);
-        GradientDrawable gradient = new GradientDrawable();
-        gradient.setShape(GradientDrawable.RECTANGLE);
-        gradient.setColor(headerColor);
-        gradient.setCornerRadii(new float[]{radius, radius, 0, 0, 0, 0, radius, radius});
+    @Override
+    protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
+                                int radius, int padding, int colorProgress, boolean isReverse) {
+        GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
+        int newRadius = radius - (padding / 2);
+        if (isReverse && progress != max)
+            backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
+        else
+            backgroundDrawable.setCornerRadii(new float[]{0, 0, newRadius, newRadius, newRadius, newRadius, 0, 0});
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutHeader.setBackground(gradient);
+            layoutProgress.setBackground(backgroundDrawable);
         } else {
-            layoutHeader.setBackgroundDrawable(gradient);
+            layoutProgress.setBackgroundDrawable(backgroundDrawable);
         }
 
-        if (!isProgressBarCreated()) {
-            isHeaderColorSetBeforeDraw = true;
+        float ratio = max / progress;
+        int progressWidth = (int) ((totalWidth - ((padding * 2) + ivProgressIcon.getWidth())) / ratio);
+        ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+        progressParams.width = progressWidth;
+        layoutProgress.setLayoutParams(progressParams);
+    }
+
+    @Override
+    protected void onViewDraw() {
+        drawImageIcon();
+        drawImageIconSize();
+        drawImageIconPadding();
+        drawIconBackgroundColor();
+    }
+
+    private void drawImageIcon() {
+        ivProgressIcon.setImageResource(iconResource);
+    }
+
+    private void drawImageIconSize() {
+        ivProgressIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
+    }
+
+    private void drawImageIconPadding() {
+        if (iconPadding == -1 || iconPadding == 0) {
+            ivProgressIcon.setPadding(iconPaddingLeft, iconPaddingTop, iconPaddingRight, iconPaddingBottom);
+        } else {
+            ivProgressIcon.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
+        }
+        ivProgressIcon.invalidate();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void drawIconBackgroundColor() {
+        GradientDrawable iconBackgroundDrawable = createGradientDrawable(colorIconBackground);
+        int radius = getRadius() - (getPadding() / 2);
+        iconBackgroundDrawable.setCornerRadii(new float[]{radius, radius, 0, 0, 0, 0, radius, radius});
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ivProgressIcon.setBackground(iconBackgroundDrawable);
+        } else {
+            ivProgressIcon.setBackgroundDrawable(iconBackgroundDrawable);
         }
     }
 
-    public int getHeaderColor() {
-        return headerColor;
+    public int getIconImageResource() {
+        return iconResource;
     }
 
-    public void setIconImageResource(int resource) {
-        imageIcon.setImageResource(resource);
+    public void setIconImageResource(int resId) {
+        this.iconResource = resId;
+        drawImageIcon();
     }
 
-    public void setIconImageBitmap(Bitmap bitmap) {
-        imageIcon.setImageBitmap(bitmap);
+    public int getIconSize() {
+        return iconSize;
     }
 
-    public void setIconImageDrawable(Drawable drawable) {
-        imageIcon.setImageDrawable(drawable);
+    public void setIconSize(int size) {
+        if (size >= 0)
+            this.iconSize = size;
+        drawImageIconSize();
+    }
+
+    public int getIconPadding() {
+        return iconPadding;
+    }
+
+    public void setIconPadding(int padding) {
+        if (padding >= 0)
+            this.iconPadding = padding;
+        drawImageIconPadding();
+    }
+
+    public int getIconPaddingLeft() {
+        return iconPaddingLeft;
+    }
+
+    public void setIconPaddingLeft(int padding) {
+        if (padding > 0)
+            this.iconPaddingLeft = padding;
+        drawImageIconPadding();
+    }
+
+    public int getIconPaddingRight() {
+        return iconPaddingRight;
+    }
+
+    public void setIconPaddingRight(int padding) {
+        if (padding > 0)
+            this.iconPaddingRight = padding;
+        drawImageIconPadding();
+    }
+
+    public int getIconPaddingTop() {
+        return iconPaddingTop;
+    }
+
+    public void setIconPaddingTop(int padding) {
+        if (padding > 0)
+            this.iconPaddingTop = padding;
+        drawImageIconPadding();
+    }
+
+    public int getIconPaddingBottom() {
+        return iconPaddingBottom;
+    }
+
+    public void setIconPaddingBottom(int padding) {
+        if (padding > 0)
+            this.iconPaddingBottom = padding;
+        drawImageIconPadding();
+    }
+
+    public int getColorIconBackground() {
+        return colorIconBackground;
+    }
+
+    public void setIconBackgroundColor(int color) {
+        this.colorIconBackground = color;
+        drawIconBackgroundColor();
     }
 
     @Override
     protected Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
         SavedState ss = new SavedState(superState);
-        ss.headerWidth = this.headerWidth;
-        ss.iconSize = this.iconSize;
-        ss.iconPadding = this.iconPadding;
-        ss.headerColor = this.headerColor;
 
-        ss.isIconSetBeforeDraw = this.isIconSetBeforeDraw;
-        ss.isHeaderColorSetBeforeDraw = this.isHeaderColorSetBeforeDraw;
+        ss.iconResource = this.iconResource;
+        ss.iconSize = this.iconSize;
+
+        ss.iconPadding = this.iconPadding;
+        ss.iconPaddingLeft = this.iconPaddingLeft;
+        ss.iconPaddingRight = this.iconPaddingRight;
+
+        ss.iconPaddingTop = this.iconPaddingTop;
+        ss.iconPaddingBottom = this.iconPaddingBottom;
+        ss.colorIconBackground = this.colorIconBackground;
         return ss;
     }
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        if(!(state instanceof SavedState)) {
+        if (!(state instanceof SavedState)) {
             super.onRestoreInstanceState(state);
             return;
         }
 
-        SavedState ss = (SavedState)state;
+        SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
 
-        this.headerWidth = ss.headerWidth;
+        this.iconResource = ss.iconResource;
         this.iconSize = ss.iconSize;
         this.iconPadding = ss.iconPadding;
-        this.headerColor = ss.headerColor;
-
-        setHeaderColor(headerColor);
-
-        this.isIconSetBeforeDraw = ss.isIconSetBeforeDraw;
-        this.isHeaderColorSetBeforeDraw = ss.isHeaderColorSetBeforeDraw;
+        this.iconPaddingLeft = ss.iconPaddingLeft;
+        this.iconPaddingRight = ss.iconPaddingRight;
+        this.iconPaddingTop = ss.iconPaddingTop;
+        this.iconPaddingBottom = ss.iconPaddingBottom;
+        this.colorIconBackground = ss.colorIconBackground;
     }
 
     private static class SavedState extends BaseSavedState {
-        int headerWidth;
+        int iconResource;
         int iconSize;
         int iconPadding;
-        int headerColor;
-
-        boolean isIconSetBeforeDraw;
-        boolean isHeaderColorSetBeforeDraw;
+        int iconPaddingLeft;
+        int iconPaddingRight;
+        int iconPaddingTop;
+        int iconPaddingBottom;
+        int colorIconBackground;
 
         SavedState(Parcelable superState) {
             super(superState);
@@ -237,28 +299,32 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
         private SavedState(Parcel in) {
             super(in);
-            this.headerWidth = in.readInt();
+
+            this.iconResource = in.readInt();
             this.iconSize = in.readInt();
             this.iconPadding = in.readInt();
-            this.headerColor = in.readInt();
-
-            this.isIconSetBeforeDraw = in.readByte() != 0;
-            this.isHeaderColorSetBeforeDraw = in.readByte() != 0;
+            this.iconPaddingLeft = in.readInt();
+            this.iconPaddingRight = in.readInt();
+            this.iconPaddingTop = in.readInt();
+            this.iconPaddingBottom = in.readInt();
+            this.colorIconBackground = in.readInt();
         }
 
         @Override
         public void writeToParcel(Parcel out, int flags) {
             super.writeToParcel(out, flags);
-            out.writeInt(this.headerWidth);
+
+            out.writeInt(this.iconResource);
             out.writeInt(this.iconSize);
             out.writeInt(this.iconPadding);
-            out.writeInt(this.headerColor);
-
-            out.writeByte((byte) (this.isIconSetBeforeDraw ? 1 : 0));
-            out.writeByte((byte) (this.isHeaderColorSetBeforeDraw ? 1 : 0));
+            out.writeInt(this.iconPaddingLeft);
+            out.writeInt(this.iconPaddingRight);
+            out.writeInt(this.iconPaddingTop);
+            out.writeInt(this.iconPaddingBottom);
+            out.writeInt(this.colorIconBackground);
         }
 
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
@@ -267,5 +333,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
                 return new SavedState[size];
             }
         };
+    }
+
+    public interface OnIconClickListener {
+        public void onIconClick();
     }
 }
