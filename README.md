@@ -89,7 +89,7 @@ Maven
 
 Gradle
 ```
-compile 'com.akexorcist:RoundCornerProgressBar:1.2.2'
+compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 ```
 
 Feature
