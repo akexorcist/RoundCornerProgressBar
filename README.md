@@ -4,7 +4,8 @@
 Instruction for version 2.0.0 or later isn't yet updated now. And I change attribute name, follow this
 
 RoundCornerProgressBar Attribute
-```rcProgress
+```
+rcProgress
 rcSecondaryProgress
 rcMax
 rcRadius
@@ -16,7 +17,8 @@ rcBackgroundColor
 ```
 
 Additional attribute for IconRoundCornerProgressBar
-```rcIconSrc
+```
+rcIconSrc
 rcIconSize
 rcIconWidth
 rcIconHeight
@@ -29,7 +31,8 @@ rcIconBackgroundColor
 ```
 
 Additional attribute for TextRoundCornerProgressBar
-```rcTextProgressColor
+```
+rcTextProgressColor
 rcTextProgressSize
 rcTextProgressMargin
 rcTextProgress
