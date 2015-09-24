@@ -3,7 +3,8 @@
  
 Instruction for version 2.0.0 or later isn't yet updated now. And I change attribute name, follow this
 
-RoundCornerProgressBar Attribute
+*RoundCornerProgressBar*
+Attribute
 ```
 rcProgress
 rcSecondaryProgress
@@ -16,6 +17,37 @@ rcSecondaryProgressColor
 rcBackgroundColor
 ```
 
+Method
+```
+int getRadius()
+void setRadius(int radius)
+int getPadding()
+void setPadding(int padding)
+float getMax()
+void setMax(float max)
+
+float getProgress()
+void setProgress(float progress)
+float getSecondaryProgressWidth()
+float getSecondaryProgress()
+void setSecondaryProgress(float secondaryProgress)
+
+int getProgressBackgroundColor()
+void setProgressBackgroundColor(int colorBackground)
+int getProgressColor()
+void setProgressColor(int colorProgress)
+int getSecondaryProgressColor()
+void setSecondaryProgressColor(int colorSecondaryProgress)
+
+boolean isReverse()
+void setReverse(boolean isReverse)
+
+void setOnProgressChangedListener(OnProgressChangedListener listener)
+float getLayoutWidth()
+void invalidate()
+```
+
+*IconRoundCornerProgressBar*
 Additional attribute for IconRoundCornerProgressBar
 ```
 rcIconSrc
@@ -30,6 +62,32 @@ rcIconPaddingBottom
 rcIconBackgroundColor
 ```
 
+Additional Method for IconRoundCornerProgressBar
+```
+int getIconImageResource()
+void setIconImageResource(int resId)
+
+int getIconSize()
+void setIconSize(int size)
+
+int getIconPadding()
+void setIconPadding(int padding)
+int getIconPaddingLeft()
+void setIconPaddingLeft(int padding)
+int getIconPaddingRight()
+void setIconPaddingRight(int padding)
+int getIconPaddingTop()
+void setIconPaddingTop(int padding)
+int getIconPaddingBottom()
+void setIconPaddingBottom(int padding)
+
+int getColorIconBackground()
+void setIconBackgroundColor(int color)
+
+void setOnIconClickListener(OnIconClickListener listener)
+```
+
+*TextRoundCornerProgressBar*
 Additional attribute for TextRoundCornerProgressBar
 ```
 rcTextProgressColor
@@ -37,8 +95,19 @@ rcTextProgressSize
 rcTextProgressMargin
 rcTextProgress
 ```
- 
- 
+
+Additional method for TextRoundCornerProgressBar
+```
+String getProgressText()
+void setProgressText(String text)
+void setProgress(float progress)
+int getTextProgressColor()
+void setTextProgressColor(int color)
+int getTextProgressSize()
+void setTextProgressSize(int size)
+int getTextProgressMargin()
+void setTextProgressMargin(int margin)
+``` 
  
 Android-RoundCornerProgressBar
 ==============================
