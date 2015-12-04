@@ -29,13 +29,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.R;
@@ -139,6 +140,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundPadding, dp2px(DEFAULT_BACKGROUND_PADDING));
 
         isReverse = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcReverse, false);
+
+        isUserSeekable = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcSeekAllowed, false);
 
         max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, DEFAULT_MAX_PROGRESS);
         progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_PROGRESS);
@@ -313,16 +316,25 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return progress;
     }
 
-    public void setProgress(float progress) {
-        if (progress < 0)
-            this.progress = 0;
-        else if (progress > max)
-            this.progress = max;
+    public void setProgress( float progress )
+    {
+        setProgress(progress, false);
+    }
+
+    public void setProgress( float progress, boolean fromUser )
+    {
+        if( progress < 0 )
+        { this.progress = 0; }
+        else if( progress > max )
+        { this.progress = max; }
         else
-            this.progress = progress;
+        { this.progress = progress; }
         drawPrimaryProgress();
-        if(progressChangedListener != null)
-            progressChangedListener.onProgressChanged(getId(), this.progress, true, false);
+        if( progressChangedListener != null )
+        { progressChangedListener.onProgressChanged(getId(), this.progress, true, false); }
+
+        if( mOnSeekBarChangeListener != null )
+        { mOnSeekBarChangeListener.onProgressChanged(this, this.progress, fromUser); }
     }
 
     public float getSecondaryProgressWidth() {
@@ -476,21 +488,252 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.colorProgress);
             out.writeInt(this.colorSecondaryProgress);
 
-            out.writeByte((byte) (this.isReverse ? 1 : 0));
+            out.writeByte((byte) ( this.isReverse ? 1 : 0 ));
         }
 
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>()
+        {
+            public SavedState createFromParcel( Parcel in )
+            {
                 return new SavedState(in);
             }
 
-            public SavedState[] newArray(int size) {
+            public SavedState[] newArray( int size )
+            {
                 return new SavedState[size];
             }
         };
     }
 
-    public interface OnProgressChangedListener {
-        public void onProgressChanged(int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
+    public interface OnProgressChangedListener
+    {
+        public void onProgressChanged( int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress );
+    }
+
+
+    /**********************
+     * TOUCH FUNCTIONALITY
+     **********************/
+
+    // Distance in pixels a touch can wander before we think the user is scrolling
+    protected int scaledTouchSlop = ViewConfiguration.get(this.getContext()).getScaledTouchSlop();
+
+    // Whether the progress bar is seekable.
+    protected boolean isUserSeekable;
+
+    /**
+     * On touch, this offset plus the scaled value from the position of the
+     * touch will form the progress value. Usually 0.
+     */
+    protected float touchProgressOffset;
+
+    protected boolean isDragging;
+
+    protected OnSeekBarChangeListener mOnSeekBarChangeListener;
+
+
+    /**
+     * Sets a listener to receive notifications of changes to the SeekBar's progress level. Also
+     * provides notifications of when the user starts and stops a touch gesture within the SeekBar.
+     *
+     * @param listener The seek bar notification listener
+     *
+     * @see SeekBar.OnSeekBarChangeListener
+     */
+    public void setOnSeekBarChangeListener( OnSeekBarChangeListener listener )
+    {
+        mOnSeekBarChangeListener = listener;
+    }
+
+    /**
+     * This is called when the user has started touching this widget.
+     */
+    void onStartTrackingTouch()
+    {
+        isDragging = true;
+
+        if( mOnSeekBarChangeListener != null )
+        {
+            mOnSeekBarChangeListener.onStartTrackingTouch(this);
+        }
+    }
+
+    /**
+     * This is called when the user either releases his touch or the touch is canceled.
+     */
+    void onStopTrackingTouch()
+    {
+        isDragging = false;
+
+        if( mOnSeekBarChangeListener != null )
+        {
+            mOnSeekBarChangeListener.onStopTrackingTouch(this);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent( MotionEvent event )
+    {
+        if( !isUserSeekable || !isEnabled() )
+        {
+            return false;
+        }
+
+        switch( event.getAction() )
+        {
+            case MotionEvent.ACTION_DOWN: // Finger pressed "DOWN" on the screen
+            {
+                setPressed(true);
+                onStartTrackingTouch();
+                trackTouchEvent(event);
+                attemptClaimDrag();
+
+                break;
+            }
+            case MotionEvent.ACTION_MOVE: // Finger "MOVES" on the screen
+            {
+                if( isDragging )
+                {
+                    trackTouchEvent(event);
+                }
+                else
+                {
+                    final float x = event.getX();
+                    if( Math.abs(x) > scaledTouchSlop )
+                    {
+                        setPressed(true);
+                        onStartTrackingTouch();
+                        trackTouchEvent(event);
+                        attemptClaimDrag();
+                    }
+                }
+                break;
+            }
+            case MotionEvent.ACTION_UP: // Lifts finger "UP" from the screen
+            {
+                if( isDragging )
+                {
+                    trackTouchEvent(event);
+                    onStopTrackingTouch();
+                    setPressed(false);
+                }
+                else
+                {
+                    // Touch up when we never crossed the touch slop threshold should
+                    // be interpreted as a tap-seek to that location.
+                    onStartTrackingTouch();
+                    trackTouchEvent(event);
+                    onStopTrackingTouch();
+                }
+                // ProgressBar doesn't know to repaint the thumb drawable
+                // in its inactive state when the touch stops (because the
+                // value has not apparently changed)
+                invalidate();
+                break;
+            }
+            case MotionEvent.ACTION_CANCEL: // Actions have been cancelled.
+            {
+                if( isDragging )
+                {
+                    onStopTrackingTouch();
+                    setPressed(false);
+                }
+                invalidate(); // see above explanation
+                break;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Tries to claim the user's drag motion, and requests disallowing any
+     * ancestors from stealing events in the drag.
+     * This is specifically used to stop the touch events from spilling over to
+     * any other views, like scrollable views.
+     */
+    private void attemptClaimDrag()
+    {
+        this.requestDisallowInterceptTouchEvent(true);
+    }
+
+    private void trackTouchEvent( MotionEvent event )
+    {
+        final int width = getWidth();
+        final int available = width - ( padding * 2 );
+        final int x = (int) event.getX();
+        float scale;
+        float progress = 0;
+        if( isReverse() )
+        {
+            if( x > width - padding )
+            {
+                scale = 0.0f;
+            }
+            else if( x < padding )
+            {
+                scale = 1.0f;
+            }
+            else
+            {
+                scale = (float) ( available - x + padding ) / (float) available;
+                progress = touchProgressOffset;
+            }
+        }
+        else
+        {
+            if( x < padding )
+            {
+                scale = 0.0f;
+            }
+            else if( x > width - padding )
+            {
+                scale = 1.0f;
+            }
+            else
+            {
+                scale = (float) ( x - padding ) / (float) available;
+                progress = touchProgressOffset;
+            }
+        }
+        final float max = getMax();
+        progress += scale * max;
+
+        setProgress(progress, true);
+    }
+
+    /**
+     * A callback that notifies clients when the progress level has been
+     * changed. This includes changes that were initiated by the user through a
+     * touch gesture or arrow key/trackball as well as changes that were initiated
+     * programmatically.
+     */
+    public interface OnSeekBarChangeListener
+    {
+        /**
+         * Notification that the progress level has changed. Clients can use the fromUser parameter
+         * to distinguish user-initiated changes from those that occurred programmatically.
+         *
+         * @param roundedSeekBar The BaseRoundCornerProgressBar whose progress has changed
+         * @param progress       The current progress level. This will be in the range 0..max where max
+         *                       was set by {@link BaseRoundCornerProgressBar#setMax(float)}. (The default value for max is 10000.)
+         * @param fromUser       True if the progress change was initiated by the user.
+         */
+        void onProgressChanged( BaseRoundCornerProgressBar roundedSeekBar, float progress, boolean fromUser );
+
+        /**
+         * Notification that the user has started a touch gesture. Clients may want to use this
+         * to disable advancing the BaseRoundCornerProgressBar.
+         *
+         * @param roundedSeekBar The BaseRoundCornerProgressBar in which the touch gesture began
+         */
+        void onStartTrackingTouch( BaseRoundCornerProgressBar roundedSeekBar );
+
+        /**
+         * Notification that the user has finished a touch gesture. Clients may want to use this
+         * to re-enable advancing the BaseRoundCornerProgressBar.
+         *
+         * @param roundedSeekBar The BaseRoundCornerProgressBar in which the touch gesture began
+         */
+        void onStopTrackingTouch( BaseRoundCornerProgressBar roundedSeekBar );
     }
 }

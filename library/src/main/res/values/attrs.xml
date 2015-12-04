@@ -19,6 +19,7 @@ limitations under the License.
 <resources>
 
     <declare-styleable name="RoundCornerProgress">
+        <attr name="rcSeekAllowed" format="boolean" />
         <attr name="rcReverse" format="boolean" />
         <attr name="rcProgress" format="float" />
         <attr name="rcMax" format="float" />
