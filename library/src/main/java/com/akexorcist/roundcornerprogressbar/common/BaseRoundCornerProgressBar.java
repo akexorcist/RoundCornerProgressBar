@@ -316,6 +316,16 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return progress;
     }
 
+    public boolean isUserSeekable()
+    {
+        return isUserSeekable;
+    }
+
+    public void setIsUserSeekable( boolean isUserSeekable )
+    {
+        this.isUserSeekable = isUserSeekable;
+    }
+
     public void setProgress( float progress )
     {
         setProgress(progress, false);
@@ -625,9 +635,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
                     trackTouchEvent(event);
                     onStopTrackingTouch();
                 }
-                // ProgressBar doesn't know to repaint the thumb drawable
-                // in its inactive state when the touch stops (because the
-                // value has not apparently changed)
+
                 invalidate();
                 break;
             }
