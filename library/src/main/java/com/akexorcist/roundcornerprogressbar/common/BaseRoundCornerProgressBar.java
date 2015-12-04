@@ -36,7 +36,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.R;
@@ -547,8 +546,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
      * provides notifications of when the user starts and stops a touch gesture within the SeekBar.
      *
      * @param listener The seek bar notification listener
-     *
-     * @see SeekBar.OnSeekBarChangeListener
      */
     public void setOnSeekBarChangeListener( OnSeekBarChangeListener listener )
     {
