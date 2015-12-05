@@ -12,6 +12,7 @@ rcMax
 rcRadius
 rcBackgroundPadding
 rcReverse
+rcSeekAllowed
 rcProgressColor
 rcSecondaryProgressColor
 rcBackgroundColor
@@ -41,6 +42,8 @@ void setSecondaryProgressColor(int colorSecondaryProgress)
 
 boolean isReverse()
 void setReverse(boolean isReverse)
+boolean isUserSeekable()
+void setIsUserSeekable(boolean isUserSeekable)
 
 void setOnProgressChangedListener(OnProgressChangedListener listener)
 float getLayoutWidth()
@@ -163,6 +166,7 @@ compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 
 Feature
 ===========================
+* Touch Seeking functionality added. (Enable with XML or programmatically.)
 * Round value configurable (recommend dp) for a corner of progress bar 
 * Color changable for a progress
 * Adjust padding range between progress bar and progress or between image icon and progress
@@ -188,6 +192,7 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
         app:rcBackgroundRadius="dimension"
         app:rcBackgroundColor="color"
         app:rcProgressColor="color"
+        app:rcSeekAllowed="boolean"
         app:rcProgress="integer"
         app:rcMax="integer" />
 ```
@@ -289,6 +294,7 @@ progress1.setProgressColor(Color.parseColor("#ed3b27"));
 progress1.setBackgroundColor(Color.parseColor("#808080"));
 progress1.setMax(70);
 progress1.setProgress(15);
+progress1.setIsUserSeekable(true);
 
 int progressColor1 = progress1.getProgressColor();
 int backgroundColor1 = progress1.getBackgroundColor();
