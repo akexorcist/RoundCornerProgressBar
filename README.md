@@ -185,7 +185,7 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
         android:layout_width="dimension"
         android:layout_height="dimension"
         app:rcBackgroundPadding="dimension"
-        app:rcBackgroundRadius="dimension"
+        app:rcRadius="dimension"
         app:rcBackgroundColor="color"
         app:rcProgressColor="color"
         app:rcProgress="integer"
