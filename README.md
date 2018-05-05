@@ -52,7 +52,7 @@ Maven
 
 Gradle
 ```
-compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 ```
 
 
