@@ -592,6 +592,49 @@ limitations under the License.
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.IconTextRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcIconBackgroundColor="@color/custom_progress_green_header"
+                app:rcIconPadding="5dp"
+                app:rcIconSize="40dp"
+                app:rcIconSrc="@mipmap/ic_android"
+                app:rcMax="80"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/custom_progress_green_progress"
+                app:rcRadius="30dp"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/custom_progress_green_progress_half"
+                app:rcTextProgress="@string/text_corner_rounder_text_1"
+                app:rcTextProgressColor="@color/text"
+                app:rcTextProgressMargin="10dp"
+                app:rcTextProgressSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_it"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
