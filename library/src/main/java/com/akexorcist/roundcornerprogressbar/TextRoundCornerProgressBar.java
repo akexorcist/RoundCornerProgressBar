@@ -49,6 +49,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     private int textProgressSize;
     private int textProgressMargin;
     private String textProgress;
+    private boolean textProgressOver;
 
     public TextRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -73,6 +74,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         textProgressMargin = (int) typedArray.getDimension(R.styleable.TextRoundCornerProgress_rcTextProgressMargin, dp2px(DEFAULT_TEXT_MARGIN));
 
         textProgress = typedArray.getString(R.styleable.TextRoundCornerProgress_rcTextProgress);
+        textProgressOver = typedArray.getBoolean(R.styleable.TextRoundCornerProgress_rcTextProgressOver,false);
 
         typedArray.recycle();
     }
@@ -147,7 +149,9 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         int textProgressWidth = tvProgress.getMeasuredWidth() + (getTextProgressMargin() * 2);
         float ratio = getMax() / getProgress();
         int progressWidth = (int) ((getLayoutWidth() - (getPadding() * 2)) / ratio);
-        if (textProgressWidth + textProgressMargin < progressWidth) {
+        if( textProgressOver)
+            alignTextProgressOverProgress();
+        else if (textProgressWidth + textProgressMargin < progressWidth) {
             alignTextProgressInsideProgress();
         } else {
             alignTextProgressOutsideProgress();
@@ -187,6 +191,23 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
             params.removeRule(RelativeLayout.END_OF);
             params.removeRule(RelativeLayout.ALIGN_START);
             params.removeRule(RelativeLayout.ALIGN_END);
+        }
+        tvProgress.setLayoutParams(params);
+    }
+
+    private void alignTextProgressOverProgress() {
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tvProgress.getLayoutParams();
+        if (isReverse()) {
+            params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress);
+        } else {
+            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.addRule(RelativeLayout.ALIGN_PARENT_END);
+                params.addRule(RelativeLayout.ALIGN_PARENT_START);
+            }
         }
         tvProgress.setLayoutParams(params);
     }
