@@ -17,8 +17,9 @@ What's new in version 2.0
 
 Demo
 ===========================
-[Round Corner Progress Bar Demo (Play Store)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbarl)
+[Round Corner Progress Bar Demo (Google Play)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
 
+![get it on google play](https://play.google.com/intl/en_us/badges/images/badge_new.png)
 
 Round Corner Progress Bar
 ===============================
@@ -52,7 +53,7 @@ Maven
 
 Gradle
 ```
-compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 ```
 
 
