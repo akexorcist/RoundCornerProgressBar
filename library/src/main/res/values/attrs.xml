@@ -48,6 +48,7 @@ limitations under the License.
         <attr name="rcTextProgressSize" format="dimension" />
         <attr name="rcTextProgressMargin" format="dimension" />
         <attr name="rcTextProgress" format="string" />
+        <attr name="rcTextProgressOver" format="boolean" />
     </declare-styleable>
 
 </resources>

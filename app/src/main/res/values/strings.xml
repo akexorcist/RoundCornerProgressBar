@@ -16,6 +16,7 @@
     <string name="text_round_corner_progress_bar">Text Round Corner Progress Bar</string>
     <string name="programmatically">Programmatically</string>
     <string name="corner_rounder_1">Max : 100\nProgress : 50\nWidth : 250dp\nHeight : 30dp\nRadius : 0dp\nPadding : 2dp</string>
+    <string name="corner_rounder_it">Max : 80\nProgress : 50\nSecondary Progress : 60\nWidth : 250dp\nHeight : 50dp\nRadius : 30dp\nBackground Padding : 10dp\nText Progress Margin : 10dp\nText Progress Size : 14sp\nIcon Size : 40dp\nIcon Padding : 5dp</string>
     <string name="corner_rounder_1_1">Max : 100\nProgress : 40\nSecondaryProgress : 60\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nPadding : 2dp</string>
     <string name="corner_rounder_1_2">Max : 100\nProgress : 40\nSecondaryProgress : 60\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nPadding : 2dp\nReverse : True</string>
     <string name="corner_rounder_2">Max : 100\nProgress : 100\nWidth : 250dp\nHeight : 20dp\nRadius : 20dp\nPadding : 2dp</string>
