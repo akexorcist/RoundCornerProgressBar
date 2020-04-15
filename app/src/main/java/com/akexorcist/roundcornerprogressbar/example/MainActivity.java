@@ -1,17 +1,16 @@
 package com.akexorcist.roundcornerprogressbar.example;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-
     private IconRoundCornerProgressBar progressOne;
     private RoundCornerProgressBar progressTwo;
     private TextRoundCornerProgressBar progressThree;
@@ -23,24 +22,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressOne = (IconRoundCornerProgressBar) findViewById(R.id.progress_one);
+        progressOne = findViewById(R.id.progress_one);
         progressOne.setProgressColor(getResources().getColor(R.color.custom_progress_blue_progress));
         progressOne.setSecondaryProgressColor(getResources().getColor(R.color.custom_progress_blue_progress_half));
         progressOne.setIconBackgroundColor(getResources().getColor(R.color.custom_progress_blue_header));
         progressOne.setProgressBackgroundColor(getResources().getColor(R.color.custom_progress_background));
         updateSecondaryProgressOne();
 
-        tvProgressOne = (TextView) findViewById(R.id.tv_progress_one);
+        tvProgressOne = findViewById(R.id.tv_progress_one);
         updateTextProgressOne();
 
-        progressTwo = (RoundCornerProgressBar) findViewById(R.id.progress_two);
+        progressTwo = findViewById(R.id.progress_two);
         progressTwo.setProgressBackgroundColor(getResources().getColor(R.color.custom_progress_background));
         updateProgressTwoColor();
 
-        tvProgressTwo = (TextView) findViewById(R.id.tv_progress_two);
+        tvProgressTwo = findViewById(R.id.tv_progress_two);
         updateTextProgressTwo();
 
-        progressThree = (TextRoundCornerProgressBar) findViewById(R.id.progress_three);
+        progressThree = findViewById(R.id.progress_three);
         updateTextProgressThree();
 
         findViewById(R.id.button_progress_one_decrease).setOnClickListener(this);
