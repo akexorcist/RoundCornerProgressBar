@@ -29,8 +29,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -43,6 +41,7 @@ import com.akexorcist.roundcornerprogressbar.R;
 /**
  * Created by Akexorcist on 9/14/15 AD.
  */
+@SuppressWarnings("unused")
 public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     protected final static int DEFAULT_MAX_PROGRESS = 100;
     protected final static int DEFAULT_PROGRESS = 0;
@@ -124,9 +123,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         // Setup layout for sub class
         LayoutInflater.from(context).inflate(initLayout(), this);
         // Initial default view
-        layoutBackground = (LinearLayout) findViewById(R.id.layout_background);
-        layoutProgress = (LinearLayout) findViewById(R.id.layout_progress);
-        layoutSecondaryProgress = (LinearLayout) findViewById(R.id.layout_secondary_progress);
+        layoutBackground = findViewById(R.id.layout_background);
+        layoutProgress = findViewById(R.id.layout_progress);
+        layoutSecondaryProgress = findViewById(R.id.layout_secondary_progress);
 
         initView();
     }
@@ -159,7 +158,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     @Override
     protected void onSizeChanged(int newWidth, int newHeight, int oldWidth, int oldHeight) {
         super.onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
-        if(!isInEditMode()) {
+        if (!isInEditMode()) {
             totalWidth = newWidth;
             drawAll();
             postDelayed(new Runnable() {
@@ -204,11 +203,13 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     private void drawPrimaryProgress() {
-        drawProgress(layoutProgress, max, progress, totalWidth, radius, padding, colorProgress, isReverse);
+        int possibleRadius = Math.min(radius, layoutBackground.getMeasuredHeight() / 2);
+        drawProgress(layoutProgress, max, progress, totalWidth, possibleRadius, padding, colorProgress, isReverse);
     }
 
     private void drawSecondaryProgress() {
-        drawProgress(layoutSecondaryProgress, max, secondaryProgress, totalWidth, radius, padding, colorSecondaryProgress, isReverse);
+        int possibleRadius = Math.min(radius, layoutBackground.getMeasuredHeight() / 2);
+        drawProgress(layoutSecondaryProgress, max, secondaryProgress, totalWidth, possibleRadius, padding, colorSecondaryProgress, isReverse);
     }
 
     private void drawProgressReverse() {
@@ -314,15 +315,17 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setProgress(float progress) {
-        if (progress < 0)
+        if (progress < 0) {
             this.progress = 0;
-        else if (progress > max)
+        } else if (progress > max) {
             this.progress = max;
-        else
+        } else {
             this.progress = progress;
+        }
         drawPrimaryProgress();
-        if(progressChangedListener != null)
+        if (progressChangedListener != null) {
             progressChangedListener.onProgressChanged(getId(), this.progress, true, false);
+        }
     }
 
     public float getSecondaryProgressWidth() {
@@ -343,7 +346,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         else
             this.secondaryProgress = secondaryProgress;
         drawSecondaryProgress();
-        if(progressChangedListener != null)
+        if (progressChangedListener != null)
             progressChangedListener.onProgressChanged(getId(), this.secondaryProgress, false, true);
     }
 
@@ -491,6 +494,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public interface OnProgressChangedListener {
-        public void onProgressChanged(int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
+        void onProgressChanged(int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
     }
 }

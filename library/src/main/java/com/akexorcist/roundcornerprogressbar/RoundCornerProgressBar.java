@@ -56,7 +56,6 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
                                 int radius, int padding, int colorProgress, boolean isReverse) {
@@ -68,11 +67,18 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
         } else {
             layoutProgress.setBackgroundDrawable(backgroundDrawable);
         }
-
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - (padding * 2)) / ratio);
-        ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+        ViewGroup.MarginLayoutParams progressParams = (ViewGroup.MarginLayoutParams) layoutProgress.getLayoutParams();
         progressParams.width = progressWidth;
+        if (padding + (progressWidth / 2) < radius) {
+            int margin = Math.max(radius - padding, 0) - (progressWidth / 2);
+            progressParams.topMargin = margin;
+            progressParams.bottomMargin = margin;
+        } else {
+            progressParams.topMargin = 0;
+            progressParams.bottomMargin = 0;
+        }
         layoutProgress.setLayoutParams(progressParams);
     }
 

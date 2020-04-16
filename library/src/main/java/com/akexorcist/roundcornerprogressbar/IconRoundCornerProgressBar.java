@@ -129,7 +129,15 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - ((padding * 2) + ivProgressIcon.getWidth())) / ratio);
-        ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+        ViewGroup.MarginLayoutParams progressParams = (ViewGroup.MarginLayoutParams) layoutProgress.getLayoutParams();
+        if (padding + (progressWidth / 2) < radius) {
+            int margin = Math.max(radius - padding, 0) - (progressWidth / 2);
+            progressParams.topMargin = margin;
+            progressParams.bottomMargin = margin;
+        } else {
+            progressParams.topMargin = 0;
+            progressParams.bottomMargin = 0;
+        }
         progressParams.width = progressWidth;
         layoutProgress.setLayoutParams(progressParams);
     }

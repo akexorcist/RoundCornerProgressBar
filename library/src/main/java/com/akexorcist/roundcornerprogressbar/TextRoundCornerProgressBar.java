@@ -26,9 +26,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
@@ -79,7 +77,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     protected void initView() {
-        tvProgress = (TextView) findViewById(R.id.tv_progress);
+        tvProgress = findViewById(R.id.tv_progress);
         tvProgress.getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
@@ -97,7 +95,15 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - (padding * 2)) / ratio);
-        ViewGroup.LayoutParams progressParams = layoutProgress.getLayoutParams();
+        ViewGroup.MarginLayoutParams progressParams = (ViewGroup.MarginLayoutParams) layoutProgress.getLayoutParams();
+        if (padding + (progressWidth / 2) < radius) {
+            int margin = Math.max(radius - padding, 0) - (progressWidth / 2);
+            progressParams.topMargin = margin;
+            progressParams.bottomMargin = margin;
+        } else {
+            progressParams.topMargin = 0;
+            progressParams.bottomMargin = 0;
+        }
         progressParams.width = progressWidth;
         layoutProgress.setLayoutParams(progressParams);
     }
