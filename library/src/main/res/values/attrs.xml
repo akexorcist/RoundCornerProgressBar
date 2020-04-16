@@ -26,6 +26,7 @@ limitations under the License.
         <attr name="rcBackgroundPadding" format="dimension" />
         <attr name="rcRadius" format="dimension" />
         <attr name="rcProgressColor" format="color" />
+        <attr name="rcProgressColors" format="reference" />
         <attr name="rcSecondaryProgressColor" format="color" />
         <attr name="rcBackgroundColor" format="color" />
     </declare-styleable>

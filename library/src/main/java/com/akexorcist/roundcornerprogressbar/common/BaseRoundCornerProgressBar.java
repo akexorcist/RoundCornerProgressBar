@@ -74,6 +74,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     private int colorBackground;
     private int colorProgress;
+    private int[] colorProgressArray;
     private int colorSecondaryProgress;
 
     private boolean isReverse;
@@ -162,14 +163,19 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
         int colorBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
         colorBackground = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor, colorBackgroundDefault);
-        int colorProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_progress_default);
-        colorProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, colorProgressDefault);
+        colorProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, -1);
+        int colorProgressId = typedArray.getResourceId(R.styleable.BaseRoundCornerProgressBar_rcProgressColors, 0);
+        if (colorProgressId != 0) {
+            colorProgressArray = getResources().getIntArray(colorProgressId);
+        } else {
+            colorProgressArray = null;
+        }
         int colorSecondaryProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_secondary_progress_default);
         colorSecondaryProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, colorSecondaryProgressDefault);
         typedArray.recycle();
 
-        progressDrawable = createGradientDrawable(colorProgress);
-        secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
+        updateProgressDrawable();
+        updateSecondaryProgressDrawable();
 
         initStyleable(context, attrs);
     }
@@ -213,12 +219,36 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         }
     }
 
-    // Create an empty color rectangle gradient drawable
+    // Create an color rectangle gradient drawable
     protected GradientDrawable createGradientDrawable(@ColorInt int color) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
         gradientDrawable.setColor(color);
         return gradientDrawable;
+    }
+
+    // Create an empty color rectangle gradient drawable
+    protected GradientDrawable createGradientDrawable(int[] colors) {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        gradientDrawable.setOrientation(!isReverse() ? GradientDrawable.Orientation.LEFT_RIGHT : GradientDrawable.Orientation.RIGHT_LEFT);
+        gradientDrawable.setColors(colors);
+        return gradientDrawable;
+    }
+
+    private void updateProgressDrawable() {
+        if (colorProgress != -1) {
+            progressDrawable = createGradientDrawable(colorProgress);
+        } else if (colorProgressArray != null && colorProgressArray.length > 0) {
+            progressDrawable = createGradientDrawable(colorProgressArray);
+        } else {
+            int colorProgressDefault = getResources().getColor(R.color.round_corner_progress_bar_progress_default);
+            progressDrawable = createGradientDrawable(colorProgressDefault);
+        }
+    }
+
+    private void updateSecondaryProgressDrawable() {
+        secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
     }
 
     private void drawPrimaryProgress() {
@@ -384,9 +414,21 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return colorProgress;
     }
 
-    public void setProgressColor(@ColorInt int colorProgress) {
-        this.colorProgress = colorProgress;
-        this.progressDrawable = createGradientDrawable(colorProgress);
+    public void setProgressColor(@ColorInt int progressColor) {
+        this.colorProgress = progressColor;
+        this.colorProgressArray = null;
+        updateProgressDrawable();
+        drawPrimaryProgress();
+    }
+
+    public int[] getProgressColors() {
+        return colorProgressArray;
+    }
+
+    public void setProgressColor(int[] progressColors) {
+        this.colorProgress = -1;
+        this.colorProgressArray = progressColors;
+        updateProgressDrawable();
         drawPrimaryProgress();
     }
 
@@ -396,7 +438,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     public void setSecondaryProgressColor(@ColorInt int colorSecondaryProgress) {
         this.colorSecondaryProgress = colorSecondaryProgress;
-        this.secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
+        updateSecondaryProgressDrawable();
         drawSecondaryProgress();
     }
 
@@ -425,6 +467,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         ss.colorBackground = this.colorBackground;
         ss.colorProgress = this.colorProgress;
         ss.colorSecondaryProgress = this.colorSecondaryProgress;
+        ss.colorProgressArray = this.colorProgressArray;
 
         ss.isReverse = this.isReverse;
         return ss;
@@ -472,6 +515,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         int colorBackground;
         int colorProgress;
         int colorSecondaryProgress;
+        int[] colorProgressArray;
 
         boolean isReverse;
 
@@ -491,6 +535,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.colorBackground = in.readInt();
             this.colorProgress = in.readInt();
             this.colorSecondaryProgress = in.readInt();
+            this.colorProgressArray = in.createIntArray();
 
             this.isReverse = in.readByte() != 0;
         }
@@ -508,6 +553,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.colorBackground);
             out.writeInt(this.colorProgress);
             out.writeInt(this.colorSecondaryProgress);
+            out.writeIntArray(this.colorProgressArray);
 
             out.writeByte((byte) (this.isReverse ? 1 : 0));
         }
