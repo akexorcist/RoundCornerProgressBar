@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -233,6 +232,243 @@
             android:padding="20dp">
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcMax="100"
+                app:rcProgress="10"
+                app:rcProgressColor="@color/custom_progress_purple_progress"
+                app:rcRadius="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_5"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/centered_round_corner_progress_bar"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/custom_progress_orange_progress"
+                app:rcRadius="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/custom_progress_green_progress"
+                app:rcRadius="10dp"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/custom_progress_green_progress_half" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_1_1"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/custom_progress_red_progress"
+                app:rcRadius="10dp"
+                app:rcReverse="true"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/custom_progress_red_progress_half" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_1_2"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="90"
+                app:rcProgressColor="@color/custom_progress_blue_progress"
+                app:rcRadius="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_2"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="45"
+                app:rcProgressColor="@color/custom_progress_green_progress"
+                app:rcRadius="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_3"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcBackgroundPadding="5dp"
+                app:rcMax="100"
+                app:rcProgress="70"
+                app:rcProgressColor="@color/custom_progress_red_progress"
+                app:rcRadius="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/corner_rounder_4"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
@@ -824,6 +1060,66 @@
 
                 <Button
                     android:id="@+id/button_progress_three_increase"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:text="@string/increase"
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/background_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progress_four"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:rcBackgroundColor="@color/custom_progress_background"
+                app:rcMax="20"
+                app:rcProgress="5"
+                app:rcProgressColor="@color/custom_progress_green_progress" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_progress_four_decrease"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:text="@string/decrease"
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_progress_four"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/zero"
+                    android:textColor="@color/text"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button_progress_four_increase"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="@dimen/button_size"
                     android:layout_height="@dimen/button_size"

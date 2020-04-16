@@ -12,6 +12,7 @@
 
 
     <string name="round_corner_progress_bar">Round Corner Progress Bar</string>
+    <string name="centered_round_corner_progress_bar">Centered Round Corner Progress Bar</string>
     <string name="icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
     <string name="text_round_corner_progress_bar">Text Round Corner Progress Bar</string>
     <string name="programmatically">Programmatically</string>

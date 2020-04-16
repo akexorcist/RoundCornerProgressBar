@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar;
@@ -14,8 +16,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private IconRoundCornerProgressBar progressOne;
     private RoundCornerProgressBar progressTwo;
     private TextRoundCornerProgressBar progressThree;
+    private CenteredRoundCornerProgressBar progressFour;
     private TextView tvProgressOne;
     private TextView tvProgressTwo;
+    private TextView tvProgressFour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +46,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressThree = findViewById(R.id.progress_three);
         updateTextProgressThree();
 
+        progressFour = findViewById(R.id.progress_four);
+
+        tvProgressFour  = findViewById(R.id.tv_progress_four);
+        updateTextProgressTwo();
+
         findViewById(R.id.button_progress_one_decrease).setOnClickListener(this);
         findViewById(R.id.button_progress_one_increase).setOnClickListener(this);
         findViewById(R.id.button_progress_two_decrease).setOnClickListener(this);
         findViewById(R.id.button_progress_two_increase).setOnClickListener(this);
         findViewById(R.id.button_progress_three_decrease).setOnClickListener(this);
         findViewById(R.id.button_progress_three_increase).setOnClickListener(this);
+        findViewById(R.id.button_progress_four_decrease).setOnClickListener(this);
+        findViewById(R.id.button_progress_four_increase).setOnClickListener(this);
 
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        updateTextProgressOne();
+        updateTextProgressTwo();
     }
 
     @Override
@@ -66,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             decreaseProgressThree();
         } else if (id == R.id.button_progress_three_increase) {
             increaseProgressThree();
+        } else if (id == R.id.button_progress_four_decrease) {
+            decreaseProgressFour();
+        } else if (id == R.id.button_progress_four_increase) {
+            increaseProgressFour();
         }
     }
 
@@ -103,17 +125,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         updateTextProgressThree();
     }
 
+    private void increaseProgressFour() {
+        progressFour.setProgress(progressFour.getProgress() + 1);
+        updateTextProgressFour();
+    }
+
+    private void decreaseProgressFour() {
+        progressFour.setProgress(progressFour.getProgress() - 1);
+        updateTextProgressFour();
+    }
+
     private void updateSecondaryProgressOne() {
         progressOne.setSecondaryProgress(progressOne.getProgress() + 2);
     }
 
     private void updateProgressTwoColor() {
         float progress = progressTwo.getProgress();
-        if(progress <= 3) {
+        if (progress <= 3) {
             progressTwo.setProgressColor(getResources().getColor(R.color.custom_progress_red_progress));
-        } else if(progress > 3 && progress <= 6) {
+        } else if (progress > 3 && progress <= 6) {
             progressTwo.setProgressColor(getResources().getColor(R.color.custom_progress_orange_progress));
-        } else if(progress > 6) {
+        } else if (progress > 6) {
             progressTwo.setProgressColor(getResources().getColor(R.color.custom_progress_green_progress));
         }
     }
@@ -128,5 +160,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateTextProgressThree() {
         progressThree.setProgressText(String.valueOf((int) progressThree.getProgress()));
+    }
+
+    private void updateTextProgressFour() {
+        tvProgressFour.setText(String.valueOf((int) progressFour.getProgress()));
     }
 }
