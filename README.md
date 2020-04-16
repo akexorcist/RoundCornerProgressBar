@@ -17,12 +17,12 @@ What's new in version 2.0
 
 Demo
 ===========================
-[Round Corner Progress Bar Demo (Google Play)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
+[![Round Corner Progress Bar Demo (Google Play)](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
 
-[![get it on google play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
-
-Round Corner Progress Bar
+Progress Bar Type
 ===============================
+Round Corner Progress Bar
+-------------------------------
 
 A simple round corner progress bar that can change a color of progress and background and a corner radius in dp unit (Very Recommended)
 
@@ -30,12 +30,11 @@ A simple round corner progress bar that can change a color of progress and backg
 
 
 Icon Round Corner Progress Bar
-===============================
+-------------------------------
 
 A round corner progress bar with a changeable icon on the left of progress bar
 
 ![Icon Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_01.png)
-
 
 
 Installation
@@ -74,6 +73,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 
 Include this progress bar library in your layout
 
+RoundCornerProgressBar
+-------------------------------'
 ```xml
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         android:layout_width="dimension"
@@ -91,9 +92,9 @@ Include this progress bar library in your layout
 
 ![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
 
-![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_06.jpg)
 
-
+IconRoundCornerProgressBar
+-------------------------------'
 ```xml
 <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
         android:layout_width="dimension"
@@ -125,10 +126,11 @@ Include this progress bar library in your layout
 
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
 
+Reversing
+-------------------------------'
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_05.jpg)
 
-
-**Recommended how to set progress bar height**
+**Recommendation to set progress bar height**
 * ```android:layout_height``` for RoundCornerProgressBar height 
 * ```android:iconSize``` for IconRoundCornerProgressBar height
 
@@ -193,27 +195,17 @@ void setOnIconClickListener(OnIconClickListener listener)
 Example
 ===========================
 ```xml
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent" 
-    android:layout_width="match_parent"
-    android:orientation="vertical" >
+<com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+    android:layout_width="320dp" 
+    android:layout_height="40dp" 
+    app:rcBackgroundPadding="5dp" />
 
-    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-        android:id="@+id/progress_1"
-        android:layout_height="320dp" 
-        android:layout_width="40dp" 
-        app:rcBackgroundPadding="5dp" />
-
-    <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
-        android:id="@+id/progress_2"
-        android:layout_height="320dp" 
-        android:layout_width="wrap_content"
-        app:rcBackgroundPadding="10dp"
-        app:rcIconSize="50dp" 
-        app:rcIconPadding="5dp" />
-
-</LinearLayout>
+<com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+    android:layout_width="320dp" 
+    android:layout_height="wrap_content"
+    app:rcBackgroundPadding="10dp"
+    app:rcIconSize="50dp" 
+    app:rcIconPadding="5dp" />
 ```
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_01.jpg)
 
@@ -284,10 +276,9 @@ int getTextProgressMargin()
 void setTextProgressMargin(int margin)
 ``` 
 
-
 Licence
 ===========================
-Copyright 2015 Akexorcist
+Copyright 2020 Akexorcist
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
