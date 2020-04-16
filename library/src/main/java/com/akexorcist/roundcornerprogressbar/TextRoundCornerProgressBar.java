@@ -90,20 +90,19 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     protected void drawProgress(@NonNull LinearLayout layoutProgress,
+                                @NonNull GradientDrawable progressDrawable,
                                 float max,
                                 float progress,
                                 float totalWidth,
                                 int radius,
                                 int padding,
-                                int colorProgress,
                                 boolean isReverse) {
-        GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
         int newRadius = radius - (padding / 2);
-        backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
+        progressDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutProgress.setBackground(backgroundDrawable);
+            layoutProgress.setBackground(progressDrawable);
         } else {
-            layoutProgress.setBackgroundDrawable(backgroundDrawable);
+            layoutProgress.setBackgroundDrawable(progressDrawable);
         }
 
         float ratio = max / progress;

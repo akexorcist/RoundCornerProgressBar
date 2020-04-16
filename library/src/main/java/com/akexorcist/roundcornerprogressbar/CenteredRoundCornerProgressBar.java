@@ -1,6 +1,7 @@
 package com.akexorcist.roundcornerprogressbar;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -22,20 +23,18 @@ public class CenteredRoundCornerProgressBar extends RoundCornerProgressBar {
 
     @Override
     protected void drawProgress(@NonNull LinearLayout layoutProgress,
+                                @NonNull GradientDrawable progressDrawable,
                                 float max,
                                 float progress,
                                 float totalWidth,
                                 int radius,
                                 int padding,
-                                int colorProgress,
                                 boolean isReverse) {
-        super.drawProgress(layoutProgress, max, progress, totalWidth, radius, padding, colorProgress, isReverse);
+        super.drawProgress(layoutProgress, progressDrawable, max, progress, totalWidth, radius, padding, isReverse);
         MarginLayoutParams params = (MarginLayoutParams) layoutProgress.getLayoutParams();
-
         float ratio = max / progress;
         float progressWidth = (totalWidth - (padding * 2)) / ratio;
         float deltaWidth = totalWidth - progressWidth;
-
         params.setMargins((int) (deltaWidth / 2), params.topMargin, (int) (deltaWidth / 2), params.bottomMargin);
         layoutProgress.setLayoutParams(params);
     }

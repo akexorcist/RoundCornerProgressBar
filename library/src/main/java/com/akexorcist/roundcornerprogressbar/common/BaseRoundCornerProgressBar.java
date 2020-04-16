@@ -61,6 +61,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     private LinearLayout layoutProgress;
     private LinearLayout layoutSecondaryProgress;
 
+    private GradientDrawable progressDrawable;
+    private GradientDrawable secondaryProgressDrawable;
+
     private int radius;
     private int padding;
     private int totalWidth;
@@ -119,12 +122,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     // Draw a progress by sub class
     protected abstract void drawProgress(@NonNull LinearLayout layoutProgress,
+                                         @NonNull GradientDrawable progressDrawable,
                                          float max,
                                          float progress,
                                          float totalWidth,
                                          int radius,
                                          int padding,
-                                         int colorProgress,
                                          boolean isReverse);
 
     // Draw all view on sub class
@@ -164,6 +167,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         int colorSecondaryProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_secondary_progress_default);
         colorSecondaryProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, colorSecondaryProgressDefault);
         typedArray.recycle();
+
+        progressDrawable = createGradientDrawable(colorProgress);
+        secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
 
         initStyleable(context, attrs);
     }
@@ -217,12 +223,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     private void drawPrimaryProgress() {
         int possibleRadius = Math.min(radius, layoutBackground.getMeasuredHeight() / 2);
-        drawProgress(layoutProgress, max, progress, totalWidth, possibleRadius, padding, colorProgress, isReverse);
+        drawProgress(layoutProgress, progressDrawable, max, progress, totalWidth, possibleRadius, padding, isReverse);
     }
 
     private void drawSecondaryProgress() {
         int possibleRadius = Math.min(radius, layoutBackground.getMeasuredHeight() / 2);
-        drawProgress(layoutSecondaryProgress, max, secondaryProgress, totalWidth, possibleRadius, padding, colorSecondaryProgress, isReverse);
+        drawProgress(layoutSecondaryProgress, secondaryProgressDrawable, max, secondaryProgress, totalWidth, possibleRadius, padding, isReverse);
     }
 
     private void drawProgressReverse() {
@@ -380,6 +386,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     public void setProgressColor(@ColorInt int colorProgress) {
         this.colorProgress = colorProgress;
+        this.progressDrawable = createGradientDrawable(colorProgress);
         drawPrimaryProgress();
     }
 
@@ -389,6 +396,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     public void setSecondaryProgressColor(@ColorInt int colorSecondaryProgress) {
         this.colorSecondaryProgress = colorSecondaryProgress;
+        this.secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
         drawSecondaryProgress();
     }
 
@@ -444,6 +452,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.colorSecondaryProgress = ss.colorSecondaryProgress;
 
         this.isReverse = ss.isReverse;
+
+        progressDrawable = createGradientDrawable(colorProgress);
+        secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
     }
 
     public interface OnProgressChangedListener {
