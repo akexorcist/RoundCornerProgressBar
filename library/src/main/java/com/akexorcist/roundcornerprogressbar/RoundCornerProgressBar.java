@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
@@ -50,7 +51,7 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
     }
 
     @Override
-    protected void initStyleable(Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
     }
 
     @Override
@@ -58,8 +59,14 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
     }
 
     @Override
-    protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
-                                int radius, int padding, int colorProgress, boolean isReverse) {
+    protected void drawProgress(@NonNull LinearLayout layoutProgress,
+                                float max,
+                                float progress,
+                                float totalWidth,
+                                int radius,
+                                int padding,
+                                int colorProgress,
+                                boolean isReverse) {
         GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
         int newRadius = radius - (padding / 2);
         backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});

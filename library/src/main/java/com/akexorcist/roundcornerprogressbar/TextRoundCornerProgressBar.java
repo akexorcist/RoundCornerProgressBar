@@ -33,7 +33,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Px;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
@@ -66,7 +69,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     @Override
-    protected void initStyleable(Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgressBar);
 
         colorTextProgress = typedArray.getColor(R.styleable.TextRoundCornerProgressBar_rcTextProgressColor, Color.WHITE);
@@ -86,8 +89,14 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     @Override
-    protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
-                                int radius, int padding, int colorProgress, boolean isReverse) {
+    protected void drawProgress(@NonNull LinearLayout layoutProgress,
+                                float max,
+                                float progress,
+                                float totalWidth,
+                                int radius,
+                                int padding,
+                                int colorProgress,
+                                boolean isReverse) {
         GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
         int newRadius = radius - (padding / 2);
         backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
@@ -249,7 +258,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         return colorTextProgress;
     }
 
-    public void setTextProgressColor(int color) {
+    public void setTextProgressColor(@ColorInt int color) {
         this.colorTextProgress = color;
         drawTextProgressColor();
     }
@@ -258,7 +267,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         return textProgressSize;
     }
 
-    public void setTextProgressSize(int size) {
+    public void setTextProgressSize(@Px int size) {
         this.textProgressSize = size;
         drawTextProgressSize();
         drawTextProgressPosition();
@@ -268,7 +277,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         return textProgressMargin;
     }
 
-    public void setTextProgressMargin(int margin) {
+    public void setTextProgressMargin(@Px int margin) {
         this.textProgressMargin = margin;
         drawTextProgressMargin();
         drawTextProgressPosition();

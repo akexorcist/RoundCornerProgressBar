@@ -33,6 +33,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
@@ -113,12 +115,12 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         });
     }
 
-    public void setOnIconClickListener(OnIconClickListener listener) {
+    public void setOnIconClickListener(@Nullable OnIconClickListener listener) {
         iconClickListener = listener;
     }
 
     @Override
-    protected void drawProgress(LinearLayout layoutProgress,
+    protected void drawProgress(@NonNull LinearLayout layoutProgress,
                                 float max,
                                 float progress,
                                 float totalWidth,

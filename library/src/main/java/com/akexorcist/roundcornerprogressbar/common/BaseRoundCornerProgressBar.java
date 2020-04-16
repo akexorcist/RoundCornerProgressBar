@@ -37,7 +37,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Px;
 
 import com.akexorcist.roundcornerprogressbar.R;
 
@@ -108,14 +112,20 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     protected abstract int initLayout();
 
     // Setup an attribute parameter on sub class
-    protected abstract void initStyleable(Context context, AttributeSet attrs);
+    protected abstract void initStyleable(@NonNull Context context, AttributeSet attrs);
 
     // Initial any view on sub class
     protected abstract void initView();
 
     // Draw a progress by sub class
-    protected abstract void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
-                                         int radius, int padding, int colorProgress, boolean isReverse);
+    protected abstract void drawProgress(@NonNull LinearLayout layoutProgress,
+                                         float max,
+                                         float progress,
+                                         float totalWidth,
+                                         int radius,
+                                         int padding,
+                                         int colorProgress,
+                                         boolean isReverse);
 
     // Draw all view on sub class
     protected abstract void onViewDraw();
@@ -198,7 +208,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     // Create an empty color rectangle gradient drawable
-    protected GradientDrawable createGradientDrawable(int color) {
+    protected GradientDrawable createGradientDrawable(@ColorInt int color) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
         gradientDrawable.setColor(color);
@@ -221,7 +231,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     // Change progress position by depending on isReverse flag
-    private void setupReverse(LinearLayout layoutProgress) {
+    private void setupReverse(@NonNull LinearLayout layoutProgress) {
         RelativeLayout.LayoutParams progressParams = (RelativeLayout.LayoutParams) layoutProgress.getLayoutParams();
         removeLayoutParamsRule(progressParams);
         if (isReverse) {
@@ -242,7 +252,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     // Remove all of relative align rule
-    private void removeLayoutParamsRule(RelativeLayout.LayoutParams layoutParams) {
+    private void removeLayoutParamsRule(@NonNull RelativeLayout.LayoutParams layoutParams) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_END);
@@ -275,7 +285,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return radius;
     }
 
-    public void setRadius(int radius) {
+    public void setRadius(@Px int radius) {
         if (radius >= 0) {
             this.radius = radius;
         }
@@ -288,7 +298,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return padding;
     }
 
-    public void setPadding(int padding) {
+    public void setPadding(@Px int padding) {
         if (padding >= 0) {
             this.padding = padding;
         }
@@ -359,7 +369,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return colorBackground;
     }
 
-    public void setProgressBackgroundColor(int colorBackground) {
+    public void setProgressBackgroundColor(@ColorInt int colorBackground) {
         this.colorBackground = colorBackground;
         drawBackgroundProgress();
     }
@@ -368,7 +378,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return colorProgress;
     }
 
-    public void setProgressColor(int colorProgress) {
+    public void setProgressColor(@ColorInt int colorProgress) {
         this.colorProgress = colorProgress;
         drawPrimaryProgress();
     }
@@ -377,12 +387,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return colorSecondaryProgress;
     }
 
-    public void setSecondaryProgressColor(int colorSecondaryProgress) {
+    public void setSecondaryProgressColor(@ColorInt int colorSecondaryProgress) {
         this.colorSecondaryProgress = colorSecondaryProgress;
         drawSecondaryProgress();
     }
 
-    public void setOnProgressChangedListener(OnProgressChangedListener listener) {
+    public void setOnProgressChangedListener(@Nullable OnProgressChangedListener listener) {
         progressChangedListener = listener;
     }
 
