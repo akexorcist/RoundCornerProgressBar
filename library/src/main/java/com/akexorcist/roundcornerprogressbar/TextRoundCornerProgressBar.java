@@ -38,6 +38,7 @@ import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 /**
  * Created by Akexorcist on 9/16/15 AD.
  */
+@SuppressWarnings("unused")
 public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
     protected final static int DEFAULT_TEXT_SIZE = 16;
     protected final static int DEFAULT_TEXT_MARGIN = 10;
@@ -63,14 +64,14 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     protected void initStyleable(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgress);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgressBar);
 
-        colorTextProgress = typedArray.getColor(R.styleable.TextRoundCornerProgress_rcTextProgressColor, Color.WHITE);
+        colorTextProgress = typedArray.getColor(R.styleable.TextRoundCornerProgressBar_rcTextProgressColor, Color.WHITE);
 
-        textProgressSize = (int) typedArray.getDimension(R.styleable.TextRoundCornerProgress_rcTextProgressSize, dp2px(DEFAULT_TEXT_SIZE));
-        textProgressMargin = (int) typedArray.getDimension(R.styleable.TextRoundCornerProgress_rcTextProgressMargin, dp2px(DEFAULT_TEXT_MARGIN));
+        textProgressSize = (int) typedArray.getDimension(R.styleable.TextRoundCornerProgressBar_rcTextProgressSize, dp2px(DEFAULT_TEXT_SIZE));
+        textProgressMargin = (int) typedArray.getDimension(R.styleable.TextRoundCornerProgressBar_rcTextProgressMargin, dp2px(DEFAULT_TEXT_MARGIN));
 
-        textProgress = typedArray.getString(R.styleable.TextRoundCornerProgress_rcTextProgress);
+        textProgress = typedArray.getString(R.styleable.TextRoundCornerProgressBar_rcTextProgress);
 
         typedArray.recycle();
     }

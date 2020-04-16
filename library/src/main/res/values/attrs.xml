@@ -18,7 +18,7 @@ limitations under the License.
 
 <resources>
 
-    <declare-styleable name="RoundCornerProgress">
+    <declare-styleable name="BaseRoundCornerProgressBar">
         <attr name="rcReverse" format="boolean" />
         <attr name="rcProgress" format="float" />
         <attr name="rcMax" format="float" />
@@ -30,7 +30,7 @@ limitations under the License.
         <attr name="rcBackgroundColor" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="IconRoundCornerProgress">
+    <declare-styleable name="IconRoundCornerProgressBar">
         <attr name="rcIconSrc" format="integer" />
         <attr name="rcIconSize" format="dimension" />
         <attr name="rcIconWidth" format="dimension" />
@@ -43,7 +43,7 @@ limitations under the License.
         <attr name="rcIconBackgroundColor" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="TextRoundCornerProgress">
+    <declare-styleable name="TextRoundCornerProgressBar">
         <attr name="rcTextProgressColor" format="color" />
         <attr name="rcTextProgressSize" format="dimension" />
         <attr name="rcTextProgressMargin" format="dimension" />

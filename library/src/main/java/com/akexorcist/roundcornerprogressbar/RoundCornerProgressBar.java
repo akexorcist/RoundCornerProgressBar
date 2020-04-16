@@ -48,12 +48,10 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     @Override
     protected void initStyleable(Context context, AttributeSet attrs) {
-
     }
 
     @Override
     protected void initView() {
-
     }
 
     @Override
@@ -86,5 +84,4 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected void onViewDraw() {
 
     }
-
 }

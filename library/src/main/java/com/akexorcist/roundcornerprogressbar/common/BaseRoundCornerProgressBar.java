@@ -29,6 +29,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -132,23 +133,23 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     // Retrieve initial parameter from view attribute
     public void setupStyleable(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerProgress);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseRoundCornerProgressBar);
 
-        radius = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcRadius, dp2px(DEFAULT_PROGRESS_RADIUS));
-        padding = (int) typedArray.getDimension(R.styleable.RoundCornerProgress_rcBackgroundPadding, dp2px(DEFAULT_BACKGROUND_PADDING));
+        radius = (int) typedArray.getDimension(R.styleable.BaseRoundCornerProgressBar_rcRadius, dp2px(DEFAULT_PROGRESS_RADIUS));
+        padding = (int) typedArray.getDimension(R.styleable.BaseRoundCornerProgressBar_rcBackgroundPadding, dp2px(DEFAULT_BACKGROUND_PADDING));
 
-        isReverse = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcReverse, false);
+        isReverse = typedArray.getBoolean(R.styleable.BaseRoundCornerProgressBar_rcReverse, false);
 
-        max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, DEFAULT_MAX_PROGRESS);
-        progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_PROGRESS);
-        secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
+        max = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcMax, DEFAULT_MAX_PROGRESS);
+        progress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcProgress, DEFAULT_PROGRESS);
+        secondaryProgress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
 
         int colorBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
-        colorBackground = typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, colorBackgroundDefault);
+        colorBackground = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor, colorBackgroundDefault);
         int colorProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_progress_default);
-        colorProgress = typedArray.getColor(R.styleable.RoundCornerProgress_rcProgressColor, colorProgressDefault);
+        colorProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, colorProgressDefault);
         int colorSecondaryProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_secondary_progress_default);
-        colorSecondaryProgress = typedArray.getColor(R.styleable.RoundCornerProgress_rcSecondaryProgressColor, colorSecondaryProgressDefault);
+        colorSecondaryProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, colorSecondaryProgressDefault);
         typedArray.recycle();
 
         initStyleable(context, attrs);
@@ -182,7 +183,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     // Draw progress background
-    @SuppressWarnings("deprecation")
     private void drawBackgroundProgress() {
         GradientDrawable backgroundDrawable = createGradientDrawable(colorBackground);
         int newRadius = radius - (padding / 2);
@@ -228,7 +228,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
                 progressParams.addRule(RelativeLayout.ALIGN_PARENT_END);
         } else {
             progressParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            // For support with RTL on API 17 or more
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                 progressParams.addRule(RelativeLayout.ALIGN_PARENT_START);
         }
@@ -254,8 +253,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     @SuppressLint("NewApi")
     protected float dp2px(float dp) {
-        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-        return Math.round(dp * (displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
+        DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, metrics);
     }
 
     public boolean isReverse() {
@@ -274,8 +273,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setRadius(int radius) {
-        if (radius >= 0)
+        if (radius >= 0) {
             this.radius = radius;
+        }
         drawBackgroundProgress();
         drawPrimaryProgress();
         drawSecondaryProgress();
@@ -286,8 +286,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setPadding(int padding) {
-        if (padding >= 0)
+        if (padding >= 0) {
             this.padding = padding;
+        }
         drawPadding();
         drawPrimaryProgress();
         drawSecondaryProgress();
@@ -298,10 +299,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setMax(float max) {
-        if (max >= 0)
+        if (max >= 0) {
             this.max = max;
-        if (this.progress > max)
+        }
+        if (this.progress > max) {
             this.progress = max;
+        }
         drawPrimaryProgress();
         drawSecondaryProgress();
     }
@@ -317,10 +320,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     public void setProgress(float progress) {
         if (progress < 0) {
             this.progress = 0;
-        } else if (progress > max) {
-            this.progress = max;
         } else {
-            this.progress = progress;
+            this.progress = Math.min(progress, max);
         }
         drawPrimaryProgress();
         if (progressChangedListener != null) {
@@ -329,8 +330,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public float getSecondaryProgressWidth() {
-        if (layoutSecondaryProgress != null)
+        if (layoutSecondaryProgress != null) {
             return layoutSecondaryProgress.getWidth();
+        }
         return 0;
     }
 
@@ -339,15 +341,15 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setSecondaryProgress(float secondaryProgress) {
-        if (secondaryProgress < 0)
+        if (secondaryProgress < 0) {
             this.secondaryProgress = 0;
-        else if (secondaryProgress > max)
-            this.secondaryProgress = max;
-        else
-            this.secondaryProgress = secondaryProgress;
+        } else {
+            this.secondaryProgress = Math.min(secondaryProgress, max);
+        }
         drawSecondaryProgress();
-        if (progressChangedListener != null)
+        if (progressChangedListener != null) {
             progressChangedListener.onProgressChanged(getId(), this.secondaryProgress, false, true);
+        }
     }
 
     public int getProgressBackgroundColor() {
@@ -431,6 +433,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.isReverse = ss.isReverse;
     }
 
+    public interface OnProgressChangedListener {
+        void onProgressChanged(int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
+    }
+
     private static class SavedState extends BaseSavedState {
         float max;
         float progress;
@@ -449,7 +455,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             super(superState);
         }
 
-        private SavedState(Parcel in) {
+        SavedState(Parcel in) {
             super(in);
             this.max = in.readFloat();
             this.progress = in.readFloat();
@@ -491,9 +497,5 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
                 return new SavedState[size];
             }
         };
-    }
-
-    public interface OnProgressChangedListener {
-        void onProgressChanged(int viewId, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
     }
 }

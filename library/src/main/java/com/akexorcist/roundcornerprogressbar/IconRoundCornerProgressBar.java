@@ -36,8 +36,8 @@ import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 /**
  * Created by Akexorcist on 9/14/15 AD.
  */
-public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar implements View.OnClickListener {
-
+@SuppressWarnings("unused")
+public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected final static int DEFAULT_ICON_SIZE = 20;
     protected final static int DEFAULT_ICON_PADDING_LEFT = 0;
     protected final static int DEFAULT_ICON_PADDING_RIGHT = 0;
@@ -73,54 +73,58 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     protected void initStyleable(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgress);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgressBar);
 
-        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgress_rcIconSrc, R.mipmap.round_corner_progress_icon);
+        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, R.mipmap.round_corner_progress_icon);
 
-        iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconSize, -1);
-        iconWidth = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconWidth, dp2px(DEFAULT_ICON_SIZE));
-        iconHeight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconHeight, dp2px(DEFAULT_ICON_SIZE));
-        iconPadding = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPadding, -1);
-        iconPaddingLeft = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingLeft, dp2px(DEFAULT_ICON_PADDING_LEFT));
-        iconPaddingRight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingRight, dp2px(DEFAULT_ICON_PADDING_RIGHT));
-        iconPaddingTop = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP));
-        iconPaddingBottom = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM));
+        iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconSize, -1);
+        iconWidth = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconWidth, dp2px(DEFAULT_ICON_SIZE));
+        iconHeight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconHeight, dp2px(DEFAULT_ICON_SIZE));
+        iconPadding = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPadding, -1);
+        iconPaddingLeft = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingLeft, dp2px(DEFAULT_ICON_PADDING_LEFT));
+        iconPaddingRight = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingRight, dp2px(DEFAULT_ICON_PADDING_RIGHT));
+        iconPaddingTop = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP));
+        iconPaddingBottom = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM));
 
         int colorIconBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
-        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgress_rcIconBackgroundColor, colorIconBackgroundDefault);
+        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgressBar_rcIconBackgroundColor, colorIconBackgroundDefault);
 
         typedArray.recycle();
     }
 
     @Override
     protected void initView() {
-        ivProgressIcon = (ImageView) findViewById(R.id.iv_progress_icon);
-        ivProgressIcon.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.iv_progress_icon && iconClickListener != null) {
-            iconClickListener.onIconClick();
-        }
+        ivProgressIcon = findViewById(R.id.iv_progress_icon);
+        ivProgressIcon.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (iconClickListener != null) {
+                    iconClickListener.onIconClick();
+                }
+            }
+        });
     }
 
     public void setOnIconClickListener(OnIconClickListener listener) {
         iconClickListener = listener;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    protected void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
-                                int radius, int padding, int colorProgress, boolean isReverse) {
+    protected void drawProgress(LinearLayout layoutProgress,
+                                float max,
+                                float progress,
+                                float totalWidth,
+                                int radius,
+                                int padding,
+                                int colorProgress,
+                                boolean isReverse) {
         GradientDrawable backgroundDrawable = createGradientDrawable(colorProgress);
         int newRadius = radius - (padding / 2);
-        if (isReverse && progress != max)
+        if (isReverse && progress != max) {
             backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
-        else
+        } else {
             backgroundDrawable.setCornerRadii(new float[]{0, 0, newRadius, newRadius, newRadius, newRadius, 0, 0});
-
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutProgress.setBackground(backgroundDrawable);
         } else {
@@ -155,10 +159,11 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     private void drawImageIconSize() {
-        if (iconSize == -1)
+        if (iconSize == -1) {
             ivProgressIcon.setLayoutParams(new LayoutParams(iconWidth, iconHeight));
-        else
+        } else {
             ivProgressIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
+        }
     }
 
     private void drawImageIconPadding() {
@@ -170,7 +175,6 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         ivProgressIcon.invalidate();
     }
 
-    @SuppressWarnings("deprecation")
     private void drawIconBackgroundColor() {
         GradientDrawable iconBackgroundDrawable = createGradientDrawable(colorIconBackground);
         int radius = getRadius() - (getPadding() / 2);
@@ -196,8 +200,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconSize(int size) {
-        if (size >= 0)
+        if (size >= 0) {
             this.iconSize = size;
+        }
         drawImageIconSize();
     }
 
@@ -206,8 +211,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconPadding(int padding) {
-        if (padding >= 0)
+        if (padding >= 0) {
             this.iconPadding = padding;
+        }
         drawImageIconPadding();
     }
 
@@ -216,8 +222,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconPaddingLeft(int padding) {
-        if (padding > 0)
+        if (padding > 0) {
             this.iconPaddingLeft = padding;
+        }
         drawImageIconPadding();
     }
 
@@ -226,8 +233,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconPaddingRight(int padding) {
-        if (padding > 0)
+        if (padding > 0) {
             this.iconPaddingRight = padding;
+        }
         drawImageIconPadding();
     }
 
@@ -236,8 +244,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconPaddingTop(int padding) {
-        if (padding > 0)
+        if (padding > 0) {
             this.iconPaddingTop = padding;
+        }
         drawImageIconPadding();
     }
 
@@ -246,8 +255,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     public void setIconPaddingBottom(int padding) {
-        if (padding > 0)
+        if (padding > 0) {
             this.iconPaddingBottom = padding;
+        }
         drawImageIconPadding();
     }
 
@@ -302,6 +312,10 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         this.colorIconBackground = ss.colorIconBackground;
     }
 
+    public interface OnIconClickListener {
+        void onIconClick();
+    }
+
     private static class SavedState extends BaseSavedState {
         int iconResource;
         int iconSize;
@@ -318,7 +332,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
             super(superState);
         }
 
-        private SavedState(Parcel in) {
+        SavedState(Parcel in) {
             super(in);
 
             this.iconResource = in.readInt();
@@ -336,7 +350,6 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         @Override
         public void writeToParcel(Parcel out, int flags) {
             super.writeToParcel(out, flags);
-
             out.writeInt(this.iconResource);
             out.writeInt(this.iconSize);
             out.writeInt(this.iconWidth);
@@ -358,9 +371,5 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
                 return new SavedState[size];
             }
         };
-    }
-
-    public interface OnIconClickListener {
-        public void onIconClick();
     }
 }
