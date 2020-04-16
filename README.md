@@ -149,6 +149,10 @@ IconRoundCornerProgressBar
 ```java
 int getIconImageResource()
 void setIconImageResource(int resId)
+Bitmap getIconImageBitmap()
+void setIconImageBitmap(Bitmap bitmap)
+Drawable getIconImageDrawable()
+void setIconImageDrawable(Drawable drawable)
 
 int getIconSize()
 void setIconSize(int size)

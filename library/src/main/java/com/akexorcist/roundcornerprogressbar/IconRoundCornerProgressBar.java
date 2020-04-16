@@ -20,6 +20,8 @@ package com.akexorcist.roundcornerprogressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -56,6 +58,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     private int iconPaddingBottom;
     private int colorIconBackground;
 
+    private Bitmap iconBitmap;
+    private Drawable iconDrawable;
+
     private OnIconClickListener iconClickListener;
 
     public IconRoundCornerProgressBar(Context context, AttributeSet attrs) {
@@ -75,7 +80,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected void initStyleable(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgressBar);
 
-        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, R.mipmap.round_corner_progress_icon);
+        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, -1);
 
         iconSize = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconSize, -1);
         iconWidth = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconWidth, dp2px(DEFAULT_ICON_SIZE));
@@ -134,13 +139,15 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - ((padding * 2) + ivProgressIcon.getWidth())) / ratio);
         ViewGroup.MarginLayoutParams progressParams = (ViewGroup.MarginLayoutParams) layoutProgress.getLayoutParams();
-        if (padding + (progressWidth / 2) < radius) {
-            int margin = Math.max(radius - padding, 0) - (progressWidth / 2);
-            progressParams.topMargin = margin;
-            progressParams.bottomMargin = margin;
-        } else {
-            progressParams.topMargin = 0;
-            progressParams.bottomMargin = 0;
+        if (isReverse) {
+            if (padding + (progressWidth / 2) < radius) {
+                int margin = Math.max(radius - padding, 0) - (progressWidth / 2);
+                progressParams.topMargin = margin;
+                progressParams.bottomMargin = margin;
+            } else {
+                progressParams.topMargin = 0;
+                progressParams.bottomMargin = 0;
+            }
         }
         progressParams.width = progressWidth;
         layoutProgress.setLayoutParams(progressParams);
@@ -155,7 +162,13 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     }
 
     private void drawImageIcon() {
-        ivProgressIcon.setImageResource(iconResource);
+        if (iconResource != -1) {
+            ivProgressIcon.setImageResource(iconResource);
+        } else if (iconBitmap != null) {
+            ivProgressIcon.setImageBitmap(iconBitmap);
+        } else if (iconDrawable != null) {
+            ivProgressIcon.setImageDrawable(iconDrawable);
+        }
     }
 
     private void drawImageIconSize() {
@@ -192,6 +205,30 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     public void setIconImageResource(int resId) {
         this.iconResource = resId;
+        this.iconBitmap = null;
+        this.iconDrawable = null;
+        drawImageIcon();
+    }
+
+    public Bitmap getIconImageBitmap() {
+        return iconBitmap;
+    }
+
+    public void setIconImageBitmap(Bitmap bitmap) {
+        this.iconResource = -1;
+        this.iconBitmap = bitmap;
+        this.iconDrawable = null;
+        drawImageIcon();
+    }
+
+    public Drawable getIconImageDrawable() {
+        return iconDrawable;
+    }
+
+    public void setIconImageDrawable(Drawable drawable) {
+        this.iconResource = -1;
+        this.iconBitmap = null;
+        this.iconDrawable = drawable;
         drawImageIcon();
     }
 
