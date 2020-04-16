@@ -19,7 +19,7 @@ Demo
 ===========================
 [Round Corner Progress Bar Demo (Google Play)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
 
-![get it on google play](https://play.google.com/intl/en_us/badges/images/badge_new.png)
+[![get it on google play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
 
 Round Corner Progress Bar
 ===============================
