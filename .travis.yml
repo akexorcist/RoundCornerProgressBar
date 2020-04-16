@@ -1,19 +1,18 @@
 language: android
-jdk: oraclejdk7
+jdk: openjdk8
 
 android:
   components:
-    - build-tools-22.0.1
-    - android-22
-    - extra-android-support
+    - tools
+    - build-tools-29.0.2
+    - android-29
     - extra-android-m2repository
+    - extra-android-support
 
-  licenses:
-    - '.+'
 notifications:
   email: false
-  
+
 before_install:
  - chmod +x gradlew
- 
+
 script: ./gradlew clean
