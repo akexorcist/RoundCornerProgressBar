@@ -124,11 +124,9 @@ IconRoundCornerProgressBar
 
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_03.jpg)
 
-![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
-
 Reversing
--------------------------------'
-![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_05.jpg)
+-------------------------------
+![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
 
 **Recommendation to set progress bar height**
 * ```android:layout_height``` for RoundCornerProgressBar height 
