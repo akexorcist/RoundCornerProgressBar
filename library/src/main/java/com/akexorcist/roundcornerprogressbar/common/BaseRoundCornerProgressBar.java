@@ -394,16 +394,16 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         Parcelable superState = super.onSaveInstanceState();
         SavedState ss = new SavedState(superState);
 
+        ss.max = this.max;
+        ss.progress = this.progress;
+        ss.secondaryProgress = this.secondaryProgress;
+
         ss.radius = this.radius;
         ss.padding = this.padding;
 
         ss.colorBackground = this.colorBackground;
         ss.colorProgress = this.colorProgress;
         ss.colorSecondaryProgress = this.colorSecondaryProgress;
-
-        ss.max = this.max;
-        ss.progress = this.progress;
-        ss.secondaryProgress = this.secondaryProgress;
 
         ss.isReverse = this.isReverse;
         return ss;
@@ -419,16 +419,16 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
 
+        this.max = ss.max;
+        this.progress = ss.progress;
+        this.secondaryProgress = ss.secondaryProgress;
+
         this.radius = ss.radius;
         this.padding = ss.padding;
 
         this.colorBackground = ss.colorBackground;
         this.colorProgress = ss.colorProgress;
         this.colorSecondaryProgress = ss.colorSecondaryProgress;
-
-        this.max = ss.max;
-        this.progress = ss.progress;
-        this.secondaryProgress = ss.secondaryProgress;
 
         this.isReverse = ss.isReverse;
     }
