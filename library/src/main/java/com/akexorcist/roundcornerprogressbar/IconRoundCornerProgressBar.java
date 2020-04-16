@@ -32,6 +32,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Keep;
+
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
 
@@ -39,6 +41,7 @@ import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
  * Created by Akexorcist on 9/14/15 AD.
  */
 @SuppressWarnings("unused")
+@Keep
 public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     protected final static int DEFAULT_ICON_SIZE = 20;
     protected final static int DEFAULT_ICON_PADDING_LEFT = 0;

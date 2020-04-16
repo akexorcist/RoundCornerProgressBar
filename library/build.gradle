@@ -29,6 +29,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.13'
+    implementation "androidx.annotation:annotation:1.1.0"
 }
 
 //apply from: '../maven_push.gradle'

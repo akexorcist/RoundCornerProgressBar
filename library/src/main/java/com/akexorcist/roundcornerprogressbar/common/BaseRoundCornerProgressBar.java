@@ -37,12 +37,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Keep;
+
 import com.akexorcist.roundcornerprogressbar.R;
 
 /**
  * Created by Akexorcist on 9/14/15 AD.
  */
 @SuppressWarnings("unused")
+@Keep
 public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     protected final static int DEFAULT_MAX_PROGRESS = 100;
     protected final static int DEFAULT_PROGRESS = 0;

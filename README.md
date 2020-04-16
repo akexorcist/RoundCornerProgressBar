@@ -240,13 +240,6 @@ Documentation
 Thai Language : [Round Corner Progress Bar สำหรับคนบ้าขอบมน](http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html)
 
 
-ProGuard Rule
-===========================
-```
--dontwarn com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
-```
-
-
 Special Thanks
 ===========================
 Artit Kuiwilai @first087

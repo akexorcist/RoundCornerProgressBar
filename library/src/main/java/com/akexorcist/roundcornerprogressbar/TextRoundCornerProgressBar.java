@@ -33,12 +33,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Keep;
+
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
 /**
  * Created by Akexorcist on 9/16/15 AD.
  */
 @SuppressWarnings("unused")
+@Keep
 public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
     protected final static int DEFAULT_TEXT_SIZE = 16;
     protected final static int DEFAULT_TEXT_MARGIN = 10;

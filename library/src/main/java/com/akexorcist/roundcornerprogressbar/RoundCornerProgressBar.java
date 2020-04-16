@@ -25,12 +25,15 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Keep;
+
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
 
 /**
  * Created by Akexorcist on 9/14/15 AD.
  */
+@Keep
 public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
     public RoundCornerProgressBar(Context context, AttributeSet attrs) {
