@@ -40,8 +40,7 @@ A round corner progress bar with icon
 Installation
 ===============================
 
-Maven
--------------------------------
+### Maven ###
 ```
 <dependency>
   <groupId>com.akexorcist</groupId>
@@ -50,8 +49,7 @@ Maven
 </dependency>
 ```
 
-Gradle
--------------------------------
+### Gradle ###
 ```
 implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 ```
@@ -87,6 +85,8 @@ RoundCornerProgressBar
         app:rcBackgroundColor="color" />
 ```
 
+![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
+
 ### Public Methods ######
 ```java
 int getRadius()
@@ -116,9 +116,6 @@ void setOnProgressChangedListener(OnProgressChangedListener listener)
 float getLayoutWidth()
 void invalidate()
 ```
-
-![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
-
 
 IconRoundCornerProgressBar
 -------------------------------
@@ -176,7 +173,7 @@ void setOnIconClickListener(OnIconClickListener listener)
 ### Icon Size & Padding ###
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_03.jpg)
 
-Reversing
+Progress Bar Reversing
 -------------------------------
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
 
@@ -206,7 +203,7 @@ Example
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_02.jpg)
 
 ```java
-RoundCornerProgressBar progress1 = (RoundCornerProgressBar) findViewById(R.id.progress_1);
+RoundCornerProgressBar progress1 = ...;
 progress1.setProgressColor(Color.parseColor("#ed3b27"));
 progress1.setProgressBackgroundColor(Color.parseColor("#808080"));
 progress1.setMax(70);
@@ -218,7 +215,7 @@ int max1 = progress1.getMax();
 int progress1 = progress1.getProgress();
 
 
-RoundCornerProgressBar progress2 = (RoundCornerProgressBar) findViewById(R.id.progress_1);
+RoundCornerProgressBar progress2 = ...;
 progress2.setProgressColor(Color.parseColor("#56d2c2"));
 progress2.setProgressBackgroundColor(Color.parseColor("#757575"));
 progress2.setIconBackgroundColor(Color.parseColor("#38c0ae"));
