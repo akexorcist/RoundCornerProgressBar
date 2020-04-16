@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-Copyright 2015 Akexorcist
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,8 +16,8 @@ limitations under the License.
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp">
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,8 +29,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -73,8 +60,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -106,8 +93,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -140,8 +127,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -149,8 +136,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="20dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="2dp"
                 app:rcMax="100"
@@ -173,8 +160,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -182,8 +169,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="2dp"
                 app:rcMax="100"
@@ -206,8 +193,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -215,8 +202,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
                 app:rcMax="100"
@@ -239,8 +226,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -248,8 +235,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="80dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="10dp"
                 app:rcMax="100"
@@ -280,8 +267,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -289,8 +276,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="2dp"
                 app:rcIconBackgroundColor="@color/custom_progress_red_header"
@@ -317,8 +304,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -326,8 +313,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="2dp"
                 app:rcIconBackgroundColor="@color/custom_progress_blue_header"
@@ -355,8 +342,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -364,8 +351,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
                 app:rcIconBackgroundColor="@color/custom_progress_orange_header"
@@ -395,8 +382,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -404,8 +391,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="10dp"
                 app:rcIconBackgroundColor="@color/custom_progress_blue_header"
@@ -432,8 +419,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -441,8 +428,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
                 app:rcIconBackgroundColor="@color/custom_progress_green_header"
@@ -469,8 +456,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -478,8 +465,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="10dp"
                 app:rcIconBackgroundColor="@color/custom_progress_purple_header"
@@ -507,8 +494,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -516,8 +503,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
                 app:rcIconBackgroundColor="@color/custom_progress_orange_header"
@@ -552,8 +539,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -561,8 +548,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="10dp"
                 app:rcMax="80"
@@ -591,8 +578,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -600,8 +587,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="5dp"
                 app:rcMax="65535"
@@ -628,8 +615,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -637,8 +624,8 @@ limitations under the License.
             <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcBackgroundPadding="0dp"
                 app:rcMax="17"
@@ -674,8 +661,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -684,21 +671,23 @@ limitations under the License.
                 android:id="@+id/progress_one"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcIconSize="30dp"
                 app:rcMax="10"
                 app:rcProgress="5" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_progress_one_decrease"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:text="@string/decrease"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
@@ -707,7 +696,9 @@ limitations under the License.
                     android:id="@+id/tv_progress_one"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -717,8 +708,9 @@ limitations under the License.
 
                 <Button
                     android:id="@+id/button_progress_one_increase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:text="@string/increase"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
@@ -728,8 +720,8 @@ limitations under the License.
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
             android:orientation="vertical"
             android:padding="20dp">
@@ -738,21 +730,23 @@ limitations under the License.
                 android:id="@+id/progress_two"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcMax="10"
                 app:rcProgress="5"
                 app:rcSecondaryProgress="7.5" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_progress_two_decrease"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:text="@string/decrease"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
@@ -761,7 +755,9 @@ limitations under the License.
                     android:id="@+id/tv_progress_two"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -771,19 +767,22 @@ limitations under the License.
 
                 <Button
                     android:id="@+id/button_progress_two_increase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:text="@string/increase"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/background_content"
+            android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -791,8 +790,8 @@ limitations under the License.
                 android:id="@+id/progress_three"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 app:rcBackgroundColor="@color/custom_progress_background"
                 app:rcMax="15"
                 app:rcProgress="5"
@@ -802,24 +801,32 @@ limitations under the License.
                 app:rcTextProgressMargin="10dp" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_progress_three_decrease"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:text="@string/decrease"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <Button
                     android:id="@+id/button_progress_three_increase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:text="@string/increase"
                     android:textColor="@color/text"
                     android:textSize="18sp" />
