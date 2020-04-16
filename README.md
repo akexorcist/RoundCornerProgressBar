@@ -215,7 +215,7 @@ int max1 = progress1.getMax();
 int progress1 = progress1.getProgress();
 
 
-RoundCornerProgressBar progress2 = ...;
+IconRoundCornerProgressBar progress2 = ...;
 progress2.setProgressColor(Color.parseColor("#56d2c2"));
 progress2.setProgressBackgroundColor(Color.parseColor("#757575"));
 progress2.setIconBackgroundColor(Color.parseColor("#38c0ae"));
@@ -234,6 +234,13 @@ int progress2 = progress2.getProgress();
 Documentation
 ===========================
 Thai Language : [Round Corner Progress Bar สำหรับคนบ้าขอบมน](http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html)
+
+
+ProGuard Rule
+===========================
+```
+-dontwarn com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+```
 
 
 Special Thanks
