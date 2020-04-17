@@ -48,12 +48,19 @@ import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressB
 public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
     protected final static int DEFAULT_TEXT_SIZE = 16;
     protected final static int DEFAULT_TEXT_MARGIN = 10;
+    protected final static int GRAVITY_START = 0;
+    protected final static int GRAVITY_END = 1;
+    protected final static int PRIORITY_INSIDE = 0;
+    protected final static int PRIORITY_OUTSIDE = 1;
 
     private TextView tvProgress;
     private int colorTextProgress;
     private int textProgressSize;
     private int textProgressMargin;
     private String textProgress;
+    private int textInsideGravity;
+    private int textOutsideGravity;
+    private int textPositionPriority;
 
     public TextRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -79,6 +86,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
 
         textProgress = typedArray.getString(R.styleable.TextRoundCornerProgressBar_rcTextProgress);
 
+        textInsideGravity = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextInsideGravity, GRAVITY_START);
+        textOutsideGravity = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextOutsideGravity, GRAVITY_START);
+        textPositionPriority = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextPositionPriority, PRIORITY_INSIDE);
+
         typedArray.recycle();
     }
 
@@ -99,12 +110,7 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
                                 boolean isReverse) {
         int newRadius = radius - (padding / 2);
         progressDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutProgress.setBackground(progressDrawable);
-        } else {
-            //noinspection deprecation
-            layoutProgress.setBackgroundDrawable(progressDrawable);
-        }
+        layoutProgress.setBackground(progressDrawable);
 
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - (padding * 2)) / ratio);
@@ -126,7 +132,15 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         drawTextProgress();
         drawTextProgressSize();
         drawTextProgressMargin();
-        drawTextProgressPosition();
+        // Can't instantly change the text position of child view
+        // when `onSizeChanged(...)` called. Using `post` method then
+        // call these methods inside the Runnable will solved this.
+        post(new Runnable() {
+            @Override
+            public void run() {
+                drawTextProgressPosition();
+            }
+        });
         drawTextProgressColor();
     }
 
@@ -149,63 +163,40 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     }
 
     private void drawTextProgressPosition() {
-//        tvProgress.setVisibility(View.INVISIBLE);
-//        tvProgress.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @SuppressWarnings("deprecation")
-//            @Override
-//            public void onGlobalLayout() {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-//                    tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//                else
-//                    tvProgress.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//                setTextProgressAlign();
-//            }
-//        });
         clearTextProgressAlign();
-        // TODO Temporary
         int textProgressWidth = tvProgress.getMeasuredWidth() + (getTextProgressMargin() * 2);
         float ratio = getMax() / getProgress();
         int progressWidth = (int) ((getLayoutWidth() - (getPadding() * 2)) / ratio);
-        if (textProgressWidth + textProgressMargin < progressWidth) {
-            alignTextProgressInsideProgress();
+        if (textPositionPriority == PRIORITY_OUTSIDE) {
+            if (getLayoutWidth() - progressWidth > textProgressWidth) {
+                alignTextProgressOutsideProgress();
+            } else {
+                alignTextProgressInsideProgress();
+            }
         } else {
-            alignTextProgressOutsideProgress();
+            if (textProgressWidth + textProgressMargin > progressWidth) {
+                alignTextProgressOutsideProgress();
+            } else {
+                alignTextProgressInsideProgress();
+            }
         }
     }
 
-//    private void setTextProgressAlign() {
-//        tvProgress.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @SuppressWarnings("deprecation")
-//            @Override
-//            public void onGlobalLayout() {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-//                    tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//                else
-//                    tvProgress.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//                tvProgress.setVisibility(View.VISIBLE);
-//            }
-//        });
-//        int textProgressWidth = tvProgress.getMeasuredWidth() + (getTextProgressMargin() * 2);
-//        float ratio = getMax() / getProgress();
-//        int progressWidth = (int) ((getLayoutWidth() - (getPadding() * 2)) / ratio);
-//        if (textProgressWidth + textProgressMargin < progressWidth) {
-//            alignTextProgressInsideProgress();
-//        } else {
-//            alignTextProgressOutsideProgress();
-//        }
-//    }
-
     private void clearTextProgressAlign() {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tvProgress.getLayoutParams();
-        params.addRule(RelativeLayout.ALIGN_LEFT, 0);
-        params.addRule(RelativeLayout.ALIGN_RIGHT, 0);
-        params.addRule(RelativeLayout.LEFT_OF, 0);
-        params.addRule(RelativeLayout.RIGHT_OF, 0);
+        params.removeRule(RelativeLayout.LEFT_OF);
+        params.removeRule(RelativeLayout.RIGHT_OF);
+        params.removeRule(RelativeLayout.ALIGN_LEFT);
+        params.removeRule(RelativeLayout.ALIGN_RIGHT);
+        params.removeRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             params.removeRule(RelativeLayout.START_OF);
             params.removeRule(RelativeLayout.END_OF);
             params.removeRule(RelativeLayout.ALIGN_START);
             params.removeRule(RelativeLayout.ALIGN_END);
+            params.removeRule(RelativeLayout.ALIGN_PARENT_START);
+            params.removeRule(RelativeLayout.ALIGN_PARENT_END);
         }
         tvProgress.setLayoutParams(params);
     }
@@ -213,13 +204,29 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     private void alignTextProgressInsideProgress() {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tvProgress.getLayoutParams();
         if (isReverse()) {
-            params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress);
+            if (textInsideGravity == GRAVITY_END) {
+                params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_END, R.id.layout_progress);
+                }
+            } else {
+                params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress);
+                }
+            }
         } else {
-            params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                params.addRule(RelativeLayout.ALIGN_END, R.id.layout_progress);
+            if (textInsideGravity == GRAVITY_END) {
+                params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress);
+                }
+            } else {
+                params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_END, R.id.layout_progress);
+                }
+            }
         }
         tvProgress.setLayoutParams(params);
     }
@@ -227,13 +234,29 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     private void alignTextProgressOutsideProgress() {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tvProgress.getLayoutParams();
         if (isReverse()) {
-            params.addRule(RelativeLayout.LEFT_OF, R.id.layout_progress);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                params.addRule(RelativeLayout.START_OF, R.id.layout_progress);
+            if (textOutsideGravity == GRAVITY_END) {
+                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_PARENT_START);
+                }
+            } else {
+                params.addRule(RelativeLayout.LEFT_OF, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.START_OF, R.id.layout_progress);
+                }
+            }
         } else {
-            params.addRule(RelativeLayout.RIGHT_OF, R.id.layout_progress);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                params.addRule(RelativeLayout.END_OF, R.id.layout_progress);
+            if (textOutsideGravity == GRAVITY_END) {
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.ALIGN_PARENT_END);
+                }
+            } else {
+                params.addRule(RelativeLayout.RIGHT_OF, R.id.layout_progress);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.addRule(RelativeLayout.END_OF, R.id.layout_progress);
+                }
+            }
         }
         tvProgress.setLayoutParams(params);
     }
@@ -285,12 +308,7 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
 
     @Override
     public void onGlobalLayout() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        } else {
-            //noinspection deprecation
-            tvProgress.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        }
+        tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         drawTextProgressPosition();
     }
 
@@ -304,6 +322,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         ss.textProgressMargin = this.textProgressMargin;
 
         ss.textProgress = this.textProgress;
+
+        ss.textInsideGravity = this.textInsideGravity;
+        ss.textOutsideGravity = this.textOutsideGravity;
+        ss.textPositionPriority = this.textPositionPriority;
         return ss;
     }
 
@@ -322,6 +344,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         this.textProgressMargin = ss.textProgressMargin;
 
         this.textProgress = ss.textProgress;
+
+        this.textInsideGravity = ss.textInsideGravity;
+        this.textOutsideGravity = ss.textOutsideGravity;
+        this.textPositionPriority = ss.textPositionPriority;
     }
 
     private static class SavedState extends BaseSavedState {
@@ -330,6 +356,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         int textProgressMargin;
 
         String textProgress;
+
+        int textInsideGravity;
+        int textOutsideGravity;
+        int textPositionPriority;
 
         SavedState(Parcelable superState) {
             super(superState);
@@ -343,6 +373,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
             this.textProgressMargin = in.readInt();
 
             this.textProgress = in.readString();
+
+            this.textInsideGravity = in.readInt();
+            this.textOutsideGravity = in.readInt();
+            this.textPositionPriority = in.readInt();
         }
 
         @Override
@@ -354,6 +388,10 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
             out.writeInt(this.textProgressMargin);
 
             out.writeString(this.textProgress);
+
+            out.writeInt(this.textInsideGravity);
+            out.writeInt(this.textOutsideGravity);
+            out.writeInt(this.textPositionPriority);
         }
 
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {

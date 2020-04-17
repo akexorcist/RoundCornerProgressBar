@@ -55,6 +55,18 @@ limitations under the License.
         <attr name="rcTextProgressSize" format="dimension" />
         <attr name="rcTextProgressMargin" format="dimension" />
         <attr name="rcTextProgress" format="string" />
+        <attr name="rcTextInsideGravity" format="enum">
+            <enum name="start" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
+        <attr name="rcTextOutsideGravity" format="enum">
+            <enum name="start" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
+        <attr name="rcTextPositionPriority" format="enum">
+            <enum name="inside" value="0"/>
+            <enum name="outside" value="1"/>
+        </attr>
     </declare-styleable>
 
 </resources>

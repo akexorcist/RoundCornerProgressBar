@@ -1036,9 +1036,12 @@
                 app:rcAnimationSpeedScale="2"
                 app:rcAnimationEnable="true"
                 app:rcBackgroundPadding="4dp"
-                app:rcProgress="20"
+                app:rcProgress="30"
                 app:rcProgressColor="@color/custom_progress_red_progress"
                 app:rcReverse="true"
+                app:rcTextPositionPriority="outside"
+                app:rcTextInsideGravity="start"
+                app:rcTextOutsideGravity="start"
                 app:rcTextProgressColor="@color/text"
                 app:rcTextProgressMargin="10dp" />
 

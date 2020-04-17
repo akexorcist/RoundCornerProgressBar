@@ -116,12 +116,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void increaseProgressThree() {
-        progressThree.setProgress(progressThree.getProgress() + 1);
+        progressThree.setProgress(progressThree.getProgress() + 10);
         updateTextProgressThree();
     }
 
     private void decreaseProgressThree() {
-        progressThree.setProgress(progressThree.getProgress() - 1);
+        progressThree.setProgress(progressThree.getProgress() - 10);
         updateTextProgressThree();
     }
 
