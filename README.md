@@ -242,7 +242,7 @@ Thai Language : [Round Corner Progress Bar สำหรับคนบ้าข�
 
 Special Thanks
 ===========================
-Artit Kuiwilai @first087
+@first087, @redsanso
 
 
 What's Next
