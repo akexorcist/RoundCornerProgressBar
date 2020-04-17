@@ -72,6 +72,7 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutProgress.setBackground(progressDrawable);
         } else {
+            //noinspection deprecation
             layoutProgress.setBackgroundDrawable(progressDrawable);
         }
         float ratio = max / progress;

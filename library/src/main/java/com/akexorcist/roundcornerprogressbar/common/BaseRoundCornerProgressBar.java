@@ -184,17 +184,21 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     @Override
     protected void onSizeChanged(int newWidth, int newHeight, int oldWidth, int oldHeight) {
         super.onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
-        if (!isInEditMode()) {
-            totalWidth = newWidth;
-            drawAll();
-            postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    drawPrimaryProgress();
-                    drawSecondaryProgress();
-                }
-            }, 5);
-        }
+        totalWidth = newWidth;
+        drawBackgroundProgress();
+        drawPadding();
+        // Can't instantly change the size of child views (primary & secondary progress)
+        // when `onSizeChanged(...)` called. Using `post` method then
+        // call these methods inside the Runnable will solved this.
+        // And I can't reuse the `drawAll()` method because this problem.
+        post(new Runnable() {
+            @Override
+            public void run() {
+                drawPrimaryProgress();
+                drawSecondaryProgress();
+            }
+        });
+        onViewDraw();
     }
 
     // Redraw all view
