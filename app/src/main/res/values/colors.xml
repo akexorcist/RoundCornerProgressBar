@@ -30,4 +30,14 @@
     <color name="custom_progress_red_header">#ffcc0000</color>
     <color name="custom_progress_red_progress">#ffff4444</color>
     <color name="custom_progress_red_progress_half">#7fff4444</color>
+
+    <array name="custom_progress_red_gradient">
+        <item>#ffcc0000</item>
+        <item>#ffff4444</item>
+    </array>
+
+    <array name="custom_progress_green_gradient">
+        <item>#ff99cc00</item>
+        <item>#ff669900</item>
+    </array>
 </resources>
