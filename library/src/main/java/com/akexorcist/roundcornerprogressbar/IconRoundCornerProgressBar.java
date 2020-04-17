@@ -35,6 +35,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
@@ -76,13 +77,18 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    public IconRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
     @Override
     public int initLayout() {
         return R.layout.layout_icon_round_corner_progress_bar;
     }
 
     @Override
-    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, @NonNull AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgressBar);
 
         iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, -1);
@@ -96,8 +102,8 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         iconPaddingTop = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP));
         iconPaddingBottom = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM));
 
-        int colorIconBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
-        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgressBar_rcIconBackgroundColor, colorIconBackgroundDefault);
+        int defaultIconBackgroundColor = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
+        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgressBar_rcIconBackgroundColor, defaultIconBackgroundColor);
 
         typedArray.recycle();
     }
@@ -137,6 +143,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutProgress.setBackground(progressDrawable);
         } else {
+            //noinspection deprecation
             layoutProgress.setBackgroundDrawable(progressDrawable);
         }
 

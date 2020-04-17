@@ -69,7 +69,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     @Override
-    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, @NonNull AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgressBar);
 
         colorTextProgress = typedArray.getColor(R.styleable.TextRoundCornerProgressBar_rcTextProgressColor, Color.WHITE);

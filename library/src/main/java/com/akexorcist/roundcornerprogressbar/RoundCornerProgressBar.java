@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 
@@ -37,6 +38,7 @@ import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
 @Keep
 public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
 
+
     public RoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -45,13 +47,18 @@ public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    public RoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
     @Override
     public int initLayout() {
         return R.layout.layout_round_corner_progress_bar;
     }
 
     @Override
-    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, @NonNull AttributeSet attrs) {
     }
 
     @Override
