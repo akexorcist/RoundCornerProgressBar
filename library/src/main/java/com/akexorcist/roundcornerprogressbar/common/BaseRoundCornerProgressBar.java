@@ -374,6 +374,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return progress;
     }
 
+    public void setProgress(int progress) {
+        setProgress((float) progress);
+    }
+
     public void setProgress(float progress) {
         if (progress < 0) {
             this.progress = 0;
@@ -395,6 +399,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     public float getSecondaryProgress() {
         return secondaryProgress;
+    }
+
+    public void setSecondaryProgress(int progress) {
+        setSecondaryProgress((float) progress);
     }
 
     public void setSecondaryProgress(float progress) {
