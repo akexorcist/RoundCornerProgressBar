@@ -70,8 +70,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     private int colorBackground;
     private int colorProgress;
-    private int[] colorProgressArray;
     private int colorSecondaryProgress;
+    private int[] colorProgressArray;
     private int[] colorSecondaryProgressArray;
 
     private boolean isReverse;
@@ -456,6 +456,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         ss.colorProgress = this.colorProgress;
         ss.colorSecondaryProgress = this.colorSecondaryProgress;
         ss.colorProgressArray = this.colorProgressArray;
+        ss.colorSecondaryProgressArray = this.colorSecondaryProgressArray;
         ss.isReverse = this.isReverse;
         return ss;
     }
@@ -481,6 +482,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.colorProgress = ss.colorProgress;
         this.colorSecondaryProgress = ss.colorSecondaryProgress;
         this.colorProgressArray = ss.colorProgressArray;
+        this.colorSecondaryProgressArray = ss.colorSecondaryProgressArray;
 
         this.isReverse = ss.isReverse;
 
@@ -504,6 +506,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         int colorProgress;
         int colorSecondaryProgress;
         int[] colorProgressArray;
+        int[] colorSecondaryProgressArray;
 
         boolean isReverse;
 
@@ -524,6 +527,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.colorProgress = in.readInt();
             this.colorSecondaryProgress = in.readInt();
             in.readIntArray(this.colorProgressArray);
+            in.readIntArray(this.colorSecondaryProgressArray);
 
             this.isReverse = in.readByte() != 0;
         }
@@ -542,6 +546,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.colorProgress);
             out.writeInt(this.colorSecondaryProgress);
             out.writeIntArray(this.colorProgressArray);
+            out.writeIntArray(this.colorSecondaryProgressArray);
 
             out.writeByte((byte) (this.isReverse ? 1 : 0));
         }
