@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import com.akexorcist.roundcornerprogressbar.R;
 
 //@SuppressWarnings("unused")
+@SuppressWarnings("unused")
 public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     public static final long DEFAULT_DURATION = 500L;
 

@@ -209,12 +209,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         GradientDrawable backgroundDrawable = createGradientDrawable(backgroundColor);
         int newRadius = radius - (padding / 2);
         backgroundDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutBackground.setBackground(backgroundDrawable);
-        } else {
-            //noinspection deprecation
-            layoutBackground.setBackgroundDrawable(backgroundDrawable);
-        }
+        layoutBackground.setBackground(backgroundDrawable);
     }
 
     // Create an color rectangle gradient drawable

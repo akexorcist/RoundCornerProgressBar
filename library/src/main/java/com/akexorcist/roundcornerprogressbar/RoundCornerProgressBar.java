@@ -75,12 +75,7 @@ public class RoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
                                 boolean isReverse) {
         int newRadius = radius - (padding / 2);
         progressDrawable.setCornerRadii(new float[]{newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius, newRadius});
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutProgress.setBackground(progressDrawable);
-        } else {
-            //noinspection deprecation
-            layoutProgress.setBackgroundDrawable(progressDrawable);
-        }
+        layoutProgress.setBackground(progressDrawable);
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - (padding * 2)) / ratio);
         ViewGroup.MarginLayoutParams progressParams = (ViewGroup.MarginLayoutParams) layoutProgress.getLayoutParams();

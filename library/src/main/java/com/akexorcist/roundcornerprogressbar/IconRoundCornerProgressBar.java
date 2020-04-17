@@ -140,12 +140,7 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
         } else {
             progressDrawable.setCornerRadii(new float[]{0, 0, newRadius, newRadius, newRadius, newRadius, 0, 0});
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            layoutProgress.setBackground(progressDrawable);
-        } else {
-            //noinspection deprecation
-            layoutProgress.setBackgroundDrawable(progressDrawable);
-        }
+        layoutProgress.setBackground(progressDrawable);
 
         float ratio = max / progress;
         int progressWidth = (int) ((totalWidth - ((padding * 2) + ivProgressIcon.getWidth())) / ratio);
@@ -203,11 +198,7 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
         GradientDrawable iconBackgroundDrawable = createGradientDrawable(colorIconBackground);
         int radius = getRadius() - (getPadding() / 2);
         iconBackgroundDrawable.setCornerRadii(new float[]{radius, radius, 0, 0, 0, 0, radius, radius});
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ivProgressIcon.setBackground(iconBackgroundDrawable);
-        } else {
-            ivProgressIcon.setBackgroundDrawable(iconBackgroundDrawable);
-        }
+        ivProgressIcon.setBackground(iconBackgroundDrawable);
     }
 
     public int getIconImageResource() {
