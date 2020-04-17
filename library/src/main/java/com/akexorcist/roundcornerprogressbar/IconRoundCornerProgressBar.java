@@ -82,7 +82,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
     }
 
     @Override
-    protected void initStyleable(Context context, AttributeSet attrs) {
+    protected void initStyleable(@NonNull Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgressBar);
 
         iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, -1);
