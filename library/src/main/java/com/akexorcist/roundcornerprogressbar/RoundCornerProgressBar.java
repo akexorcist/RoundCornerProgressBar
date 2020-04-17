@@ -29,15 +29,14 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
 
 /**
  * Created by Akexorcist on 9/14/15 AD.
  */
 @Keep
-public class RoundCornerProgressBar extends BaseRoundCornerProgressBar {
-
+public class RoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
 
     public RoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);

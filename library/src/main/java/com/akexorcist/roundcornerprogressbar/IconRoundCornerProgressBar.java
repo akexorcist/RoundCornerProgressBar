@@ -37,7 +37,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
 
 /**
@@ -45,7 +45,7 @@ import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
  */
 @SuppressWarnings("unused")
 @Keep
-public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar {
+public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
     protected final static int DEFAULT_ICON_SIZE = 20;
     protected final static int DEFAULT_ICON_PADDING_LEFT = 0;
     protected final static int DEFAULT_ICON_PADDING_RIGHT = 0;

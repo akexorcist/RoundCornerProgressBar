@@ -38,14 +38,14 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Px;
 
-import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
 /**
  * Created by Akexorcist on 9/16/15 AD.
  */
 @SuppressWarnings("unused")
 @Keep
-public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
+public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
     protected final static int DEFAULT_TEXT_SIZE = 16;
     protected final static int DEFAULT_TEXT_MARGIN = 10;
 
@@ -102,6 +102,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutProgress.setBackground(progressDrawable);
         } else {
+            //noinspection deprecation
             layoutProgress.setBackgroundDrawable(progressDrawable);
         }
 
@@ -284,10 +285,12 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     public void onGlobalLayout() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        else
+        } else {
+            //noinspection deprecation
             tvProgress.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        }
         drawTextProgressPosition();
     }
 

@@ -54,30 +54,30 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     protected final static int DEFAULT_PROGRESS_RADIUS = 30;
     protected final static int DEFAULT_BACKGROUND_PADDING = 0;
 
-    private LinearLayout layoutBackground;
-    private LinearLayout layoutProgress;
-    private LinearLayout layoutSecondaryProgress;
+    protected LinearLayout layoutBackground;
+    protected LinearLayout layoutProgress;
+    protected LinearLayout layoutSecondaryProgress;
 
-    private GradientDrawable progressDrawable;
-    private GradientDrawable secondaryProgressDrawable;
+    protected GradientDrawable progressDrawable;
+    protected GradientDrawable secondaryProgressDrawable;
 
-    private int radius;
-    private int padding;
-    private int totalWidth;
+    protected int radius;
+    protected int padding;
+    protected int totalWidth;
 
-    private float max;
-    private float progress;
-    private float secondaryProgress;
+    protected float max;
+    protected float progress;
+    protected float secondaryProgress;
 
-    private int backgroundColor;
+    protected int backgroundColor;
     private int progressColor;
-    private int secondaryProgressColor;
-    private int[] progressColors;
-    private int[] secondaryProgressColors;
+    protected int secondaryProgressColor;
+    protected int[] progressColors;
+    protected int[] secondaryProgressColors;
 
-    private boolean isReverse;
+    protected boolean isReverse;
 
-    private OnProgressChangedListener progressChangedListener;
+    protected OnProgressChangedListener progressChangedListener;
 
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -166,7 +166,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
         updateProgressDrawable();
         updateSecondaryProgressDrawable();
-
         initStyleable(context, attrs);
     }
 
@@ -180,6 +179,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         totalWidth = newWidth;
         drawBackgroundProgress();
         drawPadding();
+        drawProgressReverse();
         // Can't instantly change the size of child views (primary & secondary progress)
         // when `onSizeChanged(...)` called. Using `post` method then
         // call these methods inside the Runnable will solved this.

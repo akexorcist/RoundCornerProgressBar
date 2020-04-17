@@ -32,6 +32,11 @@ limitations under the License.
         <attr name="rcBackgroundColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="AnimatedRoundCornerProgressBar">
+        <attr name="rcAnimationEnable" format="boolean" />
+        <attr name="rcAnimationSpeedScale" format="float" />
+    </declare-styleable>
+
     <declare-styleable name="IconRoundCornerProgressBar">
         <attr name="rcIconSrc" format="integer" />
         <attr name="rcIconSize" format="dimension" />
