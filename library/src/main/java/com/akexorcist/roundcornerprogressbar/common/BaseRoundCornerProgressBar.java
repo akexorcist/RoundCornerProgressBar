@@ -72,6 +72,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     private int colorProgress;
     private int[] colorProgressArray;
     private int colorSecondaryProgress;
+    private int[] colorSecondaryProgressArray;
 
     private boolean isReverse;
 
@@ -139,6 +140,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
         int colorBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
         colorBackground = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor, colorBackgroundDefault);
+
         colorProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, -1);
         int colorProgressId = typedArray.getResourceId(R.styleable.BaseRoundCornerProgressBar_rcProgressColors, 0);
         if (colorProgressId != 0) {
@@ -146,8 +148,14 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         } else {
             colorProgressArray = null;
         }
-        int colorSecondaryProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_secondary_progress_default);
-        colorSecondaryProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, colorSecondaryProgressDefault);
+
+        colorSecondaryProgress = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, -1);
+        int colorSecondaryProgressId = typedArray.getResourceId(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColors, 0);
+        if (colorSecondaryProgressId != 0) {
+            colorSecondaryProgressArray = getResources().getIntArray(colorSecondaryProgressId);
+        } else {
+            colorSecondaryProgressArray = null;
+        }
         typedArray.recycle();
 
         updateProgressDrawable();
@@ -448,7 +456,6 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         ss.colorProgress = this.colorProgress;
         ss.colorSecondaryProgress = this.colorSecondaryProgress;
         ss.colorProgressArray = this.colorProgressArray;
-
         ss.isReverse = this.isReverse;
         return ss;
     }
@@ -473,11 +480,12 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.colorBackground = ss.colorBackground;
         this.colorProgress = ss.colorProgress;
         this.colorSecondaryProgress = ss.colorSecondaryProgress;
+        this.colorProgressArray = ss.colorProgressArray;
 
         this.isReverse = ss.isReverse;
 
-        progressDrawable = createGradientDrawable(colorProgress);
-        secondaryProgressDrawable = createGradientDrawable(colorSecondaryProgress);
+        updateProgressDrawable();
+        updateSecondaryProgressDrawable();
     }
 
     public interface OnProgressChangedListener {
@@ -515,7 +523,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.colorBackground = in.readInt();
             this.colorProgress = in.readInt();
             this.colorSecondaryProgress = in.readInt();
-            this.colorProgressArray = in.createIntArray();
+            in.readIntArray(this.colorProgressArray);
 
             this.isReverse = in.readByte() != 0;
         }
