@@ -83,33 +83,13 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        if (isInEditMode()) {
-            previewLayout(context);
-        } else {
-            setup(context, attrs);
-        }
+        setup(context, attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public BaseRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if (isInEditMode()) {
-            previewLayout(context);
-        } else {
-            setup(context, attrs);
-        }
-    }
-
-    private void previewLayout(Context context) {
-        setGravity(Gravity.CENTER);
-        TextView tv = new TextView(context);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        tv.setLayoutParams(params);
-        tv.setGravity(Gravity.CENTER);
-        tv.setText(getClass().getSimpleName());
-        tv.setTextColor(Color.WHITE);
-        tv.setBackgroundColor(Color.GRAY);
-        addView(tv);
+        setup(context, attrs);
     }
 
     // Setup a progress bar layout by sub class
