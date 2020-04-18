@@ -34,6 +34,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IntDef;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Px;
@@ -48,10 +49,18 @@ import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressB
 public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {
     protected final static int DEFAULT_TEXT_SIZE = 16;
     protected final static int DEFAULT_TEXT_MARGIN = 10;
-    protected final static int GRAVITY_START = 0;
-    protected final static int GRAVITY_END = 1;
-    protected final static int PRIORITY_INSIDE = 0;
-    protected final static int PRIORITY_OUTSIDE = 1;
+    public final static int GRAVITY_START = 0;
+    public final static int GRAVITY_END = 1;
+    public final static int PRIORITY_INSIDE = 0;
+    public final static int PRIORITY_OUTSIDE = 1;
+
+    @IntDef({GRAVITY_START, GRAVITY_END})
+    public @interface TEXT_PROGRESS_GRAVITY {
+    }
+
+    @IntDef({PRIORITY_INSIDE, PRIORITY_OUTSIDE})
+    public @interface TEXT_POSITION_PRIORITY {
+    }
 
     private TextView tvProgress;
     private int colorTextProgress;
@@ -303,6 +312,36 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     public void setTextProgressMargin(@Px int margin) {
         this.textProgressMargin = margin;
         drawTextProgressMargin();
+        drawTextProgressPosition();
+    }
+
+    @TEXT_POSITION_PRIORITY
+    public int getTextPositionPriority() {
+        return textPositionPriority;
+    }
+
+    public void setTextPositionPriority(@TEXT_POSITION_PRIORITY int priority) {
+        this.textPositionPriority = priority;
+        drawTextProgressPosition();
+    }
+
+    @TEXT_PROGRESS_GRAVITY
+    public int getTextInsideGravity() {
+        return textInsideGravity;
+    }
+
+    public void setTextInsideGravity(@TEXT_PROGRESS_GRAVITY int gravity) {
+        this.textInsideGravity = gravity;
+        drawTextProgressPosition();
+    }
+
+    @TEXT_PROGRESS_GRAVITY
+    public int getTextOutsideGravity() {
+        return textOutsideGravity;
+    }
+
+    public void setTextOutsideGravity(@TEXT_PROGRESS_GRAVITY int gravity) {
+        this.textOutsideGravity = gravity;
         drawTextProgressPosition();
     }
 

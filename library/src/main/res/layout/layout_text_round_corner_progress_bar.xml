@@ -44,7 +44,8 @@ limitations under the License.
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:gravity="center" />
+            android:gravity="center"
+            android:maxLines="1" />
 
     </RelativeLayout>
 
