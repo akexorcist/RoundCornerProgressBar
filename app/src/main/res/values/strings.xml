@@ -57,5 +57,12 @@
     <string name="increase_20">+20</string>
     <string name="zero">0</string>
     <string name="enable_animation">Enable Animation</string>
+    <string name="gravity_start">Start</string>
+    <string name="gravity_end">End</string>
+    <string name="inside_gravity">Inside Text Gravity</string>
+    <string name="outside_gravity">Outside Text Gravity</string>
+    <string name="text_position_priority">Text Position Priority</string>
+    <string name="priority_inside">Inside</string>
+    <string name="priority_outside">Outside</string>
 
 </resources>
