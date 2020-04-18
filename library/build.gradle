@@ -33,7 +33,3 @@ dependencies {
 }
 
 //apply from: '../maven_push.gradle'
-
-
-//apply from: '../publish/installv1.gradle'
-//apply from: '../publish/bintrayv1.gradle'
