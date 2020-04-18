@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
 import kotlinx.android.synthetic.main.fragment_centered.*
-import kotlinx.android.synthetic.main.fragment_centered.checkBoxAnimationEnable
 
 class CenteredFragment : Fragment() {
     companion object {
@@ -48,10 +47,10 @@ class CenteredFragment : Fragment() {
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+            progressBarCenteredCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
         } else {
             @Suppress("DEPRECATION")
-            progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
+            progressBarCenteredCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
         }
     }
 
