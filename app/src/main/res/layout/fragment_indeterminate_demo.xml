@@ -31,6 +31,7 @@
             <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateRoundCornerProgressBar
                 android:id="@+id/progressBarIndeterminate1"
                 style="@style/SampleProgress.Indeterminate"
+                app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcProgressColor="@color/sample_progress_primary" />
 
             <TextView
@@ -54,6 +55,7 @@
                 android:id="@+id/progressBarIndeterminate2"
                 style="@style/SampleProgress.Indeterminate"
                 app:rcAnimationSpeedScale="3"
+                app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcProgressColor="@color/sample_progress_primary" />
 
             <TextView
@@ -86,6 +88,7 @@
                 android:id="@+id/progressBarIndeterminate3"
                 style="@style/SampleProgress.Indeterminate"
                 app:rcAnimationSpeedScale="0.5"
+                app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcProgressColor="@color/sample_progress_primary" />
 
             <TextView
@@ -108,6 +111,7 @@
             <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateCenteredRoundCornerProgressBar
                 android:id="@+id/progressBarIndeterminate4"
                 style="@style/SampleProgress.Indeterminate"
+                app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcProgressColor="@color/sample_progress_primary" />
 
             <TextView

@@ -41,7 +41,8 @@
                 app:rcTextInsideGravity="start"
                 app:rcTextOutsideGravity="start"
                 app:rcTextPositionPriority="inside"
-                app:rcTextProgress="50" />
+                app:rcTextProgress="50"
+                app:rcTextProgressColor="@color/sample_progress_text_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -182,7 +183,8 @@
                 app:rcProgress="50"
                 app:rcProgressColor="@color/sample_progress_primary"
                 app:rcRadius="0dp"
-                app:rcTextProgress="50" />
+                app:rcTextProgress="50"
+                app:rcTextProgressColor="@color/sample_progress_text_color" />
 
             <TextView
                 android:id="@+id/textViewText1"
@@ -214,7 +216,8 @@
                 app:rcSecondaryProgress="60"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary"
                 app:rcTextInsideGravity="end"
-                app:rcTextProgress="@string/loading" />
+                app:rcTextProgress="@string/loading"
+                app:rcTextProgressColor="@color/sample_progress_text_color" />
 
             <TextView
                 android:id="@+id/textViewText2"
@@ -247,7 +250,8 @@
                 app:rcSecondaryProgress="75"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary"
                 app:rcTextPositionPriority="outside"
-                app:rcTextProgress="20" />
+                app:rcTextProgress="20"
+                app:rcTextProgressColor="@color/sample_progress_text_color" />
 
             <TextView
                 android:id="@+id/textViewText3"
@@ -277,6 +281,7 @@
                 app:rcProgressColors="@array/sample_progress_gradient"
                 app:rcRadius="20dp"
                 app:rcTextProgress="80"
+                app:rcTextProgressColor="@color/sample_progress_text_color"
                 app:rcTextProgressSize="@dimen/progress_text_size_small" />
 
             <TextView
@@ -306,7 +311,8 @@
                 app:rcProgress="20"
                 app:rcProgressColor="@color/sample_progress_primary"
                 app:rcRadius="20dp"
-                app:rcTextProgress="20" />
+                app:rcTextProgress="20"
+                app:rcTextProgressColor="@color/sample_progress_text_color" />
 
             <TextView
                 android:id="@+id/textViewText5"

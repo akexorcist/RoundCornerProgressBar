@@ -17,6 +17,7 @@
     <style name="Text.Title">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
         <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="SampleCard">
