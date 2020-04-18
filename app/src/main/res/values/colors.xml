@@ -34,6 +34,7 @@
     <color name="sample_card_background">#10FFFFFF</color>
 
     <color name="sample_progress_background">#10FFFFFF</color>
+    <color name="sample_progress_icon_background">#C62828</color>
     <color name="sample_progress_primary">#F44336</color>
     <color name="sample_progress_secondary">#40F44336</color>
     <color name="sample_progress_gradient_start">#C62828</color>

@@ -43,6 +43,11 @@
         <item name="android:layout_height">50dp</item>
     </style>
 
+    <style name="SampleProgress.Icon">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="SampleButton" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_width">@dimen/button_size</item>
