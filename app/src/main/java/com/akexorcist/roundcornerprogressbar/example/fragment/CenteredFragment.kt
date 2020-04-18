@@ -87,7 +87,7 @@ class CenteredFragment : Fragment() {
     |Progress : 50
     |Radius : 0dp
     |Padding : 4dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -98,7 +98,7 @@ class CenteredFragment : Fragment() {
     |Radius : 10dp
     |Radius : 10dp
     |Padding : 2dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -109,7 +109,7 @@ class CenteredFragment : Fragment() {
     |Radius : 80dp
     |Padding : 2dp
     |Reverse : True
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -118,7 +118,7 @@ class CenteredFragment : Fragment() {
     |Progress : 80
     |Radius : 20dp
     |Padding : 2dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 20dp
     """.trimMargin()
 
@@ -127,7 +127,7 @@ class CenteredFragment : Fragment() {
     |Progress : 20
     |Radius : 20dp
     |Padding : 10dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 50dp
     """.trimMargin()
 }

@@ -29,22 +29,22 @@
     </style>
 
     <style name="SampleProgress">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">30dp</item>
     </style>
 
     <style name="SampleProgress.Thin">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">20dp</item>
     </style>
 
     <style name="SampleProgress.Fat">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">50dp</item>
     </style>
 
     <style name="SampleProgress.Icon">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 

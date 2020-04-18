@@ -35,18 +35,16 @@
                 app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcBackgroundPadding="4dp"
                 app:rcMax="100"
-                app:rcProgress="50"
+                app:rcProgress="20"
                 app:rcProgressColor="@color/sample_progress_primary"
                 app:rcRadius="10dp"
-                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgress="30"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin"
-                android:layout_marginEnd="@dimen/margin_small"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 

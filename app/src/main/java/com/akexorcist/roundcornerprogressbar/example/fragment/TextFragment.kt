@@ -77,26 +77,18 @@ class TextFragment : Fragment() {
 
     private fun increaseCustomProgress() {
         progressBarTextCustom.progress = progressBarTextCustom.progress + 2
-        updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
         progressBarTextCustom.progress = progressBarTextCustom.progress + 20
-        updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
         progressBarTextCustom.progress = progressBarTextCustom.progress - 2
-        updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
         progressBarTextCustom.progress = progressBarTextCustom.progress - 20
-        updateCustomSecondaryProgress()
-    }
-
-    private fun updateCustomSecondaryProgress() {
-        progressBarTextCustom.secondaryProgress = progressBarTextCustom.progress + 10
     }
 
     private fun updateInsideTextGravityCustomProgress(gravity: Int) {
@@ -112,7 +104,7 @@ class TextFragment : Fragment() {
     }
 
     private fun updateCustomProgressText() {
-        progressBarTextCustom.progressText = String.format("Point : %.0f", progressBarTextCustom.progress)
+        progressBarTextCustom.progressText = String.format("%.0f", progressBarTextCustom.progress)
     }
 
     private fun getText1Description() = """
@@ -120,7 +112,7 @@ class TextFragment : Fragment() {
     |Progress : 50
     |Radius : 0dp
     |Padding : 4dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -131,7 +123,7 @@ class TextFragment : Fragment() {
     |Radius : 10dp
     |Padding : 2dp
     |Text Inside Gravity : End
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -143,7 +135,7 @@ class TextFragment : Fragment() {
     |Padding : 2dp
     |Reverse : True
     |Text Position Priority : Outside
-    |Width : 250dp
+    |Width : 260dp
     |Height : 30dp
     """.trimMargin()
 
@@ -153,7 +145,7 @@ class TextFragment : Fragment() {
     |Radius : 20dp
     |Padding : 2dp
     |Text Size : 12sp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 20dp
     """.trimMargin()
 
@@ -162,7 +154,7 @@ class TextFragment : Fragment() {
     |Progress : 20
     |Radius : 20dp
     |Padding : 10dp
-    |Width : 250dp
+    |Width : 260dp
     |Height : 50dp
     """.trimMargin()
 }

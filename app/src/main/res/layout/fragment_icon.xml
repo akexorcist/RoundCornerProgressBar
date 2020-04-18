@@ -31,23 +31,24 @@
             <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
                 android:id="@+id/progressBarIconCustom"
                 style="@style/SampleProgress.Icon"
+                app:rcAnimationEnable="false"
                 app:rcBackgroundColor="@color/sample_progress_background"
-                app:rcBackgroundPadding="2dp"
+                app:rcBackgroundPadding="6dp"
                 app:rcIconBackgroundColor="@color/sample_progress_icon_background"
                 app:rcIconPadding="5dp"
-                app:rcIconSize="40dp"
+                app:rcIconSize="30dp"
                 app:rcIconSrc="@drawable/ic_android"
-                app:rcMax="150"
-                app:rcProgress="90"
+                app:rcMax="200"
+                app:rcProgress="30"
                 app:rcProgressColor="@color/sample_progress_primary"
-                app:rcRadius="5dp" />
+                app:rcRadius="8dp"
+                app:rcSecondaryProgress="50"
+                app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin"
-                android:layout_marginEnd="@dimen/margin_small"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -181,9 +182,9 @@
                 app:rcIconSrc="@drawable/ic_android"
                 app:rcMax="150"
                 app:rcProgress="50"
-                app:rcReverse="true"
                 app:rcProgressColor="@color/sample_progress_primary"
                 app:rcRadius="5dp"
+                app:rcReverse="true"
                 app:rcSecondaryProgress="80"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
 

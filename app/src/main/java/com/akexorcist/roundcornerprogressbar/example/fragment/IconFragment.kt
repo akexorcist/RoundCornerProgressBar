@@ -25,18 +25,18 @@ class IconFragment : Fragment() {
         textViewIcon5.text = getIcon5Description()
         textViewIcon6.text = getIcon6Description()
         textViewIcon7.text = getIcon7Description()
-//        buttonIconCustomIncrease.setOnClickListener { increaseCustomProgress() }
-//        buttonIconCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-//        buttonIconCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-//        buttonIconCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-//        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
-//        checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
-//        progressBarIconCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
-//            if (isPrimaryProgress) {
-//                updateCustomProgressText()
-//            }
-//        }
-//        updateCustomProgressText()
+        buttonIconCustomIncrease.setOnClickListener { increaseCustomProgress() }
+        buttonIconCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+        buttonIconCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+        buttonIconCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
+        checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
+        progressBarIconCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+            if (isPrimaryProgress) {
+                updateCustomProgressText()
+            }
+        }
+        updateCustomProgressText()
     }
 
     private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
@@ -77,7 +77,7 @@ class IconFragment : Fragment() {
     }
 
     private fun updateCustomSecondaryProgress() {
-        progressBarIconCustom.secondaryProgress = progressBarIconCustom.progress + 10
+        progressBarIconCustom.secondaryProgress = progressBarIconCustom.progress + 30
     }
 
     private fun updateCustomProgressText() {
@@ -91,7 +91,7 @@ class IconFragment : Fragment() {
     |Icon Padding : 5dp
     |Radius : 5dp
     |Background Padding : 2dp
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -103,7 +103,7 @@ class IconFragment : Fragment() {
     |Radius : 5dp
     |Background Padding : 2dp
     |Reverse : True
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -116,7 +116,7 @@ class IconFragment : Fragment() {
     |Radius : 5dp
     |Background Padding : 5dp
     |Reverse : True
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -127,7 +127,7 @@ class IconFragment : Fragment() {
     |Icon Padding : 5dp
     |Radius : 5dp
     |Background Padding : 10dp
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -138,7 +138,7 @@ class IconFragment : Fragment() {
     |Icon Padding : 3dp
     |Radius : 5dp
     |Background Padding : 5dp
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -149,7 +149,7 @@ class IconFragment : Fragment() {
     |Icon Padding : 3dp
     |Radius : 20dp
     |Background Padding : 10dp
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 
@@ -161,7 +161,7 @@ class IconFragment : Fragment() {
     |Icon Padding : 10dp
     |Radius : 30dp
     |Background Padding : 5dp
-    |Width : 300dp
+    |Width : 260dp
     |Height : Wrap Content
     """.trimMargin()
 }
