@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/padding">
+
+        <TextView
+            style="@style/Text.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/title_centered_round_corner_progress_bar" />
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCenteredCustom"
+                style="@style/SampleProgress"
+                app:rcAnimationEnable="false"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="4dp"
+                app:rcMax="100"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/sample_progress_primary"
+                app:rcRadius="10dp"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonSimpleCustomExtraDecrease"
+                    style="@style/SampleButton"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@string/decrease_20" />
+
+                <Button
+                    android:id="@+id/buttonSimpleCustomDecrease"
+                    style="@style/SampleButton"
+                    android:text="@string/decrease_2" />
+
+                <TextView
+                    android:id="@+id/textViewSimpleCustom"
+                    style="@style/Text.Description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:freezesText="true"
+                    android:gravity="center"
+                    tools:text="1" />
+
+                <Button
+                    android:id="@+id/buttonSimpleCustomIncrease"
+                    style="@style/SampleButton"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@string/increase_2" />
+
+                <Button
+                    android:id="@+id/buttonSimpleCustomExtraIncrease"
+                    style="@style/SampleButton"
+                    android:text="@string/increase_20" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBoxAnimationEnable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enable_animation" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCentered1"
+                style="@style/SampleProgress"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="4dp"
+                app:rcMax="100"
+                app:rcProgress="50"
+                app:rcProgressColor="@color/sample_progress_primary"
+                app:rcRadius="0dp" />
+
+            <TextView
+                android:id="@+id/textViewCentered1"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCentered2"
+                style="@style/SampleProgress"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/sample_progress_primary"
+                app:rcRadius="10dp"
+                app:rcSecondaryProgress="60"
+                app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
+
+            <TextView
+                android:id="@+id/textViewCentered2"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCentered3"
+                style="@style/SampleProgress"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="20"
+                app:rcProgressColor="@color/sample_progress_primary"
+                app:rcRadius="80dp"
+                app:rcReverse="true"
+                app:rcSecondaryProgress="75"
+                app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
+
+            <TextView
+                android:id="@+id/textViewCentered3"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCentered4"
+                style="@style/SampleProgress.Thin"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="80"
+                app:rcProgressColors="@array/sample_progress_gradient"
+                app:rcRadius="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCentered4"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+                android:id="@+id/progressBarCentered5"
+                style="@style/SampleProgress.Fat"
+                app:rcBackgroundColor="@color/sample_progress_background"
+                app:rcBackgroundPadding="10dp"
+                app:rcMax="200"
+                app:rcProgress="20"
+                app:rcProgressColor="@color/sample_progress_primary"
+                app:rcRadius="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCentered5"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
