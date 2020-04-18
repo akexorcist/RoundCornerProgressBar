@@ -143,8 +143,25 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         return isSecondaryProgressAnimating;
     }
 
-    protected void onProgressChangeAnimationEnd(LinearLayout layout) {
+    protected void onProgressChangeAnimationUpdate(LinearLayout layout, float current, float to) {
+    }
 
+    protected void onProgressChangeAnimationEnd(LinearLayout layout) {
+    }
+
+    protected void stopProgressAnimationImmediately() {
+        clearProgressAnimation();
+        clearSecondaryProgressAnimation();
+        if (isAnimationEnabled && isProgressAnimating) {
+            disableAnimation();
+            if (isProgressAnimating) {
+                super.setProgress(lastProgress);
+            }
+            if (isSecondaryProgressAnimating) {
+                super.setSecondaryProgress(lastProgress);
+            }
+            enableAnimation();
+        }
     }
 
     private long getAnimationDuration(float from, float to, float max, float scale) {
@@ -165,12 +182,13 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         progressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                isProgressAnimating = false;
                 onProgressAnimationEnd();
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
-                onProgressAnimationEnd();
+                isProgressAnimating = false;
             }
         });
         progressAnimator.start();
@@ -178,10 +196,10 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void onUpdateProgressByAnimation(float progress) {
         super.setProgress(progress);
+        onProgressChangeAnimationUpdate(layoutProgress, progress, lastProgress);
     }
 
     private void onProgressAnimationEnd() {
-        isProgressAnimating = false;
         onProgressChangeAnimationEnd(layoutProgress);
     }
 
@@ -210,12 +228,13 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         secondaryProgressAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                isSecondaryProgressAnimating = false;
                 onSecondaryProgressAnimationEnd();
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
-                onSecondaryProgressAnimationEnd();
+                isSecondaryProgressAnimating = false;
             }
         });
         secondaryProgressAnimator.start();
@@ -223,10 +242,10 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void onUpdateSecondaryProgressByAnimation(float progress) {
         super.setSecondaryProgress(progress);
+        onProgressChangeAnimationUpdate(layoutSecondaryProgress, progress, lastProgress);
     }
 
     private void onSecondaryProgressAnimationEnd() {
-        isSecondaryProgressAnimating = false;
         onProgressChangeAnimationEnd(layoutSecondaryProgress);
     }
 
