@@ -31,6 +31,19 @@
     <color name="custom_progress_red_progress">#ffff4444</color>
     <color name="custom_progress_red_progress_half">#7fff4444</color>
 
+    <color name="sample_card_background">#10FFFFFF</color>
+
+    <color name="sample_progress_background">#10FFFFFF</color>
+    <color name="sample_progress_primary">#F44336</color>
+    <color name="sample_progress_secondary">#40F44336</color>
+    <color name="sample_progress_gradient_start">#C62828</color>
+    <color name="sample_progress_gradient_end">#E57373</color>
+
+    <array name="sample_progress_gradient">
+        <item>@color/sample_progress_gradient_start</item>
+        <item>@color/sample_progress_gradient_end</item>
+    </array>
+
     <array name="custom_progress_red_gradient">
         <item>#ffcc0000</item>
         <item>#ffff4444</item>

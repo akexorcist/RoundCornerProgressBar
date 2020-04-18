@@ -10,6 +10,19 @@
     <string name="title_activity_list_view_fragment">ListViewFragment</string>
     <string name="title_activity_manual_create">ManualCreateActivity</string>
 
+    <string name="blank" />
+
+    <string name="tab_round_corner_progress_bar">Regular</string>
+    <string name="tab_centered_round_corner_progress_bar">Centered</string>
+    <string name="tab_icon_round_corner_progress_bar">Icon</string>
+    <string name="tab_text_round_corner_progress_bar">Text</string>
+    <string name="tab_indeterminate_round_corner_progress_bar">Indeterminate</string>
+
+    <string name="title_round_corner_progress_bar">Round Corner Progress Bar</string>
+    <string name="title_centered_round_corner_progress_bar">Centered Round Corner Progress Bar</string>
+    <string name="title_icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
+    <string name="title_text_round_corner_progress_bar">Text Round Corner Progress Bar</string>
+    <string name="title_indeterminate_round_corner_progress_bar">Indeterminate Round Corner Progress Bar</string>
 
     <string name="round_corner_progress_bar">Round Corner Progress Bar</string>
     <string name="centered_round_corner_progress_bar">Centered Round Corner Progress Bar</string>
@@ -37,7 +50,12 @@
     <string name="text_corner_rounder_2">Max : 65535\nProgress : 12890.70\nWidth : 250dp\nHeight : 30dp\nRadius : 10dp\nBackground Padding : 10dp\nText Progress Margin : 5dp\nText Progress Size : 12sp</string>
     <string name="text_corner_rounder_3">Max : 17\nProgress : 8\nWidth : 250dp\nHeight : 40dp\nRadius : 2dp\nBackground Padding : 0dp\nText Progress Margin : 5dp\nText Progress Size : 20sp\nReverse : True</string>
     <string name="decrease"><![CDATA[<]]></string>
+    <string name="decrease_2">-2</string>
+    <string name="decrease_20">-20</string>
     <string name="increase"><![CDATA[>]]></string>
+    <string name="increase_2">+2</string>
+    <string name="increase_20">+20</string>
     <string name="zero">0</string>
+    <string name="enable_animation">Enable Animation</string>
 
 </resources>

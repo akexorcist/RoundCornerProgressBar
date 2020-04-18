@@ -1,3 +1,11 @@
 <resources>
     <dimen name="button_size">48dp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
 </resources>
