@@ -41,6 +41,9 @@ import androidx.annotation.Px;
 
 import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Created by Akexorcist on 9/16/15 AD.
  */
@@ -54,10 +57,12 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     public final static int PRIORITY_INSIDE = 0;
     public final static int PRIORITY_OUTSIDE = 1;
 
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({GRAVITY_START, GRAVITY_END})
     public @interface TEXT_PROGRESS_GRAVITY {
     }
 
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({PRIORITY_INSIDE, PRIORITY_OUTSIDE})
     public @interface TEXT_POSITION_PRIORITY {
     }
