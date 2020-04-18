@@ -78,8 +78,8 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
             progress = Math.min(progress, max);
         }
         clearProgressAnimation();
+        this.lastProgress = progress;
         if (isAnimationEnabled) {
-            this.lastProgress = progress;
             startProgressAnimation(super.getProgress(), progress);
         } else {
             super.setProgress(progress);
@@ -108,8 +108,8 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
             progress = Math.min(progress, max);
         }
         clearSecondaryProgressAnimation();
+        this.lastSecondaryProgress = progress;
         if (isAnimationEnabled) {
-            this.lastSecondaryProgress = progress;
             startSecondaryProgressAnimation(super.getSecondaryProgress(), progress);
         } else {
             super.setSecondaryProgress(progress);
