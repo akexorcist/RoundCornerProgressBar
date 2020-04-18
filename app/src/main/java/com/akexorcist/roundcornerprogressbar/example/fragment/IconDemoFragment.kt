@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
-import kotlinx.android.synthetic.main.fragment_icon.*
+import kotlinx.android.synthetic.main.fragment_icon_demo.*
 
-class IconFragment : Fragment() {
+class IconDemoFragment : Fragment() {
     companion object {
-        fun newInstance(): Fragment = IconFragment()
+        fun newInstance(): Fragment = IconDemoFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_icon, container, false)
+        inflater.inflate(R.layout.fragment_icon_demo, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

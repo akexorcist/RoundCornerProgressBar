@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
 import com.akexorcist.roundcornerprogressbar.example.R
-import kotlinx.android.synthetic.main.fragment_text.*
+import kotlinx.android.synthetic.main.fragment_text_demo.*
 
-class TextFragment : Fragment() {
+class TextDemoFragment : Fragment() {
     companion object {
-        fun newInstance(): Fragment = TextFragment()
+        fun newInstance(): Fragment = TextDemoFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_text, container, false)
+        inflater.inflate(R.layout.fragment_text_demo, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

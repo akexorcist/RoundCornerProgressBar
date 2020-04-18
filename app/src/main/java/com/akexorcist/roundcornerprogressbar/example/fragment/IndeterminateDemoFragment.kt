@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
-import kotlinx.android.synthetic.main.fragment_indeterminate.*
+import kotlinx.android.synthetic.main.fragment_indeterminate_demo.*
 
-class IndeterminateFragment : Fragment() {
+class IndeterminateDemoFragment : Fragment() {
     companion object {
-        fun newInstance(): Fragment = IndeterminateFragment()
+        fun newInstance(): Fragment = IndeterminateDemoFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_indeterminate, container, false)
+        inflater.inflate(R.layout.fragment_indeterminate_demo, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -9,11 +9,11 @@ class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
     override fun getItemCount(): Int = 5
 
     override fun createFragment(position: Int): Fragment = when (position) {
-        0 -> SimpleFragment.newInstance()
-        1 -> CenteredFragment.newInstance()
-        2 -> IconFragment.newInstance()
-        3 -> TextFragment.newInstance()
-        4 -> IndeterminateFragment.newInstance()
-        else -> SimpleFragment.newInstance()
+        0 -> SimpleDemoFragment.newInstance()
+        1 -> CenteredDemoFragment.newInstance()
+        2 -> IconDemoFragment.newInstance()
+        3 -> TextDemoFragment.newInstance()
+        4 -> IndeterminateDemoFragment.newInstance()
+        else -> SimpleDemoFragment.newInstance()
     }
 }
