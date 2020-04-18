@@ -23,6 +23,7 @@
     <string name="title_icon_round_corner_progress_bar">Icon Round Corner Progress Bar</string>
     <string name="title_text_round_corner_progress_bar">Text Round Corner Progress Bar</string>
     <string name="title_indeterminate_round_corner_progress_bar">Indeterminate Round Corner Progress Bar</string>
+    <string name="title_indeterminate_centered_round_corner_progress_bar">Indeterminate Centered Round Corner Progress Bar</string>
 
     <string name="round_corner_progress_bar">Round Corner Progress Bar</string>
     <string name="centered_round_corner_progress_bar">Centered Round Corner Progress Bar</string>

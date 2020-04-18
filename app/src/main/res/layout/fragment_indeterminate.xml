@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/padding">
+
+        <TextView
+            style="@style/Text.Title"
+            android:layout_width="@dimen/content_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/title_indeterminate_round_corner_progress_bar" />
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateRoundCornerProgressBar
+                android:id="@+id/progressBarIndeterminate1"
+                style="@style/SampleProgress.Indeterminate"
+                app:rcProgressColor="@color/sample_progress_primary" />
+
+            <TextView
+                android:id="@+id/textViewIndeterminate1"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateRoundCornerProgressBar
+                android:id="@+id/progressBarIndeterminate2"
+                style="@style/SampleProgress.Indeterminate"
+                app:rcAnimationSpeedScale="3"
+                app:rcProgressColor="@color/sample_progress_primary" />
+
+            <TextView
+                android:id="@+id/textViewIndeterminate2"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Text.Title"
+            android:layout_width="@dimen/content_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/title_indeterminate_centered_round_corner_progress_bar" />
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateCenteredRoundCornerProgressBar
+                android:id="@+id/progressBarIndeterminate3"
+                style="@style/SampleProgress.Indeterminate"
+                app:rcAnimationSpeedScale="0.5"
+                app:rcProgressColor="@color/sample_progress_primary" />
+
+            <TextView
+                android:id="@+id/textViewIndeterminate3"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/SampleCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateCenteredRoundCornerProgressBar
+                android:id="@+id/progressBarIndeterminate4"
+                style="@style/SampleProgress.Indeterminate"
+                app:rcProgressColor="@color/sample_progress_primary" />
+
+            <TextView
+                android:id="@+id/textViewIndeterminate4"
+                style="@style/Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

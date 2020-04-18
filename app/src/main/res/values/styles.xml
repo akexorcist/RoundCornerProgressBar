@@ -29,23 +29,28 @@
     </style>
 
     <style name="SampleProgress">
-        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_width">@dimen/content_width</item>
         <item name="android:layout_height">30dp</item>
     </style>
 
     <style name="SampleProgress.Thin">
-        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_width">@dimen/content_width</item>
         <item name="android:layout_height">20dp</item>
     </style>
 
     <style name="SampleProgress.Fat">
-        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_width">@dimen/content_width</item>
         <item name="android:layout_height">50dp</item>
     </style>
 
     <style name="SampleProgress.Icon">
-        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_width">@dimen/content_width</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SampleProgress.Indeterminate">
+        <item name="android:layout_width">@dimen/content_width</item>
+        <item name="android:layout_height">10dp</item>
     </style>
 
     <style name="SampleButton" parent="@style/Widget.MaterialComponents.Button">

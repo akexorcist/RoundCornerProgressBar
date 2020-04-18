@@ -36,9 +36,11 @@ public class IndeterminateCenteredRoundCornerProgressBar extends CenteredRoundCo
 
     @Override
     protected void onProgressChangeAnimationEnd(LinearLayout layout) {
-        disableAnimation();
-        setProgress(0);
-        enableAnimation();
-        setProgress(100);
+        if (isShown()) {
+            disableAnimation();
+            setProgress(0);
+            enableAnimation();
+            setProgress(100);
+        }
     }
 }
