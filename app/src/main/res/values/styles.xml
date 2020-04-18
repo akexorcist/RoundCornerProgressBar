@@ -15,7 +15,7 @@
     </style>
 
     <style name="Text.Title">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
         <item name="android:lineSpacingExtra">6dp</item>
     </style>
 
