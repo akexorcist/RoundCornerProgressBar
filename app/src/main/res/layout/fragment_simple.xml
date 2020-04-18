@@ -27,9 +27,9 @@
                 app:rcBackgroundPadding="4dp"
                 app:rcMax="100"
                 app:rcProgress="50"
-                app:rcSecondaryProgress="60"
                 app:rcProgressColor="@color/sample_progress_primary"
                 app:rcRadius="10dp"
+                app:rcSecondaryProgress="60"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
 
             <LinearLayout
@@ -58,6 +58,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:freezesText="true"
                     android:gravity="center"
                     tools:text="1" />
 
