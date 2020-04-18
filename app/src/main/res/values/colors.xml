@@ -5,32 +5,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#E91E63</color>
 
-    <color name="text">#ffffffff</color>
-    <color name="background_dark">#ff363636</color>
-    <color name="background_content">#ff454344</color>
-
-    <color name="custom_progress_background">#ff3c3a3b</color>
-
-    <color name="custom_progress_green_header">#ff99cc00</color>
-    <color name="custom_progress_green_progress">#ff669900</color>
-    <color name="custom_progress_green_progress_half">#7f669900</color>
-
-    <color name="custom_progress_orange_header">#ffffbb33</color>
-    <color name="custom_progress_orange_progress">#ffff8800</color>
-    <color name="custom_progress_orange_progress_half">#7fff8800</color>
-
-    <color name="custom_progress_blue_header">#ff33b5e5</color>
-    <color name="custom_progress_blue_progress">#ff0099cc</color>
-    <color name="custom_progress_blue_progress_half">#7f0099cc</color>
-
-    <color name="custom_progress_purple_header">#ffaa66cc</color>
-    <color name="custom_progress_purple_progress">#ff9933cc</color>
-    <color name="custom_progress_purple_progress_half">#7f9933cc</color>
-
-    <color name="custom_progress_red_header">#ffcc0000</color>
-    <color name="custom_progress_red_progress">#ffff4444</color>
-    <color name="custom_progress_red_progress_half">#7fff4444</color>
-
     <color name="sample_card_background">#10FFFFFF</color>
 
     <color name="sample_progress_background">#10FFFFFF</color>
@@ -43,15 +17,5 @@
     <array name="sample_progress_gradient">
         <item>@color/sample_progress_gradient_start</item>
         <item>@color/sample_progress_gradient_end</item>
-    </array>
-
-    <array name="custom_progress_red_gradient">
-        <item>#ffcc0000</item>
-        <item>#ffff4444</item>
-    </array>
-
-    <array name="custom_progress_green_gradient">
-        <item>#ff99cc00</item>
-        <item>#ff669900</item>
     </array>
 </resources>

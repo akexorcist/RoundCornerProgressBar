@@ -20,7 +20,7 @@
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
-            android:text="@string/title_round_corner_progress_bar" />
+            android:text="@string/title_text_round_corner_progress_bar" />
 
         <LinearLayout
             style="@style/SampleCard"
@@ -214,7 +214,7 @@
                 app:rcSecondaryProgress="60"
                 app:rcSecondaryProgressColor="@color/sample_progress_secondary"
                 app:rcTextInsideGravity="end"
-                app:rcTextProgress="40" />
+                app:rcTextProgress="@string/loading" />
 
             <TextView
                 android:id="@+id/textViewText2"
