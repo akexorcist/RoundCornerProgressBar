@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
 import kotlinx.android.synthetic.main.fragment_centered.*
 import kotlinx.android.synthetic.main.fragment_centered.checkBoxAnimationEnable
-import kotlinx.android.synthetic.main.fragment_simple.*
 
 class CenteredFragment : Fragment() {
     companion object {
