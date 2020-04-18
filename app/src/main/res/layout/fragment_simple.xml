@@ -87,13 +87,14 @@
                 android:id="@+id/checkBoxAnimationEnable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/enable_animation" />
 
             <CheckBox
                 android:id="@+id/checkBoxGradientProgressColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gradient_progress_color" />
+                android:text="@string/apply_gradient_progress_color" />
 
         </LinearLayout>
 

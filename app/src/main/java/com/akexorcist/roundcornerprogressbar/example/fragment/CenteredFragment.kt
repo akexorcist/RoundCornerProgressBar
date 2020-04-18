@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
 import kotlinx.android.synthetic.main.fragment_centered.*
+import kotlinx.android.synthetic.main.fragment_centered.checkBoxAnimationEnable
+import kotlinx.android.synthetic.main.fragment_simple.*
 
 class CenteredFragment : Fragment() {
     companion object {
@@ -28,6 +30,7 @@ class CenteredFragment : Fragment() {
         buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
         buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
         checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
+        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
         progressBarCenteredCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
                 updateCustomProgressText()
@@ -41,6 +44,15 @@ class CenteredFragment : Fragment() {
             progressBarCenteredCustom.enableAnimation()
         } else {
             progressBarCenteredCustom.disableAnimation()
+        }
+    }
+
+    private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
+        if (isChecked) {
+            progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+        } else {
+            @Suppress("DEPRECATION")
+            progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
         }
     }
 
@@ -85,6 +97,7 @@ class CenteredFragment : Fragment() {
     |Max : 100
     |Progress : 40
     |SecondaryProgress : 60
+    |Radius : 10dp
     |Radius : 10dp
     |Padding : 2dp
     |Width : 250dp
