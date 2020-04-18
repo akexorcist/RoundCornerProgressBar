@@ -27,7 +27,8 @@ class SimpleFragment : Fragment() {
         buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
         buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
         buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
+        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckedChange(isChecked) }
+        checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
         progressBarSimpleCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
                 updateCustomProgressText()
@@ -36,11 +37,20 @@ class SimpleFragment : Fragment() {
         updateCustomProgressText()
     }
 
-    private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
+    private fun onAnimationEnableCheckedChange(isChecked: Boolean) {
         if (isChecked) {
             progressBarSimpleCustom.enableAnimation()
         } else {
             progressBarSimpleCustom.disableAnimation()
+        }
+    }
+
+    private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
+        if (isChecked) {
+            progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+        } else {
+            @Suppress("DEPRECATION")
+            progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
         }
     }
 

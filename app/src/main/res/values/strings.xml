@@ -12,7 +12,7 @@
 
     <string name="blank" />
 
-    <string name="tab_round_corner_progress_bar">Regular</string>
+    <string name="tab_round_corner_progress_bar">Simple</string>
     <string name="tab_centered_round_corner_progress_bar">Centered</string>
     <string name="tab_icon_round_corner_progress_bar">Icon</string>
     <string name="tab_text_round_corner_progress_bar">Text</string>
@@ -57,6 +57,7 @@
     <string name="increase_20">+20</string>
     <string name="zero">0</string>
     <string name="enable_animation">Enable Animation</string>
+    <string name="gradient_progress_color">Gradient Progress Color</string>
     <string name="gravity_start">Start</string>
     <string name="gravity_end">End</string>
     <string name="inside_gravity">Inside Text Gravity</string>
