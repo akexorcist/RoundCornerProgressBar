@@ -51,18 +51,18 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/buttonSimpleCustomExtraDecrease"
+                    android:id="@+id/buttonCenteredCustomExtraDecrease"
                     style="@style/SampleButton"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:text="@string/decrease_20" />
 
                 <Button
-                    android:id="@+id/buttonSimpleCustomDecrease"
+                    android:id="@+id/buttonCenteredCustomDecrease"
                     style="@style/SampleButton"
                     android:text="@string/decrease_2" />
 
                 <TextView
-                    android:id="@+id/textViewSimpleCustom"
+                    android:id="@+id/textViewCenteredCustom"
                     style="@style/Text.Description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -72,13 +72,13 @@
                     tools:text="1" />
 
                 <Button
-                    android:id="@+id/buttonSimpleCustomIncrease"
+                    android:id="@+id/buttonCenteredCustomIncrease"
                     style="@style/SampleButton"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:text="@string/increase_2" />
 
                 <Button
-                    android:id="@+id/buttonSimpleCustomExtraIncrease"
+                    android:id="@+id/buttonCenteredCustomExtraIncrease"
                     style="@style/SampleButton"
                     android:text="@string/increase_20" />
             </LinearLayout>

@@ -18,15 +18,15 @@ class CenteredFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textViewCentered1.text = getSimple1Description()
-        textViewCentered2.text = getSimple2Description()
-        textViewCentered3.text = getSimple3Description()
-        textViewCentered4.text = getSimple4Description()
-        textViewCentered5.text = getSimple5Description()
-        buttonSimpleCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+        textViewCentered1.text = getCentered1Description()
+        textViewCentered2.text = getCentered2Description()
+        textViewCentered3.text = getCentered3Description()
+        textViewCentered4.text = getCentered4Description()
+        textViewCentered5.text = getCentered5Description()
+        buttonCenteredCustomIncrease.setOnClickListener { increaseCustomProgress() }
+        buttonCenteredCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+        buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+        buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
         checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
         progressBarCenteredCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
@@ -69,10 +69,10 @@ class CenteredFragment : Fragment() {
     }
 
     private fun updateCustomProgressText() {
-        textViewSimpleCustom.text = String.format("%.0f", progressBarCenteredCustom.progress)
+        textViewCenteredCustom.text = String.format("%.0f", progressBarCenteredCustom.progress)
     }
 
-    private fun getSimple1Description() = """
+    private fun getCentered1Description() = """
     |Max : 100
     |Progress : 50
     |Radius : 0dp
@@ -81,7 +81,7 @@ class CenteredFragment : Fragment() {
     |Height : 30dp
     """.trimMargin()
 
-    private fun getSimple2Description() = """
+    private fun getCentered2Description() = """
     |Max : 100
     |Progress : 40
     |SecondaryProgress : 60
@@ -91,7 +91,7 @@ class CenteredFragment : Fragment() {
     |Height : 30dp
     """.trimMargin()
 
-    private fun getSimple3Description() = """
+    private fun getCentered3Description() = """
     |Max : 100
     |Progress : 20
     |SecondaryProgress : 75
@@ -102,7 +102,7 @@ class CenteredFragment : Fragment() {
     |Height : 30dp
     """.trimMargin()
 
-    private fun getSimple4Description() = """
+    private fun getCentered4Description() = """
     |Max : 100
     |Progress : 80
     |Radius : 20dp
@@ -111,7 +111,7 @@ class CenteredFragment : Fragment() {
     |Height : 20dp
     """.trimMargin()
 
-    private fun getSimple5Description() = """
+    private fun getCentered5Description() = """
     |Max : 200
     |Progress : 20
     |Radius : 20dp
