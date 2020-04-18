@@ -28,7 +28,7 @@ class CenteredFragment : Fragment() {
         buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
         buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
         checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
-        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
+        checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
         progressBarCenteredCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
                 updateCustomProgressText()
