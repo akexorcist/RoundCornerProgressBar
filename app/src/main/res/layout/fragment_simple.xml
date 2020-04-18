@@ -187,6 +187,7 @@
             android:orientation="vertical">
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progressBarSimple4"
                 style="@style/SampleProgress.Thin"
                 app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcBackgroundPadding="2dp"
@@ -214,6 +215,7 @@
             android:orientation="vertical">
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progressBarSimple5"
                 style="@style/SampleProgress.Fat"
                 app:rcBackgroundColor="@color/sample_progress_background"
                 app:rcBackgroundPadding="10dp"
