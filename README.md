@@ -37,61 +37,73 @@ Demo
 
 Overview
 ===
-Round Corner Progress Bar
----
+### Round Corner Progress Bar
+
 Simple round corner progress bar
 
 ![Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_01.jpg)
 
-CenteredRoundCornerProgressBar
----
+### CenteredRoundCornerProgressBar
+
 Round corner progress bar with progress expands from the center  
 
-Icon Round Corner Progress Bar
----
+### Icon Round Corner Progress Bar
+
 Round corner progress bar with heading icon
 
 ![Icon Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_02.jpg)
 
-TextRoundCornerProgressBar
----
+### TextRoundCornerProgressBar
 Round corner progress bar with text inside the progress
 
-IndeterminateRoundCornerProgressBar
----
+### IndeterminateRoundCornerProgressBar
+
 Simple round corner progress bar with indeterminate animation
 
-IndeterminateCenteredRoundCornerProgressBar
----
+### IndeterminateCenteredRoundCornerProgressBar
+
 Centered Round corner progress bar with indeterminate animation
 
 
 Installation
 ===============================
 
-### Maven ###
-```
-<dependency>
-  <groupId>com.akexorcist</groupId>
-  <artifactId>round-corner-progress-bar</artifactId>
-  <version>2.1.0</version>
-</dependency>
-```
-
-### Gradle ###
-```
+```groovy
 implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
 ```
 
 Migration from 2.0.x to 2.1.0
 ===
+### Moving from MavenCentral to JCenter with new artifact ID
+From (MavenCentral)
 
+```groovy
+// Old (MavenCentral)
+implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+
+// New (JCenter)
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+```
 
 
 Feature
 ===========================
-* Progress's background color, corner radius and padding customize-able
-* Primary and secondary progress supported 
+
+### Standard Features
+
+* Primary progress and secondary progress supported
+* Primary progress, secondary progress and progress background color are customizable
+* Customize your own progress background padding
+* Customize your own progress's corner radius
+* Reversing progress bar supported
+* Progress bar with gradient color? Yes!
+* Progress change animation? Absolutely yes!
+
+### Component Features
+* Progress expanding from center with `CenteredRoundCornerProgressBar` 
+* Heading icon supported with `IconRoundCornerProgressBar`
+* Text inside progress supported with `TextRoundCornerProgressBar`
+* Indeterminate animation supported with `IndeterminateRoundCornerProgressBar` or `IndeterminateCenteredRoundCornerProgressBar`
 
 
 Usage
@@ -104,7 +116,11 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 
 RoundCornerProgressBar
 -------------------------------
-### Layout XML ######
+
+![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
+
+
+### Layout XML
 ```xml
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         app:rcProgress="float"
@@ -115,113 +131,59 @@ RoundCornerProgressBar
         app:rcReverse="boolean"
         app:rcProgressColor="color"
         app:rcSecondaryProgressColor="color"
-        app:rcBackgroundColor="color" />
-```
-
-![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
-
-### Public Methods ######
-```java
-int getRadius()
-void setRadius(int radius)
-int getPadding()
-void setPadding(int padding)
-float getMax()
-void setMax(float max)
-
-float getProgress()
-void setProgress(float progress)
-float getSecondaryProgressWidth()
-float getSecondaryProgress()
-void setSecondaryProgress(float secondaryProgress)
-
-int getProgressBackgroundColor()
-void setProgressBackgroundColor(int colorBackground)
-int getProgressColor()
-void setProgressColor(int colorProgress)
-int getSecondaryProgressColor()
-void setSecondaryProgressColor(int colorSecondaryProgress)
-
-boolean isReverse()
-void setReverse(boolean isReverse)
-
-void setOnProgressChangedListener(OnProgressChangedListener listener)
-float getLayoutWidth()
-void invalidate()
-```
-
-IconRoundCornerProgressBar
--------------------------------
-### Layout XML ######
-```xml
-<com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
-        app:rcProgress="float"
-        app:rcSecondaryProgress="float"
-        app:rcMax="float"
-        app:rcRadius="dimension"
-        app:rcBackgroundPadding="dimension"
-        app:rcReverse="boolean"
-        app:rcProgressColor="color"
-        app:rcSecondaryProgressColor="color"
         app:rcBackgroundColor="color"
-        app:rcIconSrc="integer"
-        app:rcIconSize="dimension"
-        app:rcIconWidth="dimension"
-        app:rcIconHeight="dimension"
-        app:rcIconPadding="dimension"
-        app:rcIconPaddingLeft="dimension"
-        app:rcIconPaddingRight="dimension"
-        app:rcIconPaddingTop="dimension"
-        app:rcIconPaddingBottom="dimension"
-        app:rcIconBackgroundColor="color" />
+        app:rcAnimationEnable="boolean"
+        app:rcAnimationSpeedScale="float" />
 ```
 
-![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_02.jpg)
+### Public Methods
+```kotlin
+// Progress
+fun getMax(): Float
+fun setMax(max: Float)
+fun getProgress(): Float
+fun setProgress(progress: Int)
+fun setProgress(progress: Float)
+fun getSecondaryProgress(): Float
+fun setSecondaryProgress(secondaryProgress: Int)
+fun setSecondaryProgress(secondaryProgress: Float)
 
-### Public method on IconRoundCornerProgressBar ###
-```java
-int getIconImageResource()
-void setIconImageResource(int resId)
-Bitmap getIconImageBitmap()
-void setIconImageBitmap(Bitmap bitmap)
-Drawable getIconImageDrawable()
-void setIconImageDrawable(Drawable drawable)
+// Dimension
+fun getRadius(): Int
+fun setRadius(radius: Int)
+fun getPadding(): Int
+fun setPadding(padding: Int)
+fun getLayoutWidth(): Float
 
-int getIconSize()
-void setIconSize(int size)
+// Animation
+fun enableAnimation()
+fun disableAnimation()
+fun getAnimationSpeedScale(): Float
+fun setAnimationSpeedScale(scale: Float)
+fun isProgressAnimating(): Boolean
+fun isSecondaryProgressAnimating(): Boolean
 
-int getIconPadding()
-void setIconPadding(int padding)
-int getIconPaddingLeft()
-void setIconPaddingLeft(int padding)
-int getIconPaddingRight()
-void setIconPaddingRight(int padding)
-int getIconPaddingTop()
-void setIconPaddingTop(int padding)
-int getIconPaddingBottom()
-void setIconPaddingBottom(int padding)
+// Reversing Progress
+fun isReverse(): Boolean
+fun setReverse(isReverse: Boolean)
 
-int getColorIconBackground()
-void setIconBackgroundColor(int color)
+// Color
+fun getProgressBackgroundColor(): Int
+fun setProgressBackgroundColor(color: Int)
+fun getProgressColor(): Int
+fun setProgressColor(color: Int)
+fun getProgressColors(): IntArray
+fun setProgressColors(colors: IntArray)
+fun getSecondaryProgressColor(): Int
+fun setSecondaryProgressColor(color: Int)
+fun getSecondaryProgressColors(): IntArray
+fun setSecondaryProgressColors(colors: IntArray)
 
-void setOnIconClickListener(OnIconClickListener listener)
+// Listener
+fun setOnProgressChangedListener(listener: OnProgressChangedListener)
 ```
 
-### Icon Size & Padding ###
-![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_03.jpg)
-
-Progress Bar Reversing
--------------------------------
-![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
-
-Recommendation for progress bar's height
--------------------------------
-* `android:layout_height` for RoundCornerProgressBar's height 
-* `app:rcIconSize` for IconRoundCornerProgressBar's height
-
-
-Example
-===========================
+### Example
 ```xml
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
     android:layout_width="320dp" 
@@ -239,33 +201,283 @@ Example
 
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/example_02.jpg)
 
-```java
-RoundCornerProgressBar progress1 = ...;
-progress1.setProgressColor(Color.parseColor("#ed3b27"));
-progress1.setProgressBackgroundColor(Color.parseColor("#808080"));
-progress1.setMax(70);
-progress1.setProgress(15);
 
-int progressColor1 = progress1.getProgressColor();
-int backgroundColor1 = progress1.getProgressBackgroundColor();
-int max1 = progress1.getMax();
-int progress1 = progress1.getProgress();
+CenteredRoundCornerProgressBar
+---
+Same as RoundCornerProgressBar
 
-
-IconRoundCornerProgressBar progress2 = ...;
-progress2.setProgressColor(Color.parseColor("#56d2c2"));
-progress2.setProgressBackgroundColor(Color.parseColor("#757575"));
-progress2.setIconBackgroundColor(Color.parseColor("#38c0ae"));
-progress2.setMax(550);
-progress2.setProgress(147);
-progress2.setIconImageResource(imageResource);
-
-int progressColor2 = progress2.getProgressColor();
-int backgroundColor2 = progress2.getProgressBackgroundColor();
-int headerColor2 = progress2.getColorIconBackground();
-int max2 = progress2.getMax();
-int progress2 = progress2.getProgress();
+### Layout XML
+```xml
+<com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar
+        ... />
 ```
+
+IconRoundCornerProgressBar
+-------------------------------
+Icon size is required for this progress bar. Use `wrap_content` for `layout_height` is recommended.
+
+```xml
+<com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+        android:layout_height="wrap_content"
+        app:rcIconSize="40dp"
+        ... />
+```
+
+### Layout XML ######
+```xml
+<com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+        app:rcProgress="float"
+        app:rcSecondaryProgress="float"
+        app:rcMax="float"
+        app:rcRadius="dimension"
+        app:rcBackgroundPadding="dimension"
+        app:rcReverse="boolean"
+        app:rcProgressColor="color"
+        app:rcSecondaryProgressColor="color"
+        app:rcBackgroundColor="color"
+        app:rcAnimationEnable="boolean"
+        app:rcAnimationSpeedScale="float" 
+
+        app:rcIconSrc="reference"
+        app:rcIconSize="dimension"
+        app:rcIconWidth="dimension"
+        app:rcIconHeight="dimension"
+        app:rcIconPadding="dimension"
+        app:rcIconPaddingLeft="dimension"
+        app:rcIconPaddingRight="dimension"
+        app:rcIconPaddingTop="dimension"
+        app:rcIconPaddingBottom="dimension"
+        app:rcIconBackgroundColor="color" />
+```
+
+### Public Methods ######
+```kotlin
+// Progress
+fun getMax(): Float
+fun setMax(max: Float)
+fun getProgress(): Float
+fun setProgress(progress: Int)
+fun setProgress(progress: Float)
+fun getSecondaryProgress(): Float
+fun setSecondaryProgress(secondaryProgress: Int)
+fun setSecondaryProgress(secondaryProgress: Float)
+
+// Dimension
+fun getRadius(): Int
+fun setRadius(radius: Int)
+fun getPadding(): Int
+fun setPadding(padding: Int)
+fun getLayoutWidth(): Float
+
+fun getIconSize(): Int
+fun setIconSize(size: Int)
+fun getIconPadding(): Int
+fun setIconPadding(padding: Int)
+fun getIconPaddingLeft(): Int
+fun setIconPaddingLeft(padding: Int)
+fun getIconPaddingTop(): Int
+fun setIconPaddingTop(padding: Int)
+fun getIconPaddingRight(): Int
+fun setIconPaddingRight(padding: Int)
+fun getIconPaddingBottom(): Int
+fun setIconPaddingBottom(padding: Int)
+
+// Animation
+fun enableAnimation()
+fun disableAnimation()
+fun getAnimationSpeedScale(): Float
+fun setAnimationSpeedScale(scale: Float)
+fun isProgressAnimating(): Boolean
+fun isSecondaryProgressAnimating(): Boolean
+
+// Reversing Progress
+fun isReverse(): Boolean
+fun setReverse(isReverse: Boolean)
+
+// Color
+fun getProgressBackgroundColor(): Int
+fun setProgressBackgroundColor(color: Int)
+fun getProgressColor(): Int
+fun setProgressColor(color: Int)
+fun getProgressColors(): IntArray
+fun setProgressColors(colors: IntArray)
+fun getSecondaryProgressColor(): Int
+fun setSecondaryProgressColor(color: Int)
+fun getSecondaryProgressColors(): IntArray
+fun setSecondaryProgressColors(colors: IntArray)
+
+fun getColorIconBackground(): Int
+fun setIconBackgroundColor(color: Int)
+
+// Icon
+fun getIconImageResource(): Int
+fun setIconImageResource(resId: Int)
+fun getIconImageBitmap(): Birmap
+fun setIconImageBitmap(bitmap: Bitmap)
+fun getIconImageDrawable(): Drawable
+fun setIconImageDrawable(drawable: Drawable)
+
+// Listener
+fun setOnProgressChangedListener(listener: OnProgressChangedListener)
+
+fun setOnIconClickListener(listener: OnIconClickListener)
+```
+
+TextRoundCornerProgressBar
+---
+
+### Layout XML
+```xml
+<com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+        app:rcProgress="float"
+        app:rcSecondaryProgress="float"
+        app:rcMax="float"
+        app:rcRadius="dimension"
+        app:rcBackgroundPadding="dimension"
+        app:rcReverse="boolean"
+        app:rcProgressColor="color"
+        app:rcSecondaryProgressColor="color"
+        app:rcBackgroundColor="color"
+        app:rcAnimationEnable="boolean"
+        app:rcAnimationSpeedScale="float"
+        
+        app:rcTextProgressColor="color"
+        app:rcTextProgressSize="dimension"
+        app:rcTextProgressMargin="dimension"
+        app:rcTextProgress="String"
+        app:rcTextInsideGravity="start|end"
+        app:rcTextOutsideGravity="start|end"
+        app:rcTextPositionPriority="inside|outside" />
+```
+
+### Public Methods
+```kotlin
+// Progress
+fun getMax(): Float
+fun setMax(max: Float)
+fun getProgress(): Float
+fun setProgress(progress: Int)
+fun setProgress(progress: Float)
+fun getSecondaryProgress(): Float
+fun setSecondaryProgress(secondaryProgress: Int)
+fun setSecondaryProgress(secondaryProgress: Float)
+
+// Dimension
+fun getRadius(): Int
+fun setRadius(radius: Int)
+fun getPadding(): Int
+fun setPadding(padding: Int)
+fun getLayoutWidth(): Float
+
+fun getTextProgressSize(): Int
+fun setTextProgressSize(size: Int)
+fun getTextProgressMargin(): Int
+fun setTextProgressMargin(margin: Int)
+
+// Animation
+fun enableAnimation()
+fun disableAnimation()
+fun getAnimationSpeedScale(): Float
+fun setAnimationSpeedScale(scale: Float)
+fun isProgressAnimating(): Boolean
+fun isSecondaryProgressAnimating(): Boolean
+
+// Reversing Progress
+fun isReverse(): Boolean
+fun setReverse(isReverse: Boolean)
+
+// Color
+fun getProgressBackgroundColor(): Int
+fun setProgressBackgroundColor(color: Int)
+fun getProgressColor(): Int
+fun setProgressColor(color: Int)
+fun getProgressColors(): IntArray
+fun setProgressColors(colors: IntArray)
+fun getSecondaryProgressColor(): Int
+fun setSecondaryProgressColor(color: Int)
+fun getSecondaryProgressColors(): IntArray
+fun setSecondaryProgressColors(colors: IntArray)
+
+fun getTextProgressColor(): Int
+fun setTextProgressColor(color: Int)
+
+// Text
+fun getProgressText(): String
+fun setProgressText(text: String)
+
+// Position
+fun getTextPositionPriority(): Int
+fun setTextPositionPriority(priority: Int)
+fun getTextInsideGravity(): Int
+fun setTextInsideGravity(gravity: Int)
+fun getTextOutsideGravity(): Int
+fun setTextOutsideGravity(gravity: Int)
+
+// Listener
+fun setOnProgressChangedListener(listener: OnProgressChangedListener)
+```
+
+IndeterminateRoundCornerProgressBar
+---
+
+### Layout XML
+```xml
+<com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateRoundCornerProgressBar
+        app:rcRadius="dimension"
+        app:rcBackgroundPadding="dimension"
+        app:rcReverse="boolean"
+        app:rcProgressColor="color"
+        app:rcSecondaryProgressColor="color"
+        app:rcBackgroundColor="color"
+        app:rcAnimationSpeedScale="float" />
+```
+
+### Public Methods
+```kotlin
+// Dimension
+fun getRadius(): Int
+fun setRadius(radius: Int)
+fun getPadding(): Int
+fun setPadding(padding: Int)
+fun getLayoutWidth(): Float
+
+// Animation
+fun getAnimationSpeedScale(): Float
+fun setAnimationSpeedScale(scale: Float)
+
+// Reversing Progress
+fun isReverse(): Boolean
+fun setReverse(isReverse: Boolean)
+
+// Color
+fun getProgressBackgroundColor(): Int
+fun setProgressBackgroundColor(color: Int)
+fun getProgressColor(): Int
+fun setProgressColor(color: Int)
+fun getProgressColors(): IntArray
+fun setProgressColors(colors: IntArray)
+fun getSecondaryProgressColor(): Int
+fun setSecondaryProgressColor(color: Int)
+fun getSecondaryProgressColors(): IntArray
+fun setSecondaryProgressColors(colors: IntArray)
+```
+
+IndeterminateCenteredRoundCornerProgressBar
+---
+Same as IndeterminateRoundCornerProgressBar
+
+### Layout XML
+```xml
+<com.akexorcist.roundcornerprogressbar.IndeterminateCenteredRoundCornerProgressBar
+        ... />
+```
+
+### Icon Size & Padding ###
+![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_03.jpg)
+
+Progress Bar Reversing
+-------------------------------
+![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_04.jpg)
 
 
 Documentation
@@ -280,29 +492,17 @@ Special Thanks
 
 What's Next
 ===========================
-• Add Text Round Corner Progress Bar (Under-construction)
+* IconTextRoundCornerProgressBar ([#69](https://github.com/akexorcist/Android-RoundCornerProgressBar/pull/69))
+* Support color resource in color related attributes
+* Add set max progress with integer
 
-*TextRoundCornerProgressBar*
-Additional attribute for TextRoundCornerProgressBar
-```
-rcTextProgressColor
-rcTextProgressSize
-rcTextProgressMargin
-rcTextProgress
-```
 
-Additional method for TextRoundCornerProgressBar
-```
-String getProgressText()
-void setProgressText(String text)
-void setProgress(float progress)
-int getTextProgressColor()
-void setTextProgressColor(int color)
-int getTextProgressSize()
-void setTextProgressSize(int size)
-int getTextProgressMargin()
-void setTextProgressMargin(int margin)
-``` 
+Known Issues
+===
+* Incorect progress showing in `CenteredRoundCornerProgressBar` with 1%-2% value
+* Incorrect text's width in `TextRoundCornerProgressBar` when `outside` priority and value close to 100%  
+* `setProgress(progress: Int)` does not update text position
+
 
 Licence
 ===========================
