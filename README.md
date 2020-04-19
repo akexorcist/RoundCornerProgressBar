@@ -9,6 +9,83 @@ Round corner is cool. Let's make your progress bar to round corner
 Colorful progress bar with round corner on progress which you can customized a color and corner radius
 
 
+Installation
+===
+
+```groovy
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+```
+
+Migrate from 2.0.x to 2.1.0
+---
+### Moving from MavenCentral to JCenter with new artifact ID
+From (MavenCentral)
+
+```groovy
+// Old (MavenCentral)
+implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+
+// New (JCenter)
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+```
+
+###  BaseRoundCornerProgressBar.OnProgressChangedListener
+Change the view ID parameter in `onProgressChanged` to View class
+```kotlin
+// Old
+fun onProgressChanged(
+    viewId: Int, 
+    progress: Float, 
+    isPrimaryProgress: Boolean, 
+    isSecondaryProgress: Boolean
+)
+
+// New
+fun onProgressChanged(
+    view: View, 
+    progress: Float, 
+    isPrimaryProgress: Boolean, 
+    isSecondaryProgress: Boolean
+)
+```
+
+### Custom your own progress bar by extends BaseRoundCornerProgressBar
+Use AnimatedRoundCornerProgressBar instead of BaseRoundCornerProgressBar for progress change animation support.
+
+```Kotlin
+class CustomRoundCornerProgressBar: AnimatedRoundCornerProgressBar() {
+    ...
+}
+```
+
+And you do not have to create the `GradientDrawable` by yourself anymore. `drawProgress` will send it as parameter.
+```kotlin
+// Old
+fun drawProgress(
+    layoutProgress: LinearLayout,
+    max: Float,
+    progress: Float,
+    totalWidth: Float,
+    radius: Int,
+    padding: Int,
+    progressColor: Int,
+    isReverse: Boolean
+)
+
+// New
+fun drawProgress(
+    layoutProgress: LinearLayout,
+    progressDrawable: GradientDrawable,
+    max: Float,
+    progress: Float,
+    totalWidth: Float,
+    radius: Int,
+    padding: Int,
+    isReverse: Boolean
+)
+```
+
+
 Release Notes
 ===
 ### 2.1.0
@@ -25,6 +102,7 @@ Release Notes
 * Fix bug in ([#43](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/43)) ([#20](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/20)) ([#74](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/74))
 * Moved from MavenCentral to JCenter. Please see "Installation" section for new artifact ID
 * All new sample code. You should try it!
+* Add useful annotations for Kotlin
 
 ### 2.0.X
 * New code structure, Easy for further development
@@ -65,27 +143,6 @@ Round corner progress bar with text inside the progress
 Simple round corner progress bar and centered round corner progress bar with indeterminate animation
 
 ![Indeterminate Round Corner Progress Bar and Indeterminate Centered Round Corner Progress Bar](/image/overview_indeterminate.gif)
-
-
-Installation
-===
-
-```groovy
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
-```
-
-Migrate from 2.0.x to 2.1.0
-===
-### Moving from MavenCentral to JCenter with new artifact ID
-From (MavenCentral)
-
-```groovy
-// Old (MavenCentral)
-implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
-
-// New (JCenter)
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
-```
 
 
 Feature
