@@ -1,4 +1,4 @@
-![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RoundCornerProgressBar-brightgreen.svg?style=flat) [ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar) ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar) ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar)
 
 RoundCornerProgressBar
 ===
@@ -12,17 +12,17 @@ Colorful progress bar with round corner on progress which you can customized a c
 Release Notes
 ===
 ### 2.1.0
-* `CenteredRoundCornerProgressBar` added (#42)
+* `CenteredRoundCornerProgressBar` added ([#42](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/42))
 * `IndeterminateRoundCornerProgressBar` and `IndeterminateCenteredRoundCornerProgressBar` added
 * `IconRoundCornerProgressBar` now support for `Bitmap` and `Drawable` for icon
 * Animation for progress update (disable by default) added. This feature applied to all progress bars
-* Gradient progress color support (both primary and secondary progress) added. This feature applied to all progress bars (#39)
+* Gradient progress color support (both primary and secondary progress) added. This feature applied to all progress bars (([#39](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/39)))
 * Text gravity when inside/outside and text position pririty attribute in `TextRoundCornerProgressBar` added
 * Integer value support for progress setter (convert to float inside) added
 * Update to Gradle Plugin 3.6.3 and Gradle 5.6.4
 * Migrate from Android Support to AndroidX
 * Still in Java! (will be Kotlin in next version)
-* Fix bug in #43 #20 #74
+* Fix bug in ([#43](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/43)) ([#20](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/20)) ([#74](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/74))
 * Moved from MavenCentral to JCenter. Please see "Installation" section for new artifact ID
 * All new sample code. You should try it!
 
@@ -85,6 +85,7 @@ implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
 
 Migration from 2.0.x to 2.1.0
 ===
+
 
 
 Feature
