@@ -286,6 +286,11 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     }
 
     @Override
+    public void setProgress(int progress) {
+        setProgress((float) progress);
+    }
+
+    @Override
     public void setProgress(float progress) {
         super.setProgress(progress);
         drawTextProgressPosition();
