@@ -1,40 +1,69 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar) ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar)
 
-Android-RoundCornerProgressBar
-==============================
+RoundCornerProgressBar
+===
+Round corner is cool. Let's make your progress bar to round corner
 
 ![Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/header.jpg)
-
-Round Corner Progress Bar Library for Android
 
 Colorful progress bar with round corner on progress which you can customized a color and corner radius
 
 
-What's new in version 2.0
-===========================
+Release Notes
+===
+### 2.1.0
+* `CenteredRoundCornerProgressBar` added ([#42](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/42))
+* `IndeterminateRoundCornerProgressBar` and `IndeterminateCenteredRoundCornerProgressBar` added
+* `IconRoundCornerProgressBar` now support for `Bitmap` and `Drawable` for icon
+* Animation for progress update (disable by default) added. This feature applied to all progress bars
+* Gradient progress color support (both primary and secondary progress) added. This feature applied to all progress bars (([#39](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/39)))
+* Text gravity when inside/outside and text position pririty attribute in `TextRoundCornerProgressBar` added
+* Integer value support for progress setter (convert to float inside) added
+* Update to Gradle Plugin 3.6.3 and Gradle 5.6.4
+* Migrate from Android Support to AndroidX
+* Still in Java! (will be Kotlin in next version)
+* Fix bug in ([#43](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/43)) ([#20](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/20)) ([#74](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/74))
+* Moved from MavenCentral to JCenter. Please see "Installation" section for new artifact ID
+* All new sample code. You should try it!
+
+### 2.0.X
 * New code structure, Easy for further development
 
 
 Demo
-===========================
+===
 [![Round Corner Progress Bar Demo (Google Play)](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/google_play.jpg)](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar)
 
 
 Overview
-===============================
+===
 Round Corner Progress Bar
--------------------------------
-
-A simple round corner progress bar with color and corner radius configuration supported
+---
+Simple round corner progress bar
 
 ![Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_01.jpg)
 
-Icon Round Corner Progress Bar
--------------------------------
+CenteredRoundCornerProgressBar
+---
+Round corner progress bar with progress expands from the center  
 
-A round corner progress bar with icon
+Icon Round Corner Progress Bar
+---
+Round corner progress bar with heading icon
 
 ![Icon Round Corner Progress Bar Sample](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/screenshot_02.jpg)
+
+TextRoundCornerProgressBar
+---
+Round corner progress bar with text inside the progress
+
+IndeterminateRoundCornerProgressBar
+---
+Simple round corner progress bar with indeterminate animation
+
+IndeterminateCenteredRoundCornerProgressBar
+---
+Centered Round corner progress bar with indeterminate animation
 
 
 Installation
@@ -44,15 +73,19 @@ Installation
 ```
 <dependency>
   <groupId>com.akexorcist</groupId>
-  <artifactId>RoundCornerProgressBar</artifactId>
-  <version>2.0.3</version>
+  <artifactId>round-corner-progress-bar</artifactId>
+  <version>2.1.0</version>
 </dependency>
 ```
 
 ### Gradle ###
 ```
-implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
 ```
+
+Migration from 2.0.x to 2.1.0
+===
+
 
 
 Feature
