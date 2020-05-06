@@ -171,28 +171,38 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void startProgressAnimation(float from, float to) {
         isProgressAnimating = true;
+        if(progressAnimator != null) {
+            progressAnimator.removeUpdateListener(progressAnimationUpdateListener);
+            progressAnimator.removeListener(progressAnimationAdapterListener);
+            progressAnimator.cancel();
+            progressAnimator = null;
+        }
         progressAnimator = ValueAnimator.ofFloat(from, to);
         progressAnimator.setDuration(getAnimationDuration(from, to, max, animationSpeedScale));
-        progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                onUpdateProgressByAnimation((float) animation.getAnimatedValue());
-            }
-        });
-        progressAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                isProgressAnimating = false;
-                onProgressAnimationEnd();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                isProgressAnimating = false;
-            }
-        });
+        progressAnimator.addUpdateListener(progressAnimationUpdateListener);
+        progressAnimator.addListener(progressAnimationAdapterListener);
         progressAnimator.start();
     }
+
+    private ValueAnimator.AnimatorUpdateListener progressAnimationUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            onUpdateProgressByAnimation((float) animation.getAnimatedValue());
+        }
+    };
+
+    private AnimatorListenerAdapter progressAnimationAdapterListener = new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            isProgressAnimating = false;
+            onProgressAnimationEnd();
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+            isProgressAnimating = false;
+        }
+    };
 
     private void onUpdateProgressByAnimation(float progress) {
         super.setProgress(progress);
@@ -217,28 +227,38 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void startSecondaryProgressAnimation(float from, float to) {
         isSecondaryProgressAnimating = true;
+        if(secondaryProgressAnimator != null) {
+            secondaryProgressAnimator.removeUpdateListener(secondaryProgressAnimationUpdateListener);
+            secondaryProgressAnimator.removeListener(secondaryProgressAnimationAdapterListener);
+            secondaryProgressAnimator.cancel();
+            secondaryProgressAnimator = null;
+        }
         secondaryProgressAnimator = ValueAnimator.ofFloat(from, to);
         secondaryProgressAnimator.setDuration(getAnimationDuration(from, to, max, animationSpeedScale));
-        secondaryProgressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                onUpdateSecondaryProgressByAnimation((float) animation.getAnimatedValue());
-            }
-        });
-        secondaryProgressAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                isSecondaryProgressAnimating = false;
-                onSecondaryProgressAnimationEnd();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                isSecondaryProgressAnimating = false;
-            }
-        });
+        secondaryProgressAnimator.addUpdateListener(secondaryProgressAnimationUpdateListener);
+        secondaryProgressAnimator.addListener(secondaryProgressAnimationAdapterListener);
         secondaryProgressAnimator.start();
     }
+
+    private ValueAnimator.AnimatorUpdateListener secondaryProgressAnimationUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            onUpdateSecondaryProgressByAnimation((float) animation.getAnimatedValue());
+        }
+    };
+
+    private AnimatorListenerAdapter secondaryProgressAnimationAdapterListener = new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            isSecondaryProgressAnimating = false;
+            onSecondaryProgressAnimationEnd();
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+            isSecondaryProgressAnimating = false;
+        }
+    };
 
     private void onUpdateSecondaryProgressByAnimation(float progress) {
         super.setSecondaryProgress(progress);

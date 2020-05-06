@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.akexorcist.roundcornerprogressbar.CenteredRoundCornerProgressBar;
@@ -46,6 +47,14 @@ public class IndeterminateCenteredRoundCornerProgressBar extends CenteredRoundCo
         }
     }
 
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == View.VISIBLE) {
+            startIndeterminateAnimation();
+        }
+    }
+
     private void startIndeterminateAnimation() {
         disableAnimation();
         setProgress(0);
@@ -55,13 +64,5 @@ public class IndeterminateCenteredRoundCornerProgressBar extends CenteredRoundCo
 
     private void stopIndeterminateAnimation() {
         super.stopProgressAnimationImmediately();
-    }
-
-    @Override
-    protected void onWindowVisibilityChanged(int visibility) {
-        super.onWindowVisibilityChanged(visibility);
-        if (visibility == View.VISIBLE) {
-            startIndeterminateAnimation();
-        }
     }
 }
