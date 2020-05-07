@@ -37,7 +37,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.Px;
+import androidx.customview.view.AbsSavedState;
 
 import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
@@ -57,11 +59,13 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
     public final static int PRIORITY_INSIDE = 0;
     public final static int PRIORITY_OUTSIDE = 1;
 
+    @SuppressWarnings("WeakerAccess")
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({GRAVITY_START, GRAVITY_END})
     public @interface TEXT_PROGRESS_GRAVITY {
     }
 
+    @SuppressWarnings("WeakerAccess")
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({PRIORITY_INSIDE, PRIORITY_OUTSIDE})
     public @interface TEXT_POSITION_PRIORITY {
@@ -399,7 +403,7 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         this.textPositionPriority = ss.textPositionPriority;
     }
 
-    private static class SavedState extends BaseSavedState {
+    protected static class SavedState extends AbsSavedState {
         int colorTextProgress;
         int textProgressSize;
         int textProgressMargin;
@@ -415,7 +419,11 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
         }
 
         private SavedState(Parcel in) {
-            super(in);
+            this(in, null);
+        }
+
+        protected SavedState(@NonNull Parcel in, @Nullable ClassLoader loader) {
+            super(in, loader);
 
             this.colorTextProgress = in.readInt();
             this.textProgressSize = in.readInt();
@@ -443,7 +451,12 @@ public class TextRoundCornerProgressBar extends AnimatedRoundCornerProgressBar i
             out.writeInt(this.textPositionPriority);
         }
 
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
+        public static final Parcelable.ClassLoaderCreator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new SavedState(in, loader);
+            }
+
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }

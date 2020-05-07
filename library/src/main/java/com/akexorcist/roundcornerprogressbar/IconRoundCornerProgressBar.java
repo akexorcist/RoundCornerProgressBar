@@ -36,6 +36,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.customview.view.AbsSavedState;
 
 import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressBar;
 
@@ -355,7 +356,7 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
         void onIconClick();
     }
 
-    private static class SavedState extends BaseSavedState {
+    protected static class SavedState extends AbsSavedState {
         int iconResource;
         int iconSize;
         int iconWidth;
@@ -367,13 +368,16 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
         int iconPaddingBottom;
         int colorIconBackground;
 
-        SavedState(Parcelable superState) {
+         SavedState(Parcelable superState) {
             super(superState);
         }
 
-        SavedState(Parcel in) {
-            super(in);
+         SavedState(Parcel in) {
+            this(in, null);
+        }
 
+         SavedState(Parcel in, ClassLoader loader) {
+            super(in, loader);
             this.iconResource = in.readInt();
             this.iconSize = in.readInt();
             this.iconWidth = in.readInt();
@@ -389,6 +393,7 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
         @Override
         public void writeToParcel(Parcel out, int flags) {
             super.writeToParcel(out, flags);
+
             out.writeInt(this.iconResource);
             out.writeInt(this.iconSize);
             out.writeInt(this.iconWidth);
@@ -401,7 +406,12 @@ public class IconRoundCornerProgressBar extends AnimatedRoundCornerProgressBar {
             out.writeInt(this.colorIconBackground);
         }
 
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
+        public static final Parcelable.ClassLoaderCreator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new SavedState(in, loader);
+            }
+
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }

@@ -39,6 +39,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.annotation.RequiresApi;
+import androidx.customview.view.AbsSavedState;
 
 import com.akexorcist.roundcornerprogressbar.R;
 
@@ -480,6 +481,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     @Override
     protected Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
+
         SavedState ss = new SavedState(superState);
 
         ss.max = this.max;
@@ -531,7 +533,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         void onProgressChanged(View view, float progress, boolean isPrimaryProgress, boolean isSecondaryProgress);
     }
 
-    private static class SavedState extends BaseSavedState {
+    protected static class SavedState extends AbsSavedState {
         float max;
         float progress;
         float secondaryProgress;
@@ -552,7 +554,11 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         }
 
         SavedState(Parcel in) {
-            super(in);
+            this(in, null);
+        }
+
+        SavedState(Parcel in, ClassLoader loader) {
+            super(in, loader);
             this.max = in.readFloat();
             this.progress = in.readFloat();
             this.secondaryProgress = in.readFloat();
@@ -563,7 +569,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             this.colorBackground = in.readInt();
             this.colorProgress = in.readInt();
             this.colorSecondaryProgress = in.readInt();
+            this.colorProgressArray = new int[in.readInt()];
             in.readIntArray(this.colorProgressArray);
+            this.colorSecondaryProgressArray = new int[in.readInt()];
             in.readIntArray(this.colorSecondaryProgressArray);
 
             this.isReverse = in.readByte() != 0;
@@ -582,17 +590,26 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             out.writeInt(this.colorBackground);
             out.writeInt(this.colorProgress);
             out.writeInt(this.colorSecondaryProgress);
-            out.writeIntArray(this.colorProgressArray);
-            out.writeIntArray(this.colorSecondaryProgressArray);
+            out.writeInt(this.colorProgressArray != null ? this.colorProgressArray.length : 0);
+            out.writeIntArray(this.colorProgressArray != null ? this.colorProgressArray : new int[0]);
+            out.writeInt(this.colorSecondaryProgressArray != null ? this.colorSecondaryProgressArray.length : 0);
+            out.writeIntArray(this.colorSecondaryProgressArray != null ? this.colorSecondaryProgressArray : new int[0]);
 
             out.writeByte((byte) (this.isReverse ? 1 : 0));
         }
 
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
+        public static final Parcelable.ClassLoaderCreator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new SavedState(in, loader);
+            }
+
+            @Override
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
 
+            @Override
             public SavedState[] newArray(int size) {
                 return new SavedState[size];
             }

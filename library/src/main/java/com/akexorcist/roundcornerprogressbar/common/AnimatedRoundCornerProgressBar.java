@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.customview.view.AbsSavedState;
 
 import com.akexorcist.roundcornerprogressbar.R;
 
@@ -171,7 +172,7 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void startProgressAnimation(float from, float to) {
         isProgressAnimating = true;
-        if(progressAnimator != null) {
+        if (progressAnimator != null) {
             progressAnimator.removeUpdateListener(progressAnimationUpdateListener);
             progressAnimator.removeListener(progressAnimationAdapterListener);
             progressAnimator.cancel();
@@ -227,7 +228,7 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     private void startSecondaryProgressAnimation(float from, float to) {
         isSecondaryProgressAnimating = true;
-        if(secondaryProgressAnimator != null) {
+        if (secondaryProgressAnimator != null) {
             secondaryProgressAnimator.removeUpdateListener(secondaryProgressAnimationUpdateListener);
             secondaryProgressAnimator.removeListener(secondaryProgressAnimationAdapterListener);
             secondaryProgressAnimator.cancel();
@@ -292,6 +293,7 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         ss.lastSecondaryProgress = this.lastSecondaryProgress;
         ss.animationSpeedScale = this.animationSpeedScale;
         ss.isAnimationEnabled = this.isAnimationEnabled;
+
         return ss;
     }
 
@@ -315,7 +317,7 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         restoreSecondaryProgressAnimationState();
     }
 
-    private static class SavedState extends BaseSavedState {
+    protected static class SavedState extends AbsSavedState {
         boolean isProgressAnimating;
         boolean isSecondaryProgressAnimating;
         float lastProgress;
@@ -328,8 +330,11 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         }
 
         SavedState(Parcel in) {
-            super(in);
+            this(in, null);
+        }
 
+        SavedState(Parcel in, ClassLoader loader) {
+            super(in, loader);
             this.isProgressAnimating = in.readByte() != 0;
             this.isSecondaryProgressAnimating = in.readByte() != 0;
             this.lastProgress = in.readFloat();
@@ -349,7 +354,12 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
             out.writeByte((byte) (this.isAnimationEnabled ? 1 : 0));
         }
 
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
+        public static final Parcelable.ClassLoaderCreator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new SavedState(in, loader);
+            }
+
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }

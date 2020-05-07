@@ -3,7 +3,7 @@ apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 17
@@ -36,6 +36,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.13'
     implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.customview:customview:1.0.0"
 }
 
 ext {
