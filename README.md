@@ -26,7 +26,7 @@ From (MavenCentral)
 implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 
 // New (JCenter)
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
 ```
 
 ###  BaseRoundCornerProgressBar.OnProgressChangedListener
