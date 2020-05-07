@@ -89,7 +89,7 @@ fun drawProgress(
 Release Notes
 ===
 ### 2.1.1
-* Fix bug in ([#76](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/76)) ([#77](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/77))
+* Fix bug in ([#57](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/57)) ([#77](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/77))
 
 ### 2.1.0
 * `CenteredRoundCornerProgressBar` added ([#42](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/42))
