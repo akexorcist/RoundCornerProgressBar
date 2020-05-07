@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 20100
-        versionName "2.1.0"
+        versionCode 20101
+        versionName "2.1.1"
     }
 
     buildTypes {
@@ -52,7 +52,7 @@ ext {
     siteUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar'
     gitUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar.git'
 
-    libraryVersion = '2.1.0'
+    libraryVersion = '2.1.1'
 
     developerId = 'akexorcist'
     developerName = 'Somkiat Khitwongwattana'
