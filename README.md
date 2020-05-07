@@ -13,10 +13,10 @@ Installation
 ===
 
 ```groovy
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
 ```
 
-Migrate from 2.0.x to 2.1.0
+Migrate from 2.0.x to 2.1.x or higher
 ---
 ### Moving from MavenCentral to JCenter with new artifact ID
 From (MavenCentral)
@@ -88,6 +88,9 @@ fun drawProgress(
 
 Release Notes
 ===
+### 2.1.1
+* Fix bug in ([#76](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/76)) ([#77](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/77))
+
 ### 2.1.0
 * `CenteredRoundCornerProgressBar` added ([#42](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/42))
 * `IndeterminateRoundCornerProgressBar` and `IndeterminateCenteredRoundCornerProgressBar` added
@@ -755,7 +758,7 @@ What's Next
 
 Known Issues
 ===
-* Incorect progress showing in `CenteredRoundCornerProgressBar` with 1%-2% value
+* Incorrect progress showing in `CenteredRoundCornerProgressBar` with 1%-2% value
 * Incorrect text's width in `TextRoundCornerProgressBar` when `outside` priority and value close to 100%  
 * `setProgress(progress: Int)` does not update text position
 
