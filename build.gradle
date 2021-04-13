@@ -5,8 +5,8 @@ buildscript {
         targetSdkVersion = 30
         minSdkVersion = 14
 
-        versionName = '2.1.1'
-        versionCode = 20101
+        versionName = '2.1.2'
+        versionCode = 20102
 
         libraryName = 'RoundCornerProgressBar'
         libraryDescription = 'Round corner is cool. Let\'s make your progress bar with round corner'
