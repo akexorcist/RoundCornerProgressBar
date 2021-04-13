@@ -14,7 +14,7 @@ Colorful progress bar with round corner on progress which you can customized a c
 
 Download
 ===
-Since version 2.1.1 will [move from JCenter to MavenCentral](https://developer.android.com/studio/build/jcenter-migration)
+Since version 2.1.2 will [move from JCenter to MavenCentral](https://developer.android.com/studio/build/jcenter-migration)
 
 ```groovy
 // build.gradle (project)
@@ -27,7 +27,7 @@ allprojects {
 ```
 
 ```groovy
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.2'
 ```
 
 Migrate from 2.0.x to 2.1.x or higher
