@@ -1,15 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin: 'org.jetbrains.dokka-android'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion project.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 29
-        versionCode 20101
-        versionName "2.1.1"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
     }
 
     buildTypes {
@@ -27,41 +25,11 @@ android {
     }
 }
 
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/javadoc"
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.13'
-    implementation "androidx.annotation:annotation:1.1.0"
-    implementation "androidx.customview:customview:1.0.0"
+    testImplementation 'junit:junit:4.13.2'
+    implementation "androidx.annotation:annotation:1.2.0"
+    implementation "androidx.customview:customview:1.1.0"
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'round-corner-progress-bar'
-
-    publishedGroupId = 'com.akexorcist'
-    libraryName = 'RoundCornerProgressBar'
-    artifact = 'round-corner-progress-bar'
-
-    libraryDescription = 'Round corner is cool. Let\'s make your progress bar with round corner'
-
-    siteUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar'
-    gitUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar.git'
-
-    libraryVersion = '2.1.1'
-
-    developerId = 'akexorcist'
-    developerName = 'Somkiat Khitwongwattana'
-    developerEmail = 'akexorcist@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
-//apply from: '../publish/installv1.gradle'
-//apply from: '../publish/bintrayv1.gradle'
+//apply from: '../publish/mavencentral.gradle'

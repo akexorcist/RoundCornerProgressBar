@@ -1,8 +1,28 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-    ext {
-        kotlin_version = '1.3.72'
+    project.ext {
+        kotlin_version = '1.4.32'
+        compileSdkVersion = 30
+        targetSdkVersion = 30
+        minSdkVersion = 14
+
+        versionName = '2.1.1'
+        versionCode = 20101
+
+        libraryName = 'RoundCornerProgressBar'
+        libraryDescription = 'Round corner is cool. Let\'s make your progress bar with round corner'
+
+        groupId = 'com.akexorcist'
+        artifactId = 'round-corner-progress-bar'
+
+        siteUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar'
+        gitUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar.git'
+
+        developerId = 'akexorcist'
+        developName = 'Somkiat Khitwongwattana'
+        developerEmail = 'akexorcist@gmail.com'
+
+        licenseName = 'The Apache License, Version 2.0'
+        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     }
     repositories {
         google()
@@ -10,8 +30,8 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.17"
