@@ -6,60 +6,63 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
-import com.akexorcist.roundcornerprogressbar.example.R
-import kotlinx.android.synthetic.main.fragment_text_demo.*
+import com.akexorcist.roundcornerprogressbar.example.databinding.FragmentTextDemoBinding
 
 class TextDemoFragment : Fragment() {
+    private lateinit var binding: FragmentTextDemoBinding
+
     companion object {
         fun newInstance(): Fragment = TextDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_text_demo, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentTextDemoBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textViewText1.text = getText1Description()
-        textViewText2.text = getText2Description()
-        textViewText3.text = getText3Description()
-        textViewText4.text = getText4Description()
-        textViewText5.text = getText5Description()
-        buttonTextCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        buttonTextCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        buttonTextCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        buttonTextCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
-        progressBarTextCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+        binding.textViewText1.text = getText1Description()
+        binding.textViewText2.text = getText2Description()
+        binding.textViewText3.text = getText3Description()
+        binding.textViewText4.text = getText4Description()
+        binding.textViewText5.text = getText5Description()
+        binding.buttonTextCustomIncrease.setOnClickListener { increaseCustomProgress() }
+        binding.buttonTextCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+        binding.buttonTextCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+        binding.buttonTextCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+        binding.checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
+        binding.progressBarTextCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
                 updateCustomProgressText()
             }
         }
-        radioButtonInsideGravityStart.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonInsideGravityStart.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateInsideTextGravityCustomProgress(TextRoundCornerProgressBar.GRAVITY_START)
             }
         }
-        radioButtonInsideGravityEnd.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonInsideGravityEnd.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateInsideTextGravityCustomProgress(TextRoundCornerProgressBar.GRAVITY_END)
             }
         }
-        radioButtonOutsideGravityStart.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonOutsideGravityStart.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateOutsideTextGravityCustomProgress(TextRoundCornerProgressBar.GRAVITY_START)
             }
         }
-        radioButtonOutsideGravityEnd.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonOutsideGravityEnd.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateOutsideTextGravityCustomProgress(TextRoundCornerProgressBar.GRAVITY_END)
             }
         }
-        radioButtonTextPositionPriorityInside.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonTextPositionPriorityInside.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateTextPositionPriorityCustomProgress(TextRoundCornerProgressBar.PRIORITY_INSIDE)
             }
         }
-        radioButtonTextPositionPriorityOutside.setOnCheckedChangeListener { _, isChecked ->
+        binding.radioButtonTextPositionPriorityOutside.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 updateTextPositionPriorityCustomProgress(TextRoundCornerProgressBar.PRIORITY_OUTSIDE)
             }
@@ -69,42 +72,42 @@ class TextDemoFragment : Fragment() {
 
     private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
         if (isChecked) {
-            progressBarTextCustom.enableAnimation()
+            binding.progressBarTextCustom.enableAnimation()
         } else {
-            progressBarTextCustom.disableAnimation()
+            binding.progressBarTextCustom.disableAnimation()
         }
     }
 
     private fun increaseCustomProgress() {
-        progressBarTextCustom.progress = progressBarTextCustom.progress + 2
+        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress + 2
     }
 
     private fun extraIncreaseCustomProgress() {
-        progressBarTextCustom.progress = progressBarTextCustom.progress + 20
+        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress + 20
     }
 
     private fun decreaseCustomProgress() {
-        progressBarTextCustom.progress = progressBarTextCustom.progress - 2
+        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress - 2
     }
 
     private fun extraDecreaseCustomProgress() {
-        progressBarTextCustom.progress = progressBarTextCustom.progress - 20
+        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress - 20
     }
 
     private fun updateInsideTextGravityCustomProgress(gravity: Int) {
-        progressBarTextCustom.textInsideGravity = gravity
+        binding.progressBarTextCustom.textInsideGravity = gravity
     }
 
     private fun updateOutsideTextGravityCustomProgress(gravity: Int) {
-        progressBarTextCustom.textOutsideGravity = gravity
+        binding.progressBarTextCustom.textOutsideGravity = gravity
     }
 
     private fun updateTextPositionPriorityCustomProgress(priority: Int) {
-        progressBarTextCustom.textPositionPriority = priority
+        binding.progressBarTextCustom.textPositionPriority = priority
     }
 
     private fun updateCustomProgressText() {
-        progressBarTextCustom.progressText = String.format("%.0f", progressBarTextCustom.progress)
+        binding.progressBarTextCustom.progressText = String.format("%.0f", binding.progressBarTextCustom.progress)
     }
 
     private fun getText1Description() = """

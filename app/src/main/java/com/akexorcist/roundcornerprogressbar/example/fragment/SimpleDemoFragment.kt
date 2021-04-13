@@ -6,30 +6,34 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
-import kotlinx.android.synthetic.main.fragment_simple_demo.*
+import com.akexorcist.roundcornerprogressbar.example.databinding.FragmentSimpleDemoBinding
 
 class SimpleDemoFragment : Fragment() {
+    private lateinit var binding: FragmentSimpleDemoBinding
+
     companion object {
         fun newInstance(): Fragment = SimpleDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_simple_demo, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentSimpleDemoBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textViewSimple1.text = getSimple1Description()
-        textViewSimple2.text = getSimple2Description()
-        textViewSimple3.text = getSimple3Description()
-        textViewSimple4.text = getSimple4Description()
-        textViewSimple5.text = getSimple5Description()
-        buttonSimpleCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckedChange(isChecked) }
-        checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
-        progressBarSimpleCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+        binding.textViewSimple1.text = getSimple1Description()
+        binding.textViewSimple2.text = getSimple2Description()
+        binding.textViewSimple3.text = getSimple3Description()
+        binding.textViewSimple4.text = getSimple4Description()
+        binding.textViewSimple5.text = getSimple5Description()
+        binding.buttonSimpleCustomIncrease.setOnClickListener { increaseCustomProgress() }
+        binding.buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+        binding.buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+        binding.buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+        binding.checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckedChange(isChecked) }
+        binding.checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
+        binding.progressBarSimpleCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
             if (isPrimaryProgress) {
                 updateCustomProgressText()
             }
@@ -39,47 +43,47 @@ class SimpleDemoFragment : Fragment() {
 
     private fun onAnimationEnableCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            progressBarSimpleCustom.enableAnimation()
+            binding.progressBarSimpleCustom.enableAnimation()
         } else {
-            progressBarSimpleCustom.disableAnimation()
+            binding.progressBarSimpleCustom.disableAnimation()
         }
     }
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+            binding.progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
         } else {
             @Suppress("DEPRECATION")
-            progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
+            binding.progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
         }
     }
 
     private fun increaseCustomProgress() {
-        progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + 2
+        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress + 2
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + 20
+        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress + 20
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        progressBarSimpleCustom.progress = progressBarSimpleCustom.progress - 2
+        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress - 2
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        progressBarSimpleCustom.progress = progressBarSimpleCustom.progress - 20
+        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress - 20
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        progressBarSimpleCustom.secondaryProgress = progressBarSimpleCustom.progress + 10
+        binding.progressBarSimpleCustom.secondaryProgress = binding.progressBarSimpleCustom.progress + 10
     }
 
     private fun updateCustomProgressText() {
-        textViewSimpleCustom.text = String.format("%.0f", progressBarSimpleCustom.progress)
+        binding.textViewSimpleCustom.text = String.format("%.0f", binding.progressBarSimpleCustom.progress)
     }
 
     private fun getSimple1Description() = """

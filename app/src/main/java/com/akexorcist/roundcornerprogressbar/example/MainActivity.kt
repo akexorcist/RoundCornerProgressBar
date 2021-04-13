@@ -2,18 +2,19 @@ package com.akexorcist.roundcornerprogressbar.example
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.akexorcist.roundcornerprogressbar.example.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         val adapter = ViewPagerAdapter(this)
-        viewPager.adapter = adapter
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        binding.viewPager.adapter = adapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = getString(
                 when (position) {
                     0 -> R.string.tab_round_corner_progress_bar
