@@ -27,16 +27,6 @@ allprojects {
 
 **Gradle**
 ```groovy
-// build.gradle (project)
-allprojects {
-    repositories {
-        mavenCentral()
-        /* ... */
-    }
-}
-```
-
-```groovy
 implementation 'com.akexorcist:round-corner-progress-bar:2.1.2'
 ```
 
