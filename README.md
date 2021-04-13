@@ -1,5 +1,6 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) 
-[ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar) 
+[ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/round-corner-progress-bar/badge.svg)](https://search.maven.org/artifact/com.akexorcist/round-corner-progress-bar) 
 ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) 
 [![Build Status](https://travis-ci.org/akexorcist/RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/RoundCornerProgressBar)
 
@@ -12,8 +13,19 @@ Round corner is cool. Let's make your progress bar to round corner
 Colorful progress bar with round corner on progress which you can customized a color and corner radius
 
 
-Installation
+Download
 ===
+Since version 2.1.1 will move from JCenter to MavenCentral
+
+```groovy
+// build.gradle (project)
+allprojects {
+    repositories {
+        mavenCentral()
+        /* ... */
+    }
+}
+```
 
 ```groovy
 implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
@@ -21,17 +33,6 @@ implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
 
 Migrate from 2.0.x to 2.1.x or higher
 ---
-### Moving from MavenCentral to JCenter with new artifact ID
-From (MavenCentral)
-
-```groovy
-// Old (MavenCentral)
-implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
-
-// New (JCenter)
-implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
-```
-
 ###  BaseRoundCornerProgressBar.OnProgressChangedListener
 Change the view ID parameter in `onProgressChanged` to View class
 ```kotlin
@@ -57,7 +58,7 @@ Use AnimatedRoundCornerProgressBar instead of BaseRoundCornerProgressBar for pro
 
 ```Kotlin
 class CustomRoundCornerProgressBar: AnimatedRoundCornerProgressBar() {
-    ...
+    /* ... */
 }
 ```
 
@@ -87,31 +88,6 @@ fun drawProgress(
     isReverse: Boolean
 )
 ```
-
-
-Release Notes
-===
-### 2.1.1
-* Fix bug in ([#57](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/57)) ([#77](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/77))
-
-### 2.1.0
-* `CenteredRoundCornerProgressBar` added ([#42](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/42))
-* `IndeterminateRoundCornerProgressBar` and `IndeterminateCenteredRoundCornerProgressBar` added
-* `IconRoundCornerProgressBar` now support for `Bitmap` and `Drawable` for icon
-* Animation for progress update (disable by default) added. This feature applied to all progress bars
-* Gradient progress color support (both primary and secondary progress) added. This feature applied to all progress bars (([#39](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/39)))
-* Text gravity when inside/outside and text position priority attribute in `TextRoundCornerProgressBar` added
-* Integer value support for progress setter (convert to float inside) added
-* Update to Gradle Plugin 3.6.3 and Gradle 5.6.4
-* Migrate from Android Support to AndroidX
-* Still in Java! (will be Kotlin in next version)
-* Fix bug in ([#43](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/43)) ([#20](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/20)) ([#74](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/74))
-* Moved from MavenCentral to JCenter. Please see "Installation" section for new artifact ID
-* All new sample code. You should try it!
-* Add useful annotations for Kotlin
-
-### 2.0.X
-* New code structure, Easy for further development
 
 
 Demo
@@ -738,17 +714,12 @@ When progress changed, the animation will applied automatically.
 
 ![Comparison Between With/Without Animation](/image/animation_comparison.gif)
 
-Animation speed scale's value is float betweeen 0.2 - 5.0 (default is 1.0). Higher for slow down the animation, lower for speed up.
+Animation speed scale's value is float between 0.2 - 5.0 (default is 1.0). Higher for slow down the animation, lower for speed up.
 
 
 Related Articles
 ===========================
 Thai Language : [Round Corner Progress Bar สำหรับคนบ้าขอบมน](http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html)
-
-
-Special Thanks
-===========================
-@first087, @redsanso
 
 
 What's Next
@@ -766,9 +737,14 @@ Known Issues
 * `setProgress(progress: Int)` does not update text position
 
 
+Change Log
+====
+See [CHANGELOG.md](CHANGELOG.md)
+
+
 Licence
 ===========================
-Copyright 2020 Akexorcist
+Copyright 2021 Akexorcist
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
