@@ -15,7 +15,7 @@ Colorful progress bar with round corner on progress which you can customized a c
 
 Download
 ===
-Since version 2.1.1 will move from JCenter to MavenCentral
+Since version 2.1.1 will [move from JCenter to MavenCentral](https://developer.android.com/studio/build/jcenter-migration)
 
 ```groovy
 // build.gradle (project)
