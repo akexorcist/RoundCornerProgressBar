@@ -1,5 +1,4 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) 
-[ ![Download](https://api.bintray.com/packages/akexorcist/maven/round-corner-progress-bar/images/download.svg) ](https://bintray.com/akexorcist/maven/round-corner-progress-bar)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/round-corner-progress-bar/badge.svg)](https://search.maven.org/artifact/com.akexorcist/round-corner-progress-bar) 
 ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) 
 [![Build Status](https://travis-ci.org/akexorcist/RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/RoundCornerProgressBar)
