@@ -1,7 +1,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/round-corner-progress-bar/badge.svg)](https://search.maven.org/artifact/com.akexorcist/round-corner-progress-bar) 
 ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-17-brightgreen) 
-[![Build Status](https://travis-ci.org/akexorcist/RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/RoundCornerProgressBar)
+[![Workflow Status](https://github.com/akexorcist/RoundCornerProgressBar/actions/workflows/android.yml/badge.svg)](https://github.com/akexorcist/RoundCornerProgressBar/actions)
 
 RoundCornerProgressBar
 ===
