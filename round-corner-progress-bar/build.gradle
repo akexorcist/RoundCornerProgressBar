@@ -3,13 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.dokka-android'
 
 android {
+    namespace 'com.akexorcist.roundcornerprogressbar'
     compileSdkVersion project.compileSdkVersion
 
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode project.versionCode
-        versionName project.versionName
     }
 
     buildTypes {
