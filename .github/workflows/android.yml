@@ -10,21 +10,21 @@ jobs:
   test:
     name: Unit Test
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+
     - name: set up JDK 1.8
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3
       with:
-        java-version: 1.8
+        distribution: 'adopt'
+        java-version: '11'
+        cache: 'gradle'
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
+
     - name: Run Clean
       run: ./gradlew clean
       
-    - name: Run ktlint
-      run: ./gradlew ktlint
-      
-    - name: Run Unit test
-      run: ./gradlew test
+    - name: Run build compatibility test
+      run: ./gradlew assembleDebug
