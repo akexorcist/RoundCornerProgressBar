@@ -24,16 +24,6 @@ buildscript {
         licenseName = 'The Apache License, Version 2.0'
         licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     }
-//    repositories {
-//        google()
-//        jcenter()
-//
-//    }
-//    dependencies {
-//        classpath 'com.android.tools.build:gradle:7.4.2'
-//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
-//        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.17"
-//    }
 }
 
 plugins {
