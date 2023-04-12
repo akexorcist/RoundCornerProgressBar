@@ -3,7 +3,7 @@ buildscript {
         kotlin_version = '1.8.20'
         compileSdkVersion = 33
         targetSdkVersion = 33
-        minSdkVersion = 14
+        minSdkVersion = 17
 
         versionName = '2.1.2'
         versionCode = 20102
