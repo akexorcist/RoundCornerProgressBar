@@ -1,6 +1,28 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.dokka-android'
+buildscript {
+    project.ext {
+        libraryName = 'RoundCornerProgressBar'
+        libraryDescription = 'Round corner is cool. Let\'s make your progress bar with round corner'
+
+        groupId = 'com.akexorcist'
+        artifactId = 'round-corner-progress-bar'
+
+        siteUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar'
+        gitUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar.git'
+
+        developerId = 'akexorcist'
+        developName = 'Somkiat Khitwongwattana'
+        developerEmail = 'akexorcist@gmail.com'
+
+        licenseName = 'The Apache License, Version 2.0'
+        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    }
+}
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.dokka-android'
+}
 
 android {
     namespace 'com.akexorcist.roundcornerprogressbar'
@@ -33,10 +55,9 @@ task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.annotation:annotation:1.6.0"
     implementation "androidx.customview:customview:1.1.0"
     testImplementation 'junit:junit:4.13.2'
 }
 
-//apply from: '../publish/mavencentral.gradle'
+apply from: '../publish/mavencentral.gradle'

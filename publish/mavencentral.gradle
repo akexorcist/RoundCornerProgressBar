@@ -1,7 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-
 task androidJavadocJar(type: Jar) {
     archiveClassifier.set('javadoc')
     from("$buildDir/javadoc")
@@ -28,20 +27,15 @@ ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
 ext["sonatypeStagingProfileId"] = ''
 
-File secretPropsFile = project.rootProject.file('local.properties')
-if (secretPropsFile.exists()) {
-    Properties p = new Properties()
-    p.load(new FileInputStream(secretPropsFile))
-    p.each { name, value ->
-        ext[name] = value
-    }
-} else {
-    ext["signing.keyId"] = System.getenv('SIGNING_KEY_ID')
-    ext["signing.password"] = System.getenv('SIGNING_PASSWORD')
-    ext["signing.secretKeyRingFile"] = System.getenv('SIGNING_SECRET_KEY_RING_FILE')
-    ext["ossrhUsername"] = System.getenv('OSSRH_USERNAME')
-    ext["ossrhPassword"] = System.getenv('OSSRH_PASSWORD')
-    ext["sonatypeStagingProfileId"] = System.getenv('SONATYPE_STAGING_PROFILE_ID')
+ext["signing.keyId"] = getEnvironmentOrPropertyValue('SIGNING_KEY_ID')
+ext["signing.password"] = getEnvironmentOrPropertyValue('SIGNING_PASSWORD')
+ext["signing.secretKeyRingFile"] = getEnvironmentOrPropertyValue('SIGNING_SECRET_KEY_RING_FILE')
+ext["ossrhUsername"] = getEnvironmentOrPropertyValue('OSSRH_USERNAME')
+ext["ossrhPassword"] = getEnvironmentOrPropertyValue('OSSRH_PASSWORD')
+ext["sonatypeStagingProfileId"] = getEnvironmentOrPropertyValue('SONATYPE_STAGING_PROFILE_ID')
+
+private def getEnvironmentOrPropertyValue(String key) {
+    return System.getenv(key) ?: getProperty(key) ?: ""
 }
 
 publishing {

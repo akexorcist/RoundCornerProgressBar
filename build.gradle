@@ -7,22 +7,6 @@ buildscript {
 
         versionName = '2.1.2'
         versionCode = 20102
-
-        libraryName = 'RoundCornerProgressBar'
-        libraryDescription = 'Round corner is cool. Let\'s make your progress bar with round corner'
-
-        groupId = 'com.akexorcist'
-        artifactId = 'round-corner-progress-bar'
-
-        siteUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar'
-        gitUrl = 'https://github.com/akexorcist/Android-RoundCornerProgressBar.git'
-
-        developerId = 'akexorcist'
-        developName = 'Somkiat Khitwongwattana'
-        developerEmail = 'akexorcist@gmail.com'
-
-        licenseName = 'The Apache License, Version 2.0'
-        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     }
 }
 
