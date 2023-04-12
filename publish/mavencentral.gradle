@@ -27,12 +27,12 @@ ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
 ext["sonatypeStagingProfileId"] = ''
 
-ext["signing.keyId"] = getEnvironmentOrPropertyValue('SIGNING_KEY_ID') ?: ""
-ext["signing.password"] = getEnvironmentOrPropertyValue('SIGNING_PASSWORD') ?: ""
-ext["signing.secretKeyRingFile"] = getEnvironmentOrPropertyValue('SIGNING_SECRET_KEY_RING_FILE') ?: ""
-ext["ossrhUsername"] = getEnvironmentOrPropertyValue('OSSRH_USERNAME') ?: ""
-ext["ossrhPassword"] = getEnvironmentOrPropertyValue('OSSRH_PASSWORD') ?: ""
-ext["sonatypeStagingProfileId"] = getEnvironmentOrPropertyValue('SONATYPE_STAGING_PROFILE_ID') ?: ""
+ext["signing.keyId"] = getEnvironmentOrPropertyValue('SIGNING_KEY_ID')
+ext["signing.password"] = getEnvironmentOrPropertyValue('SIGNING_PASSWORD')
+ext["signing.secretKeyRingFile"] = getEnvironmentOrPropertyValue('SIGNING_SECRET_KEY_RING_FILE')
+ext["ossrhUsername"] = getEnvironmentOrPropertyValue('OSSRH_USERNAME')
+ext["ossrhPassword"] = getEnvironmentOrPropertyValue('OSSRH_PASSWORD')
+ext["sonatypeStagingProfileId"] = getEnvironmentOrPropertyValue('SONATYPE_STAGING_PROFILE_ID')
 
 private def getEnvironmentOrPropertyValue(String key) {
     return System.getenv(key) ?: getProperty(key) ?: ""

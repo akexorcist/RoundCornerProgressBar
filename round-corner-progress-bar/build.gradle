@@ -60,4 +60,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-apply from: '../publish/mavencentral.gradle'
+//apply from: '../publish/mavencentral.gradle'
