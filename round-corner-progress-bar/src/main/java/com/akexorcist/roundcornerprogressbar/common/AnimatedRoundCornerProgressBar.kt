@@ -18,7 +18,7 @@ import com.akexorcist.roundcornerprogressbar.R
 import kotlin.math.abs
 
 @Suppress("unused")
-abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
+abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
     companion object {
         const val DEFAULT_DURATION = 500L
     }
@@ -130,9 +130,9 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
 
     fun isSecondaryProgressAnimating(): Boolean = _isSecondaryProgressAnimating
 
-    protected open fun onProgressChangeAnimationUpdate(layout: LinearLayout?, current: Float, to: Float) {}
+    protected open fun onProgressChangeAnimationUpdate(layout: LinearLayout, current: Float, to: Float) {}
 
-    protected open fun onProgressChangeAnimationEnd(layout: LinearLayout?) {}
+    protected open fun onProgressChangeAnimationEnd(layout: LinearLayout) {}
 
     protected open fun stopProgressAnimationImmediately() {
         clearProgressAnimation()
@@ -213,7 +213,7 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
             cancel()
         }
         _secondaryProgressAnimator = ValueAnimator.ofFloat(from, to).apply {
-            setDuration(getAnimationDuration(from, to, _max, _animationSpeedScale))
+            duration = getAnimationDuration(from, to, _max, _animationSpeedScale)
             addUpdateListener(secondaryProgressAnimationUpdateListener)
             addListener(secondaryProgressAnimationAdapterListener)
             start()

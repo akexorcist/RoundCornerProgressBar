@@ -16,12 +16,13 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Keep
 import androidx.annotation.Px
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.customview.view.AbsSavedState
 import com.akexorcist.roundcornerprogressbar.R
 
-@Suppress("unused")
+@Suppress("unused", "MemberVisibilityCanBePrivate", "PropertyName")
 @Keep
-abstract class BaseRoundCornerProgressBar2 : LinearLayout {
+abstract class BaseRoundCornerProgressBar : LinearLayout {
     companion object {
         protected const val DEFAULT_MAX_PROGRESS = 100
         protected const val DEFAULT_PROGRESS = 0
@@ -30,17 +31,9 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
         protected const val DEFAULT_BACKGROUND_PADDING = 0
     }
 
-    protected val layoutBackground: LinearLayout by lazy {
-        findViewById(R.id.layout_background)
-    }
-
-    protected val layoutProgress: LinearLayout by lazy {
-        findViewById(R.id.layout_progress)
-    }
-
-    protected val layoutSecondaryProgress: LinearLayout by lazy {
-        findViewById(R.id.layout_secondary_progress)
-    }
+    protected lateinit var layoutBackground: LinearLayout
+    protected lateinit var layoutProgress: LinearLayout
+    protected lateinit var layoutSecondaryProgress: LinearLayout
 
     protected var _radius = 0
     protected var _padding = 0
@@ -107,6 +100,11 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
 
         removeAllViews()
         LayoutInflater.from(context).inflate(initLayout(), this)
+
+        layoutBackground = findViewById(R.id.layout_background)
+        layoutProgress = findViewById(R.id.layout_progress)
+        layoutSecondaryProgress = findViewById(R.id.layout_secondary_progress)
+
         initView()
     }
 
@@ -122,7 +120,7 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
         _progress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcProgress, DEFAULT_PROGRESS.toFloat())
         _secondaryProgress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS.toFloat())
 
-        val defaultBackgroundColor = context.resources.getColor(R.color.round_corner_progress_bar_background_default)
+        val defaultBackgroundColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_background_default)
         _backgroundColor = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor, defaultBackgroundColor)
 
         _progressColor = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, -1)
@@ -207,7 +205,7 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
             createGradientDrawable(_progressColors)
         }
         else -> {
-            val defaultColor = resources.getColor(R.color.round_corner_progress_bar_progress_default)
+            val defaultColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_progress_default)
             createGradientDrawable(defaultColor)
         }
     }
@@ -221,7 +219,7 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
             createGradientDrawable(_secondaryProgressColors)
         }
         else -> {
-            val defaultColor = resources.getColor(R.color.round_corner_progress_bar_secondary_progress_default)
+            val defaultColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_secondary_progress_default)
             createGradientDrawable(defaultColor)
         }
     }
@@ -329,6 +327,10 @@ abstract class BaseRoundCornerProgressBar2 : LinearLayout {
 
     fun getMax(): Float {
         return _max
+    }
+
+    fun setMax(max: Int) {
+        setMax(max.toFloat())
     }
 
     fun setMax(max: Float) {

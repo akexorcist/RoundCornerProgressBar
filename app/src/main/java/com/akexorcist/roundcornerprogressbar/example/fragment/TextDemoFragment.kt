@@ -79,35 +79,35 @@ class TextDemoFragment : Fragment() {
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress + 2
+        binding.progressBarTextCustom.setProgress(binding.progressBarTextCustom.getProgress() + 2)
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress + 20
+        binding.progressBarTextCustom.setProgress(binding.progressBarTextCustom.getProgress() + 20)
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress - 2
+        binding.progressBarTextCustom.setProgress(binding.progressBarTextCustom.getProgress() - 2)
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarTextCustom.progress = binding.progressBarTextCustom.progress - 20
+        binding.progressBarTextCustom.setProgress(binding.progressBarTextCustom.getProgress() - 20)
     }
 
     private fun updateInsideTextGravityCustomProgress(gravity: Int) {
-        binding.progressBarTextCustom.textInsideGravity = gravity
+        binding.progressBarTextCustom.setTextInsideGravity(gravity)
     }
 
     private fun updateOutsideTextGravityCustomProgress(gravity: Int) {
-        binding.progressBarTextCustom.textOutsideGravity = gravity
+        binding.progressBarTextCustom.setTextOutsideGravity(gravity)
     }
 
     private fun updateTextPositionPriorityCustomProgress(priority: Int) {
-        binding.progressBarTextCustom.textPositionPriority = priority
+        binding.progressBarTextCustom.setTextPositionPriority(priority)
     }
 
     private fun updateCustomProgressText() {
-        binding.progressBarTextCustom.progressText = String.format("%.0f", binding.progressBarTextCustom.progress)
+        binding.progressBarTextCustom.setProgressText(String.format("%.0f", binding.progressBarTextCustom.getProgress()))
     }
 
     private fun getText1Description() = """

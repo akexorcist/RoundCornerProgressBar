@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar2
 import com.akexorcist.roundcornerprogressbar.example.R
 import com.akexorcist.roundcornerprogressbar.example.databinding.FragmentSimpleDemoBinding
 
