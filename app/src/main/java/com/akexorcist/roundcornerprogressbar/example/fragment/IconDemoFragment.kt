@@ -53,39 +53,39 @@ class IconDemoFragment : Fragment() {
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            binding.progressBarIconCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+            binding.progressBarIconCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
         } else {
             @Suppress("DEPRECATION")
-            binding.progressBarIconCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
+            binding.progressBarIconCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarIconCustom.progress = binding.progressBarIconCustom.progress + 2
+        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() + 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarIconCustom.progress = binding.progressBarIconCustom.progress + 20
+        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() + 20)
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarIconCustom.progress = binding.progressBarIconCustom.progress - 2
+        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() - 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarIconCustom.progress = binding.progressBarIconCustom.progress - 20
+        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() - 20)
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarIconCustom.secondaryProgress = binding.progressBarIconCustom.progress + 30
+        binding.progressBarIconCustom.setSecondaryProgress(binding.progressBarIconCustom.getProgress() + 30)
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewIconCustom.text = String.format("%.0f", binding.progressBarIconCustom.progress)
+        binding.textViewIconCustom.text = String.format("%.0f", binding.progressBarIconCustom.getProgress())
     }
 
     private fun getIcon1Description() = """

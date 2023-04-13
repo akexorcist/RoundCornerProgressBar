@@ -51,39 +51,39 @@ class CenteredDemoFragment : Fragment() {
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            binding.progressBarCenteredCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+            binding.progressBarCenteredCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
         } else {
             @Suppress("DEPRECATION")
-            binding.progressBarCenteredCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
+            binding.progressBarCenteredCustom.setProgress(resources.getColor(R.color.sample_progress_primary))
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarCenteredCustom.progress = binding.progressBarCenteredCustom.progress + 2
+        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() + 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarCenteredCustom.progress = binding.progressBarCenteredCustom.progress + 20
+        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() + 20)
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarCenteredCustom.progress = binding.progressBarCenteredCustom.progress - 2
+        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() - 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarCenteredCustom.progress = binding.progressBarCenteredCustom.progress - 20
+        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() - 20)
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarCenteredCustom.secondaryProgress = binding.progressBarCenteredCustom.progress + 10
+        binding.progressBarCenteredCustom.setSecondaryProgress(binding.progressBarCenteredCustom.getProgress() + 10)
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewCenteredCustom.text = String.format("%.0f", binding.progressBarCenteredCustom.progress)
+        binding.textViewCenteredCustom.text = String.format("%.0f", binding.progressBarCenteredCustom.getProgress())
     }
 
     private fun getCentered1Description() = """
