@@ -23,16 +23,16 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
         const val DEFAULT_DURATION = 500L
     }
 
-    private var isProgressAnimating = false
-    private var isSecondaryProgressAnimating = false
-    private var lastProgress = 0f
-    private var lastSecondaryProgress = 0f
+    private var _isProgressAnimating = false
+    private var _isSecondaryProgressAnimating = false
+    private var _lastProgress = 0f
+    private var _lastSecondaryProgress = 0f
 
-    private var animationSpeedScale = 1f
-    private var isAnimationEnabled = false
+    private var _animationSpeedScale = 1f
+    private var _isAnimationEnabled = false
 
-    private var progressAnimator: ValueAnimator? = null
-    private var secondaryProgressAnimator: ValueAnimator? = null
+    private var _progressAnimator: ValueAnimator? = null
+    private var _secondaryProgressAnimator: ValueAnimator? = null
 
     constructor(context: Context) : super(context)
 
@@ -48,20 +48,20 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
         if (attrs == null) return
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AnimatedRoundCornerProgressBar)
-        isAnimationEnabled = typedArray.getBoolean(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false)
-        animationSpeedScale = typedArray.getFloat(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f)
+        _isAnimationEnabled = typedArray.getBoolean(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false)
+        _animationSpeedScale = typedArray.getFloat(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f)
 
         typedArray.recycle()
 
-        lastProgress = super.getProgress()
-        lastSecondaryProgress = super.getSecondaryProgress()
+        _lastProgress = super.getProgress()
+        _lastSecondaryProgress = super.getSecondaryProgress()
     }
 
     override fun getProgress(): Float {
-        return if (!isAnimationEnabled && !isProgressAnimating) {
+        return if (!_isAnimationEnabled && !_isProgressAnimating) {
             super.getProgress()
         } else {
-            lastProgress
+            _lastProgress
         }
     }
 
@@ -72,12 +72,12 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     override fun setProgress(progress: Float) {
         val actualProgress =
             if (progress < 0) 0f
-            else progress.coerceAtMost(max)
+            else progress.coerceAtMost(_max)
 
         clearProgressAnimation()
-        this.lastProgress = actualProgress
+        this._lastProgress = actualProgress
 
-        if (this.isAnimationEnabled) {
+        if (this._isAnimationEnabled) {
             startProgressAnimation(super.getProgress(), actualProgress)
         } else {
             super.setProgress(actualProgress)
@@ -85,10 +85,10 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     }
 
     override fun getSecondaryProgress(): Float {
-        return if (!isAnimationEnabled && !isSecondaryProgressAnimating) {
+        return if (!_isAnimationEnabled && !_isSecondaryProgressAnimating) {
             super.getSecondaryProgress()
         } else {
-            lastSecondaryProgress
+            _lastSecondaryProgress
         }
     }
 
@@ -99,10 +99,10 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     override fun setSecondaryProgress(progress: Float) {
         val actualProgress =
             if (progress < 0) 0f
-            else progress.coerceAtMost(max)
+            else progress.coerceAtMost(_max)
         clearSecondaryProgressAnimation()
-        lastSecondaryProgress = actualProgress
-        if (isAnimationEnabled) {
+        _lastSecondaryProgress = actualProgress
+        if (_isAnimationEnabled) {
             startSecondaryProgressAnimation(super.getSecondaryProgress(), actualProgress)
         } else {
             super.setSecondaryProgress(actualProgress)
@@ -111,24 +111,24 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
 
     @FloatRange(from = 0.2, to = 5.toDouble())
     open fun getAnimationSpeedScale(): Float {
-        return animationSpeedScale
+        return _animationSpeedScale
     }
 
     fun enableAnimation() {
-        isAnimationEnabled = true
+        _isAnimationEnabled = true
     }
 
     fun disableAnimation() {
-        isAnimationEnabled = false
+        _isAnimationEnabled = false
     }
 
     fun setAnimationSpeedScale(@FloatRange(from = 0.2, to = 5.toDouble()) scale: Float) {
-        animationSpeedScale = scale.coerceIn(0.2f, 5f)
+        _animationSpeedScale = scale.coerceIn(0.2f, 5f)
     }
 
-    fun isProgressAnimating(): Boolean = isProgressAnimating
+    fun isProgressAnimating(): Boolean = _isProgressAnimating
 
-    fun isSecondaryProgressAnimating(): Boolean = isSecondaryProgressAnimating
+    fun isSecondaryProgressAnimating(): Boolean = _isSecondaryProgressAnimating
 
     protected open fun onProgressChangeAnimationUpdate(layout: LinearLayout?, current: Float, to: Float) {}
 
@@ -137,13 +137,13 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     protected open fun stopProgressAnimationImmediately() {
         clearProgressAnimation()
         clearSecondaryProgressAnimation()
-        if (isAnimationEnabled && isProgressAnimating) {
+        if (_isAnimationEnabled && _isProgressAnimating) {
             disableAnimation()
-            if (isProgressAnimating) {
-                super.setProgress(lastProgress)
+            if (_isProgressAnimating) {
+                super.setProgress(_lastProgress)
             }
-            if (isSecondaryProgressAnimating) {
-                super.setSecondaryProgress(lastProgress)
+            if (_isSecondaryProgressAnimating) {
+                super.setSecondaryProgress(_lastProgress)
             }
             enableAnimation()
         }
@@ -155,14 +155,14 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     }
 
     private fun startProgressAnimation(from: Float, to: Float) {
-        isProgressAnimating = true
-        progressAnimator?.apply {
+        _isProgressAnimating = true
+        _progressAnimator?.apply {
             removeUpdateListener(progressAnimationUpdateListener)
             removeListener(progressAnimationAdapterListener)
             cancel()
         }
-        progressAnimator = ValueAnimator.ofFloat(from, to).apply {
-            duration = getAnimationDuration(from, to, max, animationSpeedScale)
+        _progressAnimator = ValueAnimator.ofFloat(from, to).apply {
+            duration = getAnimationDuration(from, to, _max, _animationSpeedScale)
             addUpdateListener(progressAnimationUpdateListener)
             addListener(progressAnimationAdapterListener)
             start()
@@ -175,18 +175,18 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
 
     private val progressAnimationAdapterListener: AnimatorListenerAdapter = object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator) {
-            isProgressAnimating = false
+            _isProgressAnimating = false
             onProgressAnimationEnd()
         }
 
         override fun onAnimationCancel(animation: Animator) {
-            isProgressAnimating = false
+            _isProgressAnimating = false
         }
     }
 
     private fun onUpdateProgressByAnimation(progress: Float) {
         super.setProgress(progress)
-        onProgressChangeAnimationUpdate(layoutProgress, progress, lastProgress)
+        onProgressChangeAnimationUpdate(layoutProgress, progress, _lastProgress)
     }
 
     private fun onProgressAnimationEnd() {
@@ -194,26 +194,26 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     }
 
     private fun restoreProgressAnimationState() {
-        if (isProgressAnimating) {
-            startProgressAnimation(super.getProgress(), lastProgress)
+        if (_isProgressAnimating) {
+            startProgressAnimation(super.getProgress(), _lastProgress)
         }
     }
 
     private fun clearProgressAnimation() {
-        if (progressAnimator?.isRunning == true) {
-            progressAnimator?.cancel()
+        if (_progressAnimator?.isRunning == true) {
+            _progressAnimator?.cancel()
         }
     }
 
     private fun startSecondaryProgressAnimation(from: Float, to: Float) {
-        isSecondaryProgressAnimating = true
-        secondaryProgressAnimator?.apply {
+        _isSecondaryProgressAnimating = true
+        _secondaryProgressAnimator?.apply {
             removeUpdateListener(secondaryProgressAnimationUpdateListener)
             removeListener(secondaryProgressAnimationAdapterListener)
             cancel()
         }
-        secondaryProgressAnimator = ValueAnimator.ofFloat(from, to).apply {
-            setDuration(getAnimationDuration(from, to, max, animationSpeedScale))
+        _secondaryProgressAnimator = ValueAnimator.ofFloat(from, to).apply {
+            setDuration(getAnimationDuration(from, to, _max, _animationSpeedScale))
             addUpdateListener(secondaryProgressAnimationUpdateListener)
             addListener(secondaryProgressAnimationAdapterListener)
             start()
@@ -226,18 +226,18 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
 
     private val secondaryProgressAnimationAdapterListener: AnimatorListenerAdapter = object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator) {
-            isSecondaryProgressAnimating = false
+            _isSecondaryProgressAnimating = false
             onSecondaryProgressAnimationEnd()
         }
 
         override fun onAnimationCancel(animation: Animator) {
-            isSecondaryProgressAnimating = false
+            _isSecondaryProgressAnimating = false
         }
     }
 
     private fun onUpdateSecondaryProgressByAnimation(progress: Float) {
         super.setSecondaryProgress(progress)
-        onProgressChangeAnimationUpdate(layoutSecondaryProgress, progress, lastProgress)
+        onProgressChangeAnimationUpdate(layoutSecondaryProgress, progress, _lastProgress)
     }
 
     private fun onSecondaryProgressAnimationEnd() {
@@ -245,26 +245,26 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
     }
 
     private fun restoreSecondaryProgressAnimationState() {
-        if (isSecondaryProgressAnimating) {
-            startSecondaryProgressAnimation(super.getSecondaryProgress(), lastSecondaryProgress)
+        if (_isSecondaryProgressAnimating) {
+            startSecondaryProgressAnimation(super.getSecondaryProgress(), _lastSecondaryProgress)
         }
     }
 
     private fun clearSecondaryProgressAnimation() {
-        if (secondaryProgressAnimator?.isRunning == true) {
-            secondaryProgressAnimator?.cancel()
+        if (_secondaryProgressAnimator?.isRunning == true) {
+            _secondaryProgressAnimator?.cancel()
         }
     }
 
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState() ?: return null
         val state = SavedState(superState)
-        state.isProgressAnimating = this.isProgressAnimating
-        state.isSecondaryProgressAnimating = this.isSecondaryProgressAnimating
-        state.lastProgress = this.lastProgress
-        state.lastSecondaryProgress = this.lastSecondaryProgress
-        state.animationSpeedScale = this.animationSpeedScale
-        state.isAnimationEnabled = this.isAnimationEnabled
+        state.isProgressAnimating = this._isProgressAnimating
+        state.isSecondaryProgressAnimating = this._isSecondaryProgressAnimating
+        state.lastProgress = this._lastProgress
+        state.lastSecondaryProgress = this._lastSecondaryProgress
+        state.animationSpeedScale = this._animationSpeedScale
+        state.isAnimationEnabled = this._isAnimationEnabled
         return state
     }
 
@@ -274,12 +274,12 @@ abstract class AnimatedRoundCornerProgressBar2 : BaseRoundCornerProgressBar2 {
             return
         }
         super.onRestoreInstanceState(state.superState)
-        this.isProgressAnimating = state.isProgressAnimating
-        this.isSecondaryProgressAnimating = state.isSecondaryProgressAnimating
-        this.lastProgress = state.lastProgress
-        this.lastSecondaryProgress = state.lastSecondaryProgress
-        this.animationSpeedScale = state.animationSpeedScale
-        this.isAnimationEnabled = state.isAnimationEnabled
+        this._isProgressAnimating = state.isProgressAnimating
+        this._isSecondaryProgressAnimating = state.isSecondaryProgressAnimating
+        this._lastProgress = state.lastProgress
+        this._lastSecondaryProgress = state.lastSecondaryProgress
+        this._animationSpeedScale = state.animationSpeedScale
+        this._isAnimationEnabled = state.isAnimationEnabled
         restoreProgressAnimationState()
         restoreSecondaryProgressAnimationState()
     }

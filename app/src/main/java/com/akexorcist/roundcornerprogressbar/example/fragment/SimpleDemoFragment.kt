@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.akexorcist.roundcornerprogressbar.common.BaseRoundCornerProgressBar2
 import com.akexorcist.roundcornerprogressbar.example.R
 import com.akexorcist.roundcornerprogressbar.example.databinding.FragmentSimpleDemoBinding
 
@@ -51,39 +52,39 @@ class SimpleDemoFragment : Fragment() {
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
         if (isChecked) {
-            binding.progressBarSimpleCustom.progressColors = resources.getIntArray(R.array.sample_progress_gradient)
+            binding.progressBarSimpleCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
         } else {
             @Suppress("DEPRECATION")
-            binding.progressBarSimpleCustom.progressColor = resources.getColor(R.color.sample_progress_primary)
+            binding.progressBarSimpleCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress + 2
+        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() + 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress + 20
+        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() + 20)
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress - 2
+        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() - 2)
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarSimpleCustom.progress = binding.progressBarSimpleCustom.progress - 20
+        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() - 20)
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarSimpleCustom.secondaryProgress = binding.progressBarSimpleCustom.progress + 10
+        binding.progressBarSimpleCustom.setSecondaryProgress(binding.progressBarSimpleCustom.getProgress() + 10)
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewSimpleCustom.text = String.format("%.0f", binding.progressBarSimpleCustom.progress)
+        binding.textViewSimpleCustom.text = String.format("%.0f", binding.progressBarSimpleCustom.getProgress())
     }
 
     private fun getSimple1Description() = """
