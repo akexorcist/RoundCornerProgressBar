@@ -1,6 +1,21 @@
 Release Notes
 ====
 
+2.2.0
+--
+* Convert all Java classes to Kotlin
+* Gradle 7.5
+* Android Gradle Plugin 7.4.2
+* Kotlin 1.8.20
+* Compile & Target SDK version 33
+* Minimum SDK version 17
+* Update dependencies
+  * AndroidX Annotation 1.6.0
+
+2.1.2
+-- 
+* Fix unspecified module error
+
 2.1.1
 -- 
 * Fix bug in ([#57](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/57)) ([#77](https://github.com/akexorcist/Android-RoundCornerProgressBar/issues/77))

@@ -1,12 +1,11 @@
 buildscript {
     project.ext {
-        kotlin_version = '1.8.20'
         compileSdkVersion = 33
         targetSdkVersion = 33
         minSdkVersion = 17
 
-        versionName = '2.1.2'
-        versionCode = 20102
+        versionName = '2.2.0'
+        versionCode = 20200
     }
 }
 
