@@ -43,5 +43,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     implementation project(':round-corner-progress-bar')
-//    implementation 'com.akexorcist:round-corner-progress-bar:2.1.2'
+//    implementation "com.akexorcist:round-corner-progress-bar:${project.versionName}"
 }
