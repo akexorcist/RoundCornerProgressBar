@@ -23,3 +23,41 @@ fun onProgressChanged(
     isSecondaryProgress: Boolean
 )
 ```
+
+### Custom your own progress bar by extends BaseRoundCornerProgressBar
+
+Use AnimatedRoundCornerProgressBar instead of BaseRoundCornerProgressBar for progress change animation support.
+
+```Kotlin
+class CustomRoundCornerProgressBar: AnimatedRoundCornerProgressBar() {
+    /* ... */
+}
+```
+
+And you do not have to create the `GradientDrawable` by yourself anymore. `drawProgress` will send it as parameter.
+
+```kotlin
+// Old
+fun drawProgress(
+    layoutProgress: LinearLayout,
+    max: Float,
+    progress: Float,
+    totalWidth: Float,
+    radius: Int,
+    padding: Int,
+    progressColor: Int,
+    isReverse: Boolean
+)
+
+// New
+fun drawProgress(
+    layoutProgress: LinearLayout,
+    progressDrawable: GradientDrawable,
+    max: Float,
+    progress: Float,
+    totalWidth: Float,
+    radius: Int,
+    padding: Int,
+    isReverse: Boolean
+)
+```
