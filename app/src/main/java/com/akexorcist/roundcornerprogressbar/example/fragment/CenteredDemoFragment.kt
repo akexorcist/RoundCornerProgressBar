@@ -38,7 +38,7 @@ CenteredDemoFragment : Fragment() {
             buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
             buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
             checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked ->
-                onAnimationEnableCheckdChange(
+                onAnimationEnableCheckedChange(
                     isChecked
                 )
             }
@@ -56,7 +56,7 @@ CenteredDemoFragment : Fragment() {
         updateCustomProgressText()
     }
 
-    private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
+    private fun onAnimationEnableCheckedChange(isChecked: Boolean) {
         with(binding) {
             if (isChecked) {
                 progressBarCenteredCustom.enableAnimation()
