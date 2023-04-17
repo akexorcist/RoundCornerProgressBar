@@ -67,12 +67,21 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
         setup(context, attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         setup(context, attrs)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    ) {
         setup(context, attrs)
     }
 
@@ -110,31 +119,66 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
 
     protected open fun setupStyleable(context: Context, attrs: AttributeSet?) {
         if (attrs == null) return
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseRoundCornerProgressBar)
-        _radius = typedArray.getDimension(R.styleable.BaseRoundCornerProgressBar_rcRadius, dp2px(DEFAULT_PROGRESS_RADIUS.toFloat())).toInt()
-        _padding = typedArray.getDimension(R.styleable.BaseRoundCornerProgressBar_rcBackgroundPadding, dp2px(DEFAULT_BACKGROUND_PADDING.toFloat())).toInt()
+        val typedArray =
+            context.obtainStyledAttributes(attrs, R.styleable.BaseRoundCornerProgressBar)
 
-        _isReverse = typedArray.getBoolean(R.styleable.BaseRoundCornerProgressBar_rcReverse, false)
+        with(typedArray) {
+            _radius = getDimension(
+                R.styleable.BaseRoundCornerProgressBar_rcRadius,
+                dp2px(DEFAULT_PROGRESS_RADIUS.toFloat())
+            ).toInt()
+            _padding = getDimension(
+                R.styleable.BaseRoundCornerProgressBar_rcBackgroundPadding,
+                dp2px(DEFAULT_BACKGROUND_PADDING.toFloat())
+            ).toInt()
 
-        _max = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcMax, DEFAULT_MAX_PROGRESS.toFloat())
-        _progress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcProgress, DEFAULT_PROGRESS.toFloat())
-        _secondaryProgress = typedArray.getFloat(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS.toFloat())
+            _isReverse =
+                getBoolean(R.styleable.BaseRoundCornerProgressBar_rcReverse, false)
 
-        val defaultBackgroundColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_background_default)
-        _backgroundColor = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor, defaultBackgroundColor)
+            _max = getFloat(
+                R.styleable.BaseRoundCornerProgressBar_rcMax,
+                DEFAULT_MAX_PROGRESS.toFloat()
+            )
+            _progress = getFloat(
+                R.styleable.BaseRoundCornerProgressBar_rcProgress,
+                DEFAULT_PROGRESS.toFloat()
+            )
+            _secondaryProgress = getFloat(
+                R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgress,
+                DEFAULT_SECONDARY_PROGRESS.toFloat()
+            )
 
-        _progressColor = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcProgressColor, -1)
-        val progressColorResourceId = typedArray.getResourceId(R.styleable.BaseRoundCornerProgressBar_rcProgressColors, 0)
-        _progressColors = progressColorResourceId.takeIf { it != 0 }
-            ?.let { resources.getIntArray(progressColorResourceId) }
+            val defaultBackgroundColor = ContextCompat.getColor(
+                context,
+                R.color.round_corner_progress_bar_background_default
+            )
+            _backgroundColor = getColor(
+                R.styleable.BaseRoundCornerProgressBar_rcBackgroundColor,
+                defaultBackgroundColor
+            )
 
-        _secondaryProgressColor = typedArray.getColor(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor, -1)
-        val secondaryProgressColorResourceId = typedArray.getResourceId(R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColors, 0)
-        _secondaryProgressColors = secondaryProgressColorResourceId.takeIf { it != 0 }
-            ?.let { resources.getIntArray(secondaryProgressColorResourceId) }
+            _progressColor = getColor(
+                R.styleable.BaseRoundCornerProgressBar_rcProgressColor, -1
+            )
+            val progressColorResourceId = getResourceId(
+                R.styleable.BaseRoundCornerProgressBar_rcProgressColors, 0
+            )
+            _progressColors = progressColorResourceId.takeIf { it != 0 }
+                ?.let { resources.getIntArray(progressColorResourceId) }
 
-        typedArray.recycle()
+            _secondaryProgressColor = getColor(
+                R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColor,
+                -1
+            )
+            val secondaryProgressColorResourceId = getResourceId(
+                R.styleable.BaseRoundCornerProgressBar_rcSecondaryProgressColors,
+                0
+            )
+            _secondaryProgressColors = secondaryProgressColorResourceId.takeIf { it != 0 }
+                ?.let { resources.getIntArray(secondaryProgressColorResourceId) }
 
+            recycle()
+        }
         initStyleable(context, attrs)
     }
 
@@ -192,7 +236,8 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
     // Create an multi-color rectangle gradient drawable
     protected open fun createGradientDrawable(colors: IntArray?) = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
-        orientation = if (!isReverse()) GradientDrawable.Orientation.LEFT_RIGHT else GradientDrawable.Orientation.RIGHT_LEFT
+        orientation =
+            if (!isReverse()) GradientDrawable.Orientation.LEFT_RIGHT else GradientDrawable.Orientation.RIGHT_LEFT
         setColors(colors)
     }
 
@@ -201,11 +246,15 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
         _progressColor != -1 -> {
             createGradientDrawable(_progressColor)
         }
+
         _progressColors != null && _progressColors?.isNotEmpty() == true -> {
             createGradientDrawable(_progressColors)
         }
+
         else -> {
-            val defaultColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_progress_default)
+            val defaultColor = ContextCompat.getColor(
+                context, R.color.round_corner_progress_bar_progress_default
+            )
             createGradientDrawable(defaultColor)
         }
     }
@@ -215,11 +264,16 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
         _secondaryProgressColor != -1 -> {
             createGradientDrawable(_secondaryProgressColor)
         }
+
         _secondaryProgressColors != null && _secondaryProgressColors?.isNotEmpty() == true -> {
             createGradientDrawable(_secondaryProgressColors)
         }
+
         else -> {
-            val defaultColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_secondary_progress_default)
+            val defaultColor = ContextCompat.getColor(
+                context,
+                R.color.round_corner_progress_bar_secondary_progress_default
+            )
             createGradientDrawable(defaultColor)
         }
     }
@@ -277,10 +331,12 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
 
     // Remove all of relative align rule
     private fun removeLayoutParamsRule(layoutParams: RelativeLayout.LayoutParams) {
-        layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_END)
-        layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_LEFT)
-        layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_START)
+        with(layoutParams) {
+            removeRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+            removeRule(RelativeLayout.ALIGN_PARENT_END)
+            removeRule(RelativeLayout.ALIGN_PARENT_LEFT)
+            removeRule(RelativeLayout.ALIGN_PARENT_START)
+        }
     }
 
     protected fun dp2px(dp: Float): Float {
@@ -438,28 +494,35 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
     }
 
     interface OnProgressChangedListener {
-        fun onProgressChanged(view: View, progress: Float, isPrimaryProgress: Boolean, isSecondaryProgress: Boolean)
+        fun onProgressChanged(
+            view: View,
+            progress: Float,
+            isPrimaryProgress: Boolean,
+            isSecondaryProgress: Boolean
+        )
     }
 
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState() ?: return null
         val state = SavedState(superState)
 
-        state.max = this._max
-        state.progress = this._progress
-        state.secondaryProgress = this._secondaryProgress
+        with(state) {
+            max = _max
+            progress = _progress
+            secondaryProgress = _secondaryProgress
 
-        state.radius = this._radius
-        state.padding = this._padding
+            radius = _radius
+            padding = _padding
 
-        state.colorBackground = this._backgroundColor
-        state.colorProgress = this._progressColor
-        state.colorSecondaryProgress = this._secondaryProgressColor
+            colorBackground = _backgroundColor
+            colorProgress = _progressColor
+            colorSecondaryProgress = _secondaryProgressColor
 
-        state.colorProgressArray = this._progressColors
-        state.colorSecondaryProgressArray = this._secondaryProgressColors
+            colorProgressArray = _progressColors
+            colorSecondaryProgressArray = _secondaryProgressColors
 
-        state.isReverse = this._isReverse
+            isReverse = _isReverse
+        }
         return state
     }
 
@@ -470,21 +533,23 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
         }
         super.onRestoreInstanceState(state.superState)
 
-        this._max = state.max
-        this._progress = state.progress
-        this._secondaryProgress = state.secondaryProgress
+        with(state) {
+            _max = max
+            _progress = progress
+            _secondaryProgress = secondaryProgress
 
-        this._radius = state.radius
-        this._padding = state.padding
+            _radius = radius
+            _padding = padding
 
-        this._backgroundColor = state.colorBackground
-        this._progressColor = state.colorProgress
-        this._secondaryProgressColor = state.colorSecondaryProgress
+            _backgroundColor = colorBackground
+            _progressColor = colorProgress
+            _secondaryProgressColor = colorSecondaryProgress
 
-        this._progressColors = state.colorProgressArray
-        this._secondaryProgressColors = state.colorSecondaryProgressArray
+            _progressColors = colorProgressArray
+            _secondaryProgressColors = colorSecondaryProgressArray
 
-        this._isReverse = state.isReverse
+            _isReverse = isReverse
+        }
     }
 
     protected class SavedState : AbsSavedState {
@@ -529,30 +594,33 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
 
         override fun writeToParcel(dest: Parcel, flags: Int) {
             super.writeToParcel(dest, flags)
-            dest.writeFloat(this.max)
-            dest.writeFloat(this.progress)
-            dest.writeFloat(this.secondaryProgress)
+            with(dest) {
+                writeFloat(max)
+                writeFloat(progress)
+                writeFloat(secondaryProgress)
 
-            dest.writeInt(this.radius)
-            dest.writeInt(this.padding)
+                writeInt(radius)
+                writeInt(padding)
 
-            dest.writeInt(this.colorBackground)
-            dest.writeInt(this.colorProgress)
-            dest.writeInt(this.colorSecondaryProgress)
+                writeInt(colorBackground)
+                writeInt(colorProgress)
+                writeInt(colorSecondaryProgress)
 
-            dest.writeInt(this.colorProgressArray?.size ?: 0)
-            dest.writeIntArray(this.colorProgressArray ?: intArrayOf())
+                writeInt(colorProgressArray?.size ?: 0)
+                writeIntArray(colorProgressArray ?: intArrayOf())
 
-            dest.writeInt(this.colorSecondaryProgressArray?.size ?: 0)
-            dest.writeIntArray(this.colorSecondaryProgressArray ?: intArrayOf())
+                writeInt(colorSecondaryProgressArray?.size ?: 0)
+                writeIntArray(colorSecondaryProgressArray ?: intArrayOf())
 
-            dest.writeByte((if (this.isReverse) 1 else 0).toByte())
+                writeByte((if (isReverse) 1 else 0).toByte())
+            }
         }
 
         companion object {
             @JvmField
             val CREATOR: ClassLoaderCreator<SavedState> = object : ClassLoaderCreator<SavedState> {
-                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState = SavedState(source, loader)
+                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState =
+                    SavedState(source, loader)
 
                 override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
 

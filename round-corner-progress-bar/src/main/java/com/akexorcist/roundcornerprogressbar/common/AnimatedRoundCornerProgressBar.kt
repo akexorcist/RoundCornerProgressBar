@@ -38,21 +38,37 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    )
 
     override fun setupStyleable(context: Context, attrs: AttributeSet?) {
         super.setupStyleable(context, attrs)
         if (attrs == null) return
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AnimatedRoundCornerProgressBar)
-        _isAnimationEnabled = typedArray.getBoolean(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false)
-        _animationSpeedScale = typedArray.getFloat(R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f)
+        val typedArray = context.obtainStyledAttributes(
+            attrs, R.styleable.AnimatedRoundCornerProgressBar
+        )
 
-        typedArray.recycle()
-
+        with(typedArray) {
+            _isAnimationEnabled = getBoolean(
+                R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false
+            )
+            _animationSpeedScale = getFloat(
+                R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f
+            )
+            recycle()
+        }
         _lastProgress = super.getProgress()
         _lastSecondaryProgress = super.getSecondaryProgress()
     }
@@ -130,7 +146,12 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
 
     fun isSecondaryProgressAnimating(): Boolean = _isSecondaryProgressAnimating
 
-    protected open fun onProgressChangeAnimationUpdate(layout: LinearLayout, current: Float, to: Float) {}
+    protected open fun onProgressChangeAnimationUpdate(
+        layout: LinearLayout,
+        current: Float,
+        to: Float
+    ) {
+    }
 
     protected open fun onProgressChangeAnimationEnd(layout: LinearLayout) {}
 
@@ -173,16 +194,17 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
         onUpdateProgressByAnimation(animation.animatedValue as Float)
     }
 
-    private val progressAnimationAdapterListener: AnimatorListenerAdapter = object : AnimatorListenerAdapter() {
-        override fun onAnimationEnd(animation: Animator) {
-            _isProgressAnimating = false
-            onProgressAnimationEnd()
-        }
+    private val progressAnimationAdapterListener: AnimatorListenerAdapter =
+        object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                _isProgressAnimating = false
+                onProgressAnimationEnd()
+            }
 
-        override fun onAnimationCancel(animation: Animator) {
-            _isProgressAnimating = false
+            override fun onAnimationCancel(animation: Animator) {
+                _isProgressAnimating = false
+            }
         }
-    }
 
     private fun onUpdateProgressByAnimation(progress: Float) {
         super.setProgress(progress)
@@ -224,16 +246,17 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
         onUpdateSecondaryProgressByAnimation(animation.animatedValue as Float)
     }
 
-    private val secondaryProgressAnimationAdapterListener: AnimatorListenerAdapter = object : AnimatorListenerAdapter() {
-        override fun onAnimationEnd(animation: Animator) {
-            _isSecondaryProgressAnimating = false
-            onSecondaryProgressAnimationEnd()
-        }
+    private val secondaryProgressAnimationAdapterListener: AnimatorListenerAdapter =
+        object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                _isSecondaryProgressAnimating = false
+                onSecondaryProgressAnimationEnd()
+            }
 
-        override fun onAnimationCancel(animation: Animator) {
-            _isSecondaryProgressAnimating = false
+            override fun onAnimationCancel(animation: Animator) {
+                _isSecondaryProgressAnimating = false
+            }
         }
-    }
 
     private fun onUpdateSecondaryProgressByAnimation(progress: Float) {
         super.setSecondaryProgress(progress)
@@ -259,12 +282,14 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState() ?: return null
         val state = SavedState(superState)
-        state.isProgressAnimating = this._isProgressAnimating
-        state.isSecondaryProgressAnimating = this._isSecondaryProgressAnimating
-        state.lastProgress = this._lastProgress
-        state.lastSecondaryProgress = this._lastSecondaryProgress
-        state.animationSpeedScale = this._animationSpeedScale
-        state.isAnimationEnabled = this._isAnimationEnabled
+        with(state) {
+            isProgressAnimating = _isProgressAnimating
+            isSecondaryProgressAnimating = _isSecondaryProgressAnimating
+            lastProgress = _lastProgress
+            lastSecondaryProgress = _lastSecondaryProgress
+            animationSpeedScale = _animationSpeedScale
+            isAnimationEnabled = _isAnimationEnabled
+        }
         return state
     }
 
@@ -274,12 +299,14 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
             return
         }
         super.onRestoreInstanceState(state.superState)
-        this._isProgressAnimating = state.isProgressAnimating
-        this._isSecondaryProgressAnimating = state.isSecondaryProgressAnimating
-        this._lastProgress = state.lastProgress
-        this._lastSecondaryProgress = state.lastSecondaryProgress
-        this._animationSpeedScale = state.animationSpeedScale
-        this._isAnimationEnabled = state.isAnimationEnabled
+        with(state) {
+            _isProgressAnimating = isProgressAnimating
+            _isSecondaryProgressAnimating = isSecondaryProgressAnimating
+            _lastProgress = lastProgress
+            _lastSecondaryProgress = lastSecondaryProgress
+            _animationSpeedScale = animationSpeedScale
+            _isAnimationEnabled = isAnimationEnabled
+        }
         restoreProgressAnimationState()
         restoreSecondaryProgressAnimationState()
     }
@@ -297,28 +324,33 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
         constructor(source: Parcel) : super(source)
 
         constructor(source: Parcel, loader: ClassLoader?) : super(source, loader) {
-            isProgressAnimating = source.readByte().toInt() != 0
-            isSecondaryProgressAnimating = source.readByte().toInt() != 0
-            lastProgress = source.readFloat()
-            lastSecondaryProgress = source.readFloat()
-            animationSpeedScale = source.readFloat()
-            isAnimationEnabled = source.readByte().toInt() != 0
+            with(source) {
+                isProgressAnimating = readByte().toInt() != 0
+                isSecondaryProgressAnimating = readByte().toInt() != 0
+                lastProgress = readFloat()
+                lastSecondaryProgress = readFloat()
+                animationSpeedScale = readFloat()
+                isAnimationEnabled = readByte().toInt() != 0
+            }
         }
 
         override fun writeToParcel(dest: Parcel, flags: Int) {
             super.writeToParcel(dest, flags)
-            dest.writeByte((if (isProgressAnimating) 1 else 0).toByte())
-            dest.writeByte((if (isSecondaryProgressAnimating) 1 else 0).toByte())
-            dest.writeFloat(lastProgress)
-            dest.writeFloat(lastSecondaryProgress)
-            dest.writeFloat(animationSpeedScale)
-            dest.writeByte((if (isAnimationEnabled) 1 else 0).toByte())
+            with(dest) {
+                writeByte((if (isProgressAnimating) 1 else 0).toByte())
+                writeByte((if (isSecondaryProgressAnimating) 1 else 0).toByte())
+                writeFloat(lastProgress)
+                writeFloat(lastSecondaryProgress)
+                writeFloat(animationSpeedScale)
+                writeByte((if (isAnimationEnabled) 1 else 0).toByte())
+            }
         }
 
         companion object {
             @JvmField
             val CREATOR: ClassLoaderCreator<SavedState> = object : ClassLoaderCreator<SavedState> {
-                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState = SavedState(source, loader)
+                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState =
+                    SavedState(source, loader)
 
                 override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
 

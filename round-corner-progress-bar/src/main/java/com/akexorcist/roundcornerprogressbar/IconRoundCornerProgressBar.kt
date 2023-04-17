@@ -49,32 +49,68 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    )
 
     override fun initLayout(): Int = R.layout.layout_icon_round_corner_progress_bar
 
     override fun initStyleable(context: Context, attrs: AttributeSet?) {
         if (attrs == null) return
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconRoundCornerProgressBar)
+        val typedArray = context.obtainStyledAttributes(
+            attrs, R.styleable.IconRoundCornerProgressBar
+        )
 
-        iconResource = typedArray.getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, -1)
+        with(typedArray) {
+            iconResource = getResourceId(R.styleable.IconRoundCornerProgressBar_rcIconSrc, -1)
+            iconSize = getDimension(R.styleable.IconRoundCornerProgressBar_rcIconSize, -1f).toInt()
+            iconWidth = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconWidth,
+                dp2px(DEFAULT_ICON_SIZE.toFloat())
+            ).toInt()
+            iconHeight = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconHeight,
+                dp2px(DEFAULT_ICON_SIZE.toFloat())
+            ).toInt()
+            iconPadding =
+                getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPadding, -1f).toInt()
+            iconPaddingLeft = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconPaddingLeft,
+                dp2px(DEFAULT_ICON_PADDING_LEFT.toFloat())
+            ).toInt()
+            iconPaddingRight = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconPaddingRight,
+                dp2px(DEFAULT_ICON_PADDING_RIGHT.toFloat())
+            ).toInt()
+            iconPaddingTop = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconPaddingTop,
+                dp2px(DEFAULT_ICON_PADDING_TOP.toFloat())
+            ).toInt()
+            iconPaddingBottom = getDimension(
+                R.styleable.IconRoundCornerProgressBar_rcIconPaddingBottom,
+                dp2px(DEFAULT_ICON_PADDING_BOTTOM.toFloat())
+            ).toInt()
 
-        iconSize = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconSize, -1f).toInt()
-        iconWidth = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconWidth, dp2px(DEFAULT_ICON_SIZE.toFloat())).toInt()
-        iconHeight = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconHeight, dp2px(DEFAULT_ICON_SIZE.toFloat())).toInt()
-        iconPadding = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPadding, -1f).toInt()
-        iconPaddingLeft = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingLeft, dp2px(DEFAULT_ICON_PADDING_LEFT.toFloat())).toInt()
-        iconPaddingRight = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingRight, dp2px(DEFAULT_ICON_PADDING_RIGHT.toFloat())).toInt()
-        iconPaddingTop = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP.toFloat())).toInt()
-        iconPaddingBottom = typedArray.getDimension(R.styleable.IconRoundCornerProgressBar_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM.toFloat())).toInt()
-
-        val defaultIconBackgroundColor = ContextCompat.getColor(context, R.color.round_corner_progress_bar_background_default)
-        colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgressBar_rcIconBackgroundColor, defaultIconBackgroundColor)
-
-        typedArray.recycle()
+            val defaultIconBackgroundColor = ContextCompat.getColor(
+                context,
+                R.color.round_corner_progress_bar_background_default
+            )
+            colorIconBackground = getColor(
+                R.styleable.IconRoundCornerProgressBar_rcIconBackgroundColor,
+                defaultIconBackgroundColor
+            )
+            recycle()
+        }
     }
 
     override fun initView() {
@@ -169,10 +205,16 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
     private fun drawImageIconPadding() {
         @Suppress("IntroduceWhenSubject")
         when {
-            iconPadding == -1 || iconPadding == 0 ->
-                ivProgressIcon.setPadding(iconPaddingLeft, iconPaddingTop, iconPaddingRight, iconPaddingBottom)
-            else ->
-                ivProgressIcon.setPadding(iconPadding, iconPadding, iconPadding, iconPadding)
+            iconPadding == -1 || iconPadding == 0 -> ivProgressIcon.setPadding(
+                iconPaddingLeft,
+                iconPaddingTop,
+                iconPaddingRight,
+                iconPaddingBottom
+            )
+
+            else -> ivProgressIcon.setPadding(
+                iconPadding, iconPadding, iconPadding, iconPadding
+            )
         }
         ivProgressIcon.invalidate()
     }
@@ -284,6 +326,7 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState() ?: return null
         val state = SavedState(superState)
+
         state.iconResource = this.iconResource
         state.iconSize = this.iconSize
         state.iconWidth = this.iconWidth
@@ -347,27 +390,31 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
 
         override fun writeToParcel(dest: Parcel, flags: Int) {
             super.writeToParcel(dest, flags)
-            dest.writeInt(this.iconResource)
-            dest.writeInt(this.iconSize)
-            dest.writeInt(this.iconWidth)
-            dest.writeInt(this.iconHeight)
-            dest.writeInt(this.iconPadding)
-            dest.writeInt(this.iconPaddingLeft)
-            dest.writeInt(this.iconPaddingRight)
-            dest.writeInt(this.iconPaddingTop)
-            dest.writeInt(this.iconPaddingBottom)
-            dest.writeInt(this.colorIconBackground)
+            with(dest) {
+                writeInt(iconResource)
+                writeInt(iconSize)
+                writeInt(iconWidth)
+                writeInt(iconHeight)
+                writeInt(iconPadding)
+                writeInt(iconPaddingLeft)
+                writeInt(iconPaddingRight)
+                writeInt(iconPaddingTop)
+                writeInt(iconPaddingBottom)
+                writeInt(colorIconBackground)
+            }
         }
 
         companion object {
             @JvmField
-            val CREATOR: Parcelable.ClassLoaderCreator<SavedState> = object : Parcelable.ClassLoaderCreator<SavedState> {
-                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState = SavedState(source, loader)
+            val CREATOR: Parcelable.ClassLoaderCreator<SavedState> =
+                object : Parcelable.ClassLoaderCreator<SavedState> {
+                    override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState =
+                        SavedState(source, loader)
 
-                override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
+                    override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
 
-                override fun newArray(size: Int): Array<SavedState> = newArray(size)
-            }
+                    override fun newArray(size: Int): Array<SavedState> = newArray(size)
+                }
         }
     }
 }
