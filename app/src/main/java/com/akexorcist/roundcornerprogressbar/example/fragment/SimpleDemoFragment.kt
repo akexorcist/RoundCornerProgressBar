@@ -15,75 +15,105 @@ class SimpleDemoFragment : Fragment() {
         fun newInstance(): Fragment = SimpleDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentSimpleDemoBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewSimple1.text = getSimple1Description()
-        binding.textViewSimple2.text = getSimple2Description()
-        binding.textViewSimple3.text = getSimple3Description()
-        binding.textViewSimple4.text = getSimple4Description()
-        binding.textViewSimple5.text = getSimple5Description()
-        binding.buttonSimpleCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        binding.buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        binding.buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        binding.buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        binding.checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckedChange(isChecked) }
-        binding.checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
-        binding.progressBarSimpleCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
-            if (isPrimaryProgress) {
-                updateCustomProgressText()
+        with(binding) {
+            textViewSimple1.text = getSimple1Description()
+            textViewSimple2.text = getSimple2Description()
+            textViewSimple3.text = getSimple3Description()
+            textViewSimple4.text = getSimple4Description()
+            textViewSimple5.text = getSimple5Description()
+            buttonSimpleCustomIncrease.setOnClickListener { increaseCustomProgress() }
+            buttonSimpleCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+            buttonSimpleCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+            buttonSimpleCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+            checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked ->
+                onAnimationEnableCheckedChange(
+                    isChecked
+                )
+            }
+            checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked ->
+                onApplyGradientProgressColorCheckedChange(
+                    isChecked
+                )
+            }
+            progressBarSimpleCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+                if (isPrimaryProgress) {
+                    updateCustomProgressText()
+                }
             }
         }
         updateCustomProgressText()
     }
 
     private fun onAnimationEnableCheckedChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarSimpleCustom.enableAnimation()
-        } else {
-            binding.progressBarSimpleCustom.disableAnimation()
+        with(binding) {
+            if (isChecked) {
+                progressBarSimpleCustom.enableAnimation()
+            } else {
+                progressBarSimpleCustom.disableAnimation()
+            }
         }
     }
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarSimpleCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
-        } else {
-            @Suppress("DEPRECATION")
-            binding.progressBarSimpleCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
+        with(binding) {
+            if (isChecked) {
+                progressBarSimpleCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
+            } else {
+                @Suppress("DEPRECATION")
+                progressBarSimpleCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
+            }
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() + 2)
+        with(binding) {
+            progressBarSimpleCustom.setProgress(progressBarSimpleCustom.getProgress() + 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() + 20)
+        with(binding) {
+            progressBarSimpleCustom.setProgress(progressBarSimpleCustom.getProgress() + 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() - 2)
+        with(binding) {
+            progressBarSimpleCustom.setProgress(progressBarSimpleCustom.getProgress() - 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarSimpleCustom.setProgress(binding.progressBarSimpleCustom.getProgress() - 20)
+        with(binding) {
+            progressBarSimpleCustom.setProgress(progressBarSimpleCustom.getProgress() - 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarSimpleCustom.setSecondaryProgress(binding.progressBarSimpleCustom.getProgress() + 10)
+        with(binding) {
+            progressBarSimpleCustom.setSecondaryProgress(progressBarSimpleCustom.getProgress() + 10)
+        }
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewSimpleCustom.text = String.format("%.0f", binding.progressBarSimpleCustom.getProgress())
+        with(binding) {
+            textViewSimpleCustom.text = "${progressBarSimpleCustom.getProgress()}"
+        }
     }
 
     private fun getSimple1Description() = """

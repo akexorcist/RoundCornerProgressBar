@@ -15,77 +15,107 @@ class IconDemoFragment : Fragment() {
         fun newInstance(): Fragment = IconDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentIconDemoBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewIcon1.text = getIcon1Description()
-        binding.textViewIcon2.text = getIcon2Description()
-        binding.textViewIcon3.text = getIcon3Description()
-        binding.textViewIcon4.text = getIcon4Description()
-        binding.textViewIcon5.text = getIcon5Description()
-        binding.textViewIcon6.text = getIcon6Description()
-        binding.textViewIcon7.text = getIcon7Description()
-        binding.buttonIconCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        binding.buttonIconCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        binding.buttonIconCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        binding.buttonIconCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        binding.checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
-        binding.checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
-        binding.progressBarIconCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
-            if (isPrimaryProgress) {
-                updateCustomProgressText()
+        with(binding) {
+            textViewIcon1.text = getIcon1Description()
+            textViewIcon2.text = getIcon2Description()
+            textViewIcon3.text = getIcon3Description()
+            textViewIcon4.text = getIcon4Description()
+            textViewIcon5.text = getIcon5Description()
+            textViewIcon6.text = getIcon6Description()
+            textViewIcon7.text = getIcon7Description()
+            buttonIconCustomIncrease.setOnClickListener { increaseCustomProgress() }
+            buttonIconCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+            buttonIconCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+            buttonIconCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+            checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked ->
+                onAnimationEnableCheckdChange(
+                    isChecked
+                )
+            }
+            checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked ->
+                onApplyGradientProgressColorCheckedChange(
+                    isChecked
+                )
+            }
+            progressBarIconCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+                if (isPrimaryProgress) {
+                    updateCustomProgressText()
+                }
             }
         }
         updateCustomProgressText()
     }
 
     private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarIconCustom.enableAnimation()
-        } else {
-            binding.progressBarIconCustom.disableAnimation()
+        with(binding) {
+            if (isChecked) {
+                progressBarIconCustom.enableAnimation()
+            } else {
+                progressBarIconCustom.disableAnimation()
+            }
         }
     }
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarIconCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
-        } else {
-            @Suppress("DEPRECATION")
-            binding.progressBarIconCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
+        with(binding) {
+            if (isChecked) {
+                progressBarIconCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
+            } else {
+                @Suppress("DEPRECATION")
+                progressBarIconCustom.setProgressColor(resources.getColor(R.color.sample_progress_primary))
+            }
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() + 2)
+        with(binding) {
+            progressBarIconCustom.setProgress(progressBarIconCustom.getProgress() + 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() + 20)
+        with(binding) {
+            progressBarIconCustom.setProgress(progressBarIconCustom.getProgress() + 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() - 2)
+        with(binding) {
+            progressBarIconCustom.setProgress(progressBarIconCustom.getProgress() - 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarIconCustom.setProgress(binding.progressBarIconCustom.getProgress() - 20)
+        with(binding) {
+            progressBarIconCustom.setProgress(progressBarIconCustom.getProgress() - 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarIconCustom.setSecondaryProgress(binding.progressBarIconCustom.getProgress() + 30)
+        with(binding) {
+            progressBarIconCustom.setSecondaryProgress(progressBarIconCustom.getProgress() + 30)
+        }
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewIconCustom.text = String.format("%.0f", binding.progressBarIconCustom.getProgress())
+        with(binding) {
+            textViewIconCustom.text = "${progressBarIconCustom.getProgress()}"
+        }
     }
 
     private fun getIcon1Description() = """
