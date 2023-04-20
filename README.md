@@ -4,7 +4,7 @@
 ![Apache 2.0](https://img.shields.io/badge/License-Apache%202-brightgreen)
 [![Workflow Status](https://github.com/akexorcist/RoundCornerProgressBar/actions/workflows/android.yml/badge.svg)](https://github.com/akexorcist/RoundCornerProgressBar/actions)
 
-[![Google Dev Library](https://img.shields.io/badge/Google%20Dev%20Library-Round%20Corner%20Progress%20Bar-blue.svg?style=flat)](http://android-arsenal.com/details/1/1375)
+[![Google Dev Library](https://img.shields.io/badge/Google%20Dev%20Library-Round%20Corner%20Progress%20Bar-blue.svg?style=flat)](https://devlibrary.withgoogle.com/products/android/repos/akexorcist-RoundCornerProgressBar)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-blue.svg?style=flat)](http://android-arsenal.com/details/1/1375)
 
 # RoundCornerProgressBar
