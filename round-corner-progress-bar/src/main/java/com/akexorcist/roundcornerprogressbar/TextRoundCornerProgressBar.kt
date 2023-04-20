@@ -18,7 +18,8 @@ import com.akexorcist.roundcornerprogressbar.common.AnimatedRoundCornerProgressB
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 @Keep
-open class TextRoundCornerProgressBar : AnimatedRoundCornerProgressBar, ViewTreeObserver.OnGlobalLayoutListener {
+open class TextRoundCornerProgressBar : AnimatedRoundCornerProgressBar,
+    ViewTreeObserver.OnGlobalLayoutListener {
     companion object {
         protected const val DEFAULT_TEXT_SIZE = 16
         protected const val DEFAULT_TEXT_MARGIN = 10
@@ -42,29 +43,55 @@ open class TextRoundCornerProgressBar : AnimatedRoundCornerProgressBar, ViewTree
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    )
 
     override fun initLayout(): Int = R.layout.layout_text_round_corner_progress_bar
 
     override fun initStyleable(context: Context, attrs: AttributeSet?) {
         if (attrs == null) return
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgressBar)
+        val typedArray =
+            context.obtainStyledAttributes(attrs, R.styleable.TextRoundCornerProgressBar)
 
-        colorTextProgress = typedArray.getColor(R.styleable.TextRoundCornerProgressBar_rcTextProgressColor, Color.WHITE)
+        with(typedArray) {
+            colorTextProgress = getColor(
+                R.styleable.TextRoundCornerProgressBar_rcTextProgressColor, Color.WHITE
+            )
 
-        textProgressSize = typedArray.getDimension(R.styleable.TextRoundCornerProgressBar_rcTextProgressSize, dp2px(DEFAULT_TEXT_SIZE.toFloat())).toInt()
-        textProgressMargin = typedArray.getDimension(R.styleable.TextRoundCornerProgressBar_rcTextProgressMargin, dp2px(DEFAULT_TEXT_MARGIN.toFloat())).toInt()
+            textProgressSize = getDimension(
+                R.styleable.TextRoundCornerProgressBar_rcTextProgressSize,
+                dp2px(DEFAULT_TEXT_SIZE.toFloat())
+            ).toInt()
+            textProgressMargin = getDimension(
+                R.styleable.TextRoundCornerProgressBar_rcTextProgressMargin,
+                dp2px(DEFAULT_TEXT_MARGIN.toFloat())
+            ).toInt()
 
-        textProgress = typedArray.getString(R.styleable.TextRoundCornerProgressBar_rcTextProgress)
+            textProgress = getString(R.styleable.TextRoundCornerProgressBar_rcTextProgress)
 
-        textInsideGravity = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextInsideGravity, GRAVITY_START)
-        textOutsideGravity = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextOutsideGravity, GRAVITY_START)
-        textPositionPriority = typedArray.getInt(R.styleable.TextRoundCornerProgressBar_rcTextPositionPriority, PRIORITY_INSIDE)
-
-        typedArray.recycle()
+            textInsideGravity = getInt(
+                R.styleable.TextRoundCornerProgressBar_rcTextInsideGravity, GRAVITY_START
+            )
+            textOutsideGravity = getInt(
+                R.styleable.TextRoundCornerProgressBar_rcTextOutsideGravity, GRAVITY_START
+            )
+            textPositionPriority = getInt(
+                R.styleable.TextRoundCornerProgressBar_rcTextPositionPriority,
+                PRIORITY_INSIDE
+            )
+            recycle()
+        }
     }
 
     override fun initView() {
@@ -164,63 +191,73 @@ open class TextRoundCornerProgressBar : AnimatedRoundCornerProgressBar, ViewTree
 
     private fun clearTextProgressAlign() {
         val params = tvProgress.layoutParams as RelativeLayout.LayoutParams
-        params.removeRule(RelativeLayout.LEFT_OF)
-        params.removeRule(RelativeLayout.RIGHT_OF)
-        params.removeRule(RelativeLayout.ALIGN_LEFT)
-        params.removeRule(RelativeLayout.ALIGN_RIGHT)
-        params.removeRule(RelativeLayout.ALIGN_PARENT_LEFT)
-        params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        params.removeRule(RelativeLayout.START_OF)
-        params.removeRule(RelativeLayout.END_OF)
-        params.removeRule(RelativeLayout.ALIGN_START)
-        params.removeRule(RelativeLayout.ALIGN_END)
-        params.removeRule(RelativeLayout.ALIGN_PARENT_START)
-        params.removeRule(RelativeLayout.ALIGN_PARENT_END)
-        tvProgress.layoutParams = params
+        with(params) {
+            removeRule(RelativeLayout.LEFT_OF)
+            removeRule(RelativeLayout.RIGHT_OF)
+            removeRule(RelativeLayout.ALIGN_LEFT)
+            removeRule(RelativeLayout.ALIGN_RIGHT)
+            removeRule(RelativeLayout.ALIGN_PARENT_LEFT)
+            removeRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+            removeRule(RelativeLayout.START_OF)
+            removeRule(RelativeLayout.END_OF)
+            removeRule(RelativeLayout.ALIGN_START)
+            removeRule(RelativeLayout.ALIGN_END)
+            removeRule(RelativeLayout.ALIGN_PARENT_START)
+            removeRule(RelativeLayout.ALIGN_PARENT_END)
+
+            tvProgress.layoutParams = this
+        }
     }
 
     private fun alignTextProgressInsideProgress() {
         val params = tvProgress.layoutParams as RelativeLayout.LayoutParams
-        if (isReverse()) {
-            if (textInsideGravity == GRAVITY_END) {
-                params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress)
-                params.addRule(RelativeLayout.ALIGN_END, R.id.layout_progress)
+
+        with(params) {
+            if (isReverse()) {
+                if (textInsideGravity == GRAVITY_END) {
+                    addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress)
+                    addRule(RelativeLayout.ALIGN_END, R.id.layout_progress)
+                } else {
+                    addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress)
+                    addRule(RelativeLayout.ALIGN_START, R.id.layout_progress)
+                }
             } else {
-                params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress)
-                params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress)
+                if (textInsideGravity == GRAVITY_END) {
+                    addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress)
+                    addRule(RelativeLayout.ALIGN_START, R.id.layout_progress)
+                } else {
+                    addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress)
+                    addRule(RelativeLayout.ALIGN_END, R.id.layout_progress)
+                }
             }
-        } else {
-            if (textInsideGravity == GRAVITY_END) {
-                params.addRule(RelativeLayout.ALIGN_LEFT, R.id.layout_progress)
-                params.addRule(RelativeLayout.ALIGN_START, R.id.layout_progress)
-            } else {
-                params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.layout_progress)
-                params.addRule(RelativeLayout.ALIGN_END, R.id.layout_progress)
-            }
+
+            tvProgress.layoutParams = this
         }
-        tvProgress.layoutParams = params
     }
 
     private fun alignTextProgressOutsideProgress() {
         val params = tvProgress.layoutParams as RelativeLayout.LayoutParams
-        if (isReverse()) {
-            if (textOutsideGravity == GRAVITY_END) {
-                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
-                params.addRule(RelativeLayout.ALIGN_PARENT_START)
+
+        with(params) {
+            if (isReverse()) {
+                if (textOutsideGravity == GRAVITY_END) {
+                    addRule(RelativeLayout.ALIGN_PARENT_LEFT)
+                    addRule(RelativeLayout.ALIGN_PARENT_START)
+                } else {
+                    addRule(RelativeLayout.LEFT_OF, R.id.layout_progress)
+                    addRule(RelativeLayout.START_OF, R.id.layout_progress)
+                }
             } else {
-                params.addRule(RelativeLayout.LEFT_OF, R.id.layout_progress)
-                params.addRule(RelativeLayout.START_OF, R.id.layout_progress)
+                if (textOutsideGravity == GRAVITY_END) {
+                    addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+                    addRule(RelativeLayout.ALIGN_PARENT_END)
+                } else {
+                    addRule(RelativeLayout.RIGHT_OF, R.id.layout_progress)
+                    addRule(RelativeLayout.END_OF, R.id.layout_progress)
+                }
             }
-        } else {
-            if (textOutsideGravity == GRAVITY_END) {
-                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-                params.addRule(RelativeLayout.ALIGN_PARENT_END)
-            } else {
-                params.addRule(RelativeLayout.RIGHT_OF, R.id.layout_progress)
-                params.addRule(RelativeLayout.END_OF, R.id.layout_progress)
-            }
+            tvProgress.layoutParams = this
         }
-        tvProgress.layoutParams = params
     }
 
     fun getProgressText(): String? = textProgress
@@ -349,39 +386,45 @@ open class TextRoundCornerProgressBar : AnimatedRoundCornerProgressBar, ViewTree
         constructor(source: Parcel) : super(source, null)
 
         constructor(source: Parcel, loader: ClassLoader? = null) : super(source, loader) {
-            this.colorTextProgress = source.readInt()
-            this.textProgressSize = source.readInt()
-            this.textProgressMargin = source.readInt()
+            with(source) {
+                colorTextProgress = readInt()
+                textProgressSize = readInt()
+                textProgressMargin = readInt()
 
-            this.textProgress = source.readString()
+                textProgress = readString()
 
-            this.textInsideGravity = source.readInt()
-            this.textOutsideGravity = source.readInt()
-            this.textPositionPriority = source.readInt()
+                textInsideGravity = readInt()
+                textOutsideGravity = readInt()
+                textPositionPriority = readInt()
+            }
         }
 
         override fun writeToParcel(dest: Parcel, flags: Int) {
             super.writeToParcel(dest, flags)
-            dest.writeInt(this.colorTextProgress)
-            dest.writeInt(this.textProgressSize)
-            dest.writeInt(this.textProgressMargin)
+            with(dest) {
+                writeInt(colorTextProgress)
+                writeInt(textProgressSize)
+                writeInt(textProgressMargin)
 
-            dest.writeString(this.textProgress)
+                writeString(textProgress)
 
-            dest.writeInt(this.textInsideGravity)
-            dest.writeInt(this.textOutsideGravity)
-            dest.writeInt(this.textPositionPriority)
+                writeInt(textInsideGravity)
+                writeInt(textOutsideGravity)
+                writeInt(textPositionPriority)
+            }
         }
 
         companion object {
             @JvmField
-            val CREATOR: Parcelable.ClassLoaderCreator<SavedState> = object : Parcelable.ClassLoaderCreator<SavedState> {
-                override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState = SavedState(source, loader)
+            val CREATOR: Parcelable.ClassLoaderCreator<SavedState> =
+                object : Parcelable.ClassLoaderCreator<SavedState> {
+                    override fun createFromParcel(source: Parcel, loader: ClassLoader): SavedState =
+                        SavedState(source, loader)
 
-                override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
+                    override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
 
-                override fun newArray(size: Int): Array<SavedState> = newArray(size)
-            }
+                    override fun newArray(size: Int): Array<SavedState> = newArray(size)
+                }
         }
     }
 }

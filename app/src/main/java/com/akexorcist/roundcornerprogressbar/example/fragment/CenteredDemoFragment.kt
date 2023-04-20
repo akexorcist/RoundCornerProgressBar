@@ -8,82 +8,113 @@ import androidx.fragment.app.Fragment
 import com.akexorcist.roundcornerprogressbar.example.R
 import com.akexorcist.roundcornerprogressbar.example.databinding.FragmentCenteredDemoBinding
 
-class CenteredDemoFragment : Fragment() {
+class
+CenteredDemoFragment : Fragment() {
     private lateinit var binding: FragmentCenteredDemoBinding
 
     companion object {
         fun newInstance(): Fragment = CenteredDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentCenteredDemoBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewCentered1.text = getCentered1Description()
-        binding.textViewCentered2.text = getCentered2Description()
-        binding.textViewCentered3.text = getCentered3Description()
-        binding.textViewCentered4.text = getCentered4Description()
-        binding.textViewCentered5.text = getCentered5Description()
-        binding.buttonCenteredCustomIncrease.setOnClickListener { increaseCustomProgress() }
-        binding.buttonCenteredCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
-        binding.buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
-        binding.buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
-        binding.checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked -> onAnimationEnableCheckdChange(isChecked) }
-        binding.checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked -> onApplyGradientProgressColorCheckedChange(isChecked) }
-        binding.progressBarCenteredCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
-            if (isPrimaryProgress) {
-                updateCustomProgressText()
+        with(binding) {
+            textViewCentered1.text = getCentered1Description()
+            textViewCentered2.text = getCentered2Description()
+            textViewCentered3.text = getCentered3Description()
+            textViewCentered4.text = getCentered4Description()
+            textViewCentered5.text = getCentered5Description()
+            buttonCenteredCustomIncrease.setOnClickListener { increaseCustomProgress() }
+            buttonCenteredCustomExtraIncrease.setOnClickListener { extraIncreaseCustomProgress() }
+            buttonCenteredCustomDecrease.setOnClickListener { decreaseCustomProgress() }
+            buttonCenteredCustomExtraDecrease.setOnClickListener { extraDecreaseCustomProgress() }
+            checkBoxAnimationEnable.setOnCheckedChangeListener { _, isChecked ->
+                onAnimationEnableCheckedChange(
+                    isChecked
+                )
+            }
+            checkBoxGradientProgressColor.setOnCheckedChangeListener { _, isChecked ->
+                onApplyGradientProgressColorCheckedChange(
+                    isChecked
+                )
+            }
+            progressBarCenteredCustom.setOnProgressChangedListener { _, _, isPrimaryProgress, _ ->
+                if (isPrimaryProgress) {
+                    updateCustomProgressText()
+                }
             }
         }
         updateCustomProgressText()
     }
 
-    private fun onAnimationEnableCheckdChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarCenteredCustom.enableAnimation()
-        } else {
-            binding.progressBarCenteredCustom.disableAnimation()
+    private fun onAnimationEnableCheckedChange(isChecked: Boolean) {
+        with(binding) {
+            if (isChecked) {
+                progressBarCenteredCustom.enableAnimation()
+            } else {
+                progressBarCenteredCustom.disableAnimation()
+            }
         }
     }
 
     private fun onApplyGradientProgressColorCheckedChange(isChecked: Boolean) {
-        if (isChecked) {
-            binding.progressBarCenteredCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
-        } else {
-            @Suppress("DEPRECATION")
-            binding.progressBarCenteredCustom.setProgress(resources.getColor(R.color.sample_progress_primary))
+        with(binding) {
+            if (isChecked) {
+                progressBarCenteredCustom.setProgressColors(resources.getIntArray(R.array.sample_progress_gradient))
+            } else {
+                @Suppress("DEPRECATION")
+                progressBarCenteredCustom.setProgress(resources.getColor(R.color.sample_progress_primary))
+            }
         }
     }
 
     private fun increaseCustomProgress() {
-        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() + 2)
+        with(binding) {
+            progressBarCenteredCustom.setProgress(progressBarCenteredCustom.getProgress() + 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraIncreaseCustomProgress() {
-        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() + 20)
+        with(binding) {
+            progressBarCenteredCustom.setProgress(progressBarCenteredCustom.getProgress() + 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun decreaseCustomProgress() {
-        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() - 2)
+        with(binding) {
+            progressBarCenteredCustom.setProgress(progressBarCenteredCustom.getProgress() - 2)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun extraDecreaseCustomProgress() {
-        binding.progressBarCenteredCustom.setProgress(binding.progressBarCenteredCustom.getProgress() - 20)
+        with(binding) {
+            progressBarCenteredCustom.setProgress(progressBarCenteredCustom.getProgress() - 20)
+        }
         updateCustomSecondaryProgress()
     }
 
     private fun updateCustomSecondaryProgress() {
-        binding.progressBarCenteredCustom.setSecondaryProgress(binding.progressBarCenteredCustom.getProgress() + 10)
+        with(binding) {
+            progressBarCenteredCustom.setSecondaryProgress(progressBarCenteredCustom.getProgress() + 10)
+        }
     }
 
     private fun updateCustomProgressText() {
-        binding.textViewCenteredCustom.text = String.format("%.0f", binding.progressBarCenteredCustom.getProgress())
+        with(binding) {
+            textViewCenteredCustom.text = "${progressBarCenteredCustom.getProgress()}"
+        }
     }
 
     private fun getCentered1Description() = """

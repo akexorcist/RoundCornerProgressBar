@@ -14,17 +14,23 @@ class IndeterminateDemoFragment : Fragment() {
         fun newInstance(): Fragment = IndeterminateDemoFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentIndeterminateDemoBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewIndeterminate1.text = getIndeterminate1Description()
-        binding.textViewIndeterminate2.text = getIndeterminate2Description()
-        binding.textViewIndeterminate3.text = getIndeterminate3Description()
-        binding.textViewIndeterminate4.text = getIndeterminate4Description()
+        with(binding) {
+            textViewIndeterminate1.text = getIndeterminate1Description()
+            textViewIndeterminate2.text = getIndeterminate2Description()
+            textViewIndeterminate3.text = getIndeterminate3Description()
+            textViewIndeterminate4.text = getIndeterminate4Description()
+        }
     }
 
     private fun getIndeterminate1Description() = """
