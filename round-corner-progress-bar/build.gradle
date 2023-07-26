@@ -26,7 +26,7 @@ plugins {
 
 android {
     namespace 'com.akexorcist.roundcornerprogressbar'
-    compileSdkVersion project.compileSdkVersion
+    compileSdk project.compileSdkVersion
 
     defaultConfig {
         minSdkVersion project.minSdkVersion
@@ -46,6 +46,15 @@ android {
             java.srcDirs = ['src/main/java']
             res.srcDirs = ['src/main/res']
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
