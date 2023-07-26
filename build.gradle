@@ -4,8 +4,8 @@ buildscript {
         targetSdkVersion = 33
         minSdkVersion = 17
 
-        versionName = '2.2.0'
-        versionCode = 20200
+        versionName = '2.2.1'
+        versionCode = 20201
     }
 }
 

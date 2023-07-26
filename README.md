@@ -20,7 +20,7 @@ Colorful rounded corner progress bar
 ## Gradle
 
 ```groovy
-implementation 'com.akexorcist:round-corner-progress-bar:2.2.0'
+implementation 'com.akexorcist:round-corner-progress-bar:2.2.1'
 ```
 
 ## Demo

@@ -1,6 +1,12 @@
 Release Notes
 ====
 
+2.2.1
+--
+* Gradle 8.0
+* Android Gradle Plugin 8.1.0
+* Using Java 17 for Compile & Kotlin options
+
 2.2.0
 --
 * Convert all Java classes to Kotlin
