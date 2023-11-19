@@ -64,7 +64,7 @@ task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
 }
 
 dependencies {
-    implementation "androidx.annotation:annotation:1.6.0"
+    implementation "androidx.annotation:annotation:1.7.0"
     implementation "androidx.customview:customview:1.1.0"
     testImplementation 'junit:junit:4.13.2'
 }
