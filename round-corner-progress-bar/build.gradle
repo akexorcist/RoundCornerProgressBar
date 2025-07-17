@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 buildscript {
     project.ext {
         libraryName = 'RoundCornerProgressBar'
@@ -58,14 +60,14 @@ android {
     }
 }
 
-task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+tasks.register('dokkaJavadoc', DokkaTask) {
     outputFormat = 'javadoc'
     outputDirectory = "$buildDir/javadoc"
 }
 
 dependencies {
-    implementation "androidx.annotation:annotation:1.7.0"
-    implementation "androidx.customview:customview:1.1.0"
+    implementation "androidx.annotation:annotation:1.9.1"
+    implementation "androidx.customview:customview:1.2.0"
     testImplementation 'junit:junit:4.13.2'
 }
 
