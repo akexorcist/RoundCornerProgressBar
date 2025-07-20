@@ -1,27 +1,20 @@
 [versions]
-compileSdk = "34"
+compileSdk = "35"
 minSdk = "21"
-targetSdk = "34"
+targetSdk = "35"
 
 kotlin = "2.2.0"
 androidGradlePlugin = "8.11.1"
 mavenPublish = "0.34.0"
-appcompat = "1.7.1"
-material = "1.12.0"
-constraintlayout = "2.2.1"
-lifecycle = "2.9.2"
-annotation = "1.9.1"
-roundCornerProgressBar = "2.2.0"
-customviewPoolingcontainer = "1.1.0"
 
 [libraries]
-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
-round-corner-progress-bar = { module = "com.akexorcist:RoundCornerProgressBar", version.ref = "roundCornerProgressBar" }
-customview-poolingcontainer = { module = "androidx.customview:customview-poolingcontainer", version.ref = "customviewPoolingcontainer" }
+core = { module = "androidx.core:core-ktx", version = "1.16.0" }
+appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.1" }
+material = { module = "com.google.android.material:material", version = "1.12.0" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.2.1" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.2" }
+annotation = { module = "androidx.annotation:annotation", version = "1.9.1" }
+customview-poolingcontainer = { module = "androidx.customview:customview-poolingcontainer", version = "1.1.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
