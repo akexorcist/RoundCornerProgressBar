@@ -14,8 +14,8 @@ android {
         applicationId = "com.akexorcist.roundcornerprogressbar.example"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 30
-        versionName = "2.2.0"
+        versionCode = 31
+        versionName = libs.versions.libraryVersion.toString()
     }
 
     buildTypes {
@@ -48,5 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.lifecycle.runtime.ktx)
+
+//    implementation(libs.roundCornerProgressBar)
     implementation(project(":round-corner-progress-bar"))
 }

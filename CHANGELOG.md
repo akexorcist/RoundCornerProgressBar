@@ -1,6 +1,15 @@
 Release Notes
 ====
 
+2.2.2
+--
+* Migrate to Gradle Kotlin DSL
+* Update dependencies and Gradle version
+* Support Android 16 (Target SDK 36)
+* Update AGP 8.11.1 and Gradle 8.14.3
+* Refactoring and improvements
+* Fix incorrect badge link for Google Dev Library
+
 2.2.1
 --
 * Gradle 8.0

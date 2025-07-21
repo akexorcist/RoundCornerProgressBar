@@ -42,7 +42,7 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("com.akexorcist", "round-corner-progress-bar", "2.2.0")
+    coordinates("com.akexorcist", "round-corner-progress-bar", libs.versions.libraryVersion.toString())
     pom {
         name = "Round Corner Progress Bar"
         description = "A progress bar with round corner for Android."
