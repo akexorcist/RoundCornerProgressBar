@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.maven.publish)
+    id("signing")
 }
 
 android {
@@ -42,29 +43,31 @@ dependencies {
 }
 
 mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
     coordinates("com.akexorcist", "round-corner-progress-bar", libs.versions.libraryVersion.toString())
     pom {
-        name = "Round Corner Progress Bar"
-        description = "A progress bar with round corner for Android."
-        url = "https://github.com/akexorcist/Android-RoundCornerProgressBar"
+        name.set("Round Corner Progress Bar")
+        description.set("A progress bar with round corner for Android.")
+        url.set("https://github.com/akexorcist/Android-RoundCornerProgressBar")
         licenses {
             license {
-                name = "The Apache Software License, Version 2.0"
-                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                distribution = "repo"
+                name.set("The Apache Software License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
             }
         }
         developers {
             developer {
-                id = "akexorcist"
-                name = "Akexorcist"
-                email = "akexorcist@gmail.com"
+                id.set("akexorcist")
+                name.set("Akexorcist")
+                email.set("akexorcist@gmail.com")
             }
         }
         scm {
-            connection = "scm:git:github.com/akexorcist/Android-RoundCornerProgressBar.git"
-            developerConnection = "scm:git:ssh://github.com:akexorcist/Android-RoundCornerProgressBar.git"
-            url = "https://github.com/akexorcist/Android-RoundCornerProgressBar/tree/master"
+            connection.set("scm:git:github.com/akexorcist/Android-RoundCornerProgressBar.git")
+            developerConnection.set("scm:git:ssh://github.com:akexorcist/Android-RoundCornerProgressBar.git")
+            url.set("https://github.com/akexorcist/Android-RoundCornerProgressBar")
         }
     }
 }

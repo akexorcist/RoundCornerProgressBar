@@ -7,7 +7,6 @@ targetSdk = "36"
 
 kotlin = "2.2.0"
 androidGradlePlugin = "8.11.1"
-mavenPublish = "0.34.0"
 
 [libraries]
 core = { module = "androidx.core:core-ktx", version = "1.16.0" }
@@ -22,5 +21,5 @@ roundCornerProgressBar = { module = "com.akexorcist:round-corner-progress-bar", 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.34.0" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
