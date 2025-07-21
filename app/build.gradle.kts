@@ -14,13 +14,13 @@ android {
         applicationId = "com.akexorcist.roundcornerprogressbar"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 31
+        versionCode = 20202
         versionName = libs.versions.libraryVersion.get()
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
