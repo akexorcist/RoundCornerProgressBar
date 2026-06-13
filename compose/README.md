@@ -10,10 +10,6 @@ See the [project README](../README.md) for the library overview.
 implementation("com.akexorcist:round-corner-progress-bar-compose:2.2.2")
 ```
 
-```groovy
-implementation 'com.akexorcist:round-corner-progress-bar-compose:2.2.2'
-```
-
 # Usage
 
 All composables live in the `com.akexorcist.roundcornerprogressbar.compose` package. Every parameter has a default that matches the View library, so the only required argument is `progress` (and `icon` / `text` for the icon and text variants).

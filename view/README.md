@@ -10,10 +10,6 @@ See the [project README](../README.md) for the library overview, and the [Jetpac
 implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
 ```
 
-```groovy
-implementation 'com.akexorcist:round-corner-progress-bar:2.2.2'
-```
-
 # Usage
 
 For using custom attribute of progress bar, define 'app' namespace as root view attribute in your layout

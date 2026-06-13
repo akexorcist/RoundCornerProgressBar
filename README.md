@@ -38,14 +38,6 @@ implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
 implementation("com.akexorcist:round-corner-progress-bar-compose:2.2.2")
 ```
 
-```groovy
-// Android View
-implementation 'com.akexorcist:round-corner-progress-bar:2.2.2'
-
-// Jetpack Compose
-implementation 'com.akexorcist:round-corner-progress-bar-compose:2.2.2'
-```
-
 ## Demo
 
 Go to [Google Play](https://play.google.com/store/apps/details?id=com.akexorcist.roundcornerprogressbar) to download the demo app
