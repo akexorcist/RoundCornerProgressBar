@@ -7,7 +7,7 @@ See the [project README](../README.md) for the library overview.
 # Download
 
 ```kotlin
-implementation("com.akexorcist:round-corner-progress-bar-compose:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-compose:2.2.2")
 ```
 
 # Usage

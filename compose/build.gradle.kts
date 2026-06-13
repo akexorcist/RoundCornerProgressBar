@@ -43,7 +43,7 @@ dependencies {
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
-    coordinates("com.akexorcist", "round-corner-progress-bar-compose", libs.versions.libraryVersion.get())
+    coordinates("com.akexorcist", "roundcornerprogressbar-compose", libs.versions.libraryVersion.get())
     pom {
         name.set("Round Corner Progress Bar Compose")
         description.set("A progress bar with round corner for Jetpack Compose.")

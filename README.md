@@ -1,6 +1,6 @@
 ![Android Kotlin](https://img.shields.io/badge/Android-Kotlin-6C3FD1.svg?style=flat&logo=android)
 ![Minimum SDK Version](https://img.shields.io/badge/API-17+-brightgreen)
-[![Maven Central](https://img.shields.io/maven-central/v/com.akexorcist/round-corner-progress-bar?color=brightgreen&label=Maven%20Central)](https://search.maven.org/artifact/com.akexorcist/round-corner-progress-bar)
+[![Maven Central](https://img.shields.io/maven-central/v/com.akexorcist/roundcornerprogressbar-view?color=brightgreen&label=Maven%20Central)](https://search.maven.org/artifact/com.akexorcist/roundcornerprogressbar-view)
 ![Apache 2.0](https://img.shields.io/badge/License-Apache%202-brightgreen)
 [![Workflow Status](https://github.com/akexorcist/RoundCornerProgressBar/actions/workflows/android.yml/badge.svg)](https://github.com/akexorcist/RoundCornerProgressBar/actions)
 
@@ -21,8 +21,8 @@ This library ships in two modules. Pick the one that matches your UI toolkit:
 
 | Module | Artifact | Documentation |
 | --- | --- | --- |
-| **Android View** | `com.akexorcist:round-corner-progress-bar` | [view/README.md](view/README.md) |
-| **Jetpack Compose** | `com.akexorcist:round-corner-progress-bar-compose` | [compose/README.md](compose/README.md) |
+| **Android View** | `com.akexorcist:roundcornerprogressbar-view` | [view/README.md](view/README.md) |
+| **Jetpack Compose** | `com.akexorcist:roundcornerprogressbar-compose` | [compose/README.md](compose/README.md) |
 
 Both modules share the same look, animation and feature set, so you can mix them in the same project.
 
@@ -32,10 +32,10 @@ Both modules share the same look, animation and feature set, so you can mix them
 
 ```kotlin
 // Android View
-implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-view:2.2.2")
 
 // Jetpack Compose
-implementation("com.akexorcist:round-corner-progress-bar-compose:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-compose:2.2.2")
 ```
 
 ## Demo

@@ -1,5 +1,23 @@
 # Migration
 
+## Android View artifact rename
+
+The Android View library artifact has been renamed so the View and Compose libraries share a consistent naming scheme.
+
+Update your dependency:
+
+```kotlin
+// Old
+implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
+
+// New
+implementation("com.akexorcist:roundcornerprogressbar-view:2.2.2")
+```
+
+No code changes are required — the package, classes, and XML attributes are unchanged. Only the Maven artifact ID changed (`round-corner-progress-bar` → `roundcornerprogressbar-view`).
+
+The Jetpack Compose library is available separately as `com.akexorcist:roundcornerprogressbar-compose`.
+
 ## Migrate from 2.0 to 2.1+
 
 ### BaseRoundCornerProgressBar.OnProgressChangedListener
