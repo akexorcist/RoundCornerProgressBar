@@ -151,7 +151,7 @@ fun LabeledCheckbox(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Checkbox(checked = checked, onCheckedChange = onCheckedChange)
-        Text(text = label)
+        Text(text = label, style = MaterialTheme.typography.bodyLarge)
     }
 }
 
@@ -172,14 +172,18 @@ fun LabeledRadioGroup(
             .width(260.dp)
             .padding(top = topSpacing),
     ) {
-        Text(text = label, style = MaterialTheme.typography.bodyMedium)
+        Text(text = label, style = MaterialTheme.typography.bodyLarge)
         Row(verticalAlignment = Alignment.CenterVertically) {
             options.forEachIndexed { index, option ->
                 RadioButton(
                     selected = selectedIndex == index,
                     onClick = { onSelected(index) },
                 )
-                Text(text = option, modifier = Modifier.padding(end = 16.dp))
+                Text(
+                    text = option,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(end = 16.dp),
+                )
             }
         }
     }
