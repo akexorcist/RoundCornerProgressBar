@@ -81,7 +81,7 @@ fun SampleCard(content: @Composable ColumnScope.() -> Unit) {
 fun SampleDescription(text: String) {
     Text(
         text = text,
-        modifier = Modifier.width(260.dp),
+        modifier = Modifier.width(228.dp),
         style = MaterialTheme.typography.bodyLarge,
         lineHeight = 25.sp,
     )
