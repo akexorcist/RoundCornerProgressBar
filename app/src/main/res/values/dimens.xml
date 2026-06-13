@@ -10,4 +10,5 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding">16dp</dimen>
     <dimen name="padding_large">24dp</dimen>
+    <dimen name="demo_bottom_clearance">96dp</dimen>
 </resources>

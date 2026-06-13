@@ -16,6 +16,7 @@ appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.1" }
 material = { module = "com.google.android.material:material", version = "1.14.0" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.2.1" }
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.10.0" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.8.9" }
 annotation = { module = "androidx.annotation:annotation", version = "1.10.0" }
 activity-compose = { module = "androidx.activity:activity-compose", version = "1.13.0" }
 

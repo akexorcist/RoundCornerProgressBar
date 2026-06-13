@@ -24,9 +24,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.akexorcist.roundcornerprogressbar.example.R
 
 @Composable
@@ -35,7 +37,12 @@ fun DemoScreenContainer(content: @Composable ColumnScope.() -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp),
+            .padding(
+                start = 16.dp,
+                top = 16.dp,
+                end = 16.dp,
+                bottom = dimensionResource(R.dimen.demo_bottom_clearance),
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         content = content,
     )
@@ -75,8 +82,8 @@ fun SampleDescription(text: String) {
     Text(
         text = text,
         modifier = Modifier.width(260.dp),
-        style = MaterialTheme.typography.bodyMedium,
-        lineHeight = MaterialTheme.typography.bodyMedium.lineHeight * 1.3f,
+        style = MaterialTheme.typography.bodyLarge,
+        lineHeight = 25.sp,
     )
 }
 
@@ -101,6 +108,7 @@ fun ProgressControlRow(
                 text = centerText,
                 modifier = Modifier.weight(1.2f),
                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyLarge,
             )
         } else {
             Spacer(modifier = Modifier.weight(1.2f))
@@ -118,9 +126,10 @@ private fun RowScope.DemoButton(
     Button(
         onClick = onClick,
         modifier = Modifier.weight(1f),
+        shape = RoundedCornerShape(8.dp),
         contentPadding = PaddingValues(horizontal = 4.dp),
     ) {
-        Text(text = label, maxLines = 1)
+        Text(text = label, maxLines = 1, fontSize = 16.sp)
     }
 }
 

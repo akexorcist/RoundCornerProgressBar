@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.fragment.ktx)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.activity.compose)

@@ -1,49 +1,59 @@
-package com.akexorcist.roundcornerprogressbar.example.compose
+package com.akexorcist.roundcornerprogressbar.example.fragment
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.isSystemInDarkTheme
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.akexorcist.roundcornerprogressbar.example.DemoViewModel
 import com.akexorcist.roundcornerprogressbar.example.R
+import com.akexorcist.roundcornerprogressbar.example.compose.CenteredDemoScreen
+import com.akexorcist.roundcornerprogressbar.example.compose.DemoTheme
+import com.akexorcist.roundcornerprogressbar.example.compose.IconDemoScreen
+import com.akexorcist.roundcornerprogressbar.example.compose.IndeterminateDemoScreen
+import com.akexorcist.roundcornerprogressbar.example.compose.SimpleDemoScreen
+import com.akexorcist.roundcornerprogressbar.example.compose.TextDemoScreen
 import kotlinx.coroutines.launch
 
-/**
- * Standalone demo of the Compose library (`:compose` module), mirroring the
- * structure and samples of the View-based demo in [com.akexorcist.roundcornerprogressbar.example.MainActivity].
- */
-class ComposeDemoActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+class ComposeDemoFragment : Fragment() {
+    private val viewModel: DemoViewModel by activityViewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View = ComposeView(requireContext()).apply {
+        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
         setContent {
-            MaterialTheme(
-                colorScheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme(),
-            ) {
-                ComposeDemoApp(onBack = { finish() })
+            DemoTheme {
+                val selectedTab by viewModel.selectedTab.collectAsState()
+                ComposeDemo(
+                    selectedTab = selectedTab,
+                    onTabSelected = viewModel::selectTab,
+                )
             }
         }
     }
@@ -51,7 +61,10 @@ class ComposeDemoActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ComposeDemoApp(onBack: () -> Unit) {
+private fun ComposeDemo(
+    selectedTab: Int,
+    onTabSelected: (Int) -> Unit,
+) {
     val tabs = listOf(
         stringResource(R.string.tab_round_corner_progress_bar),
         stringResource(R.string.tab_centered_round_corner_progress_bar),
@@ -59,23 +72,22 @@ private fun ComposeDemoApp(onBack: () -> Unit) {
         stringResource(R.string.tab_text_round_corner_progress_bar),
         stringResource(R.string.tab_indeterminate_round_corner_progress_bar),
     )
-    val pagerState = rememberPagerState(pageCount = { tabs.size })
+    val pagerState = rememberPagerState(initialPage = selectedTab, pageCount = { tabs.size })
     val scope = rememberCoroutineScope()
+
+    LaunchedEffect(selectedTab) {
+        if (pagerState.currentPage != selectedTab) {
+            pagerState.scrollToPage(selectedTab)
+        }
+    }
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect(onTabSelected)
+    }
 
     Scaffold(
         topBar = {
             Column {
-                TopAppBar(
-                    title = { Text(text = stringResource(R.string.app_name_compose)) },
-                    navigationIcon = {
-                        IconButton(onClick = onBack) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back",
-                            )
-                        }
-                    },
-                )
+                TopAppBar(title = { Text(text = stringResource(R.string.app_name)) })
                 ScrollableTabRow(
                     selectedTabIndex = pagerState.currentPage,
                     edgePadding = 0.dp,

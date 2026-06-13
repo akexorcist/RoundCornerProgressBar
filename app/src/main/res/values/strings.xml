@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">RoundCornerProgressBar Demo</string>
-    <string name="app_name_compose">RoundCornerProgressBar Compose</string>
-    <string name="menu_compose_demo">Compose</string>
+    <string name="app_name">RoundCornerProgressBar</string>
 
     <string name="blank" />
+
+    <string name="toggle_compose">Compose</string>
+    <string name="toggle_view">View</string>
 
     <string name="tab_round_corner_progress_bar">Simple</string>
     <string name="tab_centered_round_corner_progress_bar">Centered</string>
