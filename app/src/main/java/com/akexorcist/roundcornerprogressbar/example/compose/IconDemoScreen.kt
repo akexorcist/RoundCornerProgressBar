@@ -220,6 +220,7 @@ private fun InteractiveIconCard() {
             label = stringResource(R.string.apply_gradient_progress_color),
             checked = gradientEnabled,
             onCheckedChange = { gradientEnabled = it },
+            topSpacing = 0.dp,
         )
     }
 }

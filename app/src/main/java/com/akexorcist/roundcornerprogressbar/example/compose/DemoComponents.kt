@@ -27,6 +27,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akexorcist.roundcornerprogressbar.example.R
@@ -71,7 +72,6 @@ fun SampleCard(content: @Composable ColumnScope.() -> Unit) {
         Column(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp),
             content = content,
         )
     }
@@ -81,7 +81,9 @@ fun SampleCard(content: @Composable ColumnScope.() -> Unit) {
 fun SampleDescription(text: String) {
     Text(
         text = text,
-        modifier = Modifier.width(228.dp),
+        modifier = Modifier
+            .width(228.dp)
+            .padding(top = 16.dp),
         style = MaterialTheme.typography.bodyLarge,
         lineHeight = 25.sp,
     )
@@ -97,7 +99,9 @@ fun ProgressControlRow(
     onProgressChange: (amount: Float) -> Unit,
 ) {
     Row(
-        modifier = Modifier.width(260.dp),
+        modifier = Modifier
+            .width(260.dp)
+            .padding(top = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
@@ -138,9 +142,12 @@ fun LabeledCheckbox(
     label: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
+    topSpacing: Dp = 8.dp,
 ) {
     Row(
-        modifier = Modifier.width(260.dp),
+        modifier = Modifier
+            .width(260.dp)
+            .padding(top = topSpacing),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Checkbox(checked = checked, onCheckedChange = onCheckedChange)
@@ -158,8 +165,13 @@ fun LabeledRadioGroup(
     options: List<String>,
     selectedIndex: Int,
     onSelected: (index: Int) -> Unit,
+    topSpacing: Dp = 8.dp,
 ) {
-    Column(modifier = Modifier.width(260.dp)) {
+    Column(
+        modifier = Modifier
+            .width(260.dp)
+            .padding(top = topSpacing),
+    ) {
         Text(text = label, style = MaterialTheme.typography.bodyMedium)
         Row(verticalAlignment = Alignment.CenterVertically) {
             options.forEachIndexed { index, option ->

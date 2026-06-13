@@ -208,6 +208,7 @@ private fun InteractiveTextCard() {
             label = stringResource(R.string.enable_animation),
             checked = animationEnabled,
             onCheckedChange = { animationEnabled = it },
+            topSpacing = 0.dp,
         )
         LabeledRadioGroup(
             label = stringResource(R.string.inside_gravity),
