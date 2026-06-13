@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Round Corner Progress Bar"
-include(":app", ":round-corner-progress-bar")
+include(":app", ":view", ":compose")

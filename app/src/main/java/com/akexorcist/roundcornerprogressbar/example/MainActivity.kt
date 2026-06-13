@@ -1,5 +1,6 @@
 package com.akexorcist.roundcornerprogressbar.example
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import com.akexorcist.roundcornerprogressbar.example.compose.ComposeDemoActivity
 import com.akexorcist.roundcornerprogressbar.example.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -26,6 +28,15 @@ class MainActivity : AppCompatActivity() {
                 rightMargin = insets.right
             }
             WindowInsetsCompat.CONSUMED
+        }
+
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.menuComposeDemo) {
+                startActivity(Intent(this, ComposeDemoActivity::class.java))
+                true
+            } else {
+                false
+            }
         }
 
         val adapter = ViewPagerAdapter(this)

@@ -131,7 +131,6 @@ CenteredDemoFragment : Fragment() {
     |Progress : 40
     |SecondaryProgress : 60
     |Radius : 10dp
-    |Radius : 10dp
     |Padding : 2dp
     |Width : 260dp
     |Height : 30dp

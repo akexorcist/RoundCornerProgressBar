@@ -1,20 +1,16 @@
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.maven.publish)
     id("signing")
 }
 
 android {
-    namespace = "com.akexorcist.roundcornerprogressbar"
+    namespace = "com.akexorcist.roundcornerprogressbar.compose"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk = libs.versions.minSdkCompose.get().toInt()
     }
 
     buildTypes {
@@ -28,27 +24,29 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-}
 
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
+    buildFeatures {
+        compose = true
     }
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.annotation)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
+
+    testImplementation(libs.junit)
 }
 
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
-    coordinates("com.akexorcist", "round-corner-progress-bar", libs.versions.libraryVersion.get())
+    coordinates("com.akexorcist", "round-corner-progress-bar-compose", libs.versions.libraryVersion.get())
     pom {
-        name.set("Round Corner Progress Bar")
-        description.set("A progress bar with round corner for Android.")
+        name.set("Round Corner Progress Bar Compose")
+        description.set("A progress bar with round corner for Jetpack Compose.")
         url.set("https://github.com/akexorcist/Android-RoundCornerProgressBar")
         licenses {
             license {

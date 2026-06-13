@@ -1,9 +1,6 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -12,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.akexorcist.roundcornerprogressbar"
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk = libs.versions.minSdkCompose.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 20202
         versionName = libs.versions.libraryVersion.get()
@@ -21,6 +18,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -32,13 +30,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-    }
-}
-
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
+        compose = true
     }
 }
 
@@ -49,6 +41,16 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.lifecycle.runtime.ktx)
 
+    implementation(platform(libs.compose.bom))
+    implementation(libs.activity.compose)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons.core)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
+
 //    implementation(libs.roundCornerProgressBar)
-    implementation(project(":round-corner-progress-bar"))
+    implementation(project(":view"))
+    implementation(project(":compose"))
 }

@@ -20,11 +20,19 @@ Colorful rounded corner progress bar
 ## Gradle
 
 ```kotlin
+// Android View
 implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
+
+// Jetpack Compose
+implementation("com.akexorcist:round-corner-progress-bar-compose:2.2.2")
 ```
 
 ```groovy
+// Android View
 implementation 'com.akexorcist:round-corner-progress-bar:2.2.2'
+
+// Jetpack Compose
+implementation 'com.akexorcist:round-corner-progress-bar-compose:2.2.2'
 ```
 
 ## Demo
@@ -81,6 +89,66 @@ Simple round corner progress bar and centered round corner progress bar with ind
 - Heading icon supported with `IconRoundCornerProgressBar`
 - Text inside progress supported with `TextRoundCornerProgressBar`
 - Indeterminate animation supported with `IndeterminateRoundCornerProgressBar` or `IndeterminateCenteredRoundCornerProgressBar`
+
+# Jetpack Compose Usage
+
+All progress bars are available as composable functions in the `com.akexorcist.roundcornerprogressbar.compose` package with full feature parity with the View-based library.
+
+```kotlin
+// Simple round corner progress bar
+RoundCornerProgressBar(
+    progress = 40f,
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(30.dp),
+    max = 100f,
+    radius = 10.dp,
+    backgroundPadding = 2.dp,
+    backgroundColor = Color(0x0A000000),
+    progressColor = Color(0xFFEF5350),
+    secondaryProgress = 60f,
+    secondaryProgressColor = Color(0x40EF5350),
+)
+
+// Gradient, reversed, with progress change animation
+RoundCornerProgressBar(
+    progress = 70f,
+    progressColors = listOf(Color(0xFF00BCD4), Color(0xFF3F51B5)),
+    reverse = true,
+    animationEnabled = true,
+    animationSpeedScale = 1f,
+    onProgressChanged = { progress -> /* ... */ },
+)
+
+// Progress expanding from the center
+CenteredRoundCornerProgressBar(progress = 50f)
+
+// With a heading icon
+IconRoundCornerProgressBar(
+    icon = painterResource(R.drawable.ic_launcher),
+    progress = 40f,
+    iconSize = DpSize(40.dp, 40.dp),
+    iconPadding = PaddingValues(8.dp),
+    iconBackgroundColor = Color(0xFFFF9800),
+    onIconClick = { /* ... */ },
+)
+
+// With text inside the progress
+TextRoundCornerProgressBar(
+    text = "75%",
+    progress = 75f,
+    textColor = Color.White,
+    textSize = 16.sp,
+    textMargin = 10.dp,
+    textInsideGravity = TextGravity.Start,
+    textOutsideGravity = TextGravity.Start,
+    textPositionPriority = TextPositionPriority.Inside,
+)
+
+// Indeterminate
+IndeterminateRoundCornerProgressBar()
+IndeterminateCenteredRoundCornerProgressBar()
+```
 
 # Usage
 
