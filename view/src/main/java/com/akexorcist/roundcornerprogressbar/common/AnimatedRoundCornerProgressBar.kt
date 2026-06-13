@@ -34,15 +34,21 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
     private var _progressAnimator: ValueAnimator? = null
     private var _secondaryProgressAnimator: ValueAnimator? = null
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        setupAnimationStyleable(context, null)
+    }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        setupAnimationStyleable(context, attrs)
+    }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
-    )
+    ) {
+        setupAnimationStyleable(context, attrs)
+    }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
@@ -50,24 +56,24 @@ abstract class AnimatedRoundCornerProgressBar : BaseRoundCornerProgressBar {
         attrs,
         defStyleAttr,
         defStyleRes
-    )
+    ) {
+        setupAnimationStyleable(context, attrs)
+    }
 
-    override fun setupStyleable(context: Context, attrs: AttributeSet?) {
-        super.setupStyleable(context, attrs)
-        if (attrs == null) return
-
-        val typedArray = context.obtainStyledAttributes(
-            attrs, R.styleable.AnimatedRoundCornerProgressBar
-        )
-
-        with(typedArray) {
-            _isAnimationEnabled = getBoolean(
-                R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false
+    private fun setupAnimationStyleable(context: Context, attrs: AttributeSet?) {
+        if (attrs != null) {
+            val typedArray = context.obtainStyledAttributes(
+                attrs, R.styleable.AnimatedRoundCornerProgressBar
             )
-            _animationSpeedScale = getFloat(
-                R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f
-            )
-            recycle()
+            with(typedArray) {
+                _isAnimationEnabled = getBoolean(
+                    R.styleable.AnimatedRoundCornerProgressBar_rcAnimationEnable, false
+                )
+                _animationSpeedScale = getFloat(
+                    R.styleable.AnimatedRoundCornerProgressBar_rcAnimationSpeedScale, 1f
+                )
+                recycle()
+            }
         }
         _lastProgress = super.getProgress()
         _lastSecondaryProgress = super.getSecondaryProgress()
