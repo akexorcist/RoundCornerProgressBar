@@ -1,10 +1,5 @@
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.maven.publish)
     id("signing")
 }
@@ -30,13 +25,6 @@ android {
     }
 }
 
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
-    }
-}
-
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.annotation)
@@ -45,7 +33,7 @@ dependencies {
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
-    coordinates("com.akexorcist", "round-corner-progress-bar", libs.versions.libraryVersion.get())
+    coordinates("com.akexorcist", "roundcornerprogressbar-view", libs.versions.libraryVersion.get())
     pom {
         name.set("Round Corner Progress Bar")
         description.set("A progress bar with round corner for Android.")
