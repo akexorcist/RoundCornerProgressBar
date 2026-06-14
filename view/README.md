@@ -7,7 +7,7 @@ See the [project README](../README.md) for the library overview, and the [Jetpac
 # Download
 
 ```kotlin
-implementation("com.akexorcist:roundcornerprogressbar-view:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-view:2.3.0")
 ```
 
 > Previously published as `com.akexorcist:round-corner-progress-bar`. See [Migration](../README.md#migration) for the artifact rename.

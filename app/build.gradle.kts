@@ -11,7 +11,7 @@ android {
         applicationId = "com.akexorcist.roundcornerprogressbar"
         minSdk = libs.versions.minSdkCompose.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 20202
+        versionCode = 20300
         versionName = libs.versions.libraryVersion.get()
     }
 

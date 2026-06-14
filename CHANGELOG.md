@@ -1,6 +1,15 @@
 Release Notes
 ====
 
+2.3.0
+--
+* Add Jetpack Compose support via the new `com.akexorcist:roundcornerprogressbar-compose` artifact (full feature parity with the View library)
+* Rename the Android View artifact `com.akexorcist:round-corner-progress-bar` → `com.akexorcist:roundcornerprogressbar-view` (no code changes required, see MIGRATION.md)
+* Fix `rcAnimationSpeedScale` and `rcAnimationEnable` being ignored when set in XML (#98)
+* Fix `rcRadius` not applied on `IconRoundCornerProgressBar` when there is no icon / `rcIconSize` is 0 (#97)
+* Fix `SavedState.newArray()` recursing into itself (#101)
+* Update toolchain: AGP 9.2.1, Kotlin 2.3.21, Gradle 9.5.1, Compile & Target SDK 37, Compose BoM 2026.05.01
+
 2.2.2
 --
 * Migrate to Gradle Kotlin DSL
