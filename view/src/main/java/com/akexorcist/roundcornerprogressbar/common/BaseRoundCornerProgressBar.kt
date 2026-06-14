@@ -624,7 +624,7 @@ abstract class BaseRoundCornerProgressBar : LinearLayout {
 
                 override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
 
-                override fun newArray(size: Int): Array<SavedState> = newArray(size)
+                override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
             }
         }
     }
