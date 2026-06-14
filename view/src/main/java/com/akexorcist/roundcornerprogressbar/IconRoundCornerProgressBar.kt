@@ -135,7 +135,9 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
         isReverse: Boolean,
     ) {
         val newRadius = radius - (padding / 2f)
-        if (isReverse && progress != max) {
+        val effectiveIconWidth = if (iconSize == -1) iconWidth else iconSize
+        val hasIcon = effectiveIconWidth > 0
+        if (!hasIcon || (isReverse && progress != max)) {
             progressDrawable.cornerRadii = floatArrayOf(
                 newRadius,
                 newRadius,
@@ -161,7 +163,7 @@ open class IconRoundCornerProgressBar : AnimatedRoundCornerProgressBar {
         layoutProgress.background = progressDrawable
 
         val ratio = max / progress
-        val progressWidth = ((totalWidth - ((padding * 2) + ivProgressIcon.width)) / ratio).toInt()
+        val progressWidth = ((totalWidth - ((padding * 2) + effectiveIconWidth)) / ratio).toInt()
         val progressParams = layoutProgress.layoutParams as MarginLayoutParams
         if (isReverse) {
             if (padding + (progressWidth / 2) < radius) {
