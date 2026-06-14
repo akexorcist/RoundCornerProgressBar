@@ -32,10 +32,10 @@ Both modules share the same look, animation and feature set, so you can mix them
 
 ```kotlin
 // Android View
-implementation("com.akexorcist:roundcornerprogressbar-view:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-view:2.3.0")
 
 // Jetpack Compose
-implementation("com.akexorcist:roundcornerprogressbar-compose:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-compose:2.3.0")
 ```
 
 ## Demo

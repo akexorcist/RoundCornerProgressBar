@@ -11,7 +11,7 @@ Update your dependency:
 implementation("com.akexorcist:round-corner-progress-bar:2.2.2")
 
 // New
-implementation("com.akexorcist:roundcornerprogressbar-view:2.2.2")
+implementation("com.akexorcist:roundcornerprogressbar-view:2.3.0")
 ```
 
 No code changes are required — the package, classes, and XML attributes are unchanged. Only the Maven artifact ID changed (`round-corner-progress-bar` → `roundcornerprogressbar-view`).
